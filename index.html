@@ -127,6 +127,14 @@
                 border-radius: 10px;
             }
         }
+        @keyframes slow-zoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .animate-slow-zoom {
+            animation: slow-zoom 20s ease-in-out infinite;
+        }
     </style>
 </head>
 
@@ -136,8 +144,16 @@
 
     <main class="bg-black pt-20">
 
-        <section id="home" class="relative z-30 pt-32 pb-24 px-6 bg-black border-b border-white/5">
-            <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+        <section id="home" class="relative z-30 pt-32 pb-24 px-6 bg-black border-b border-white/5 overflow-hidden">
+            <!-- Background Batik Styled -->
+            <div class="absolute inset-0 z-[-1] pointer-events-none">
+                <div class="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black z-10"></div>
+                <img src="image/batik_bg_ilhampradani.jpeg" alt="Batik Background" 
+                    class="w-full h-full object-cover opacity-15 filter brightness-75 contrast-125 scale-110 animate-slow-zoom">
+                <!-- Scanline Effect -->
+                <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] z-20 bg-[length:100%_2px,3px_100%] pointer-events-none opacity-20"></div>
+            </div>
+            <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center relative z-30">
 
                 <div class="md:col-span-7 space-y-6 reveal-el">
                     <div
@@ -723,6 +739,27 @@
             </div>
         </section>
 
+        <section id="daftar-jurnal" class="relative z-30 py-16 px-6 bg-black border-t border-white/5">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col items-center mb-12">
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-[0.3em] mb-4 text-center" data-t="list_title">Arsip Lengkap Jurnal</h3>
+                    <div id="jurnal-counter" class="text-[10px] font-bold text-blue-500 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full uppercase tracking-widest">
+                        Total Jurnal: <span id="journal-count-val">0</span>+
+                    </div>
+                </div>
+
+                <div id="jurnal-categories" class="flex flex-wrap justify-center gap-3 mb-10 reveal-el">
+                    <!-- Categories will be rendered here -->
+                </div>
+
+                <div id="jurnal-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1"></div>
+                
+                <div id="jurnal-show-more-container" class="mt-12 flex justify-center md:hidden">
+                    <button id="btn-show-more-jurnal" onclick="toggleMoreJournals()" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-white uppercase tracking-widest hover:bg-white/10 transition-all">
+                        Lihat Selengkapnya
+                    </button>
+                </div>
+            </div>
         </section>
 
         <!-- AWARD SECTION -->
@@ -759,97 +796,119 @@
 
             <!-- Marquee Award -->
             <div class="relative flex overflow-hidden">
-                <div class="marquee gap-6 px-6">
-                    <!-- Award 1 -->
-                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
-                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all duration-500">
-                            <i data-lucide="shield-check" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors"></i>
+                <div class="marquee gap-8 px-6">
+                    <!-- Award 1: CompTIA -->
+                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group flex items-center gap-6 shadow-2xl">
+                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/comptia_sec_plus.png" alt="CompTIA" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
                         </div>
-                        <h4 class="text-white font-bold text-lg mb-3">CompTIA Security+</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Standar emas global untuk memulai karier di bidang keamanan siber.</p>
-                        <div class="mt-6 pt-6 border-t border-white/5">
-                            <span class="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Fundamental & Standard</span>
-                        </div>
-                    </div>
-
-                    <!-- Award 2 -->
-                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
-                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all duration-500">
-                            <i data-lucide="award" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-lg mb-3">ISC2 Certified in Cybersecurity (CC)</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Sertifikasi dasar dari lembaga bergengsi ISC2 yang fokus pada konsep fundamental.</p>
-                        <div class="mt-6 pt-6 border-t border-white/5">
-                            <span class="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Fundamental & Standard</span>
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_1_t">CompTIA Security+</h4>
+                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_1_d">Sertifikasi keamanan siber tingkat dunia yang memvalidasi keahlian dalam mitigasi ancaman, manajemen risiko, dan pengamanan infrastruktur digital sesuai standar industri global.</p>
+                            <div class="mt-4 pt-4 border-t border-white/5">
+                                <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest" data-t="award_cat_global">Global Security Standard</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Award 3 -->
-                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
-                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all duration-500">
-                            <i data-lucide="database" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors"></i>
+                    <!-- Award 2: ISC2 -->
+                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group flex items-center gap-6 shadow-2xl">
+                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/isc2_cc.png" alt="ISC2" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
                         </div>
-                        <h4 class="text-white font-bold text-lg mb-3">GIAC Information Security Fundamentals (GISF)</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Dikenal sangat teknis dan mendalam meskipun di tingkat dasar.</p>
-                        <div class="mt-6 pt-6 border-t border-white/5">
-                            <span class="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Fundamental & Standard</span>
-                        </div>
-                    </div>
-
-                    <!-- Award 4 -->
-                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
-                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:bg-red-600 transition-all duration-500">
-                            <i data-lucide="terminal" class="w-6 h-6 text-red-500 group-hover:text-white transition-colors"></i>
-                        </div>
-                        <h4 class="text-white font-bold text-lg mb-3">OffSec Certified Professional (OSCP)</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Sertifikasi paling bergengsi untuk pentesting. Ujiannya 24 jam praktis (hands-on) dan sangat sulit.</p>
-                        <div class="mt-6 pt-6 border-t border-white/5 flex items-center gap-2">
-                            <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest">Technical & Offensive</span>
-                            <span class="w-1 h-1 rounded-full bg-red-500 animate-pulse"></span>
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_2_t">ISC2 CC</h4>
+                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_2_d">Sertifikasi resmi dari ISC2 yang membuktikan pemahaman mendalam tentang prinsip fundamental keamanan siber, kontrol akses, dan operasi keamanan profesional.</p>
+                            <div class="mt-4 pt-4 border-t border-white/5">
+                                <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest" data-t="award_cat_cyber">Certified in Cybersecurity</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Award 5 -->
-                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
-                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:bg-red-600 transition-all duration-500">
-                            <i data-lucide="fingerprint" class="w-6 h-6 text-red-500 group-hover:text-white transition-colors"></i>
+                    <!-- Award 3: HackerOne -->
+                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group flex items-center gap-6 shadow-2xl">
+                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/hackerone.png" alt="HackerOne" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
                         </div>
-                        <h4 class="text-white font-bold text-lg mb-3">CEH Master</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Sertifikasi populer yang mencakup teori dan praktik serangan siber dari EC-Council.</p>
-                        <div class="mt-6 pt-6 border-t border-white/5">
-                            <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest">Technical & Offensive</span>
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_3_t">HackerOne</h4>
+                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_3_d">Pengakuan sebagai peneliti keamanan siber elit yang berkontribusi dalam mengidentifikasi kerentanan kritis pada infrastruktur digital perusahaan teknologi Fortune 500.</p>
+                            <div class="mt-4 pt-4 border-t border-white/5">
+                                <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest" data-t="award_cat_vuln">Vulnerability Research</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Award 6 -->
-                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
-                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:bg-red-600 transition-all duration-500">
-                            <i data-lucide="target" class="w-6 h-6 text-red-500 group-hover:text-white transition-colors"></i>
+                    <!-- Award 4: OSCP -->
+                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-red-500/30 transition-all group flex items-center gap-6 shadow-2xl">
+                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/offsec_oscp.png" alt="OffSec" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
                         </div>
-                        <h4 class="text-white font-bold text-lg mb-3">GIAC Penetration Tester (GPEN)</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Sangat dihargai karena fokus pada metodologi serangan tingkat lanjut.</p>
-                        <div class="mt-6 pt-6 border-t border-white/5">
-                            <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest">Technical & Offensive</span>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <h4 class="text-white font-bold text-xl" data-t="award_4_t">OffSec OSCP</h4>
+                                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                            </div>
+                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_4_d">Standar emas bagi praktisi uji penetrasi (Pentesting), membuktikan kemampuan teknis hands-on yang intens dalam mengeksploitasi sistem secara real-time.</p>
+                            <div class="mt-4 pt-4 border-t border-white/5">
+                                <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest" data-t="award_cat_offense">Offensive Security Certified</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Award 5: CEH -->
+                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-red-500/30 transition-all group flex items-center gap-6 shadow-2xl">
+                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/ceh_master.png" alt="CEH" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_5_t">CEH Master</h4>
+                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_5_d">Sertifikasi tingkat lanjut yang menggabungkan teori peretasan etis (Ethical Hacking) dengan uji kompetensi praktis untuk skenario serangan siber nyata.</p>
+                            <div class="mt-4 pt-4 border-t border-white/5">
+                                <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest" data-t="award_cat_ethical">Ethical Hacking Master</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Award 6: GIAC -->
+                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group flex items-center gap-6 shadow-2xl">
+                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/giac_gisf.png" alt="GIAC" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_6_t">GIAC GISF / GPEN</h4>
+                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_6_d">Sertifikasi spesialisasi GIAC yang memvalidasi kemahiran teknis mendalam dalam metodologi serangan siber dan pertahanan infrastruktur informasi strategis.</p>
+                            <div class="mt-4 pt-4 border-t border-white/5">
+                                <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest" data-t="award_cat_method">Offensive Methodology</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- DUPLICATE FOR SEAMLESS LOOP -->
-                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
-                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all duration-500">
-                            <i data-lucide="shield-check" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors"></i>
+                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group flex items-center gap-6 shadow-2xl">
+                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/comptia_sec_plus.png" alt="CompTIA" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
                         </div>
-                        <h4 class="text-white font-bold text-lg mb-3">CompTIA Security+</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Standar emas global untuk memulai karier di bidang keamanan siber.</p>
-                        <div class="mt-6 pt-6 border-t border-white/5">
-                            <span class="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Fundamental & Standard</span>
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_1_t">CompTIA Security+</h4>
+                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_1_d">Sertifikasi keamanan siber tingkat dunia yang memvalidasi keahlian dalam mitigasi ancaman dan manajemen risiko global.</p>
+                            <div class="mt-4 pt-4 border-t border-white/5">
+                                <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest" data-t="award_cat_global">Global Security Standard</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="relative z-30 py-24 px-6 bg-black border-t border-white/5">
-            <div class="max-w-7xl mx-auto">
+        <section id="contact" class="relative z-30 py-24 px-6 bg-black border-t border-white/5 overflow-hidden">
+            <!-- Background Batik Styled -->
+            <div class="absolute inset-0 z-[-1] pointer-events-none">
+                <div class="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black z-10"></div>
+                <img src="image/batik_bg_ilhampradani.jpeg" alt="Batik Background" 
+                    class="w-full h-full object-cover opacity-15 filter brightness-75 contrast-125 scale-110">
+            </div>
+            <div class="max-w-7xl mx-auto relative z-30">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
                     <div class="reveal-el">
