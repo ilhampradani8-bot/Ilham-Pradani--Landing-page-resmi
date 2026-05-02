@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Allow: /include/
 
 Sitemap: https://www.ilhampradani.me/sitemap_web.xml
