@@ -368,6 +368,52 @@
 
                     // SEO Update
                     document.title = `${judul} | Dr. Ilham Pradani C.L.`;
+                    
+                    // Update Meta Description
+                    let metaDesc = document.querySelector('meta[name="description"]');
+                    if (!metaDesc) {
+                        metaDesc = document.createElement('meta');
+                        metaDesc.setAttribute('name', 'description');
+                        document.head.appendChild(metaDesc);
+                    }
+                    metaDesc.setAttribute('content', kutipan || judul);
+
+                    // Update OG Tags
+                    const updateMeta = (property, content) => {
+                        let el = document.querySelector(`meta[property="${property}"]`);
+                        if (!el) {
+                            el = document.createElement('meta');
+                            el.setAttribute('property', property);
+                            document.head.appendChild(el);
+                        }
+                        el.setAttribute('content', content);
+                    };
+                    updateMeta('og:title', judul);
+                    updateMeta('og:description', kutipan || judul);
+                    updateMeta('og:image', gambar);
+                    updateMeta('og:url', window.location.href);
+
+                    // JSON-LD Schema
+                    let schemaScript = document.getElementById('schema-jsonld');
+                    if (!schemaScript) {
+                        schemaScript = document.createElement('script');
+                        schemaScript.id = 'schema-jsonld';
+                        schemaScript.type = 'application/ld+json';
+                        document.head.appendChild(schemaScript);
+                    }
+                    const schemaData = {
+                        "@context": "https://schema.org",
+                        "@type": "BlogPosting",
+                        "headline": judul,
+                        "image": [gambar],
+                        "datePublished": parseDate(tanggal).toISOString(),
+                        "author": [{
+                            "@type": "Person",
+                            "name": "Dr. Ilham Pradani C.L.",
+                            "url": "https://www.ilhampradani.me"
+                        }]
+                    };
+                    schemaScript.text = JSON.stringify(schemaData);
 
                     // 3. RENDER REKOMENDASI BAWAH (Filter artikel selain yang sedang dibaca)
                     const artikelLain = data.filter(item => item.id !== id).slice(0, 4); // Ambil 4 artikel lain
