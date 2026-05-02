@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ilham Pradani C.L. | Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <style>
+        :root { --bg-dark: #000000; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: #f1f5f9; scroll-behavior: smooth; }
+        .solid-card { background-color: #0a0a0a; border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
+    </style>
+</head>
+
+<body class="bg-black overflow-x-hidden">
+    <div id="header-placeholder"></div>
+
+    <main class="pt-32 pb-24 px-6 min-h-screen">
+        <div id="content-container" class="max-w-4xl mx-auto reveal-el">
+            <div class="flex items-center justify-center py-20">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        window.switchLang = function (lang) {
+            localStorage.setItem('preferred_lang', lang);
+            location.reload();
+        };
+
+        function updateLangUI() {
+            const lang = localStorage.getItem('preferred_lang') || 'id';
+            const activeClass = "bg-blue-600 text-white border-blue-600";
+            const btnId = document.getElementById('btn-id');
+            const btnEn = document.getElementById('btn-en');
+            const mBtnId = document.getElementById('m-btn-id');
+            const mBtnEn = document.getElementById('m-btn-en');
+
+            if (lang === 'en') {
+                if (btnEn) btnEn.className = `px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer ${activeClass}`;
+                if (mBtnEn) mBtnEn.className = `text-sm font-black px-4 py-2 border rounded-lg transition-all ${activeClass}`;
+            } else {
+                if (btnId) btnId.className = `px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer ${activeClass}`;
+                if (mBtnId) mBtnId.className = `text-sm font-black px-4 py-2 border rounded-lg transition-all ${activeClass}`;
+            }
+        }
+
+        async function applyTranslations() {
+            const lang = localStorage.getItem('preferred_lang') || 'id';
+            try {
+                const response = await fetch(`lang/${lang}.json`);
+                if (!response.ok) return;
+                const t = await response.json();
+                document.querySelectorAll('[data-t]').forEach(el => {
+                    const key = el.getAttribute('data-t');
+                    if (t[key]) el.innerHTML = t[key];
+                });
+            } catch (e) { console.error("Translation Error:", e); }
+        }
+
+        async function loadComponent(id, file) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            try {
+                const res = await fetch(file);
+                if (res.ok) {
+                    el.innerHTML = await res.text();
+                    if (window.lucide) lucide.createIcons();
+                    updateLangUI();
+                    applyTranslations();
+                }
+            } catch (e) { console.error("Component Error:", e); }
+        }
+
+        async function loadPageContent() {
+            const params = new URLSearchParams(window.location.search);
+            const page = params.get('page') || 'about';
+            const container = document.getElementById('content-container');
+            
+            try {
+                const res = await fetch(`include/komponent_footer/${page}.html`);
+                if (res.ok) {
+                    container.innerHTML = await res.text();
+                    
+                    // Execute scripts inside the loaded content
+                    const scripts = container.querySelectorAll('script');
+                    scripts.forEach(oldScript => {
+                        const newScript = document.createElement('script');
+                        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                        oldScript.parentNode.replaceChild(newScript, oldScript);
+                    });
+
+                    if (window.lucide) lucide.createIcons();
+                    document.title = `Dr. Ilham Pradani C.L. | ${page.charAt(0).toUpperCase() + page.slice(1)}`;
+                    applyTranslations();
+                } else {
+                    container.innerHTML = '<div class="text-center py-20 text-slate-500">Halaman tidak ditemukan.</div>';
+                }
+            } catch (e) {
+                container.innerHTML = '<div class="text-center py-20 text-red-500">Gagal memuat konten.</div>';
+            }
+        }
+
+        window.toggleMobileMenu = function (open) {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                if (open) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    document.body.style.overflow = '';
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadComponent('header-placeholder', 'include/header.html');
+            await loadComponent('footer-placeholder', 'include/footer.html');
+            await loadPageContent();
+        });
+
+        window.addEventListener('popstate', loadPageContent);
+    </script>
+</body>
+</html>
