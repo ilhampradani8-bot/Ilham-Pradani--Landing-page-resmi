@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Belajar - English Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: 'Outfit', sans-serif; background-color: #fff; }
+        .sidebar { height: 100vh; border-right: 2px solid #e5e7eb; }
+        .nav-item:hover { background-color: #f3f4f6; }
+        .nav-item.active { color: #3b82f6; }
+    </style>
+</head>
+<body class="text-slate-900 overflow-x-hidden">
+
+    <!-- Login Overlay (Hanya muncul jika belum login) -->
+    <div id="login-overlay" class="fixed inset-0 z-[100] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-6">
+        <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl max-w-md w-full border border-slate-100">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="lock" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900">Masuk Belajar</h2>
+                <p class="text-slate-500 text-sm">Gunakan akun Anda untuk melanjutkan progres.</p>
+            </div>
+            <div class="space-y-4">
+                <input type="text" id="username" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Username">
+                <input type="password" id="password" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Password">
+                <button onclick="login(document.getElementById('username').value, document.getElementById('password').value)" class="w-full py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-lg hover:bg-blue-700 transition-all">Masuk</button>
+                <p class="text-center text-[10px] text-slate-400 uppercase font-bold pt-4">Belum punya akses? <a href="https://wa.me/6288971071138" class="text-blue-600">Hubungi Sir Ilham</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex">
+        <!-- Sidebar (Kiri) -->
+        <aside class="hidden lg:flex flex-col w-64 sidebar fixed left-0 top-0 p-6 bg-white">
+            <div class="flex items-center gap-3 mb-12">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-black text-xl">E</div>
+                <span class="font-black text-xl tracking-tighter">LEARNING</span>
+            </div>
+            
+            <nav class="flex-1 space-y-2">
+                <a href="dashboard.html" class="nav-item active flex items-center gap-4 p-4 rounded-xl font-bold transition-all">
+                    <i data-lucide="home" class="w-6 h-6"></i> BELAJAR
+                </a>
+                <a href="tutorial.html" class="nav-item flex items-center gap-4 p-4 rounded-xl font-bold text-slate-400 hover:text-blue-600 transition-all">
+                    <i data-lucide="book-open" class="w-6 h-6"></i> TUTORIAL
+                </a>
+                <a href="profile.html" class="nav-item flex items-center gap-4 p-4 rounded-xl font-bold text-slate-400 hover:text-blue-600 transition-all">
+                    <i data-lucide="user" class="w-6 h-6"></i> PROFIL
+                </a>
+                <a href="settings.html" class="nav-item flex items-center gap-4 p-4 rounded-xl font-bold text-slate-400 hover:text-blue-600 transition-all">
+                    <i data-lucide="settings" class="w-6 h-6"></i> PENGATURAN
+                </a>
+            </nav>
+
+            <div class="pt-6 border-t border-slate-100">
+                <button onclick="logout()" class="flex items-center gap-4 p-4 w-full text-left font-bold text-red-400 hover:bg-red-50 rounded-xl transition-all">
+                    <i data-lucide="log-out" class="w-6 h-6"></i> KELUAR
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 lg:ml-64 min-h-screen">
+            
+            <!-- Top Bar -->
+            <div class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-100 px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-6">
+                    <a href="profile.html" class="flex items-center gap-2 hover:opacity-70 transition-all">
+                        <img src="image/hero.jpg" class="w-8 h-8 rounded-full border border-slate-200">
+                        <span class="text-sm font-black user-name-display text-slate-600">User</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="profile.html" class="flex items-center gap-2 bg-orange-50 text-orange-600 px-3 py-1.5 rounded-full text-xs font-black hover:bg-orange-100 transition-all">
+                        <i data-lucide="zap" class="w-4 h-4 fill-current"></i> 120 XP
+                    </a>
+                    <div class="flex items-center gap-2 bg-red-50 text-red-500 px-3 py-1.5 rounded-full text-xs font-black">
+                        <i data-lucide="heart" class="w-4 h-4 fill-current"></i> 5
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Dashboard (Path Belajar) -->
+            <div id="dashboard-view" class="max-w-2xl mx-auto py-12 px-6">
+                <div id="learning-path" class="space-y-4">
+                    <!-- Path akan diisi oleh learning.js -->
+                    <div class="flex justify-center p-20">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Lesson (Sesi Belajar) -->
+            <div id="lesson-view" class="hidden fixed inset-0 z-50 bg-white flex flex-col">
+                <div class="p-6 flex items-center gap-6">
+                    <button onclick="closeLesson()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-8 h-8"></i></button>
+                    <div class="flex-1 h-4 bg-slate-100 rounded-full overflow-hidden">
+                        <div id="lesson-progress" class="h-full bg-blue-500 transition-all duration-500 w-0"></div>
+                    </div>
+                </div>
+                <div class="flex-1 flex items-center justify-center p-6">
+                    <div id="lesson-content" class="w-full max-w-xl">
+                        <!-- Konten belajar/kuis diisi oleh learning.js -->
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Right Sidebar (Info Tambahan) -->
+        <aside class="hidden xl:flex flex-col w-80 p-8 space-y-8 sticky top-0 h-screen overflow-y-auto">
+            <div class="p-6 bg-blue-50 rounded-[2rem] border border-blue-100">
+                <h4 class="font-black text-blue-900 mb-2">Sir Ilham Tips</h4>
+                <p class="text-xs text-blue-700 leading-relaxed">"Jangan takut salah. Setiap kesalahan adalah langkah menuju kelancaran!"</p>
+            </div>
+            
+            <div class="space-y-4">
+                <h4 class="font-black text-slate-400 text-xs uppercase tracking-widest">Peringkat Minggu Ini</h4>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-yellow-400 text-white rounded-lg flex items-center justify-center font-bold">1</div>
+                            <span class="font-bold text-sm">Ilham Pradani</span>
+                        </div>
+                        <span class="text-xs font-black text-slate-400">12,402 XP</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-white border border-slate-100 rounded-xl">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-slate-200 text-slate-500 rounded-lg flex items-center justify-center font-bold">2</div>
+                            <span class="font-bold text-sm">Siswa Teladan</span>
+                        </div>
+                        <span class="text-xs font-black text-slate-400">8,210 XP</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/learning.js"></script>
+    <script>
+        // Memastikan Lucide dimuat setelah navigasi/perubahan UI
+        window.addEventListener('load', () => {
+            lucide.createIcons();
+        });
+
+        // Load Header & Footer
+        fetch('include_learning/header.html').then(r => r.text()).then(d => {
+            document.getElementById('header-placeholder').innerHTML = d;
+            lucide.createIcons();
+        });
+        fetch('include_learning/footer.html').then(r => r.text()).then(d => {
+            document.getElementById('footer-placeholder').innerHTML = d;
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

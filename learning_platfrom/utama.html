@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Academy - Platform Belajar English Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: 'Outfit', sans-serif; background-color: #fff; }
+        .hero-blob {
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="text-slate-900 overflow-x-hidden">
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-40 pb-24 px-6">
+            <div class="hero-blob"></div>
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8 animate-in">
+                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-black text-[10px] uppercase tracking-[0.2em]">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                        </span>
+                        Siswa Terdaftar: 150+ Siswa Aktif
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] tracking-tighter">
+                        Kuasai English dengan <span class="text-blue-600">Metode Presisi.</span>
+                    </h1>
+                    <p class="text-slate-500 text-lg leading-relaxed max-w-lg">
+                        Bukan sekadar menghafal. IP Academy membantu Anda memahami pola bahasa secara sistematis untuk komunikasi global yang percaya diri.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="dashboard.html" class="px-10 py-5 bg-blue-600 text-white font-black rounded-2xl shadow-2xl shadow-blue-200 hover:bg-blue-700 transition-all transform hover:-translate-y-1 uppercase tracking-widest text-xs">
+                            Mulai Belajar Sekarang
+                        </a>
+                        <a href="tutorial.html" class="px-10 py-5 bg-white border border-slate-200 text-slate-700 font-black rounded-2xl hover:bg-slate-50 transition-all uppercase tracking-widest text-xs">
+                            Lihat Tutorial
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative group animate-in" style="animation-delay: 200ms;">
+                    <div class="absolute -inset-4 bg-blue-100/50 rounded-[4rem] blur-3xl group-hover:bg-blue-200/50 transition-all"></div>
+                    <div class="relative aspect-[4/5] md:aspect-square bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="image/hero.jpg" class="w-full h-full object-cover opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-10 left-10 right-10 p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl text-white">
+                            <p class="text-lg font-medium italic mb-4">"Belajar bahasa Inggris harus seperti arsitektur: terstruktur, kokoh, dan fungsional."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center font-bold">IP</div>
+                                <div>
+                                    <div class="font-bold text-sm">Dr. Ilham Pradani</div>
+                                    <div class="text-[10px] opacity-60 uppercase tracking-widest">Founder IP Academy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="py-24 px-6 bg-slate-50">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-4">Kenapa Memilih IP Academy?</h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto">Sistem yang dirancang untuk efisiensi maksimal bagi pembelajar modern.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                        <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <i data-lucide="layout" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Metode Terstruktur</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Materi disusun secara hierarkis agar pemahaman Anda terbangun dengan fondasi yang kuat.</p>
+                    </div>
+                    <div class="p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                        <div class="w-14 h-14 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                            <i data-lucide="volume-2" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Audio Imersif</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Fitur pengucapan otomatis untuk melatih aksen dan pendengaran Anda setiap saat.</p>
+                    </div>
+                    <div class="p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                        <div class="w-14 h-14 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-all">
+                            <i data-lucide="zap" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Gratis Selamanya</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Akses penuh ke semua materi tanpa biaya tersembunyi bagi siswa yang berdedikasi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-24 px-6">
+            <div class="max-w-5xl mx-auto bg-blue-600 rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-6xl font-black mb-8 leading-tight">Siap Memulai Petualangan <br>Bahasa Inggris Anda?</h2>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <a href="dashboard.html" class="px-10 py-5 bg-white text-blue-600 font-black rounded-2xl shadow-xl hover:bg-blue-50 transition-all uppercase tracking-widest text-xs">
+                            Masuk ke Dashboard
+                        </a>
+                        <a href="https://wa.me/6288971071138" class="px-10 py-5 bg-blue-700 text-white font-black rounded-2xl shadow-xl hover:bg-blue-800 transition-all border border-blue-500/50 uppercase tracking-widest text-xs">
+                            Hubungi Sir Ilham
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Load Component
+        async function loadComponents() {
+            try {
+                const header = await fetch('include_learning/header.html').then(r => r.text());
+                document.getElementById('header-placeholder').innerHTML = header;
+                
+                const footer = await fetch('include_learning/footer.html').then(r => r.text());
+                document.getElementById('footer-placeholder').innerHTML = footer;
+                
+                lucide.createIcons();
+            } catch (e) {
+                console.error("Gagal memuat komponen:", e);
+            }
+        }
+        loadComponents();
+
+        function toggleMobileMenu(show) {
+            const menu = document.getElementById('mobile-menu');
+            if (show) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+    </script>
+</body>
+</html>

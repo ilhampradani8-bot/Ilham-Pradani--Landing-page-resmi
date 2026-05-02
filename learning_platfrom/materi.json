@@ -1,0 +1,82 @@
+{
+    "units": [
+        {
+            "id": 1,
+            "title": "Perkenalan Dasar",
+            "desc": "Belajar menyapa dan mengenalkan diri.",
+            "lessons": [
+                {
+                    "id": "1.1",
+                    "title": "Greeting",
+                    "type": "vocab",
+                    "data": [
+                        { "en": "Hello", "id": "Halo", "desc": "Sapaan umum." },
+                        { "en": "Good morning", "id": "Selamat pagi", "desc": "Sapaan di pagi hari." },
+                        { "en": "How are you?", "id": "Apa kabar?", "desc": "Menanyakan kabar." }
+                    ]
+                },
+                {
+                    "id": "1.2",
+                    "title": "Numbers 1-10",
+                    "type": "vocab",
+                    "data": [
+                        { "en": "One", "id": "Satu", "desc": "Angka 1." },
+                        { "en": "Two", "id": "Dua", "desc": "Angka 2." },
+                        { "en": "Three", "id": "Tiga", "desc": "Angka 3." }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Dunia Kerja",
+            "desc": "Istilah bahasa Inggris dalam lingkungan profesional.",
+            "lessons": [
+                {
+                    "id": "2.1",
+                    "title": "Office Items",
+                    "type": "vocab",
+                    "data": [
+                        { "en": "Laptop", "id": "Laptop", "desc": "Komputer jinjing." },
+                        { "en": "Meeting", "id": "Rapat", "desc": "Pertemuan bisnis." },
+                        { "en": "Deadline", "id": "Tenggat waktu", "desc": "Batas akhir pengerjaan." }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Liburan & Travel",
+            "desc": "Persiapan bahasa untuk bepergian ke luar negeri.",
+            "lessons": [
+                {
+                    "id": "3.1",
+                    "title": "Airport",
+                    "type": "vocab",
+                    "data": [
+                        { "en": "Passport", "id": "Paspor", "desc": "Dokumen perjalanan." },
+                        { "en": "Boarding pass", "id": "Tiket masuk pesawat", "desc": "Kartu untuk naik pesawat." },
+                        { "en": "Check-in", "id": "Daftar masuk", "desc": "Melaporkan kehadiran di bandara." }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Percakapan Harian",
+            "desc": "Frasa yang sering digunakan dalam obrolan santai.",
+            "lessons": [
+                {
+                    "id": "4.1",
+                    "title": "Small Talk",
+                    "type": "vocab",
+                    "data": [
+                        { "en": "Nice weather, isn't it?", "id": "Cuacanya bagus ya?", "desc": "Memulai obrolan tentang cuaca." },
+                        { "en": "What do you do?", "id": "Apa pekerjaanmu?", "desc": "Menanyakan profesi." },
+                        { "en": "See you later", "id": "Sampai jumpa nanti", "desc": "Salam perpisahan santai." }
+                    ]
+                }
+            ]
+        }
+    ]
+}

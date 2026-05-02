@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3925283111977300">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3925283111977300"
+        crossorigin="anonymous"></script>
+    <title>Jurnal | Dr. Ilham Pradani C.L.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="apple-touch-icon" href="image/favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jurnal Hukum & TI - Dr. Ilham Pradani C.L.">
+    <meta property="og:image" content="image/hero.jpg">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: black;
+            color: #f1f5f9;
+            scroll-behavior: smooth;
+        }
+
+        .prose p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .sidebar-transition {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Theme Support */
+        body.light-theme {
+            background: #ffffff !important;
+            color: #0f172a !important;
+        }
+        .light-theme #sidebar-nav {
+            background: #f8fafc !important;
+            border-right-color: #e2e8f0 !important;
+        }
+        .light-theme aside a {
+            border-color: #e2e8f0 !important;
+        }
+        .light-theme .prose {
+            color: #334155 !important;
+        }
+        .light-theme h1, .light-theme h2, .light-theme h3 {
+            color: #0f172a !important;
+        }
+        .light-theme .bg-\[\#0a0a0a\] {
+            background: #f1f5f9 !important;
+        }
+        .light-theme .border-white\/5, .light-theme .border-white\/10 {
+            border-color: #e2e8f0 !important;
+        }
+        .light-theme .text-slate-400, .light-theme .text-slate-500 {
+            color: #64748b !important;
+        }
+
+        /* Full Width Layout */
+        @media (min-width: 1024px) {
+            .full-article-width {
+                max-width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .full-image {
+                border-radius: 0 !important;
+                height: 600px !important;
+            }
+            .full-content-padding {
+                padding-left: 10% !important;
+                padding-right: 10% !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-black overflow-x-hidden">
+
+    <div id="header-placeholder"></div>
+
+    <button onclick="toggleSidebar(true)"
+        class="fixed left-0 top-1/2 -translate-y-1/2 z-[60] bg-blue-600 hover:bg-blue-500 text-white p-2 rounded-r-lg shadow-lg border border-white/10 transition-all">
+        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+    </button>
+
+    <div id="sidebar-overlay" onclick="toggleSidebar(false)"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[70] hidden opacity-0 transition-opacity duration-300">
+    </div>
+
+    <aside id="sidebar-nav"
+        class="fixed top-0 left-0 h-full w-80 bg-[#0a0a0a] border-r border-white/10 z-[80] sidebar-transition -translate-x-full p-8 overflow-y-auto">
+        <div class="flex items-center justify-between mb-8">
+            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest">Daftar Jurnal</h3>
+            <button onclick="toggleSidebar(false)" class="text-slate-500 hover:text-white"><i data-lucide="x"
+                    class="w-5 h-5"></i></button>
+        </div>
+        
+        <a href="index.html" class="flex items-center gap-3 p-4 mb-8 bg-blue-600/10 border border-blue-600/20 rounded-xl text-blue-500 hover:bg-blue-600 hover:text-white transition-all group">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span class="text-xs font-bold uppercase tracking-widest">Kembali ke Beranda</span>
+        </a>
+
+        <div id="sidebar-list" class="space-y-2"></div>
+    </aside>
+
+    <main class="pt-24 pb-20 min-h-screen">
+        <div class="w-full mx-auto full-article-width">
+            <div id="content-area">
+                <div class="text-center py-40">
+                    <p class="text-slate-500 animate-pulse uppercase tracking-widest text-xs">Menyelaraskan Data...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        /* ============================================================
+        UTILITIES
+        ============================================================ */
+        const parseDate = (str) => {
+            if (!str) return new Date(0);
+            const s = str.trim().toLowerCase();
+            if (s.includes('/')) {
+                const [d, m, y] = s.split('/');
+                return new Date(`${y}-${m}-${d}`);
+            }
+            const months = {
+                'januari': 0, 'februari': 1, 'maret': 2, 'april': 3, 'mei': 4, 'juni': 5,
+                'juli': 6, 'agustus': 7, 'september': 8, 'oktober': 9, 'november': 10, 'desember': 11,
+                'january': 0, 'february': 1, 'march': 2, 'may': 4, 'june': 5,
+                'july': 6, 'august': 7, 'september': 8, 'october': 9, 'november': 10, 'december': 11
+            };
+            const parts = s.split(' ');
+            if (parts.length === 3) return new Date(parts[2], months[parts[1]] || 0, parts[0]);
+            return new Date(str);
+        };
+
+        const getTranslatedLabel = (key, fallback) => {
+            const lang = localStorage.getItem('preferred_lang') || 'id';
+            return lang === 'en' ? 'NEW' : 'BARU';
+        };
+
+
+        // 1. ADD CANONICAL TAG DYNAMICALLY (SEO)
+        (function () {
+            const canonicalUrl = 'https://www.ilhampradani.me/baca.html' + window.location.search;
+            let link = document.querySelector("link[rel='canonical']");
+            if (!link) {
+                link = document.createElement('link');
+                link.setAttribute('rel', 'canonical');
+                document.head.appendChild(link);
+            }
+            link.setAttribute('href', canonicalUrl);
+        })();
+
+        // FUNGSI BURGER MENU MOBILE
+        window.toggleMobileMenu = function (open) {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                if (open) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                    document.body.style.overflow = 'hidden'; // Kunci scroll
+                } else {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    document.body.style.overflow = ''; // Balikin scroll
+                }
+            }
+        };
+        // FUNGSI SIDEBAR
+        function toggleSidebar(open) {
+            const sidebar = document.getElementById('sidebar-nav');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (open) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        // FUNGSI THEME
+        function setTheme(mode) {
+            const darkBtn = document.getElementById('theme-dark-btn');
+            const lightBtn = document.getElementById('theme-light-btn');
+            
+            if (mode === 'light') {
+                document.body.classList.add('light-theme');
+                if (lightBtn) {
+                    lightBtn.classList.add('bg-blue-600', 'text-white');
+                    lightBtn.classList.remove('text-slate-500');
+                }
+                if (darkBtn) {
+                    darkBtn.classList.remove('bg-blue-600', 'text-white');
+                    darkBtn.classList.add('text-slate-500');
+                }
+            } else {
+                document.body.classList.remove('light-theme');
+                if (darkBtn) {
+                    darkBtn.classList.add('bg-blue-600', 'text-white');
+                    darkBtn.classList.remove('text-slate-500');
+                }
+                if (lightBtn) {
+                    lightBtn.classList.remove('bg-blue-600', 'text-white');
+                    lightBtn.classList.add('text-slate-500');
+                }
+            }
+            localStorage.setItem('theme', mode);
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // Check local storage theme
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+
+        async function loadPart(id, file) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            try {
+                const res = await fetch(file);
+                el.innerHTML = await res.text();
+                if (window.lucide) lucide.createIcons();
+            } catch (e) { console.error("Gagal load part:", file); }
+        }
+
+
+        // --- SISTEM BAHASA (ID/EN) ---
+        window.switchLang = function (lang) {
+            localStorage.setItem('preferred_lang', lang);
+            applyTranslations();
+            updateLangUI();
+            // Refresh konten artikel agar judul/kutipan yang ada di script ikut berubah jika perlu
+            renderFullContent();
+        };
+
+        async function applyTranslations() {
+            const lang = localStorage.getItem('preferred_lang') || 'id';
+            try {
+                const response = await fetch(`lang/${lang}.json`);
+                if (!response.ok) return;
+                const t = await response.json();
+                document.querySelectorAll('[data-t]').forEach(el => {
+                    const key = el.getAttribute('data-t');
+                    if (t[key]) {
+                        el.innerHTML = t[key];
+                    }
+                });
+            } catch (e) { console.error("Translation Error:", e); }
+        }
+
+        function updateLangUI() {
+            const lang = localStorage.getItem('preferred_lang') || 'id';
+            const activeClass = "bg-blue-600 text-white border-blue-600";
+
+            // Tombol Desktop & Mobile
+            const ids = ['btn-id', 'btn-en', 'm-btn-id', 'm-btn-en'];
+            ids.forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    if ((id.includes('-id') && lang === 'id') || (id.includes('-en') && lang === 'en')) {
+                        btn.classList.add('bg-blue-600', 'text-white');
+                        btn.classList.remove('text-slate-400');
+                    } else {
+                        btn.classList.remove('bg-blue-600', 'text-white');
+                        btn.classList.add('text-slate-400');
+                    }
+                }
+            });
+        }
+
+        // MODIFIKASI: Gabungkan semua ke dalam satu DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load components
+            loadPart('header-placeholder', 'include/header.html').then(() => {
+                applyTranslations();
+                updateLangUI();
+            });
+            loadPart('footer-placeholder', 'include/footer.html');
+            
+            // Render content
+            renderFullContent();
+        });
+
+        async function renderFullContent() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const container = document.getElementById('content-area');
+            const sidebarList = document.getElementById('sidebar-list');
+
+            if (!container) return;
+
+            try {
+                const sheetId = '1eD1ElFcjBpVrS8DGShVlPrmuLI1bZIo4QEcxG1kBCAc';
+                const res = await fetch(`https://opensheet.elk.sh/${sheetId}/Sheet1`);
+                const data = await res.json();
+
+                // Fungsi pembantu agar bisa dipakai di mana saja
+                const getVal = (obj, key) => {
+                    const foundKey = Object.keys(obj).find(k => k.trim().toLowerCase() === key.toLowerCase());
+                    return obj[foundKey] || '';
+                };
+
+                // SORT NEWEST FIRST
+                data.sort((a, b) => parseDate(getVal(b, 'tanggal')) - parseDate(getVal(a, 'tanggal')));
+
+                const now = new Date();
+                now.setHours(0, 0, 0, 0);
+
+                // 1. RENDER SIDEBAR (Daftar Semua Jurnal)
+                if (sidebarList) {
+                    sidebarList.innerHTML = data.map(item => {
+                        const isCurrent = item.id === id;
+                        const itemDate = parseDate(getVal(item, 'tanggal'));
+                        const isToday = itemDate.getTime() === now.getTime();
+                        
+                        // Kalau artikel sedang dibaca, warnanya biru. Kalau tidak, abu-abu.
+                        const activeClass = isCurrent ? 'text-blue-500 font-bold border-blue-500/30 bg-blue-600/5' : 'text-slate-400 hover:text-white border-white/5 hover:bg-white/5';
+                        
+                        const labelText = getTranslatedLabel('badge_new', 'NEW');
+                        const label = isToday ? `<span class="px-1.5 py-0.5 bg-red-600 text-white text-[8px] font-black rounded animate-pulse ml-2">${labelText}</span>` : '';
+
+                        return `
+                            <a href="baca.html?id=${item.id}" class="block p-3 rounded-lg border transition-all text-sm ${activeClass}">
+                                <div class="flex justify-between items-start gap-2">
+                                    <div class="line-clamp-2">${getVal(item, 'judul')}</div>
+                                    ${label}
+                                </div>
+                                <div class="text-[9px] font-mono mt-1 opacity-60 uppercase">${getVal(item, 'tanggal')}</div>
+                            </a>
+                        `;
+                    }).join('');
+                }
+
+                // 2. RENDER ARTIKEL UTAMA
+                const artikel = data.find(item => item.id === id);
+
+                if (artikel) {
+                    const judul = getVal(artikel, 'judul');
+                    const konten = getVal(artikel, 'konten');
+                    const gambar = getVal(artikel, 'gambar');
+                    const tanggal = getVal(artikel, 'tanggal');
+                    const kutipan = getVal(artikel, 'kutipan');
+
+                    // SEO Update
+                    document.title = `${judul} | Dr. Ilham Pradani C.L.`;
+
+                    // 3. RENDER REKOMENDASI BAWAH (Filter artikel selain yang sedang dibaca)
+                    const artikelLain = data.filter(item => item.id !== id).slice(0, 4); // Ambil 4 artikel lain
+                    let bottomRekomendasi = '';
+
+                    if (artikelLain.length > 0) {
+                        bottomRekomendasi = `
+                            <div class="mt-24 pt-12 border-t border-white/10">
+                                <h3 class="text-white text-sm font-bold uppercase tracking-widest mb-8">Eksplorasi Jurnal Lainnya</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    ${artikelLain.map(item => {
+                                        const itemDate = parseDate(getVal(item, 'tanggal'));
+                                        const isToday = itemDate.getTime() === now.getTime();
+                                        const labelText = getTranslatedLabel('badge_new', 'NEW');
+                                        const label = isToday ? `<span class="px-1.5 py-0.5 bg-red-600 text-white text-[8px] font-black rounded animate-pulse">${labelText}</span>` : '';
+                                        
+                                        return `
+                                            <a href="baca.html?id=${item.id}" class="group p-5 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all flex flex-col justify-between">
+                                                <div class="flex justify-between items-start mb-4 gap-2">
+                                                    <h4 class="text-white font-bold text-sm group-hover:text-blue-400 transition-colors line-clamp-2">${getVal(item, 'judul')}</h4>
+                                                    ${label}
+                                                </div>
+                                                <div class="flex items-center justify-between">
+                                                    <span class="text-[10px] text-slate-500 font-mono uppercase">${getVal(item, 'tanggal')}</span>
+                                                    <i data-lucide="arrow-right" class="w-4 h-4 text-slate-700 group-hover:text-blue-500 group-hover:translate-x-1 transition-all"></i>
+                                                </div>
+                                            </a>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    // Tampilkan semuanya ke layar
+                    container.innerHTML = `
+                        <div class="reveal-el">
+                            <div class="px-6 md:px-12 flex items-center justify-between mb-10">
+                                <a href="index.html#artikel" class="inline-flex items-center gap-2 text-blue-500 text-[10px] font-black uppercase tracking-widest hover:text-white transition-colors group">
+                                    <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i> Kembali
+                                </a>
+
+                                <div class="flex items-center gap-2 bg-white/5 p-1 rounded-full border border-white/10">
+                                    <button onclick="setTheme('dark')" id="theme-dark-btn" class="p-2 rounded-full transition-all">
+                                        <i data-lucide="moon" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                    <button onclick="setTheme('light')" id="theme-light-btn" class="p-2 rounded-full transition-all">
+                                        <i data-lucide="sun" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                </div>
+
+                                <button onclick="toggleSidebar(true)" class="inline-flex items-center gap-2 text-slate-500 text-[10px] font-black uppercase tracking-widest hover:text-white transition-colors group">
+                                    Lihat Lainnya <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="relative h-[400px] md:h-[600px] w-full mb-16 full-image overflow-hidden border-y border-white/5 shadow-2xl bg-[#0a0a0a]">
+                                <img src="${gambar}" onerror="this.src='image/default.png'; this.className='w-full h-full object-cover opacity-20';" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            </div>
+
+                            <div class="full-content-padding px-6">
+                                <div class="flex items-center gap-4 mb-8 text-slate-500 font-mono text-[10px] uppercase tracking-[0.2em]">
+                                    <span class="px-3 py-1 bg-blue-600 text-white rounded-full font-bold">${tanggal}</span>
+                                    <span class="hidden md:block">Verified Article • Dr. Ilham Pradani C.L.</span>
+                                </div>
+
+                                <h1 class="text-4xl md:text-8xl font-black text-white leading-[1] tracking-tighter mb-16">${judul}</h1>
+                                
+                                <div class="prose prose-invert prose-blue max-w-none text-slate-300 leading-relaxed text-xl border-l-4 border-blue-600 pl-8 md:pl-16 mb-24">
+                                    ${konten}
+                                </div>
+
+                                <div class="my-24 w-full p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl flex flex-col items-center justify-center relative overflow-hidden">
+                                    <span class="absolute top-4 left-6 text-[9px] font-mono text-slate-600 uppercase tracking-[0.3em]">Premium Sponsor Content</span>
+                                    
+                                    <div class="w-full mt-6 min-h-[250px] flex items-center justify-center text-slate-800 text-xs font-bold tracking-widest uppercase bg-white/[0.01] rounded-2xl border border-white/[0.02]">
+                                        <ins class="adsbygoogle"
+                                            style="display:block; text-align:center;"
+                                            data-ad-layout="in-article"
+                                            data-ad-format="fluid"
+                                            data-ad-client="ca-pub-3925283111977300"
+                                            data-ad-slot="7478437904"></ins>
+                                    </div>
+                                </div>
+                                ${bottomRekomendasi}
+                            </div>
+                        </div>
+                    `;
+
+                    // Inisialisasi ulang iklan AdSense untuk konten dinamis
+                    try {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    } catch (e) { console.error("AdSense error:", e); }
+
+                    if (window.lucide) lucide.createIcons();
+                    // Update theme button state after rendering
+                    const currentTheme = localStorage.getItem('theme') || 'dark';
+                    setTheme(currentTheme);
+                } else {
+                    container.innerHTML = `<div class="text-center py-24"><h1 class="text-white text-xl font-bold uppercase tracking-widest">Artikel Tidak Ditemukan</h1></div>`;
+                }
+            } catch (e) {
+                console.error("Gagal memuat artikel:", e);
+                container.innerHTML = `<div class="text-white p-10 bg-red-900/10 border border-red-500/20 rounded-xl">Error: ${e.message}</div>`;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

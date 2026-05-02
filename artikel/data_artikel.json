@@ -1,0 +1,29 @@
+[
+    {
+        "id": "1",
+        "kategori": "Tech Strategy",
+        "tanggal": "12 Apr 2026",
+        "judul": "Mengapa Bisnis Skala Menengah Membutuhkan Arsitektur Fullstack Mandiri",
+        "kutipan": "Membangun sistem in-house seringkali lebih menguntungkan secara jangka panjang dibandingkan berlangganan SaaS pihak ketiga. Berikut analisis efisiensinya.",
+        "gambar": "image/artikel-1.jpg",
+        "link": "#"
+    },
+    {
+        "id": "2",
+        "kategori": "AI & Automasi",
+        "tanggal": "05 Apr 2026",
+        "judul": "Implementasi Bot WhatsApp & NLP untuk Layanan Pelanggan 24/7",
+        "kutipan": "Studi kasus bagaimana integrasi Natural Language Processing pada bot WhatsApp dapat memangkas biaya operasional CS hingga 60%.",
+        "gambar": "image/artikel-2.jpg",
+        "link": "#"
+    },
+    {
+        "id": "3",
+        "kategori": "Legal Tech",
+        "tanggal": "28 Mar 2026",
+        "judul": "Aspek Hukum Pengumpulan Data Pengguna pada Aplikasi (APK) Mandiri",
+        "kutipan": "Sebagai developer sekaligus praktisi hukum, ini panduan vital menyusun Privacy Policy agar APK Anda tidak melanggar regulasi privasi data.",
+        "gambar": "image/artikel-3.jpg",
+        "link": "#"
+    }
+]

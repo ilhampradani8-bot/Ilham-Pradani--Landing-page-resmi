@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-3925283111977300">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3925283111977300"
+        crossorigin="anonymous"></script>
+    <title>Dr. Ilham Pradani C.L. | Systems Architect & AI Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="apple-touch-icon" href="image/favicon.png">
+    <style>
+        :root {
+            --bg-dark: #000000;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f1f5f9;
+            scroll-behavior: smooth;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Gaya Solid (Pengganti Glow AI) */
+        .solid-card {
+            background-color: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .solid-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+    <style>
+        .marquee {
+            display: flex;
+            width: fit-content;
+            animation: marquee 40s linear infinite;
+        }
+
+        .marquee:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Portfolio Scroll Style */
+        .portfolio-scroll {
+            display: grid !important;
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(300px, 1fr);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 2rem;
+            cursor: grab;
+        }
+
+        .portfolio-scroll:active {
+            cursor: grabbing;
+        }
+
+        .portfolio-scroll > div {
+            scroll-snap-align: start;
+        }
+
+        .portfolio-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+        .portfolio-scroll::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .portfolio-scroll::-webkit-scrollbar-thumb {
+            background: linear-gradient(to right, #2563eb, #4f46e5);
+            border-radius: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-scroll {
+                grid-auto-columns: 450px;
+            }
+        }
+
+        /* Article Mobile Scroll */
+        @media (max-width: 767px) {
+            .article-scroll-mobile {
+                display: grid !important;
+                grid-template-rows: repeat(2, auto);
+                grid-auto-flow: column;
+                grid-auto-columns: 280px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 1.5rem;
+                gap: 12px !important;
+            }
+            .article-scroll-mobile > article {
+                scroll-snap-align: start;
+            }
+            .article-scroll-mobile::-webkit-scrollbar {
+                height: 3px;
+            }
+            .article-scroll-mobile::-webkit-scrollbar-thumb {
+                background: #2563eb;
+                border-radius: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-black overflow-x-hidden">
+
+    <div id="header-placeholder"></div>
+
+    <main class="bg-black pt-20">
+
+        <section id="home" class="relative z-30 pt-32 pb-24 px-6 bg-black border-b border-white/5">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+
+                <div class="md:col-span-7 space-y-6 reveal-el">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 mb-4">
+                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                        <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest"
+                            data-t="hero_badge">Systems Architect & AI Expert</span>
+                    </div>
+
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tighter leading-tight"
+                        data-t="hero_title">Presisi Teknis.<br>Kepatuhan Hukum.</h1>
+
+                    <p class="text-slate-400 text-lg leading-relaxed max-w-2xl" data-t="hero_desc">Mengintegrasikan
+                        arsitektur sistem tingkat tinggi dengan kepastian hukum untuk solusi digital yang aman,
+                        skalabel, dan visioner.</p>
+
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#artikel"
+                            class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-black uppercase tracking-widest transition-all rounded-sm"
+                            data-t="hero_cta_1">Eksplorasi Jurnal</a>
+                        <a href="#contact"
+                            class="px-6 py-3 bg-[#0a0a0a] border border-white/10 hover:bg-white/5 text-white text-xs font-black uppercase tracking-widest transition-all rounded-sm"
+                            data-t="hero_cta_2">Mulai Kerjasama</a>
+                    </div>
+                </div>
+
+                <div class="md:col-span-5 reveal-el" style="transition-delay: 100ms;">
+                    <div
+                        class="relative group aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0a]">
+                        <img src="image/hero.jpg" alt="Dr. Ilham Pradani"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                        </div>
+
+                        <div
+                            class="absolute bottom-6 left-6 text-white uppercase text-[10px] font-mono tracking-widest opacity-60">
+                            Verified Specialist</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="services" class="relative z-30 py-24 px-6 bg-[#050505]">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-20 reveal-el">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4"
+                        data-t="service_title">Layanan Eksklusif.</h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto text-lg" data-t="service_desc">Solusi teknologi tingkat
+                        tinggi yang dirancang dengan presisi arsitektural dan kepatuhan hukum.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <div
+                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                        <div
+                            class="w-14 h-14 bg-blue-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white text-blue-500 transition-all">
+                            <i data-lucide="layout" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_1_t">Fullstack System Architect</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_1_d">Rancang bangun ekosistem web
+                            kompleks dari nol menggunakan teknologi modern yang aman dan skalabel.</p>
+                    </div>
+
+                    <div
+                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                        <div
+                            class="w-14 h-14 bg-purple-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-purple-600 group-hover:text-white text-purple-500 transition-all">
+                            <i data-lucide="cpu" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_2_t">AI & LLM Orchestration</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_2_d">Integrasi kecerdasan buatan dan
+                            instalasi Claude untuk automasi alur kerja bisnis yang cerdas.</p>
+                    </div>
+
+                    <div
+                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                        <div
+                            class="w-14 h-14 bg-amber-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-amber-600 group-hover:text-white text-amber-500 transition-all">
+                            <i data-lucide="shield-check" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_3_t">Legal-Tech Compliance</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_3_d">Audit keamanan dan kepatuhan
+                            hukum digital guna memastikan infrastruktur Anda sesuai regulasi global.</p>
+                    </div>
+
+                    <div
+                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                        <div
+                            class="w-14 h-14 bg-green-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-green-600 group-hover:text-white text-green-500 transition-all">
+                            <i data-lucide="smartphone" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_4_t">Android APK Development</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_4_d">Pengembangan aplikasi mobile
+                            menggunakan Kotlin hingga proses publikasi dan lolos verifikasi Google Play Store.</p>
+                    </div>
+
+                    <div
+                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                        <div
+                            class="w-14 h-14 bg-red-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-red-600 group-hover:text-white text-red-500 transition-all">
+                            <i data-lucide="trending-up" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_5_t">AI for Algorithmic Trading</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_5_d">Implementasi kecerdasan buatan
+                            untuk analisis pasar dan eksekusi strategi trading otomatis yang presisi.</p>
+                    </div>
+
+                    <div
+                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                        <div
+                            class="w-14 h-14 bg-slate-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-slate-300 group-hover:text-black text-slate-300 transition-all">
+                            <i data-lucide="terminal" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_6_t">Professional Pentesting</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_6_d">Uji penetrasi mendalam untuk
+                            mengidentifikasi celah keamanan sebelum eksploitasi pihak luar terjadi.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="partnership" class="relative z-30 py-24 px-6 bg-black border-t border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 reveal-el">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4"
+                        data-t="partnership_title">Sinergi Strategis.</h2>
+                    <p class="text-slate-500 max-w-xl text-lg" data-t="partnership_desc">Tujuh pilar keahlian yang
+                        mengintegrasikan hukum, teknologi, dan keamanan siber.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+
+                    <div
+                        class="md:col-span-4 p-10 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
+                        <div
+                            class="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center mb-6 text-blue-500">
+                            <img src="image/li.png" class="w-6 h-6 grayscale brightness-200">
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4" data-t="p_1_t">Integrasi Hukum & Teknologi (S.H.,
+                            M.TI.)</h3>
+                        <p class="text-slate-400 leading-relaxed" data-t="p_1_d">Satu-satunya solusi yang memastikan
+                            inovasi digital Anda berdiri di atas fondasi hukum yang kuat dan arsitektur TI yang presisi.
+                        </p>
+                    </div>
+
+                    <div
+                        class="md:col-span-2 row-span-2 p-10 bg-blue-600 rounded-3xl flex flex-col justify-between reveal-el">
+                        <div>
+                            <h3 class="text-2xl font-black text-white mb-4" data-t="p_2_t">Peneliti Keamanan Siber</h3>
+                            <p class="text-blue-100 text-sm leading-relaxed" data-t="p_2_d">Sertifikasi resmi dan
+                                dedikasi dalam audit kerentanan serta penguatan infrastruktur digital dari ancaman
+                                global.</p>
+                        </div>
+                        <div class="mt-10 font-mono text-[10px] text-blue-200 tracking-widest uppercase">Certified &
+                            Secured</div>
+                    </div>
+
+                    <div
+                        class="md:col-span-2 p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
+                        <h4 class="text-lg font-bold text-white mb-2" data-t="p_3_t">Instalasi Claude & AI</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed" data-t="p_3_d">Implementasi model AI mutakhir
+                            dan instalasi Claude untuk automasi tingkat tinggi.</p>
+                    </div>
+
+                    <div
+                        class="md:col-span-2 p-8 bg-[#111] border border-white/10 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
+                        <h4 class="text-lg font-bold text-white mb-2" data-t="p_4_t">Polyglot: 50+ Bahasa</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed" data-t="p_4_d">Penguasaan lintas paradigma
+                            pada lebih dari 50 bahasa pemrograman untuk solusi tanpa batas.</p>
+                    </div>
+
+                    <div
+                        class="md:col-span-2 p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
+                        <h4 class="text-lg font-bold text-white mb-2" data-t="p_5_t">Custom AI Bot</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed" data-t="p_5_d">Rancang bangun asisten digital
+                            pintar yang spesifik untuk kebutuhan bisnis eksklusif.</p>
+                    </div>
+
+                    <div
+                        class="md:col-span-3 p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
+                        <h4 class="text-lg font-bold text-white mb-2" data-t="p_6_t">Arsitektur Sistem Skalabel</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed" data-t="p_6_d">Pembangunan sistem dari nol
+                            yang siap tumbuh bersama besarnya data bisnis Anda.</p>
+                    </div>
+
+                    <div
+                        class="md:col-span-3 p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
+                        <h4 class="text-lg font-bold text-white mb-2" data-t="p_7_t">Konsultansi Strategis</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed" data-t="p_7_d">Pendampingan penuh dalam
+                            transformasi digital dan efisiensi infrastruktur TI perusahaan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="teacher" class="relative z-30 py-24 px-6 bg-black border-t border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                    <div class="reveal-el">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-blue-600/10 border border-blue-600/20 mb-6">
+                            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest"
+                                data-t="teacher_badge">Private Mentoring</span>
+                        </div>
+                        <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tighter leading-tight mb-8"
+                            data-t="teacher_title">
+                            Mastery in <br><span class="text-blue-600">British Accent.</span>
+                        </h2>
+                        <p class="text-slate-400 text-lg leading-relaxed mb-10 max-w-md" data-t="teacher_desc">
+                            Tingkatkan kapabilitas komunikasi global Anda dengan aksen British yang presisi. Les privat
+                            eksklusif untuk profesional dan akademisi.
+                        </p>
+
+                        <div class="flex items-center gap-4 p-6 bg-[#0a0a0a] border border-white/5 rounded-2xl w-fit">
+                            <div
+                                class="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center text-blue-500">
+                                <i data-lucide="banknote" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <span class="block text-[10px] text-slate-500 uppercase tracking-widest font-bold"
+                                    data-t="teacher_price_label">Investasi Per Sesi</span>
+                                <span class="text-xl font-black text-white">Start from <span
+                                        class="text-blue-500">50K</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-4 reveal-el">
+                        <a href="https://wa.me/6288971071138?text=Halo%20Sir%20Ilham,%20saya%20tertarik%20belajar%20Bahasa%20Inggris%20British%20Accent"
+                            target="_blank"
+                            class="group p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-blue-500/50 transition-all flex items-center justify-between">
+                            <div class="flex items-center gap-6">
+                                <div
+                                    class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center text-green-500 group-hover:bg-green-600 group-hover:text-white transition-all">
+                                    <i data-lucide="message-circle" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-1"
+                                        data-t="teacher_wa_title">Konsultasi via WA</h4>
+                                    <p class="text-slate-500 text-sm" data-t="teacher_wa_sub">Diskusi jadwal & kurikulum
+                                    </p>
+                                </div>
+                            </div>
+                            <i data-lucide="arrow-right"
+                                class="w-5 h-5 text-slate-800 group-hover:text-blue-500 group-hover:translate-x-1 transition-all"></i>
+                        </a>
+
+                        <a href="https://academy.ilhampradani.me/"
+                            class="relative group p-8 bg-blue-600/5 border border-blue-600/20 rounded-3xl hover:border-blue-500 transition-all flex items-center justify-between">
+                            <div class="flex items-center gap-6">
+                                <div
+                                    class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                    <i data-lucide="globe" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-1"
+                                        data-t="teacher_web_title">Platform Pembelajaran</h4>
+                                    <p class="text-slate-500 text-sm" data-t="teacher_web_sub">Belajar Mandiri & Terstruktur</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span
+                                    class="text-[10px] font-black bg-green-600 text-white px-2 py-0.5 rounded-sm uppercase tracking-tighter">GRATIS</span>
+                                <i data-lucide="arrow-right"
+                                    class="w-5 h-5 text-slate-800 group-hover:text-blue-500 group-hover:translate-x-1 transition-all"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="portofolio" class="relative z-30 py-24 px-6 bg-[#050505]">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-16 reveal-el">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4"
+                        data-t="portofolio_title">Eksplorasi Karya.</h2>
+                    <p class="text-slate-500 max-w-xl text-lg" data-t="portofolio_desc">Implementasi teknis dari visi
+                        strategis dan solusi digital.</p>
+                </div>
+
+                <div id="portofolio-tabs" class="flex flex-wrap gap-3 mb-12 reveal-el">
+                </div>
+
+                <div id="portofolio-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal-el transition-all duration-500">
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="relative z-30 py-24 bg-black border-t border-white/5 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 mb-16">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 reveal-el">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 mb-6">
+                            <img src="https://www.google.com/favicon.ico" class="w-4 h-4 grayscale brightness-200">
+                            <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Verified Google Reviews</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Apa Kata Mereka.</h2>
+                    </div>
+                    <a href="https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVhvMk5ub3haM0pmGAo" target="_blank"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] hover:bg-white/5 border border-white/10 text-white rounded-lg text-sm font-bold transition-all">
+                        Visit Google Reviews <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Marquee Container -->
+            <div class="relative flex overflow-hidden">
+                <div class="marquee gap-6 px-6">
+                    <!-- Review Card 1 -->
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                            "Sangat puas dengan layanan Aliip IT Consultant Inc. Produk software yang mereka kembangkan punya standar internasional dan sangat user-friendly. Sebagai partner, mereka sangat profesional dalam menangani proyek skala global. Recommended!!"
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AS</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Alicia Salsabila</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">Local Guide</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 2 -->
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic line-clamp-4">
+                            "Sangat merekomendasikan Aliip IT Consultant Inc. untuk jasa pembuatan website portofolio Malaysia. Saya sangat terkesan dengan struktur kodenya yang rapi (clean code) dan alur kerja yang sangat jelas. Hasil webnya premium!"
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">MI</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">M. Ikhwan Jamaludin</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">Project Manager</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 3 -->
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                            "Puas sekali dengan layanan keamanan digital. Mereka menerapkan standar Cyber Security internasional. Penanganan celah keamanan dilakukan dengan sangat teknis dan terstruktur. Benar-benar profesional."
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white font-bold text-sm shadow-lg">N</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Nobartri3</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">Security Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 4 -->
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                            "Baru kali ini ketemu partner IT yang bener-bener peduli sama keindahan kode. Clean code-nya bikin sistem e-commerce kami yang pakai private server jadi ringan dan gampang di-maintenance. Puas banget!"
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AT</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Algojo3 Tiga</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">E-commerce Owner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 5 -->
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                            "Sebagai penyedia jasa web service ini yang paling bagus sih pelayanan nya, dan hasilnya manual kode, web Portofolio yang di layani juga go internasional sampai ke Malaysia, soo good luck ,."
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AD</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Algojo2 Dua</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">Web Service Partner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 6 -->
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                            "Lagi cari partner pengembang software dan ketemu Aliip. Yang paling menonjol itu struktur kerja mereka yang tertata, progresnya jelas, dan komunikasinya enak. Kualitas kodenya terjaga!"
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">WB</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Warung Bornok</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">Software Partner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DUPLICATE FOR SEAMLESS LOOP -->
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                            "Sangat puas dengan layanan Aliip IT Consultant Inc. Produk software yang mereka kembangkan punya standar internasional dan sangat user-friendly. Recommended!!"
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AS</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Alicia Salsabila</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">Local Guide</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic line-clamp-4">
+                            "Sangat merekomendasikan Aliip IT Consultant Inc. Hasil webnya premium!"
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">MI</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">M. Ikhwan Jamaludin</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">Project Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                            "Puas sekali dengan layanan keamanan digital. Benar-benar profesional."
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white font-bold text-sm shadow-lg">N</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Nobartri3</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">Security Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                            "Baru kali ini ketemu partner IT yang bener-bener peduli sama keindahan kode. Puas banget!"
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AT</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Algojo3 Tiga</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">E-commerce Owner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                            "Sebagai penyedia jasa web service ini yang paling bagus sih pelayanan nya!"
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AD</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Algojo2 Dua</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">Web Service Partner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
+                        <div class="flex gap-1 text-yellow-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                            "Kualitas kodenya terjaga! Keren banget kerjanya!"
+                        </p>
+                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">WB</div>
+                            <div>
+                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Warung Bornok</h4>
+                                <span class="text-[9px] text-slate-500 uppercase">Software Partner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="artikel" class="relative z-30 py-24 px-6 bg-[#050505] border-t border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 reveal-el">
+                    <div>
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 mb-6">
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                            <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest"
+                                data-t="article_badge">Tech & Legal Journal</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight"
+                            data-t="article_title">Insight Profesional.</h2>
+                    </div>
+                    <a href="#daftar-jurnal"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] hover:bg-white/5 border border-white/10 text-white rounded-lg text-sm font-bold transition-all"
+                        data-t="article_btn_all">
+                        Lihat Semua Jurnal <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div id="artikel-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal-el article-scroll-mobile"></div>
+            </div>
+        </section>
+
+        <section id="daftar-jurnal" class="relative z-30 py-16 px-6 bg-black border-t border-white/5">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col items-center mb-12">
+                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-[0.3em] mb-4 text-center" data-t="list_title">Arsip Lengkap Jurnal</h3>
+                    <div id="jurnal-counter" class="text-[10px] font-bold text-blue-500 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full uppercase tracking-widest">
+                        Total Jurnal: <span id="journal-count-val">0</span>+
+                    </div>
+                </div>
+
+                <div id="jurnal-categories" class="flex flex-wrap justify-center gap-3 mb-10 reveal-el">
+                    <!-- Categories will be rendered here -->
+                </div>
+
+                <div id="jurnal-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1"></div>
+                
+                <div id="jurnal-show-more-container" class="mt-12 flex justify-center md:hidden">
+                    <button id="btn-show-more-jurnal" onclick="toggleMoreJournals()" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-white uppercase tracking-widest hover:bg-white/10 transition-all">
+                        Lihat Selengkapnya
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="relative z-30 py-24 px-6 bg-black border-t border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+                    <div class="reveal-el">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-blue-500/10 border border-blue-500/20 mb-6">
+                            <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest"
+                                data-t="contact_badge">Contact Hub</span>
+                        </div>
+                        <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-8"
+                            data-t="contact_title">Mari Berdiskusi.</h2>
+                        <p class="text-slate-400 text-lg leading-relaxed mb-12 max-w-md" data-t="contact_desc">
+                            Siap membantu transformasi digital bisnis Anda dengan solusi teknis yang presisi dan aman
+                            secara regulasi.
+                        </p>
+
+                        <div class="flex flex-wrap gap-6">
+                            <a href="https://web.facebook.com/profile.php?id=100094401424686" target="_blank"
+                                class="group">
+                                <img src="image/fb.png" alt="FB"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                            </a>
+                            <a href="https://github.com/ilhampradani8-bot" target="_blank" class="group">
+                                <img src="image/gh.png" alt="GH"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                            </a>
+                            <a href="https://www.linkedin.com/in/ilham-pradani-cv" target="_blank" class="group">
+                                <img src="image/li.png" alt="LI"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                            </a>
+                            <a href="https://www.instagram.com/doc_n_porto_iilham_pradani_c.l/" target="_blank"
+                                class="group">
+                                <img src="image/ig.png" alt="IG"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                            </a>
+
+                            <a href="https://x.com/ilhampradani_" target="_blank" class="group">
+                                <img src="image/x.png" id="img-x" alt="X"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                            </a>
+                            <a href="https://www.threads.com/@doc_n_porto_iilham_pradani_c.l" target="_blank"
+                                class="group">
+                                <img src="image/threads.png" id="img-threads" alt="Threads"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                            </a>
+                            <a href="https://hackerone.com/ilhampradani" target="_blank" class="group">
+                                <img src="image/h1.png" id="img-h1" alt="HackerOne"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                            </a>
+                            <a href="https://t.me/Ilhampradani" target="_blank" class="group">
+                                <img src="image/tg.png" id="img-tg" alt="Telegram"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-4 reveal-el">
+                        <a href="https://wa.me/6288971071138" target="_blank"
+                            class="group flex items-center justify-between p-8 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all">
+                            <div class="flex items-center gap-6">
+                                <div
+                                    class="w-14 h-14 bg-green-500/10 rounded-full flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
+                                    <i data-lucide="message-square" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-1"
+                                        data-t="contact_wa">WhatsApp Bisnis</h4>
+                                    <p class="text-slate-500 text-sm">0889 7107 1138</p>
+                                </div>
+                            </div>
+                            <i data-lucide="arrow-up-right"
+                                class="w-5 h-5 text-slate-800 group-hover:text-blue-500 transition-all"></i>
+                        </a>
+
+                        <a href="mailto:aliciasalsabilaaa.20@gmail.com"
+                            class="group flex items-center justify-between p-8 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all">
+                            <div class="flex items-center gap-6">
+                                <div
+                                    class="w-14 h-14 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-1"
+                                        data-t="contact_mail">Email Profesional</h4>
+                                    <p class="text-slate-500 text-sm truncate">aliciasalsabilaaa.20@gmail.com</p>
+                                </div>
+                            </div>
+                            <i data-lucide="arrow-up-right"
+                                class="w-5 h-5 text-slate-800 group-hover:text-blue-500 transition-all"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+
+    <script>
+        /* ============================================================
+        UTILITIES
+        ============================================================ */
+        const parseDate = (str) => {
+            if (!str) return new Date(0);
+            const s = str.trim().toLowerCase();
+            if (s.includes('/')) {
+                const [d, m, y] = s.split('/');
+                return new Date(`${y}-${m}-${d}`);
+            }
+            const months = {
+                'januari': 0, 'februari': 1, 'maret': 2, 'april': 3, 'mei': 4, 'juni': 5,
+                'juli': 6, 'agustus': 7, 'september': 8, 'oktober': 9, 'november': 10, 'desember': 11,
+                'january': 0, 'february': 1, 'march': 2, 'may': 4, 'june': 5,
+                'july': 6, 'august': 7, 'september': 8, 'october': 9, 'november': 10, 'december': 11
+            };
+            const parts = s.split(' ');
+            if (parts.length === 3) return new Date(parts[2], months[parts[1]] || 0, parts[0]);
+            return new Date(str);
+        };
+
+        const getTranslatedLabel = (key, fallback) => {
+            const lang = localStorage.getItem('preferred_lang') || 'id';
+            // This is a bit tricky since translations are loaded async. 
+            // However, applyTranslations loads them into memory.
+            // Let's use a simpler approach: check a global cache or just use 'NEW'/'BARU' based on lang.
+            return lang === 'en' ? 'NEW' : 'BARU';
+        };
+
+        /* ============================================================
+        FUNGSI GLOBAL (Agar bisa dipanggil dari Header/Footer)
+        ============================================================ */
+        window.switchLang = function (lang) {
+            localStorage.setItem('preferred_lang', lang);
+            location.reload();
+        };
+
+        window.openProfileZoom = function () {
+            const modal = document.getElementById('profile-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeProfileZoom = function () {
+            const modal = document.getElementById('profile-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+        };
+
+
+        window.toggleMobileMenu = function (open) {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                if (open) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                    document.body.style.overflow = 'hidden'; // Kunci scroll biar nggak goyang
+                } else {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    document.body.style.overflow = ''; // Balikin scroll
+                }
+            }
+        };
+        /* ============================================================
+        LOGIKA UI & BAHASA
+        ============================================================ */
+        function updateLangUI() {
+            const lang = localStorage.getItem('preferred_lang') || 'id';
+            const activeClass = "bg-blue-600 text-white border-blue-600";
+
+            // Versi Desktop
+            const btnId = document.getElementById('btn-id');
+            const btnEn = document.getElementById('btn-en');
+            // Versi Mobile
+            const mBtnId = document.getElementById('m-btn-id');
+            const mBtnEn = document.getElementById('m-btn-en');
+
+            if (lang === 'en') {
+                if (btnEn) btnEn.className = `px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer ${activeClass}`;
+                if (mBtnEn) mBtnEn.className = `text-sm font-black px-4 py-2 border rounded-lg transition-all ${activeClass}`;
+            } else {
+                if (btnId) btnId.className = `px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer ${activeClass}`;
+                if (mBtnId) mBtnId.className = `text-sm font-black px-4 py-2 border rounded-lg transition-all ${activeClass}`;
+            }
+        }
+
+        async function applyTranslations() {
+            const lang = localStorage.getItem('preferred_lang') || 'id';
+            try {
+                const response = await fetch(`lang/${lang}.json`);
+                if (!response.ok) return;
+                const t = await response.json();
+                document.querySelectorAll('[data-t]').forEach(el => {
+                    const key = el.getAttribute('data-t');
+                    if (t[key]) el.innerHTML = t[key];
+                });
+            } catch (e) { console.error("Translation Error:", e); }
+        }
+
+        /* ============================================================
+        LOGIKA KONTEN & KOMPONEN
+        ============================================================ */
+        /* ============================================================
+        SISTEM SEO (CANONICAL)
+        ============================================================ */
+        (function () {
+            const canonicalUrl = 'https://www.ilhampradani.me/';
+            let link = document.querySelector("link[rel='canonical']");
+            if (!link) {
+                link = document.createElement('link');
+                link.setAttribute('rel', 'canonical');
+                document.head.appendChild(link);
+            }
+            link.setAttribute('href', canonicalUrl);
+        })();
+
+        async function loadComponent(id, file) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            try {
+                const res = await fetch(file);
+                if (res.ok) {
+                    el.innerHTML = await res.text();
+                    if (window.lucide) lucide.createIcons();
+                    updateLangUI();
+                    applyTranslations();
+                }
+            } catch (e) { console.error("Component Error:", e); }
+        }
+
+        let allJournalsData = [];
+        let isShowAllJournals = false;
+        let currentJournalCategory = 'Semua';
+
+        async function loadArtikel() {
+            try {
+                const sheetId = '1eD1ElFcjBpVrS8DGShVlPrmuLI1bZIo4QEcxG1kBCAc';
+                const res = await fetch(`https://opensheet.elk.sh/${sheetId}/Sheet1`);
+                const data = await res.json();
+                // SORT NEWEST FIRST
+                data.sort((a, b) => parseDate(b.tanggal || b.Tanggal) - parseDate(a.tanggal || a.Tanggal));
+                allJournalsData = data;
+
+                const gridContainer = document.getElementById('artikel-container');
+                if (!gridContainer) return;
+
+                const getVal = (item, k) => {
+                    const key = Object.keys(item).find(key => key.trim().toLowerCase() === k);
+                    return item[key] || '';
+                };
+
+                // Render Grid (Limit 6)
+                let gridHtml = '';
+                const now = new Date();
+                now.setHours(0, 0, 0, 0);
+
+                data.slice(0, 6).forEach(item => {
+                    const itemDate = parseDate(getVal(item, 'tanggal'));
+                    const isToday = itemDate.getTime() === now.getTime();
+                    const labelText = getTranslatedLabel('badge_new', 'NEW');
+                    const label = isToday ? `<span class="absolute top-4 right-4 px-2 py-1 bg-red-600 text-white text-[9px] font-black rounded-sm animate-pulse z-10">${labelText}</span>` : '';
+
+                    gridHtml += `
+                        <a href="baca.html?id=${item.id}" class="group relative bg-[#0a0a0a] border border-white/5 rounded-3xl overflow-hidden hover:border-blue-500/50 transition-all duration-500 reveal-el flex flex-col">
+                            ${label}
+                            <div class="aspect-video overflow-hidden bg-slate-900">
+                                <img src="${getVal(item, 'gambar')}" 
+                                     alt="${getVal(item, 'judul')}" 
+                                     onerror="this.src='image/default.png'; this.className='w-full h-full object-cover opacity-20';"
+                                     class="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                            </div>
+                            <div class="p-8 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest">${getVal(item, 'kategori')}</span>
+                                        <span class="w-1 h-1 rounded-full bg-white/20"></span>
+                                        <span class="text-[9px] font-mono text-slate-500 uppercase">${getVal(item, 'tanggal')}</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors line-clamp-2">${getVal(item, 'judul')}</h3>
+                                    <p class="text-slate-500 text-sm line-clamp-2 leading-relaxed mb-6">${getVal(item, 'kutipan')}</p>
+                                </div>
+                                <div class="flex items-center justify-between pt-6 border-t border-white/5">
+                                    <span class="text-[10px] font-black text-white uppercase tracking-widest group-hover:text-blue-400 transition-all" data-t="hero_cta_1">Baca Jurnal</span>
+                                    <i data-lucide="arrow-right" class="w-4 h-4 text-slate-700 group-hover:text-blue-500 group-hover:translate-x-1 transition-all"></i>
+                                </div>
+                            </div>
+                        </a>`;
+                });
+                gridContainer.innerHTML = gridHtml;
+
+                // Render Categories & List
+                renderJournalCategories();
+                renderJournalList();
+
+                if (window.lucide) lucide.createIcons();
+                initScrollAnimations();
+            } catch (e) { console.error("Article Error:", e); }
+        }
+
+        function renderJournalCategories() {
+            const container = document.getElementById('jurnal-categories');
+            if (!container) return;
+
+            const categories = ['Semua', ...new Set(allJournalsData.map(item => item.kategori || 'Uncategorized'))];
+            container.innerHTML = categories.map(cat => `
+                <button onclick="filterJournals('${cat}')" 
+                        class="journal-tab-btn px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest border border-white/5 rounded-full transition-all hover:bg-white/5 text-slate-500"
+                        id="journal-tab-${cat.replace(/\s+/g, '-')}">
+                    ${cat}
+                </button>
+            `).join('');
+            
+            updateJournalTabVisuals('Semua');
+        }
+
+        window.filterJournals = function(category) {
+            currentJournalCategory = category;
+            isShowAllJournals = false; // Reset mobile view
+            updateJournalTabVisuals(category);
+            renderJournalList();
+        }
+
+        function updateJournalTabVisuals(category) {
+            document.querySelectorAll('.journal-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white/10', 'text-white', 'border-white/20');
+                btn.classList.add('text-slate-500', 'border-white/5');
+            });
+            const activeBtn = document.getElementById(`journal-tab-${category.replace(/\s+/g, '-')}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white/10', 'text-white', 'border-white/20');
+                activeBtn.classList.remove('text-slate-500', 'border-white/5');
+            }
+        }
+
+        function renderJournalList() {
+            const listContainer = document.getElementById('jurnal-list-container');
+            const counterVal = document.getElementById('journal-count-val');
+            const showMoreBtn = document.getElementById('jurnal-show-more-container');
+            if (!listContainer) return;
+
+            const filtered = currentJournalCategory === 'Semua' 
+                ? allJournalsData 
+                : allJournalsData.filter(item => item.kategori === currentJournalCategory);
+
+            counterVal.innerText = allJournalsData.length;
+
+            const getVal = (item, k) => {
+                const key = Object.keys(item).find(key => key.trim().toLowerCase() === k);
+                return item[key] || '';
+            };
+
+            const parseDate = (str) => {
+                if (!str) return new Date(0);
+                const s = str.trim().toLowerCase();
+                if (s.includes('/')) {
+                    const [d, m, y] = s.split('/');
+                    return new Date(`${y}-${m}-${d}`);
+                }
+                const months = {
+                    'januari': 0, 'februari': 1, 'maret': 2, 'april': 3, 'mei': 4, 'juni': 5,
+                    'juli': 6, 'agustus': 7, 'september': 8, 'oktober': 9, 'november': 10, 'desember': 11,
+                    'january': 0, 'february': 1, 'march': 2, 'may': 4, 'june': 5,
+                    'july': 6, 'august': 7, 'september': 8, 'october': 9, 'november': 10, 'december': 11
+                };
+                const parts = s.split(' ');
+                if (parts.length === 3) return new Date(parts[2], months[parts[1]] || 0, parts[0]);
+                return new Date(str);
+            };
+
+            const now = new Date();
+            now.setHours(0, 0, 0, 0);
+
+            // Logic for mobile limiting
+            const isMobile = window.innerWidth < 768;
+            const displayData = (isMobile && !isShowAllJournals) ? filtered.slice(0, 5) : filtered;
+
+            if (isMobile && filtered.length > 5) {
+                showMoreBtn.style.display = isShowAllJournals ? 'none' : 'flex';
+            } else {
+                showMoreBtn.style.display = 'none';
+            }
+
+            listContainer.innerHTML = displayData.map(item => {
+                const itemDate = parseDate(getVal(item, 'tanggal'));
+                const isToday = itemDate.getTime() === now.getTime();
+                const labelText = getTranslatedLabel('badge_new', 'NEW');
+                const label = isToday ? `<span class="px-1.5 py-0.5 bg-red-600 text-white text-[7px] font-black rounded animate-pulse ml-2">${labelText}</span>` : '';
+
+                return `
+                    <a href="${getVal(item, 'link')}" class="group flex items-center justify-between p-4 border-b border-white/5 hover:bg-white/[0.02] transition-all">
+                        <div class="flex items-center gap-6 overflow-hidden">
+                            <span class="text-[9px] font-mono text-slate-700 group-hover:text-blue-500 transition-colors shrink-0">${getVal(item, 'tanggal')}</span>
+                            <h4 class="text-[13px] font-medium text-slate-500 group-hover:text-white transition-colors truncate">${getVal(item, 'judul')}</h4>
+                            ${label}
+                        </div>
+                        <i data-lucide="arrow-right" class="w-3 h-3 text-slate-800 group-hover:text-blue-500 group-hover:translate-x-1 transition-all shrink-0"></i>
+                    </a>
+                `;
+            }).join('');
+
+            if (window.lucide) lucide.createIcons();
+        }
+
+        window.toggleMoreJournals = function() {
+            isShowAllJournals = true;
+            renderJournalList();
+        }
+
+        // Handle resize for mobile/desktop toggle
+        window.addEventListener('resize', () => {
+            renderJournalList();
+        });
+
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal-el').forEach(el => {
+                el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+                observer.observe(el);
+            });
+        }
+
+        let allPortfolioData = []; // Simpan data global untuk filter
+
+        async function loadPortofolio() {
+            try {
+                const sheetId = '1eD1ElFcjBpVrS8DGShVlPrmuLI1bZIo4QEcxG1kBCAc';
+                // Panggil tab "Portofolio"
+                const res = await fetch(`https://opensheet.elk.sh/${sheetId}/Portofolio`);
+                allPortfolioData = await res.json();
+
+                renderPortfolioTabs(allPortfolioData);
+                renderPortfolioGrid(allPortfolioData);
+            } catch (e) { console.error("Portfolio Error:", e); }
+        }
+
+        function renderPortfolioTabs(data) {
+            const tabContainer = document.getElementById('portofolio-tabs');
+            if (!tabContainer) return;
+
+            // Ambil kategori unik + opsi "Semua"
+            const categories = ['Semua', ...new Set(data.map(item => item.kategori))];
+
+            tabContainer.innerHTML = categories.map(cat => `
+            <button onclick="filterPortfolio('${cat}')" 
+                    class="port-tab-btn px-6 py-2 text-[10px] font-bold uppercase tracking-widest border border-white/10 rounded-full transition-all hover:bg-white/5 text-slate-400"
+                    id="tab-${cat.replace(/\s+/g, '-')}">
+                ${cat}
+            </button>
+        `).join('');
+
+            // Set default aktif
+            filterPortfolio('Semua');
+        }
+
+        window.filterPortfolio = function (category) {
+            // Update visual tombol
+            document.querySelectorAll('.port-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                btn.classList.add('text-slate-400', 'border-white/10');
+            });
+
+            const activeBtn = document.getElementById(`tab-${category.replace(/\s+/g, '-')}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+                activeBtn.classList.remove('text-slate-400', 'border-white/10');
+            }
+
+            // Filter data
+            const filtered = category === 'Semua'
+                ? allPortfolioData
+                : allPortfolioData.filter(item => item.kategori === category);
+
+            // Toggle Layout Scroll jika "Semua"
+            const container = document.getElementById('portofolio-container');
+            if (category === 'Semua' && filtered.length > 4) {
+                container.classList.remove('grid', 'md:grid-cols-2', 'lg:grid-cols-3');
+                container.classList.add('portfolio-scroll');
+            } else {
+                container.classList.add('grid', 'md:grid-cols-2', 'lg:grid-cols-3');
+                container.classList.remove('portfolio-scroll');
+            }
+
+            renderPortfolioGrid(filtered);
+        };
+
+        function renderPortfolioGrid(data) {
+            const container = document.getElementById('portofolio-container');
+            if (!container) return;
+
+            container.innerHTML = data.map(item => `
+            <div class="group relative bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all hover:border-blue-500/50">
+                <div class="aspect-video overflow-hidden">
+                    <img src="${item.gambar}" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-[8px] font-bold text-blue-500 uppercase tracking-[0.2em]">${item.kategori}</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">${item.judul}</h3>
+                    <p class="text-slate-500 text-xs mb-4 line-clamp-2 leading-relaxed">${item.deskripsi}</p>
+                    <div class="flex flex-wrap gap-1.5 mb-6">
+                        ${item.tech.split(',').map(t => `<span class="text-[8px] px-1.5 py-0.5 bg-white/5 text-slate-400 rounded-sm font-mono">${t.trim()}</span>`).join('')}
+                    </div>
+                    <a href="${item.link}" target="_blank" class="inline-flex items-center gap-2 text-[10px] font-bold text-white hover:text-blue-400 transition-colors">
+                        View Project <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                    </a>
+                </div>
+            </div>
+        `).join('');
+
+            if (window.lucide) lucide.createIcons();
+        }
+
+        /* ============================================================
+        EKSEKUSI DOM
+        ============================================================ */
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadComponent('header-placeholder', 'include/header.html');
+            await loadComponent('footer-placeholder', 'include/footer.html');
+            await applyTranslations();
+            await loadArtikel();
+            await loadPortofolio();
+
+            // Drag to scroll logic
+            const slider = document.getElementById('portofolio-container');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            slider.addEventListener('mousedown', (e) => {
+                if (!slider.classList.contains('portfolio-scroll')) return;
+                isDown = true;
+                slider.classList.add('active');
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+            });
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+            });
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown || !slider.classList.contains('portfolio-scroll')) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2;
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        });
+
+
+    </script>
+
+
+
+</body>
+
+</html>

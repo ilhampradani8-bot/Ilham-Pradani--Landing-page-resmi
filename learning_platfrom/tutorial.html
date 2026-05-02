@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial - IP Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: 'Outfit', sans-serif; background-color: #f8fafc; }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <div id="header-placeholder"></div>
+
+    <main class="pt-32 pb-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 font-bold text-xs uppercase mb-4">
+                    📖 Panduan Pengguna
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6">Cara Belajar di <span class="text-blue-600">IP Academy</span></h1>
+                <p class="text-slate-500 text-lg max-w-2xl mx-auto">Ikuti langkah-langkah mudah ini untuk memaksimalkan pengalaman belajar Anda.</p>
+            </div>
+
+            <div class="grid gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-sm flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-20 h-20 bg-blue-600 text-white rounded-3xl flex items-center justify-center text-3xl font-black shrink-0">1</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Minta Akses ke Sir Ilham</h3>
+                        <p class="text-slate-600 leading-relaxed">Hubungi admin melalui WhatsApp untuk mendapatkan Username dan Password. Platform ini eksklusif dan gratis untuk siswa terpilih.</p>
+                        <a href="https://wa.me/6288971071138" class="inline-flex items-center gap-2 mt-4 text-blue-600 font-bold hover:underline">
+                            Chat WhatsApp Sekarang <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-sm flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center text-3xl font-black shrink-0">2</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Pilih Jalur Belajar Anda</h3>
+                        <p class="text-slate-600 leading-relaxed">Di Dashboard, Anda akan melihat peta belajar. Pilih unit yang ingin Anda pelajari. Kami merekomendasikan untuk memulainya dari Unit 1 agar terstruktur.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-sm flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center text-3xl font-black shrink-0">3</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Dengarkan & Ulangi</h3>
+                        <p class="text-slate-600 leading-relaxed">Gunakan fitur suara untuk mendengarkan pengucapan yang benar. Ulangi setiap kata berkali-kali sampai Anda merasa percaya diri.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-sm flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-20 h-20 bg-green-100 text-green-600 rounded-3xl flex items-center justify-center text-3xl font-black shrink-0">4</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Selesaikan Kuis</h3>
+                        <p class="text-slate-600 leading-relaxed">Setelah belajar, uji kemampuan Anda dengan kuis. Selesaikan setiap level untuk mendapatkan XP dan naik ke peringkat yang lebih tinggi!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="dashboard.html" class="px-10 py-5 bg-blue-600 text-white font-black rounded-2xl shadow-xl shadow-blue-100 hover:bg-blue-700 transition-all uppercase tracking-widest">
+                    Mulai Belajar Sekarang
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        fetch('include_learning/header.html').then(r => r.text()).then(d => {
+            document.getElementById('header-placeholder').innerHTML = d;
+            lucide.createIcons();
+        });
+        fetch('include_learning/footer.html').then(r => r.text()).then(d => {
+            document.getElementById('footer-placeholder').innerHTML = d;
+            lucide.createIcons();
+        });
+
+        function toggleMobileMenu(show) {
+            const menu = document.getElementById('mobile-menu');
+            if (show) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+    </script>
+</body>
+</html>

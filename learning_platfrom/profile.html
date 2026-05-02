@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - IP Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-slate-900">
+
+    <div id="header-placeholder"></div>
+
+    <main class="pt-32 pb-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Profile Header -->
+            <div class="bg-slate-50 p-10 md:p-16 rounded-[3rem] border border-slate-100 flex flex-col md:flex-row items-center gap-12 mb-12">
+                <div class="relative">
+                    <img src="image/hero.jpg" class="w-40 h-40 rounded-full border-4 border-white shadow-2xl object-cover">
+                    <div class="absolute -bottom-2 -right-2 bg-blue-600 text-white p-3 rounded-2xl shadow-lg">
+                        <i data-lucide="camera" class="w-5 h-5"></i>
+                    </div>
+                </div>
+                <div class="text-center md:text-left space-y-4">
+                    <div>
+                        <h1 class="text-4xl font-black user-name-display">User Name</h1>
+                        <p class="text-slate-500 font-medium">Siswa IP Academy Premium</p>
+                    </div>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <div class="px-4 py-2 bg-orange-100 text-orange-600 rounded-xl text-sm font-black flex items-center gap-2">
+                            <i data-lucide="zap" class="w-4 h-4 fill-current"></i> 1,240 XP
+                        </div>
+                        <div class="px-4 py-2 bg-blue-100 text-blue-600 rounded-xl text-sm font-black flex items-center gap-2">
+                            <i data-lucide="award" class="w-4 h-4"></i> Gold League
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-center">
+                    <div class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">Sesi Belajar</div>
+                    <div class="text-2xl font-black text-slate-900">24</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-center">
+                    <div class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">Kata Dikuasai</div>
+                    <div class="text-2xl font-black text-slate-900">156</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-center">
+                    <div class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">Akurasi</div>
+                    <div class="text-2xl font-black text-green-600">92%</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-center">
+                    <div class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-2">Peringkat</div>
+                    <div class="text-2xl font-black text-blue-600">#4</div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="space-y-8">
+                <h2 class="text-2xl font-black text-slate-900">Pencapaian (Badges)</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="group p-8 bg-white border border-slate-100 rounded-3xl shadow-sm text-center hover:border-blue-400 transition-all">
+                        <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i data-lucide="flame" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-bold text-sm">7 Day Streak</h4>
+                        <p class="text-[10px] text-slate-400 mt-2 uppercase font-bold">Terbuka</p>
+                    </div>
+                    <div class="group p-8 bg-white border border-slate-100 rounded-3xl shadow-sm text-center hover:border-blue-400 transition-all">
+                        <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i data-lucide="book-open" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-bold text-sm">First Lesson</h4>
+                        <p class="text-[10px] text-slate-400 mt-2 uppercase font-bold">Terbuka</p>
+                    </div>
+                    <div class="group p-8 bg-slate-50 border border-dashed border-slate-200 rounded-3xl text-center opacity-50">
+                        <div class="w-16 h-16 bg-slate-200 text-slate-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="lock" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-slate-400">Word Master</h4>
+                        <p class="text-[10px] text-slate-400 mt-2 uppercase font-bold">Terkunci</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        fetch('include_learning/header.html').then(r => r.text()).then(d => {
+            document.getElementById('header-placeholder').innerHTML = d;
+            lucide.createIcons();
+        });
+        fetch('include_learning/footer.html').then(r => r.text()).then(d => {
+            document.getElementById('footer-placeholder').innerHTML = d;
+            lucide.createIcons();
+        });
+
+        function toggleMobileMenu(show) {
+            const menu = document.getElementById('mobile-menu');
+            if (show) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+    </script>
+</body>
+</html>
