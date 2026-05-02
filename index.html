@@ -723,25 +723,127 @@
             </div>
         </section>
 
-        <section id="daftar-jurnal" class="relative z-30 py-16 px-6 bg-black border-t border-white/5">
-            <div class="max-w-6xl mx-auto">
-                <div class="flex flex-col items-center mb-12">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-[0.3em] mb-4 text-center" data-t="list_title">Arsip Lengkap Jurnal</h3>
-                    <div id="jurnal-counter" class="text-[10px] font-bold text-blue-500 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full uppercase tracking-widest">
-                        Total Jurnal: <span id="journal-count-val">0</span>+
+        </section>
+
+        <!-- AWARD SECTION -->
+        <section id="awards" class="relative z-30 py-24 bg-black border-y border-white/5 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 mb-16">
+                <div class="flex flex-col items-center text-center reveal-el">
+                    <div class="inline-flex items-center gap-4 mb-6">
+                        <!-- Left Laurel -->
+                        <svg class="w-10 h-10 text-blue-500/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9" />
+                            <path d="M5 12l2-2" />
+                            <path d="M4 15l2-1" />
+                            <path d="M6 9l2-1" />
+                            <path d="M8 7l1-2" />
+                        </svg>
+                        
+                        <div class="flex flex-col items-center">
+                            <span class="text-[10px] font-bold text-blue-500 uppercase tracking-[0.3em] mb-2" data-t="award_badge">Prestasi & Sertifikasi</span>
+                            <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter" data-t="award_title">Standar Global.</h2>
+                        </div>
+
+                        <!-- Right Laurel -->
+                        <svg class="w-10 h-10 text-blue-500/40 scale-x-[-1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9" />
+                            <path d="M5 12l2-2" />
+                            <path d="M4 15l2-1" />
+                            <path d="M6 9l2-1" />
+                            <path d="M8 7l1-2" />
+                        </svg>
                     </div>
+                    <p class="text-slate-500 max-w-2xl text-sm md:text-base leading-relaxed" data-t="award_subtitle">Sertifikasi resmi dan standar keamanan siber internasional yang saya kuasai.</p>
                 </div>
+            </div>
 
-                <div id="jurnal-categories" class="flex flex-wrap justify-center gap-3 mb-10 reveal-el">
-                    <!-- Categories will be rendered here -->
-                </div>
+            <!-- Marquee Award -->
+            <div class="relative flex overflow-hidden">
+                <div class="marquee gap-6 px-6">
+                    <!-- Award 1 -->
+                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all duration-500">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-3">CompTIA Security+</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Standar emas global untuk memulai karier di bidang keamanan siber.</p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <span class="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Fundamental & Standard</span>
+                        </div>
+                    </div>
 
-                <div id="jurnal-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1"></div>
-                
-                <div id="jurnal-show-more-container" class="mt-12 flex justify-center md:hidden">
-                    <button id="btn-show-more-jurnal" onclick="toggleMoreJournals()" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-white uppercase tracking-widest hover:bg-white/10 transition-all">
-                        Lihat Selengkapnya
-                    </button>
+                    <!-- Award 2 -->
+                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all duration-500">
+                            <i data-lucide="award" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-3">ISC2 Certified in Cybersecurity (CC)</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Sertifikasi dasar dari lembaga bergengsi ISC2 yang fokus pada konsep fundamental.</p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <span class="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Fundamental & Standard</span>
+                        </div>
+                    </div>
+
+                    <!-- Award 3 -->
+                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all duration-500">
+                            <i data-lucide="database" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-3">GIAC Information Security Fundamentals (GISF)</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Dikenal sangat teknis dan mendalam meskipun di tingkat dasar.</p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <span class="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Fundamental & Standard</span>
+                        </div>
+                    </div>
+
+                    <!-- Award 4 -->
+                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:bg-red-600 transition-all duration-500">
+                            <i data-lucide="terminal" class="w-6 h-6 text-red-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-3">OffSec Certified Professional (OSCP)</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Sertifikasi paling bergengsi untuk pentesting. Ujiannya 24 jam praktis (hands-on) dan sangat sulit.</p>
+                        <div class="mt-6 pt-6 border-t border-white/5 flex items-center gap-2">
+                            <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest">Technical & Offensive</span>
+                            <span class="w-1 h-1 rounded-full bg-red-500 animate-pulse"></span>
+                        </div>
+                    </div>
+
+                    <!-- Award 5 -->
+                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:bg-red-600 transition-all duration-500">
+                            <i data-lucide="fingerprint" class="w-6 h-6 text-red-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-3">CEH Master</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Sertifikasi populer yang mencakup teori dan praktik serangan siber dari EC-Council.</p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest">Technical & Offensive</span>
+                        </div>
+                    </div>
+
+                    <!-- Award 6 -->
+                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:bg-red-600 transition-all duration-500">
+                            <i data-lucide="target" class="w-6 h-6 text-red-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-3">GIAC Penetration Tester (GPEN)</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Sangat dihargai karena fokus pada metodologi serangan tingkat lanjut.</p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest">Technical & Offensive</span>
+                        </div>
+                    </div>
+
+                    <!-- DUPLICATE FOR SEAMLESS LOOP -->
+                    <div class="glass-card p-8 rounded-3xl w-[350px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all duration-500">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-3">CompTIA Security+</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">Standar emas global untuk memulai karier di bidang keamanan siber.</p>
+                        <div class="mt-6 pt-6 border-t border-white/5">
+                            <span class="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Fundamental & Standard</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
