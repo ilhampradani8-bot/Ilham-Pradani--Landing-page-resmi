@@ -1,0 +1,32 @@
+Rangkuman Alasan Penolakan AdSense (Berdasarkan Dokumen Bantuan Google):
+
+1. Akun Duplikat (Duplicate Account):
+   - Google hanya memperbolehkan satu akun AdSense per orang. 
+   - Jika Anda sudah memiliki akun lain, akun baru akan ditolak.
+   - Solusi: Tutup akun yang tidak digunakan atau gunakan akun yang sudah ada.
+
+2. Masalah Konten Situs (Content Issues):
+   - Konten Tidak Memadai (Thin Content): Situs tidak memiliki cukup teks original yang memberikan nilai bagi pembaca. 
+   - Konten Duplikat: Mengambil atau menyalin konten dari situs lain tanpa memberikan nilai tambah yang signifikan.
+   - Kualitas Rendah: Konten yang dibuat secara otomatis (AI tanpa kurasi manual yang baik) atau konten yang hanya berisi gambar/video tanpa penjelasan teks yang memadai.
+
+3. Masalah Navigasi (Navigation Issues):
+   - Menu navigasi sulit ditemukan atau tidak berfungsi.
+   - Struktur situs membingungkan bagi pengguna.
+   - Mengarahkan pengguna ke halaman yang tidak relevan atau pop-up yang mengganggu.
+
+4. Kesiapan Situs (Site Readiness):
+   - Situs masih dalam tahap pembangunan (Under Construction).
+   - Sitemap tidak jelas atau file robots.txt menghalangi crawler Google.
+   - Domain baru (kurang dari 6 bulan di beberapa wilayah, meskipun tidak selalu jadi aturan baku).
+
+5. Pelanggaran Kebijakan (Policy Violations):
+   - Konten dilarang (perjudian, kekerasan, konten dewasa, dll).
+   - Penempatan iklan yang menipu.
+   - Traffic tidak valid (invalid traffic/bot).
+
+Saran Perbaikan Umum:
+- Pastikan setiap halaman memiliki minimal 500-1000 kata konten original.
+- Buat halaman "Tentang Kami", "Kontak", "Kebijakan Privasi", dan "Disclaimer".
+- Pastikan navigasi (header/footer) jelas dan mudah diakses.
+- Gunakan Search Console untuk memastikan semua halaman terindeks.

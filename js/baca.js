@@ -189,13 +189,32 @@ async function renderFullContent() {
                             ${konten}
                         </div>
 
+                        <!-- ADS UNIT -->
+                        <div class="my-12 py-10 border-y border-white/5 text-center overflow-hidden">
+                            <span class="text-[9px] text-slate-600 uppercase tracking-[0.2em] mb-4 block">Halaman ini didukung oleh Iklan</span>
+                            <ins class="adsbygoogle"
+                                 style="display:block; text-align:center;"
+                                 data-ad-layout="in-article"
+                                 data-ad-format="fluid"
+                                 data-ad-client="ca-pub-3925283111977300"
+                                 data-ad-slot="7478437904"></ins>
+                        </div>
+
                         ${bottomRekomendasi}
                     </div>
                 </div>
             `;
 
+            // Trigger AdSense push manually
+            try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {
+                console.warn("AdSense push failed:", e);
+            }
+
             if (window.lucide) lucide.createIcons();
             initScrollAnimations();
+
         } else {
             container.innerHTML = `<div class="text-center py-24 text-slate-500">Artikel tidak ditemukan.</div>`;
         }
