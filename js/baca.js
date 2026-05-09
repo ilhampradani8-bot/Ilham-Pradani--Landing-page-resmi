@@ -189,15 +189,12 @@ async function renderFullContent() {
                             ${konten}
                         </div>
 
-                        <!-- ADS UNIT -->
-                        <div class="my-12 py-10 border-y border-white/5 text-center overflow-hidden">
+                        <!-- ADSTERRA BANNER -->
+                        <div id="ad-banner-container" class="my-12 py-10 border-t border-white/5 text-center overflow-hidden">
                             <span class="text-[9px] text-slate-600 uppercase tracking-[0.2em] mb-4 block">Halaman ini didukung oleh Iklan</span>
-                            <ins class="adsbygoogle"
-                                 style="display:block; text-align:center;"
-                                 data-ad-layout="in-article"
-                                 data-ad-format="fluid"
-                                 data-ad-client="ca-pub-3925283111977300"
-                                 data-ad-slot="7478437904"></ins>
+                            <div id="adsterra-banner-unit" class="flex justify-center">
+                                <!-- Adsterra Script will be injected here -->
+                            </div>
                         </div>
 
                         ${bottomRekomendasi}
@@ -205,11 +202,25 @@ async function renderFullContent() {
                 </div>
             `;
 
-            // Trigger AdSense push manually
-            try {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            } catch (e) {
-                console.warn("AdSense push failed:", e);
+            // Inject Adsterra Banner
+            const adContainer = document.getElementById('adsterra-banner-unit');
+            if (adContainer) {
+                const scriptOptions = document.createElement('script');
+                scriptOptions.type = 'text/javascript';
+                scriptOptions.text = `
+                    atOptions = {
+                        'key' : '70d4032d0634bd1a04e49f946a536c02',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                `;
+                adContainer.appendChild(scriptOptions);
+                const scriptInvoke = document.createElement('script');
+                scriptInvoke.type = 'text/javascript';
+                scriptInvoke.src = '//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js';
+                adContainer.appendChild(scriptInvoke);
             }
 
             if (window.lucide) lucide.createIcons();
