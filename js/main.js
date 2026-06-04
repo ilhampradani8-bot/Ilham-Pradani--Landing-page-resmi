@@ -62,22 +62,51 @@ window.toggleMobileMenu = function (open) {
         }
     }
 };
-
 function updateLangUI() {
     const lang = localStorage.getItem('preferred_lang') || 'id';
-    const activeClass = "bg-blue-600 text-white border-blue-600";
 
     const btnId = document.getElementById('btn-id');
     const btnEn = document.getElementById('btn-en');
     const mBtnId = document.getElementById('m-btn-id');
     const mBtnEn = document.getElementById('m-btn-en');
+    const fBtnId = document.getElementById('f-btn-id');
+    const fBtnEn = document.getElementById('f-btn-en');
 
-    if (lang === 'en') {
-        if (btnEn) btnEn.className = `px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer ${activeClass}`;
-        if (mBtnEn) mBtnEn.className = `text-sm font-black px-4 py-2 border rounded-lg transition-all ${activeClass}`;
-    } else {
-        if (btnId) btnId.className = `px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer ${activeClass}`;
-        if (mBtnId) mBtnId.className = `text-sm font-black px-4 py-2 border rounded-lg transition-all ${activeClass}`;
+    // Desktop buttons
+    if (btnId && btnEn) {
+        if (lang === 'en') {
+            btnEn.className = "px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer text-blue-600 shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff]";
+            btnId.className = "px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer text-gray-600";
+        } else {
+            btnId.className = "px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer text-blue-600 shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff]";
+            btnEn.className = "px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer text-gray-600";
+        }
+    }
+
+    // Mobile buttons
+    if (mBtnId && mBtnEn) {
+        if (lang === 'en') {
+            mBtnEn.className = "text-sm font-black text-blue-600 px-4 py-2 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-lg transition-all";
+            mBtnId.className = "text-sm font-black text-gray-700 px-4 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg transition-all";
+        } else {
+            mBtnId.className = "text-sm font-black text-blue-600 px-4 py-2 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-lg transition-all";
+            mBtnEn.className = "text-sm font-black text-gray-700 px-4 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg transition-all";
+        }
+    }
+
+    // Footer buttons
+    const fActiveLang = document.getElementById('f-active-lang');
+    if (fActiveLang) {
+        fActiveLang.textContent = lang.toUpperCase();
+    }
+    if (fBtnId && fBtnEn) {
+        if (lang === 'en') {
+            fBtnEn.className = "block w-full text-left px-2 py-1 text-[9px] font-black text-blue-400 bg-gray-950 rounded transition-colors";
+            fBtnId.className = "block w-full text-left px-2 py-1 text-[9px] font-extrabold text-gray-400 hover:text-white rounded transition-colors";
+        } else {
+            fBtnId.className = "block w-full text-left px-2 py-1 text-[9px] font-black text-blue-400 bg-gray-950 rounded transition-colors";
+            fBtnEn.className = "block w-full text-left px-2 py-1 text-[9px] font-extrabold text-gray-400 hover:text-white rounded transition-colors";
+        }
     }
 }
 
@@ -126,3 +155,34 @@ window.setTheme = function(theme) {
     const theme = localStorage.getItem('theme');
     if (theme === 'light') document.body.classList.add('light-theme');
 })();
+
+// Lenis Smooth Scroll Initialization
+if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 1.1,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Sync Lenis scroll with hash links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                lenis.scrollTo(targetEl, {
+                    offset: -80,
+                    duration: 1.2,
+                });
+            }
+        });
+    });
+}

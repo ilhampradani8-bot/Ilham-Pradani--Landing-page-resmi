@@ -11,17 +11,18 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="icon" type="image/png" href="image/favicon.png">
     <link rel="apple-touch-icon" href="image/favicon.png">
     <style>
         :root {
-            --bg-dark: #000000;
+            --bg-light: #ecf0f3;
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            color: #f1f5f9;
+            background-color: var(--bg-light);
+            color: #2d3748;
             scroll-behavior: smooth;
         }
 
@@ -29,76 +30,612 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Gaya Solid (Pengganti Glow AI) */
+        /* Neumorphic Clean White Styles */
+        .neu-card {
+            background: #ecf0f3;
+            box-shadow: 8px 8px 16px #c8d0e7, -8px -8px 16px #ffffff;
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .neu-card:hover {
+            box-shadow: 12px 12px 24px #b8c4df, -12px -12px 24px #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .neu-inset {
+            background: #ecf0f3;
+            box-shadow: inset 4px 4px 8px #c8d0e7, inset -4px -4px 8px #ffffff;
+        }
+
+        .neu-btn {
+            background: #ecf0f3;
+            box-shadow: 4px 4px 8px #c8d0e7, -4px -4px 8px #ffffff;
+            transition: all 0.2s ease-in-out;
+            border-radius: 12px;
+        }
+
+        .neu-btn:hover {
+            box-shadow: 2px 2px 4px #c8d0e7, -2px -2px 4px #ffffff;
+        }
+
+        .neu-btn:active {
+            box-shadow: inset 3px 3px 6px #c8d0e7, inset -3px -3px 6px #ffffff;
+        }
+
+        /* Gaya Solid (Pengganti Glow AI) - updated for light theme */
         .solid-card {
-            background-color: #0a0a0a;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: #ecf0f3;
+            box-shadow: 6px 6px 12px #c8d0e7, -6px -6px 12px #ffffff;
+            border-radius: 20px;
             transition: all 0.3s ease;
         }
 
         .solid-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 10px 10px 20px #b8c4df, -10px -10px 20px #ffffff;
             transform: translateY(-2px);
+        }
+
+        html.lenis,
+        html.lenis body {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overflow: clip;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-smooth iframe {
+            pointer-events: none;
         }
     </style>
     <style>
+        /* Swiper Blog Slider Styles */
+        .blog-slider {
+            width: 95%;
+            position: relative;
+            max-width: 1100px;
+            margin: auto;
+            background: #ecf0f3;
+            box-shadow: 12px 12px 24px #b8c4df, -12px -12px 24px #ffffff;
+            padding: 25px 65px 25px 25px;
+            border-radius: 25px;
+            height: 400px;
+            transition: all .3s;
+        }
+
+        @media screen and (max-width: 992px) {
+            .blog-slider {
+                max-width: 680px;
+                height: 400px;
+                padding-right: 65px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .blog-slider {
+                min-height: 440px;
+                height: auto;
+                margin: 80px auto 20px auto;
+                padding-right: 25px;
+            }
+        }
+
+        @media screen and (max-height: 500px) and (min-width: 992px) {
+            .blog-slider {
+                height: 350px;
+            }
+        }
+
+        .blog-slider__item {
+            display: flex;
+            align-items: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .blog-slider__item {
+                flex-direction: column;
+            }
+        }
+
+        .blog-slider__item.swiper-slide-active .blog-slider__img img {
+            opacity: 1;
+            transition-delay: .3s;
+        }
+
+        .blog-slider__item.swiper-slide-active .blog-slider__content>* {
+            opacity: 1;
+            transform: none;
+        }
+
+        .blog-slider__item.swiper-slide-active .blog-slider__content>*:nth-child(1) {
+            transition-delay: 0.3s;
+        }
+
+        .blog-slider__item.swiper-slide-active .blog-slider__content>*:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        .blog-slider__item.swiper-slide-active .blog-slider__content>*:nth-child(3) {
+            transition-delay: 0.5s;
+        }
+
+        .blog-slider__item.swiper-slide-active .blog-slider__content>*:nth-child(4) {
+            transition-delay: 0.6s;
+        }
+
+        .blog-slider__item.swiper-slide-active .blog-slider__content>*:nth-child(5) {
+            transition-delay: 0.7s;
+        }
+
+        .blog-slider__img {
+            width: 300px;
+            flex-shrink: 0;
+            height: 300px;
+            background-color: #ecf0f3;
+            border-radius: 20px;
+            transform: translateX(-80px);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 4px 13px 30px 1px rgba(163, 177, 198, 0.35);
+        }
+
+        @media screen and (max-width: 768px) {
+            .blog-slider__img {
+                transform: translateY(-35%);
+                width: 92%;
+                margin-bottom: -25px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .blog-slider__img {
+                width: 95%;
+            }
+        }
+
+        @media screen and (max-height: 500px) and (min-width: 992px) {
+            .blog-slider__img {
+                height: 270px;
+            }
+        }
+
+        .blog-slider__img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 20px;
+            display: block;
+            opacity: 0;
+            border-radius: 20px;
+            transition: all .3s;
+            background: white;
+        }
+
+        .blog-slider__content {
+            padding-right: 35px;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 768px) {
+            .blog-slider__content {
+                margin-top: -60px;
+                text-align: center;
+                padding: 0 30px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .blog-slider__content {
+                padding: 0;
+            }
+        }
+
+        .blog-slider__content>* {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: all .4s;
+        }
+
+        .blog-slider__code {
+            color: #3b82f6;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 700;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .blog-slider__title {
+            font-size: 20px;
+            font-weight: 850;
+            color: #1a202c;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .blog-slider__text {
+            color: #4a5568;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .blog-slider__button {
+            display: inline-flex;
+            background: #3b82f6;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: #fff;
+            box-shadow: 0px 8px 16px rgba(59, 130, 246, 0.3);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 10px;
+            letter-spacing: 1px;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .blog-slider__button:hover {
+            background: #2563eb;
+            box-shadow: 0px 4px 8px rgba(59, 130, 246, 0.4);
+            transform: translateY(-1px);
+        }
+
+        @media screen and (max-width: 576px) {
+            .blog-slider__button {
+                width: 100%;
+            }
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-bullets,
+        .swiper-pagination-custom,
+        .swiper-pagination-fraction {
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+        }
+
+        /* Vertical Controls Container on the Right */
+        .blog-slider__pagination-container {
+            position: absolute;
+            z-index: 25;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .blog-slider__prev-btn,
+        .blog-slider__next-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #ecf0f3;
+            box-shadow: 3px 3px 6px #b8c4df, -3px -3px 6px #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a5568;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .blog-slider__prev-btn:hover,
+        .blog-slider__next-btn:hover {
+            color: #3b82f6;
+            box-shadow: inset 2px 2px 4px #b8c4df, inset -2px -2px 4px #ffffff;
+        }
+
+        .blog-slider__prev-btn:active,
+        .blog-slider__next-btn:active {
+            transform: scale(0.92);
+        }
+
+        .blog-slider__pagination {
+            position: static !important;
+            transform: none !important;
+            width: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .blog-slider__pagination.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 0 !important;
+        }
+
+        .blog-slider__pagination .swiper-pagination-bullet {
+            width: 11px;
+            height: 11px;
+            display: block;
+            border-radius: 10px;
+            background: #062744;
+            opacity: 0.2;
+            transition: all .3s;
+        }
+
+        .blog-slider__pagination .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #3b82f6;
+            height: 30px;
+            box-shadow: 0px 0px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        @media screen and (max-width: 768px) {
+            .blog-slider__pagination-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 30px;
+                gap: 20px;
+                z-index: 30;
+            }
+
+            .blog-slider__prev-btn i {
+                transform: rotate(-90deg);
+            }
+
+            .blog-slider__next-btn i {
+                transform: rotate(-90deg);
+            }
+
+            .blog-slider__pagination {
+                flex-direction: row !important;
+                gap: 10px;
+            }
+
+            .blog-slider__pagination .swiper-pagination-bullet-active {
+                height: 11px;
+                width: 30px;
+            }
+        }
+
+        /* Google Reviews Card Styling */
+        .google-reviews-card {
+            background-color: #ecf0f3;
+            box-shadow: 6px 6px 12px #b8c4df, -6px -6px 12px #ffffff;
+            border-radius: 24px;
+            padding: 20px;
+            width: 300px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        @media screen and (min-width: 640px) {
+            .google-reviews-card {
+                padding: 28px;
+                width: 400px;
+                gap: 16px;
+            }
+        }
+
+        .google-reviews-card:hover {
+            box-shadow: 10px 10px 20px #b8c4df, -10px -10px 20px #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .google-reviews__left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .google-reviews__right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 14px;
+        }
+
+        .google-reviews__img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .google-reviews-content__top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .google-reviews-content__txt {
+            color: #1a202c;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .google-reviews-content__rating {
+            color: #000000;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .google-reviews-content__stars {
+            width: 80px;
+            height: auto;
+        }
+
+        .google-reviews-content__info {
+            color: #4a5568;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Marquee Animation styles */
         .marquee {
             display: flex;
-            width: fit-content;
-            animation: marquee 40s linear infinite;
+            width: max-content;
+            animation: marquee-scroll 45s linear infinite;
         }
 
         .marquee:hover {
             animation-play-state: paused;
         }
 
-        @keyframes marquee {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
+        @keyframes marquee-scroll {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(-50%, 0, 0);
+            }
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        @media screen and (max-width: 767px) {
+            .marquee-container {
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                scroll-behavior: smooth !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding-bottom: 8px;
+            }
+            .marquee-container::-webkit-scrollbar {
+                display: none !important;
+            }
+            .marquee-container {
+                scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
+            }
+            .marquee {
+                animation: none !important;
+                width: auto !important;
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                gap: 16px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+            .google-reviews-card {
+                scroll-snap-align: center !important;
+                width: 290px !important;
+                flex-shrink: 0 !important;
+            }
         }
 
-        /* Portfolio Scroll Style */
-        .portfolio-scroll {
-            display: grid !important;
-            grid-template-rows: repeat(2, minmax(0, 1fr));
-            grid-auto-flow: column;
-            grid-auto-columns: minmax(300px, 1fr);
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding-bottom: 2rem;
-            cursor: grab;
+        @media screen and (max-width: 1023px) {
+            #artikel-container {
+                display: grid !important;
+                grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+                grid-auto-flow: column !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                scroll-behavior: smooth !important;
+                gap: 16px !important;
+                padding-bottom: 12px;
+                padding-left: 4px;
+                padding-right: 4px;
+                -webkit-overflow-scrolling: touch;
+            }
+            #artikel-container::-webkit-scrollbar {
+                display: none !important;
+            }
+            #artikel-container {
+                scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
+            }
+            #artikel-container > a {
+                scroll-snap-align: center !important;
+                width: 290px !important;
+                flex-shrink: 0 !important;
+            }
+        }
+    </style>
+    <style>
+        /* 3D Stack Carousel Style */
+        .portfolio-3d-container {
+            position: relative;
+            z-index: 1;
+            height: 520px;
+            width: 100%;
+            overflow: visible;
+            touch-action: pan-y;
+            user-select: none;
         }
 
-        .portfolio-scroll:active {
-            cursor: grabbing;
+        .portfolio-3d-item {
+            --items: 10;
+            --width: clamp(300px, 45vw, 440px);
+            --height: clamp(390px, 55vw, 460px);
+            overflow: hidden;
+            position: absolute;
+            z-index: var(--zIndex);
+            width: var(--width);
+            height: var(--height);
+            margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
+            border-radius: 2rem;
+            top: 50%;
+            left: 50%;
+            user-select: none;
+            transform-origin: 0% 100%;
+            box-shadow: 8px 8px 16px #b8bec9, -8px -8px 16px #ffffff;
+            background: #ecf0f3;
+            pointer-events: all;
+            transition: transform .8s cubic-bezier(0, 0.02, 0, 1), opacity .8s, z-index .8s;
+            cursor: pointer;
+
+            /* Fix Webkit/Chrome border-radius flashing bug during GPU transitions */
+            will-change: transform, opacity;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
         }
 
-        .portfolio-scroll > div {
-            scroll-snap-align: start;
+        .portfolio-3d-box {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
-        .portfolio-scroll::-webkit-scrollbar {
-            height: 4px;
-        }
-        .portfolio-scroll::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-        }
-        .portfolio-scroll::-webkit-scrollbar-thumb {
-            background: linear-gradient(to right, #2563eb, #4f46e5);
-            border-radius: 10px;
-        }
-
-        @media (min-width: 768px) {
-            .portfolio-scroll {
-                grid-auto-columns: 450px;
+        @media screen and (max-width: 640px) {
+            .portfolio-3d-container {
+                height: 400px;
+            }
+            .portfolio-3d-item {
+                --width: clamp(250px, 85vw, 290px);
+                --height: clamp(320px, 105vw, 360px);
+                border-radius: 1.5rem;
             }
         }
 
@@ -114,81 +651,91 @@
                 padding-bottom: 1.5rem;
                 gap: 12px !important;
             }
-            .article-scroll-mobile > article {
+
+            .article-scroll-mobile>article {
                 scroll-snap-align: start;
             }
+
             .article-scroll-mobile::-webkit-scrollbar {
                 height: 3px;
             }
+
             .article-scroll-mobile::-webkit-scrollbar-thumb {
-                background: #2563eb;
+                background: #3b82f6;
                 border-radius: 10px;
             }
         }
+
         @keyframes slow-zoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
+
         .animate-slow-zoom {
             animation: slow-zoom 20s ease-in-out infinite;
         }
     </style>
 </head>
 
-<body class="bg-black overflow-x-hidden">
+<body class="bg-[#ecf0f3] overflow-x-hidden text-gray-800">
 
     <div id="header-placeholder"></div>
 
-    <main class="bg-black pt-20">
+    <main class="bg-[#ecf0f3] pt-20">
 
-        <section id="home" class="relative z-30 pt-32 pb-24 px-6 bg-black border-b border-white/5 overflow-hidden">
+        <section id="home" class="relative z-30 pt-20 md:pt-32 pb-12 md:pb-24 px-6 bg-[#ecf0f3] overflow-hidden">
             <!-- Background Batik Styled -->
             <div class="absolute inset-0 z-[-1] pointer-events-none">
-                <div class="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black z-10"></div>
-                <img src="image/batik_bg_ilhampradani.jpeg" alt="Batik Background" 
-                    class="w-full h-full object-cover opacity-15 filter brightness-75 contrast-125 scale-110 animate-slow-zoom">
-                <!-- Scanline Effect -->
-                <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] z-20 bg-[length:100%_2px,3px_100%] pointer-events-none opacity-20"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-[#ecf0f3] via-[#ecf0f3]/70 to-[#ecf0f3] z-10"></div>
+                <img src="image/batik_bg_ilhampradani.jpeg" alt="Batik Background"
+                    class="w-full h-full object-cover opacity-[0.06] filter grayscale scale-110 animate-slow-zoom">
             </div>
             <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center relative z-30">
 
                 <div class="md:col-span-7 space-y-6 reveal-el">
                     <div
-                        class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 mb-4">
-                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                        <span class="text-[10px] font-black text-slate-300 uppercase tracking-widest"
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] mb-4 border border-white/20">
+                        <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                        <span class="text-[10px] font-black text-gray-700 uppercase tracking-widest"
                             data-t="hero_badge">Systems Architect & AI Expert</span>
                     </div>
 
-                    <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tighter leading-tight"
+                    <h1 class="text-3xl sm:text-4xl md:text-7xl font-extrabold text-gray-900 tracking-tighter leading-tight"
                         data-t="hero_title">Presisi Teknis.<br>Kepatuhan Hukum.</h1>
 
-                    <p class="text-slate-400 text-lg leading-relaxed max-w-2xl" data-t="hero_desc">Mengintegrasikan
+                    <p class="text-gray-650 text-base md:text-lg leading-relaxed max-w-2xl" data-t="hero_desc">Mengintegrasikan
                         arsitektur sistem tingkat tinggi dengan kepastian hukum untuk solusi digital yang aman,
                         skalabel, dan visioner.</p>
 
                     <div class="flex flex-wrap gap-4 pt-4">
                         <a href="#artikel"
-                            class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-black uppercase tracking-widest transition-all rounded-sm"
+                            class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-widest transition-all rounded-xl shadow-[4px_4px_10px_rgba(59,130,246,0.3),-4px_-4px_10px_#ffffff]"
                             data-t="hero_cta_1">Eksplorasi Jurnal</a>
                         <a href="#contact"
-                            class="px-6 py-3 bg-[#0a0a0a] border border-white/10 hover:bg-white/5 text-white text-xs font-black uppercase tracking-widest transition-all rounded-sm"
+                            class="px-6 py-3 bg-[#ecf0f3] text-gray-700 hover:text-blue-600 text-xs font-extrabold uppercase tracking-widest transition-all rounded-xl shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff]"
                             data-t="hero_cta_2">Mulai Kerjasama</a>
                     </div>
                 </div>
 
                 <div class="md:col-span-5 reveal-el" style="transition-delay: 100ms;">
-                    <div
-                        class="relative group aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0a]">
-                        <img src="image/hero.jpg" alt="Dr. Ilham Pradani"
+                    <div class="relative group aspect-square rounded-3xl overflow-hidden">
+                        <img src="image/hero-removebg-preview.png" alt="Dr. Ilham Pradani"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
 
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#ecf0f3]/20 via-transparent to-transparent">
                         </div>
 
                         <div
-                            class="absolute bottom-6 left-6 text-white uppercase text-[10px] font-mono tracking-widest opacity-60">
+                            class="absolute bottom-10 left-10 text-gray-800 uppercase text-[10px] font-mono tracking-widest opacity-80">
                             Verified Specialist</div>
                     </div>
                 </div>
@@ -196,80 +743,74 @@
             </div>
         </section>
 
-        <section id="services" class="relative z-30 py-24 px-6 bg-[#050505]">
+        <section id="services" class="relative z-30 py-16 md:py-24 px-6 bg-[#ecf0f3]">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-20 reveal-el">
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4"
+                <div class="mb-16 reveal-el">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4"
                         data-t="service_title">Layanan Eksklusif.</h2>
-                    <p class="text-slate-500 max-w-2xl mx-auto text-lg" data-t="service_desc">Solusi teknologi tingkat
+                    <p class="text-gray-650 max-w-xl text-lg font-medium" data-t="service_desc">Solusi teknologi tingkat
                         tinggi yang dirancang dengan presisi arsitektural dan kepatuhan hukum.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                    <div
-                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                    <div class="neu-card group p-6 sm:p-10 bg-[#ecf0f3] transition-all duration-500 reveal-el">
                         <div
-                            class="w-14 h-14 bg-blue-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white text-blue-500 transition-all">
+                            class="w-14 h-14 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-2xl flex items-center justify-center mb-8 text-blue-600 group-hover:scale-105 transition-all">
                             <i data-lucide="layout" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_1_t">Fullstack System Architect</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_1_d">Rancang bangun ekosistem web
+                        <h3 class="text-xl font-bold text-gray-900 mb-4" data-t="s_1_t">Fullstack System Architect</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed" data-t="s_1_d">Rancang bangun ekosistem web
                             kompleks dari nol menggunakan teknologi modern yang aman dan skalabel.</p>
                     </div>
 
-                    <div
-                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                    <div class="neu-card group p-6 sm:p-10 bg-[#ecf0f3] transition-all duration-500 reveal-el">
                         <div
-                            class="w-14 h-14 bg-purple-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-purple-600 group-hover:text-white text-purple-500 transition-all">
+                            class="w-14 h-14 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-2xl flex items-center justify-center mb-8 text-purple-600 group-hover:scale-105 transition-all">
                             <i data-lucide="cpu" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_2_t">AI & LLM Orchestration</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_2_d">Integrasi kecerdasan buatan dan
+                        <h3 class="text-xl font-bold text-gray-900 mb-4" data-t="s_2_t">AI & LLM Orchestration</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed" data-t="s_2_d">Integrasi kecerdasan buatan dan
                             instalasi Claude untuk automasi alur kerja bisnis yang cerdas.</p>
                     </div>
 
-                    <div
-                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                    <div class="neu-card group p-6 sm:p-10 bg-[#ecf0f3] transition-all duration-500 reveal-el">
                         <div
-                            class="w-14 h-14 bg-amber-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-amber-600 group-hover:text-white text-amber-500 transition-all">
+                            class="w-14 h-14 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-2xl flex items-center justify-center mb-8 text-amber-600 group-hover:scale-105 transition-all">
                             <i data-lucide="shield-check" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_3_t">Legal-Tech Compliance</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_3_d">Audit keamanan dan kepatuhan
+                        <h3 class="text-xl font-bold text-gray-900 mb-4" data-t="s_3_t">Legal-Tech Compliance</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed" data-t="s_3_d">Audit keamanan dan kepatuhan
                             hukum digital guna memastikan infrastruktur Anda sesuai regulasi global.</p>
                     </div>
 
-                    <div
-                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                    <div class="neu-card group p-6 sm:p-10 bg-[#ecf0f3] transition-all duration-500 reveal-el">
                         <div
-                            class="w-14 h-14 bg-green-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-green-600 group-hover:text-white text-green-500 transition-all">
+                            class="w-14 h-14 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-2xl flex items-center justify-center mb-8 text-green-600 group-hover:scale-105 transition-all">
                             <i data-lucide="smartphone" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_4_t">Android APK Development</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_4_d">Pengembangan aplikasi mobile
+                        <h3 class="text-xl font-bold text-gray-900 mb-4" data-t="s_4_t">Android APK Development</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed" data-t="s_4_d">Pengembangan aplikasi mobile
                             menggunakan Kotlin hingga proses publikasi dan lolos verifikasi Google Play Store.</p>
                     </div>
 
-                    <div
-                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                    <div class="neu-card group p-6 sm:p-10 bg-[#ecf0f3] transition-all duration-500 reveal-el">
                         <div
-                            class="w-14 h-14 bg-red-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-red-600 group-hover:text-white text-red-500 transition-all">
+                            class="w-14 h-14 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-2xl flex items-center justify-center mb-8 text-red-600 group-hover:scale-105 transition-all">
                             <i data-lucide="trending-up" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_5_t">AI for Algorithmic Trading</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_5_d">Implementasi kecerdasan buatan
+                        <h3 class="text-xl font-bold text-gray-900 mb-4" data-t="s_5_t">AI for Algorithmic Trading</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed" data-t="s_5_d">Implementasi kecerdasan buatan
                             untuk analisis pasar dan eksekusi strategi trading otomatis yang presisi.</p>
                     </div>
 
-                    <div
-                        class="group p-10 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all duration-500 reveal-el">
+                    <div class="neu-card group p-10 bg-[#ecf0f3] transition-all duration-500 reveal-el">
                         <div
-                            class="w-14 h-14 bg-slate-600/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-slate-300 group-hover:text-black text-slate-300 transition-all">
+                            class="w-14 h-14 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-2xl flex items-center justify-center mb-8 text-indigo-600 group-hover:scale-105 transition-all">
                             <i data-lucide="terminal" class="w-7 h-7"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4" data-t="s_6_t">Professional Pentesting</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed" data-t="s_6_d">Uji penetrasi mendalam untuk
+                        <h3 class="text-xl font-bold text-gray-900 mb-4" data-t="s_6_t">Professional Pentesting</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed" data-t="s_6_d">Uji penetrasi mendalam untuk
                             mengidentifikasi celah keamanan sebelum eksploitasi pihak luar terjadi.</p>
                     </div>
 
@@ -277,109 +818,159 @@
             </div>
         </section>
 
-        <section id="partnership" class="relative z-30 py-24 px-6 bg-black border-t border-white/5">
+        <section id="partnership" class="relative z-30 py-16 md:py-24 px-6 bg-[#ecf0f3]">
             <div class="max-w-7xl mx-auto">
                 <div class="mb-16 reveal-el">
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4"
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4"
                         data-t="partnership_title">Sinergi Strategis.</h2>
-                    <p class="text-slate-500 max-w-xl text-lg" data-t="partnership_desc">Tujuh pilar keahlian yang
+                    <p class="text-gray-650 max-w-xl text-lg font-medium" data-t="partnership_desc">Tujuh pilar keahlian
+                        yang
                         mengintegrasikan hukum, teknologi, dan keamanan siber.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
 
+                    <!-- Pilar 1 -->
                     <div
-                        class="md:col-span-4 p-10 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
-                        <div
-                            class="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center mb-6 text-blue-500">
-                            <img src="image/li.png" class="w-6 h-6 grayscale brightness-200">
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4" data-t="p_1_t">Integrasi Hukum & Teknologi (S.H.,
-                            M.TI.)</h3>
-                        <p class="text-slate-400 leading-relaxed" data-t="p_1_d">Satu-satunya solusi yang memastikan
-                            inovasi digital Anda berdiri di atas fondasi hukum yang kuat dan arsitektur TI yang presisi.
-                        </p>
-                    </div>
-
-                    <div
-                        class="md:col-span-2 row-span-2 p-10 bg-blue-600 rounded-3xl flex flex-col justify-between reveal-el">
+                        class="neu-card md:col-span-4 p-6 sm:p-10 bg-[#ecf0f3] transition-all reveal-el flex flex-col justify-between">
                         <div>
-                            <h3 class="text-2xl font-black text-white mb-4" data-t="p_2_t">Peneliti Keamanan Siber</h3>
-                            <p class="text-blue-100 text-sm leading-relaxed" data-t="p_2_d">Sertifikasi resmi dan
-                                dedikasi dalam audit kerentanan serta penguatan infrastruktur digital dari ancaman
-                                global.</p>
+                            <div
+                                class="w-12 h-12 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-2xl flex items-center justify-center mb-6 text-blue-600">
+                                <i data-lucide="scale" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4" data-t="p_1_t">Integrasi Hukum & Teknologi
+                                (S.H., M.TI.)</h3>
+                            <p class="text-gray-650 leading-relaxed font-semibold text-sm" data-t="p_1_d">Satu-satunya
+                                solusi yang memastikan inovasi digital Anda berdiri di atas fondasi hukum yang kuat dan
+                                arsitektur TI yang presisi.</p>
                         </div>
-                        <div class="mt-10 font-mono text-[10px] text-blue-200 tracking-widest uppercase">Certified &
-                            Secured</div>
                     </div>
 
+                    <!-- Pilar 2 (Highlight Card) -->
                     <div
-                        class="md:col-span-2 p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
-                        <h4 class="text-lg font-bold text-white mb-2" data-t="p_3_t">Instalasi Claude & AI</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed" data-t="p_3_d">Implementasi model AI mutakhir
-                            dan instalasi Claude untuk automasi tingkat tinggi.</p>
+                        class="md:col-span-2 md:row-span-2 p-6 sm:p-10 bg-blue-600 rounded-[2rem] flex flex-col justify-between reveal-el shadow-[6px_6px_15px_rgba(59,130,246,0.35),-6px_-6px_15px_#ffffff] hover:scale-[1.01] transition-transform">
+                        <div>
+                            <div
+                                class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-white">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-white mb-4" data-t="p_2_t">Peneliti Keamanan Siber</h3>
+                            <p class="text-blue-100 text-sm leading-relaxed font-semibold" data-t="p_2_d">Sertifikasi
+                                resmi dan dedikasi dalam audit kerentanan serta penguatan infrastruktur digital dari
+                                ancaman global.</p>
+                        </div>
+                        <div class="mt-10 flex items-center justify-between border-t border-white/10 pt-6">
+                            <span class="font-mono text-[9px] text-blue-200 tracking-widest uppercase">Certified &
+                                Secured</span>
+                            <i data-lucide="lock" class="w-4 h-4 text-blue-200"></i>
+                        </div>
                     </div>
 
+                    <!-- Pilar 3 -->
                     <div
-                        class="md:col-span-2 p-8 bg-[#111] border border-white/10 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
-                        <h4 class="text-lg font-bold text-white mb-2" data-t="p_4_t">Polyglot: 50+ Bahasa</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed" data-t="p_4_d">Penguasaan lintas paradigma
-                            pada lebih dari 50 bahasa pemrograman untuk solusi tanpa batas.</p>
+                        class="neu-card md:col-span-2 p-6 sm:p-8 bg-[#ecf0f3] transition-all reveal-el flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-xl flex items-center justify-center mb-6 text-purple-600">
+                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2" data-t="p_3_t">Instalasi Claude & AI</h4>
+                            <p class="text-gray-650 text-xs leading-relaxed font-semibold" data-t="p_3_d">Implementasi
+                                model AI mutakhir dan instalasi Claude untuk automasi tingkat tinggi.</p>
+                        </div>
                     </div>
 
+                    <!-- Pilar 4 -->
                     <div
-                        class="md:col-span-2 p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
-                        <h4 class="text-lg font-bold text-white mb-2" data-t="p_5_t">Custom AI Bot</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed" data-t="p_5_d">Rancang bangun asisten digital
-                            pintar yang spesifik untuk kebutuhan bisnis eksklusif.</p>
+                        class="neu-card md:col-span-2 p-6 sm:p-8 bg-[#ecf0f3] transition-all reveal-el flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-xl flex items-center justify-center mb-6 text-amber-600">
+                                <i data-lucide="languages" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2" data-t="p_4_t">Polyglot: 50+ Bahasa</h4>
+                            <p class="text-gray-650 text-xs leading-relaxed font-semibold" data-t="p_4_d">Penguasaan
+                                lintas paradigma pada lebih dari 50 bahasa pemrograman untuk solusi tanpa batas.</p>
+                        </div>
                     </div>
 
+                    <!-- Pilar 5 -->
                     <div
-                        class="md:col-span-3 p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
-                        <h4 class="text-lg font-bold text-white mb-2" data-t="p_6_t">Arsitektur Sistem Skalabel</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed" data-t="p_6_d">Pembangunan sistem dari nol
-                            yang siap tumbuh bersama besarnya data bisnis Anda.</p>
+                        class="neu-card md:col-span-2 p-6 sm:p-8 bg-[#ecf0f3] transition-all reveal-el flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-xl flex items-center justify-center mb-6 text-green-600">
+                                <i data-lucide="bot" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2" data-t="p_5_t">Custom AI Bot</h4>
+                            <p class="text-gray-650 text-xs leading-relaxed font-semibold" data-t="p_5_d">Rancang bangun
+                                asisten digital pintar yang spesifik untuk kebutuhan bisnis eksklusif.</p>
+                        </div>
                     </div>
 
+                    <!-- Pilar 6 -->
                     <div
-                        class="md:col-span-3 p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-blue-500/30 transition-all reveal-el">
-                        <h4 class="text-lg font-bold text-white mb-2" data-t="p_7_t">Konsultansi Strategis</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed" data-t="p_7_d">Pendampingan penuh dalam
-                            transformasi digital dan efisiensi infrastruktur TI perusahaan.</p>
+                        class="neu-card md:col-span-2 p-8 bg-[#ecf0f3] transition-all reveal-el flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-xl flex items-center justify-center mb-6 text-indigo-600">
+                                <i data-lucide="server" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2" data-t="p_6_t">Arsitektur Sistem Skalabel
+                            </h4>
+                            <p class="text-gray-650 text-xs leading-relaxed font-semibold" data-t="p_6_d">Pembangunan
+                                sistem dari nol yang siap tumbuh bersama besarnya data bisnis Anda.</p>
+                        </div>
                     </div>
+
+                    <!-- Pilar 7 -->
+                    <div
+                        class="neu-card md:col-span-2 p-8 bg-[#ecf0f3] transition-all reveal-el flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-xl flex items-center justify-center mb-6 text-red-600">
+                                <i data-lucide="trending-up" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2" data-t="p_7_t">Konsultansi Strategis</h4>
+                            <p class="text-gray-650 text-xs leading-relaxed font-semibold" data-t="p_7_d">Pendampingan
+                                penuh dalam transformasi digital dan efisiensi infrastruktur TI perusahaan.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <section id="teacher" class="relative z-30 py-24 px-6 bg-black border-t border-white/5">
+        <section id="teacher" class="relative z-30 py-16 md:py-24 px-6 bg-[#ecf0f3]">
             <div class="max-w-7xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                     <div class="reveal-el">
                         <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-blue-600/10 border border-blue-600/20 mb-6">
-                            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest"
+                            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] mb-6 border border-white/20">
+                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest"
                                 data-t="teacher_badge">Private Mentoring</span>
                         </div>
-                        <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tighter leading-tight mb-8"
+                        <h2 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tighter leading-tight mb-8"
                             data-t="teacher_title">
                             Mastery in <br><span class="text-blue-600">British Accent.</span>
                         </h2>
-                        <p class="text-slate-400 text-lg leading-relaxed mb-10 max-w-md" data-t="teacher_desc">
+                        <p class="text-gray-600 text-base md:text-lg leading-relaxed mb-8 max-w-md" data-t="teacher_desc">
                             Tingkatkan kapabilitas komunikasi global Anda dengan aksen British yang presisi. Les privat
                             eksklusif untuk profesional dan akademisi.
                         </p>
 
-                        <div class="flex items-center gap-4 p-6 bg-[#0a0a0a] border border-white/5 rounded-2xl w-fit">
+                        <div
+                            class="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-[#ecf0f3] shadow-[6px_6px_12px_#b8bec9,-6px_-6px_12px_#ffffff] rounded-3xl w-fit">
                             <div
-                                class="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center text-blue-500">
+                                class="w-12 h-12 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-full flex items-center justify-center text-blue-600">
                                 <i data-lucide="banknote" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <span class="block text-[10px] text-slate-500 uppercase tracking-widest font-bold"
+                                <span class="block text-[10px] text-gray-500 uppercase tracking-widest font-bold"
                                     data-t="teacher_price_label">Investasi Per Sesi</span>
-                                <span class="text-xl font-black text-white">Start from <span
-                                        class="text-blue-500">50K</span></span>
+                                <span class="text-xl font-black text-gray-900">Start from <span
+                                        class="text-blue-600">50K</span></span>
                             </div>
                         </div>
                     </div>
@@ -387,41 +978,42 @@
                     <div class="grid gap-4 reveal-el">
                         <a href="https://wa.me/6288971071138?text=Halo%20Sir%20Ilham,%20saya%20tertarik%20belajar%20Bahasa%20Inggris%20British%20Accent"
                             target="_blank"
-                            class="group p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-blue-500/50 transition-all flex items-center justify-between">
-                            <div class="flex items-center gap-6">
+                            class="neu-card group p-5 sm:p-8 bg-[#ecf0f3] transition-all flex items-center justify-between">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
                                 <div
-                                    class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center text-green-500 group-hover:bg-green-600 group-hover:text-white transition-all">
+                                    class="w-14 h-14 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-2xl flex items-center justify-center text-green-600 group-hover:scale-105 transition-all">
                                     <i data-lucide="message-circle" class="w-7 h-7"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-1"
+                                    <h4 class="text-gray-900 font-bold uppercase text-xs tracking-widest mb-1"
                                         data-t="teacher_wa_title">Konsultasi via WA</h4>
-                                    <p class="text-slate-500 text-sm" data-t="teacher_wa_sub">Diskusi jadwal & kurikulum
+                                    <p class="text-gray-600 text-sm" data-t="teacher_wa_sub">Diskusi jadwal & kurikulum
                                     </p>
                                 </div>
                             </div>
                             <i data-lucide="arrow-right"
-                                class="w-5 h-5 text-slate-800 group-hover:text-blue-500 group-hover:translate-x-1 transition-all"></i>
+                                class="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"></i>
                         </a>
 
                         <a href="https://academy.ilhampradani.me/"
-                            class="relative group p-8 bg-blue-600/5 border border-blue-600/20 rounded-3xl hover:border-blue-500 transition-all flex items-center justify-between">
+                            class="neu-card relative group p-5 sm:p-8 bg-[#ecf0f3] border-l-4 border-blue-600 transition-all flex items-center justify-between">
                             <div class="flex items-center gap-6">
                                 <div
-                                    class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                    class="w-14 h-14 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-2xl flex items-center justify-center text-blue-600 group-hover:scale-105 transition-all">
                                     <i data-lucide="globe" class="w-7 h-7"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-1"
+                                    <h4 class="text-gray-900 font-bold uppercase text-xs tracking-widest mb-1"
                                         data-t="teacher_web_title">Platform Pembelajaran</h4>
-                                    <p class="text-slate-500 text-sm" data-t="teacher_web_sub">Belajar Mandiri & Terstruktur</p>
+                                    <p class="text-gray-600 text-sm" data-t="teacher_web_sub">Belajar Mandiri &
+                                        Terstruktur</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4">
                                 <span
                                     class="text-[10px] font-black bg-green-600 text-white px-2 py-0.5 rounded-sm uppercase tracking-tighter">GRATIS</span>
                                 <i data-lucide="arrow-right"
-                                    class="w-5 h-5 text-slate-800 group-hover:text-blue-500 group-hover:translate-x-1 transition-all"></i>
+                                    class="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"></i>
                             </div>
                         </a>
                     </div>
@@ -430,337 +1022,470 @@
             </div>
         </section>
 
-        <section id="portofolio" class="relative z-30 py-24 px-6 bg-[#050505]">
+        <section id="portofolio" class="relative z-30 py-16 md:py-24 px-6 bg-[#ecf0f3]">
             <div class="max-w-7xl mx-auto">
-                <div class="mb-16 reveal-el">
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4"
+                <div class="mb-16 reveal-el relative z-40">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4"
                         data-t="portofolio_title">Eksplorasi Karya.</h2>
-                    <p class="text-slate-500 max-w-xl text-lg" data-t="portofolio_desc">Implementasi teknis dari visi
+                    <p class="text-gray-600 max-w-xl text-lg" data-t="portofolio_desc">Implementasi teknis dari visi
                         strategis dan solusi digital.</p>
                 </div>
 
-                <div id="portofolio-tabs" class="flex flex-wrap gap-3 mb-12 reveal-el">
+                <div id="portofolio-tabs" class="grid grid-cols-2 sm:flex sm:flex-wrap gap-2.5 sm:gap-3 mb-12 reveal-el relative z-40">
                 </div>
 
-                <div id="portofolio-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal-el transition-all duration-500">
+                <div id="portofolio-container" class="portfolio-3d-container reveal-el transition-all duration-500">
+                </div>
+
+                <div
+                    class="text-center text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-6 reveal-el select-none pointer-events-none relative z-40">
+                    <span
+                        class="inline-flex items-center gap-1.5 px-4 py-2 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full">
+                        <i data-lucide="chevrons-left-right" class="w-3.5 h-3.5 text-blue-600 animate-pulse"></i>
+                        <span data-t="portfolio_nav_hint">Klik kartu untuk menelusuri karya</span>
+                    </span>
                 </div>
             </div>
         </section>
 
-        <section id="reviews" class="relative z-30 py-24 bg-black border-t border-white/5 overflow-hidden">
+        <section id="reviews" class="relative z-30 py-16 md:py-24 bg-[#ecf0f3] overflow-hidden">
             <div class="max-w-7xl mx-auto px-6 mb-16">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 reveal-el">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 mb-6">
-                            <img src="https://www.google.com/favicon.ico" class="w-4 h-4 grayscale brightness-200">
-                            <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Verified Google Reviews</span>
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] border border-white/20 mb-6">
+                            <img src="https://www.google.com/favicon.ico" class="w-4 h-4">
+                            <span data-t="review_badge" class="text-[10px] font-bold text-gray-700 uppercase tracking-widest">Verified Google Reviews</span>
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">Apa Kata Mereka.</h2>
+                        <h2 data-t="review_title" class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight">Apa Kata Mereka.</h2>
                     </div>
-                    <a href="https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVhvMk5ub3haM0pmGAo" target="_blank"
-                        class="inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] hover:bg-white/5 border border-white/10 text-white rounded-lg text-sm font-bold transition-all">
-                        Visit Google Reviews <i data-lucide="external-link" class="w-4 h-4"></i>
+                    <a href="https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVhvMk5ub3haM0pmGAo"
+                        target="_blank"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-[#ecf0f3] text-gray-700 rounded-xl text-sm font-extrabold shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] transition-all">
+                        <span data-t="review_visit">Visit Google Reviews</span> <i data-lucide="external-link" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
-
             <!-- Marquee Container -->
-            <div class="relative flex overflow-hidden">
+            <div class="relative flex overflow-hidden marquee-container">
                 <div class="marquee gap-6 px-6">
                     <!-- Review Card 1 -->
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic">
-                            "Sangat puas dengan layanan Aliip IT Consultant Inc. Produk software yang mereka kembangkan punya standar internasional dan sangat user-friendly. Sebagai partner, mereka sangat profesional dalam menangani proyek skala global. Recommended!!"
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
+                            "Sangat puas dengan layanan Aliip IT Consultant Inc. Produk software yang mereka kembangkan
+                            punya standar internasional dan sangat user-friendly. Sebagai partner, mereka sangat
+                            profesional dalam menangani proyek skala global. Recommended!!"
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AS</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-md">AS</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Alicia Salsabila</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">Local Guide</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">Alicia Salsabila</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">Local Guide</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Review Card 2 -->
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic line-clamp-4">
-                            "Sangat merekomendasikan Aliip IT Consultant Inc. untuk jasa pembuatan website portofolio Malaysia. Saya sangat terkesan dengan struktur kodenya yang rapi (clean code) dan alur kerja yang sangat jelas. Hasil webnya premium!"
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
+                            "Sangat merekomendasikan Aliip IT Consultant Inc. untuk jasa pembuatan website portofolio
+                            Malaysia. Saya sangat terkesan dengan struktur kodenya yang rapi (clean code) dan alur kerja
+                            yang sangat jelas. Hasil webnya premium!"
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">MI</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm shadow-md">MI</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">M. Ikhwan Jamaludin</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">Project Manager</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">M. Ikhwan Jamaludin</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">Project Manager</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Review Card 3 -->
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic">
-                            "Puas sekali dengan layanan keamanan digital. Mereka menerapkan standar Cyber Security internasional. Penanganan celah keamanan dilakukan dengan sangat teknis dan terstruktur. Benar-benar profesional."
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
+                            "Puas sekali dengan layanan keamanan digital. Mereka menerapkan standar Cyber Security
+                            internasional. Penanganan celah keamanan dilakukan dengan sangat teknis dan terstruktur.
+                            Benar-benar profesional."
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white font-bold text-sm shadow-lg">N</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white font-bold text-sm shadow-md">N</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Nobartri3</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">Security Analyst</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">Nobartri3</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">Security Analyst</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Review Card 4 -->
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic">
-                            "Baru kali ini ketemu partner IT yang bener-bener peduli sama keindahan kode. Clean code-nya bikin sistem e-commerce kami yang pakai private server jadi ringan dan gampang di-maintenance. Puas banget!"
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
+                            "Baru kali ini ketemu partner IT yang bener-bener peduli sama keindahan kode. Clean code-nya
+                            bikin sistem e-commerce kami yang pakai private server jadi ringan dan gampang
+                            di-maintenance. Puas banget!"
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AT</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-md">AT</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Algojo3 Tiga</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">E-commerce Owner</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">Algojo3 Tiga</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">E-commerce Owner</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Review Card 5 -->
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic">
-                            "Sebagai penyedia jasa web service ini yang paling bagus sih pelayanan nya, dan hasilnya manual kode, web Portofolio yang di layani juga go internasional sampai ke Malaysia, soo good luck ,."
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
+                            "Sebagai penyedia jasa web service ini yang paling bagus sih pelayanan nya, dan hasilnya
+                            manual kode, web Portofolio yang di layani juga go internasional sampai ke Malaysia, soo
+                            good luck ,."
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AD</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white font-bold text-sm shadow-md">AD</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Algojo2 Dua</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">Web Service Partner</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">Algojo2 Dua</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">Web Service Partner</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Review Card 6 -->
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic">
-                            "Lagi cari partner pengembang software dan ketemu Aliip. Yang paling menonjol itu struktur kerja mereka yang tertata, progresnya jelas, dan komunikasinya enak. Kualitas kodenya terjaga!"
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
+                            "Lagi cari partner pengembang software dan ketemu Aliip. Yang paling menonjol itu struktur
+                            kerja mereka yang tertata, progresnya jelas, dan komunikasinya enak. Kualitas kodenya
+                            terjaga!"
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">WB</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm shadow-md">WB</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Warung Bornok</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">Software Partner</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">Warung Bornok</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">Software Partner</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- DUPLICATE FOR SEAMLESS LOOP -->
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <!-- Review Card 1 Duplicate -->
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic">
-                            "Sangat puas dengan layanan Aliip IT Consultant Inc. Produk software yang mereka kembangkan punya standar internasional dan sangat user-friendly. Recommended!!"
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
+                            "Sangat puas dengan layanan Aliip IT Consultant Inc. Produk software yang mereka kembangkan
+                            punya standar internasional dan sangat user-friendly. Recommended!!"
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AS</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm shadow-md">AS</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Alicia Salsabila</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">Local Guide</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">Alicia Salsabila</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">Local Guide</span>
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+
+                    <!-- Review Card 2 Duplicate -->
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic line-clamp-4">
+                        <p class="text-gray-600 text-sm leading-relaxed italic line-clamp-4">
                             "Sangat merekomendasikan Aliip IT Consultant Inc. Hasil webnya premium!"
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">MI</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm shadow-md">MI</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">M. Ikhwan Jamaludin</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">Project Manager</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">M. Ikhwan Jamaludin</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">Project Manager</span>
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+
+                    <!-- Review Card 3 Duplicate -->
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
                             "Puas sekali dengan layanan keamanan digital. Benar-benar profesional."
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white font-bold text-sm shadow-lg">N</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white font-bold text-sm shadow-md">N</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Nobartri3</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">Security Analyst</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">Nobartri3</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">Security Analyst</span>
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+
+                    <!-- Review Card 4 Duplicate -->
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
                             "Baru kali ini ketemu partner IT yang bener-bener peduli sama keindahan kode. Puas banget!"
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AT</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-md">AT</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Algojo3 Tiga</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">E-commerce Owner</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">Algojo3 Tiga</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">E-commerce Owner</span>
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+
+                    <!-- Review Card 5 Duplicate -->
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
                             "Sebagai penyedia jasa web service ini yang paling bagus sih pelayanan nya!"
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">AD</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white font-bold text-sm shadow-md">AD</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Algojo2 Dua</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">Web Service Partner</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">Algojo2 Dua</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">Web Service Partner</span>
                             </div>
                         </div>
                     </div>
-                    <div class="glass-card p-10 rounded-3xl w-[400px] shrink-0 space-y-6">
-                        <div class="flex gap-1 text-yellow-500">
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+
+                    <!-- Review Card 6 Duplicate -->
+                    <div class="google-reviews-card">
+                        <div class="flex items-center">
+                            <div class="google-reviews__left shrink-0">
+                                <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                            </div>
+                            <div class="google-reviews__right google-reviews-content">
+                                <div class="google-reviews-content__top">
+                                    <p class="google-reviews-content__txt">Google</p>
+                                    <p class="google-reviews-content__rating">5.0</p>
+                                    <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                </div>
+                                <div class="google-reviews-content__bottom">
+                                    <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-slate-400 text-sm leading-relaxed italic">
+                        <p class="text-gray-600 text-sm leading-relaxed italic">
                             "Kualitas kodenya terjaga! Keren banget kerjanya!"
                         </p>
-                        <div class="flex items-center gap-4 pt-6 border-t border-white/5">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">WB</div>
+                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200/50">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm shadow-md">WB</div>
                             <div>
-                                <h4 class="text-white font-bold text-xs uppercase tracking-widest">Warung Bornok</h4>
-                                <span class="text-[9px] text-slate-500 uppercase">Software Partner</span>
+                                <h4 class="text-gray-900 font-bold text-xs uppercase tracking-widest">Warung Bornok</h4>
+                                <span class="text-[9px] text-gray-500 font-bold uppercase">Software Partner</span>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </section>
 
-        <section id="artikel" class="relative z-30 py-24 px-6 bg-[#050505] border-t border-white/5">
+        <section id="artikel" class="relative z-30 py-16 md:py-24 px-6 bg-[#ecf0f3]">
             <div class="max-w-7xl mx-auto">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 reveal-el">
                     <div>
                         <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 mb-6">
-                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                            <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest"
+                            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] border border-white/20 mb-6">
+                            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                            <span class="text-[10px] font-bold text-gray-700 uppercase tracking-widest"
                                 data-t="article_badge">Tech & Legal Journal</span>
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight"
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight"
                             data-t="article_title">Insight Profesional.</h2>
                     </div>
                     <a href="#daftar-jurnal"
-                        class="inline-flex items-center gap-2 px-6 py-3 bg-[#0a0a0a] hover:bg-white/5 border border-white/10 text-white rounded-lg text-sm font-bold transition-all"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-[#ecf0f3] text-gray-750 rounded-xl text-sm font-extrabold shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] transition-all"
                         data-t="article_btn_all">
                         Lihat Semua Jurnal <i data-lucide="arrow-down" class="w-4 h-4"></i>
                     </a>
                 </div>
 
-                <div id="artikel-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal-el article-scroll-mobile">
+                <div id="artikel-container" class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal-el">
                     <!-- SEO Fallback Content -->
-                    <div class="p-8 border border-white/5 bg-[#0a0a0a] rounded-2xl animate-pulse">
-                        <div class="h-4 w-24 bg-blue-600/20 mb-4 rounded"></div>
-                        <div class="h-8 w-full bg-white/5 mb-6 rounded"></div>
-                        <div class="h-4 w-2/3 bg-white/5 rounded"></div>
+                    <div
+                        class="p-8 bg-[#ecf0f3] shadow-[6px_6px_12px_#b8bec9,-6px_-6px_12px_#ffffff] rounded-[2rem] animate-pulse">
+                        <div class="h-4 w-24 bg-blue-250 mb-4 rounded"></div>
+                        <div class="h-8 w-full bg-gray-200 mb-6 rounded"></div>
+                        <div class="h-4 w-2/3 bg-gray-200 rounded"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="daftar-jurnal" class="relative z-30 py-16 px-6 bg-black border-t border-white/5">
+        <section id="daftar-jurnal" class="relative z-30 py-12 md:py-16 px-6 bg-[#ecf0f3]">
             <div class="max-w-6xl mx-auto">
                 <div class="flex flex-col items-center mb-12">
-                    <h3 class="text-xs font-bold text-slate-500 uppercase tracking-[0.3em] mb-4 text-center" data-t="list_title">Arsip Lengkap Jurnal</h3>
-                    <div id="jurnal-counter" class="text-[10px] font-bold text-blue-500 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full uppercase tracking-widest">
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-[0.3em] mb-4 text-center"
+                        data-t="list_title">Arsip Lengkap Jurnal</h3>
+                    <div id="jurnal-counter"
+                        class="text-[10px] font-bold text-blue-600 px-4 py-1.5 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] border border-white/20 rounded-full uppercase tracking-widest">
                         Total Jurnal: <span id="journal-count-val">0</span>+
                     </div>
                 </div>
 
-                <div id="jurnal-categories" class="flex flex-wrap justify-center gap-3 mb-10 reveal-el">
+                <div id="jurnal-categories" class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2.5 sm:gap-3 mb-10 reveal-el">
                     <!-- Categories will be rendered here -->
                 </div>
 
                 <div id="jurnal-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1"></div>
-                
+
                 <div id="jurnal-show-more-container" class="mt-12 flex justify-center md:hidden">
-                    <button id="btn-show-more-jurnal" onclick="toggleMoreJournals()" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-white uppercase tracking-widest hover:bg-white/10 transition-all">
+                    <button id="btn-show-more-jurnal" onclick="toggleMoreJournals()"
+                        class="px-8 py-3 bg-[#ecf0f3] text-[10px] font-extrabold text-gray-700 uppercase tracking-widest rounded-full shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] transition-all">
                         Lihat Selengkapnya
                     </button>
                 </div>
@@ -768,26 +1493,30 @@
         </section>
 
         <!-- AWARD SECTION -->
-        <section id="awards" class="relative z-30 py-24 bg-black border-y border-white/5 overflow-hidden">
+        <section id="awards" class="relative z-30 py-16 md:py-24 bg-[#ecf0f3] overflow-hidden">
             <div class="max-w-7xl mx-auto px-6 mb-16">
                 <div class="flex flex-col items-center text-center reveal-el">
                     <div class="inline-flex items-center gap-4 mb-6">
                         <!-- Left Laurel -->
-                        <svg class="w-10 h-10 text-blue-500/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <svg class="w-10 h-10 text-blue-600/40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1">
                             <path d="M12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9" />
                             <path d="M5 12l2-2" />
                             <path d="M4 15l2-1" />
                             <path d="M6 9l2-1" />
                             <path d="M8 7l1-2" />
                         </svg>
-                        
+
                         <div class="flex flex-col items-center">
-                            <span class="text-[10px] font-bold text-blue-500 uppercase tracking-[0.3em] mb-2" data-t="award_badge">Prestasi & Sertifikasi</span>
-                            <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter" data-t="award_title">Standar Global.</h2>
+                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-2"
+                                data-t="award_badge">Prestasi & Sertifikasi</span>
+                            <h2 class="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter"
+                                data-t="award_title">Standar Global.</h2>
                         </div>
 
                         <!-- Right Laurel -->
-                        <svg class="w-10 h-10 text-blue-500/40 scale-x-[-1]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <svg class="w-10 h-10 text-blue-600/40 scale-x-[-1]" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1">
                             <path d="M12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9" />
                             <path d="M5 12l2-2" />
                             <path d="M4 15l2-1" />
@@ -795,214 +1524,232 @@
                             <path d="M8 7l1-2" />
                         </svg>
                     </div>
-                    <p class="text-slate-500 max-w-2xl text-sm md:text-base leading-relaxed" data-t="award_subtitle">Sertifikasi resmi dan standar keamanan siber internasional yang saya kuasai.</p>
+                    <p class="text-gray-600 max-w-2xl text-sm md:text-base leading-relaxed" data-t="award_subtitle">
+                        Sertifikasi resmi dan standar keamanan siber internasional yang saya kuasai.</p>
                 </div>
             </div>
 
-            <!-- Marquee Award -->
-            <div class="relative flex overflow-hidden">
-                <div class="marquee gap-8 px-6">
-                    <!-- Award 1: CompTIA -->
-                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group flex items-center gap-6 shadow-2xl">
-                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
-                            <img src="image/comptia_sec_plus.png" alt="CompTIA" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_1_t">CompTIA Security+</h4>
-                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_1_d">Sertifikasi keamanan siber tingkat dunia yang memvalidasi keahlian dalam mitigasi ancaman, manajemen risiko, dan pengamanan infrastruktur digital sesuai standar industri global.</p>
-                            <div class="mt-4 pt-4 border-t border-white/5">
-                                <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest" data-t="award_cat_global">Global Security Standard</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Swiper Blog Slider -->
+            <div class="max-w-7xl mx-auto px-6 relative z-30">
+                <div class="blog-slider">
+                    <div class="blog-slider__wrp swiper-wrapper">
 
-                    <!-- Award 2: ISC2 -->
-                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group flex items-center gap-6 shadow-2xl">
-                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
-                            <img src="image/isc2_cc.png" alt="ISC2" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_2_t">ISC2 CC</h4>
-                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_2_d">Sertifikasi resmi dari ISC2 yang membuktikan pemahaman mendalam tentang prinsip fundamental keamanan siber, kontrol akses, dan operasi keamanan profesional.</p>
-                            <div class="mt-4 pt-4 border-t border-white/5">
-                                <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest" data-t="award_cat_cyber">Certified in Cybersecurity</span>
+                        <!-- Award 1: CompTIA -->
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="image/comptia_sec_plus.png" alt="CompTIA">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code" data-t="award_cat_global">Global Security
+                                    Standard</span>
+                                <div class="blog-slider__title" data-t="award_1_t">CompTIA Security+</div>
+                                <div class="blog-slider__text" data-t="award_1_d">Sertifikasi keamanan siber tingkat
+                                    dunia yang memvalidasi keahlian dalam mitigasi ancaman, manajemen risiko, dan
+                                    pengamanan infrastruktur digital sesuai standar industri global.</div>
+                                <a href="https://www.comptia.org/certifications/security" target="_blank"
+                                    class="blog-slider__button">VERIFY CERTIFICATE</a>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Award 3: HackerOne -->
-                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group flex items-center gap-6 shadow-2xl">
-                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
-                            <img src="image/hackerone.png" alt="HackerOne" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_3_t">HackerOne</h4>
-                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_3_d">Pengakuan sebagai peneliti keamanan siber elit yang berkontribusi dalam mengidentifikasi kerentanan kritis pada infrastruktur digital perusahaan teknologi Fortune 500.</p>
-                            <div class="mt-4 pt-4 border-t border-white/5">
-                                <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest" data-t="award_cat_vuln">Vulnerability Research</span>
+                        <!-- Award 2: ISC2 -->
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="image/isc2_cc.png" alt="ISC2">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code" data-t="award_cat_cyber">Certified in
+                                    Cybersecurity</span>
+                                <div class="blog-slider__title" data-t="award_2_t">ISC2 CC</div>
+                                <div class="blog-slider__text" data-t="award_2_d">Sertifikasi resmi dari ISC2 yang
+                                    membuktikan pemahaman mendalam tentang prinsip fundamental keamanan siber, kontrol
+                                    akses, dan operasi keamanan profesional.</div>
+                                <a href="https://www.isc2.org/Certifications/CC" target="_blank"
+                                    class="blog-slider__button">VERIFY CERTIFICATE</a>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Award 4: OSCP -->
-                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-red-500/30 transition-all group flex items-center gap-6 shadow-2xl">
-                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
-                            <img src="image/offsec_oscp.png" alt="OffSec" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-2">
-                                <h4 class="text-white font-bold text-xl" data-t="award_4_t">OffSec OSCP</h4>
-                                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                        <!-- Award 3: HackerOne -->
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="image/hackerone.png" alt="HackerOne">
                             </div>
-                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_4_d">Standar emas bagi praktisi uji penetrasi (Pentesting), membuktikan kemampuan teknis hands-on yang intens dalam mengeksploitasi sistem secara real-time.</p>
-                            <div class="mt-4 pt-4 border-t border-white/5">
-                                <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest" data-t="award_cat_offense">Offensive Security Certified</span>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code" data-t="award_cat_vuln">Vulnerability Research</span>
+                                <div class="blog-slider__title" data-t="award_3_t">HackerOne</div>
+                                <div class="blog-slider__text" data-t="award_3_d">Pengakuan sebagai peneliti keamanan
+                                    siber elit yang berkontribusi dalam mengidentifikasi kerentanan kritis pada
+                                    infrastruktur digital perusahaan teknologi Fortune 500.</div>
+                                <a href="https://hackerone.com/ilhampradani" target="_blank"
+                                    class="blog-slider__button">VIEW PROFILE</a>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Award 5: CEH -->
-                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-red-500/30 transition-all group flex items-center gap-6 shadow-2xl">
-                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
-                            <img src="image/ceh_master.png" alt="CEH" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_5_t">CEH Master</h4>
-                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_5_d">Sertifikasi tingkat lanjut yang menggabungkan teori peretasan etis (Ethical Hacking) dengan uji kompetensi praktis untuk skenario serangan siber nyata.</p>
-                            <div class="mt-4 pt-4 border-t border-white/5">
-                                <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest" data-t="award_cat_ethical">Ethical Hacking Master</span>
+                        <!-- Award 4: OSCP -->
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="image/offsec_oscp.png" alt="OSCP">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code" data-t="award_cat_offense">Offensive Security
+                                    Certified</span>
+                                <div class="blog-slider__title" data-t="award_4_t">OffSec OSCP</div>
+                                <div class="blog-slider__text" data-t="award_4_d">Standar emas bagi praktisi uji
+                                    penetrasi (Pentesting), membuktikan kemampuan teknis hands-on yang intens dalam
+                                    mengeksploitasi sistem secara real-time.</div>
+                                <a href="https://www.offsec.com/courses/pen-200/" target="_blank"
+                                    class="blog-slider__button">VERIFY CERTIFICATE</a>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Award 6: GIAC -->
-                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group flex items-center gap-6 shadow-2xl">
-                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
-                            <img src="image/giac_gisf.png" alt="GIAC" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_6_t">GIAC GISF / GPEN</h4>
-                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_6_d">Sertifikasi spesialisasi GIAC yang memvalidasi kemahiran teknis mendalam dalam metodologi serangan siber dan pertahanan infrastruktur informasi strategis.</p>
-                            <div class="mt-4 pt-4 border-t border-white/5">
-                                <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest" data-t="award_cat_method">Offensive Methodology</span>
+                        <!-- Award 5: CEH -->
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="image/ceh_master.png" alt="CEH">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code" data-t="award_cat_ethical">Ethical Hacking Master</span>
+                                <div class="blog-slider__title" data-t="award_5_t">CEH Master</div>
+                                <div class="blog-slider__text" data-t="award_5_d">Sertifikasi tingkat lanjut yang
+                                    menggabungkan teori peretasan etis (Ethical Hacking) dengan uji kompetensi praktis
+                                    untuk skenario serangan siber nyata.</div>
+                                <a href="https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/"
+                                    target="_blank" class="blog-slider__button">VERIFY CERTIFICATE</a>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- DUPLICATE FOR SEAMLESS LOOP -->
-                    <div class="glass-card p-6 rounded-[2rem] w-[450px] md:w-[550px] shrink-0 border border-white/5 hover:border-blue-500/30 transition-all group flex items-center gap-6 shadow-2xl">
-                        <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white flex items-center justify-center p-4 shrink-0 overflow-hidden shadow-inner">
-                            <img src="image/comptia_sec_plus.png" alt="CompTIA" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="text-white font-bold text-xl mb-2" data-t="award_1_t">CompTIA Security+</h4>
-                            <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-3" data-t="award_1_d">Sertifikasi keamanan siber tingkat dunia yang memvalidasi keahlian dalam mitigasi ancaman dan manajemen risiko global.</p>
-                            <div class="mt-4 pt-4 border-t border-white/5">
-                                <span class="text-[9px] font-bold text-blue-500 uppercase tracking-widest" data-t="award_cat_global">Global Security Standard</span>
+                        <!-- Award 6: GIAC -->
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="image/giac_gisf.png" alt="GIAC">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code" data-t="award_cat_method">Offensive Methodology</span>
+                                <div class="blog-slider__title" data-t="award_6_t">GIAC GISF / GPEN</div>
+                                <div class="blog-slider__text" data-t="award_6_d">Sertifikasi spesialisasi GIAC yang
+                                    memvalidasi kemahiran teknis mendalam dalam metodologi serangan siber dan pertahanan
+                                    infrastruktur informasi strategis.</div>
+                                <a href="https://www.giac.org/" target="_blank" class="blog-slider__button">VERIFY
+                                    CERTIFICATE</a>
                             </div>
                         </div>
+
+                    </div>
+                    <!-- Controls container on the right side of the card -->
+                    <div class="blog-slider__pagination-container">
+                        <button class="blog-slider__prev-btn award-prev">
+                            <i data-lucide="chevron-up" class="w-4 h-4"></i>
+                        </button>
+                        <div class="blog-slider__pagination"></div>
+                        <button class="blog-slider__next-btn award-next">
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="relative z-30 py-24 px-6 bg-black border-t border-white/5 overflow-hidden">
+        <section id="contact" class="relative z-30 py-16 md:py-24 px-6 bg-[#ecf0f3] overflow-hidden">
             <!-- Background Batik Styled -->
             <div class="absolute inset-0 z-[-1] pointer-events-none">
-                <div class="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black z-10"></div>
-                <img src="image/batik_bg_ilhampradani.jpeg" alt="Batik Background" 
-                    class="w-full h-full object-cover opacity-15 filter brightness-75 contrast-125 scale-110">
+                <div class="absolute inset-0 bg-gradient-to-b from-[#ecf0f3] via-[#ecf0f3]/70 to-[#ecf0f3] z-10"></div>
+                <img src="image/batik_bg_ilhampradani.jpeg" alt="Batik Background"
+                    class="w-full h-full object-cover opacity-[0.06] filter grayscale scale-110">
             </div>
             <div class="max-w-7xl mx-auto relative z-30">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
                     <div class="reveal-el">
                         <div
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-blue-500/10 border border-blue-500/20 mb-6">
+                            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] border border-white/20 mb-6">
                             <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest"
+                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest"
                                 data-t="contact_badge">Contact Hub</span>
                         </div>
-                        <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-8"
+                        <h2 class="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight mb-8"
                             data-t="contact_title">Mari Berdiskusi.</h2>
-                        <p class="text-slate-400 text-lg leading-relaxed mb-12 max-w-md" data-t="contact_desc">
+                        <p class="text-gray-600 text-lg leading-relaxed mb-12 max-w-md" data-t="contact_desc">
                             Siap membantu transformasi digital bisnis Anda dengan solusi teknis yang presisi dan aman
                             secara regulasi.
                         </p>
 
-                        <div class="flex flex-wrap gap-6">
+                        <div class="flex flex-wrap gap-4">
                             <a href="https://web.facebook.com/profile.php?id=100094401424686" target="_blank"
-                                class="group">
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full flex items-center justify-center transition-all group">
                                 <img src="image/fb.png" alt="FB"
-                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                                    class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all invert">
                             </a>
-                            <a href="https://github.com/ilhampradani8-bot" target="_blank" class="group">
+                            <a href="https://github.com/ilhampradani8-bot" target="_blank"
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full flex items-center justify-center transition-all group">
                                 <img src="image/gh.png" alt="GH"
-                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                                    class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all invert">
                             </a>
-                            <a href="https://www.linkedin.com/in/ilham-pradani-cv" target="_blank" class="group">
+                            <a href="https://www.linkedin.com/in/ilham-pradani-cv" target="_blank"
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full flex items-center justify-center transition-all group">
                                 <img src="image/li.png" alt="LI"
-                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                                    class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all invert">
                             </a>
                             <a href="https://www.instagram.com/doc_n_porto_iilham_pradani_c.l/" target="_blank"
-                                class="group">
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full flex items-center justify-center transition-all group">
                                 <img src="image/ig.png" alt="IG"
-                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                                    class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all invert">
                             </a>
 
-                            <a href="https://x.com/ilhampradani_" target="_blank" class="group">
+                            <a href="https://x.com/ilhampradani_" target="_blank"
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full flex items-center justify-center transition-all group">
                                 <img src="image/x.png" id="img-x" alt="X"
-                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                                    class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all invert">
                             </a>
                             <a href="https://www.threads.com/@doc_n_porto_iilham_pradani_c.l" target="_blank"
-                                class="group">
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full flex items-center justify-center transition-all group">
                                 <img src="image/threads.png" id="img-threads" alt="Threads"
-                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                                    class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all invert">
                             </a>
-                            <a href="https://hackerone.com/ilhampradani" target="_blank" class="group">
+                            <a href="https://hackerone.com/ilhampradani" target="_blank"
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full flex items-center justify-center transition-all group">
                                 <img src="image/h1.png" id="img-h1" alt="HackerOne"
-                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                                    class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all invert">
                             </a>
-                            <a href="https://t.me/Ilhampradani" target="_blank" class="group">
+                            <a href="https://t.me/ilhampradani_sh" target="_blank"
+                                class="w-10 h-10 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full flex items-center justify-center transition-all group">
                                 <img src="image/tg.png" id="img-tg" alt="Telegram"
-                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all">
+                                    class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all invert">
                             </a>
                         </div>
                     </div>
 
                     <div class="grid gap-4 reveal-el">
                         <a href="https://wa.me/6288971071138" target="_blank"
-                            class="group flex items-center justify-between p-8 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all">
-                            <div class="flex items-center gap-6">
+                            class="neu-card group flex items-center justify-between p-5 sm:p-8 bg-[#ecf0f3] transition-all min-w-0">
+                            <div class="flex items-center gap-6 min-w-0">
                                 <div
-                                    class="w-14 h-14 bg-green-500/10 rounded-full flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
+                                    class="w-14 h-14 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full flex items-center justify-center text-green-600 group-hover:scale-110 transition-transform shrink-0">
                                     <i data-lucide="message-square" class="w-6 h-6"></i>
                                 </div>
-                                <div>
-                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-1"
+                                <div class="min-w-0">
+                                    <h4 class="text-gray-900 font-bold uppercase text-xs tracking-widest mb-1 truncate"
                                         data-t="contact_wa">WhatsApp Bisnis</h4>
-                                    <p class="text-slate-500 text-sm">0889 7107 1138</p>
+                                    <p class="text-gray-600 text-sm truncate">0889 7107 1138</p>
                                 </div>
                             </div>
                             <i data-lucide="arrow-up-right"
-                                class="w-5 h-5 text-slate-800 group-hover:text-blue-500 transition-all"></i>
+                                class="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-all shrink-0"></i>
                         </a>
 
-                        <a href="mailto:aliciasalsabilaaa.20@gmail.com"
-                            class="group flex items-center justify-between p-8 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-blue-500/50 transition-all">
-                            <div class="flex items-center gap-6">
+                        <a href="mailto:algojodua2@gmail.com"
+                            class="neu-card group flex items-center justify-between p-5 sm:p-8 bg-[#ecf0f3] transition-all min-w-0">
+                            <div class="flex items-center gap-6 min-w-0">
                                 <div
-                                    class="w-14 h-14 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
+                                    class="w-14 h-14 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-full flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform shrink-0">
                                     <i data-lucide="mail" class="w-6 h-6"></i>
                                 </div>
-                                <div>
-                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-1"
+                                <div class="min-w-0">
+                                    <h4 class="text-gray-900 font-bold uppercase text-xs tracking-widest mb-1 truncate"
                                         data-t="contact_mail">Email Profesional</h4>
-                                    <p class="text-slate-500 text-sm truncate">aliciasalsabilaaa.20@gmail.com</p>
+                                    <p class="text-gray-600 text-sm truncate">algojodua2@gmail.com</p>
                                 </div>
                             </div>
                             <i data-lucide="arrow-up-right"
-                                class="w-5 h-5 text-slate-800 group-hover:text-blue-500 transition-all"></i>
+                                class="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-all shrink-0"></i>
                         </a>
                     </div>
 
@@ -1016,7 +1763,10 @@
 
 
     <!-- SCRIPTS -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
 </body>
+
 </html>
