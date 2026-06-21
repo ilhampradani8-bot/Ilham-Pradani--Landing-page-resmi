@@ -102,19 +102,8 @@
         }
 
         async function loadPageContent() {
-            let page = 'about';
-            const path = window.location.pathname.replace(/^\/|\/$/g, '').split('/').pop();
-            const validPages = ['about', 'contact', 'disclaimer', 'faq', 'privacy', 'terms'];
-            
-            if (path && validPages.includes(path)) {
-                page = path;
-            } else {
-                const params = new URLSearchParams(window.location.search);
-                const queryPage = params.get('page');
-                if (queryPage && validPages.includes(queryPage)) {
-                    page = queryPage;
-                }
-            }
+            const params = new URLSearchParams(window.location.search);
+            const page = params.get('page') || 'about';
             const container = document.getElementById('content-container');
             
             try {
