@@ -114,6 +114,22 @@ async function applyTranslations() {
     } catch (e) { console.error("Translation Error:", e); }
 }
 
+window.setLoadingProgress = function(percentage) {
+    const bar = document.getElementById('nav-loading-bar');
+    if (bar) {
+        bar.style.width = `${percentage}%`;
+        if (percentage >= 100) {
+            setTimeout(() => {
+                bar.style.opacity = '0';
+                setTimeout(() => {
+                    bar.style.width = '0';
+                    bar.style.opacity = '1';
+                }, 500);
+            }, 600);
+        }
+    }
+};
+
 async function loadComponent(id, file) {
     const el = document.getElementById(id);
     if (!el) return;
@@ -124,6 +140,9 @@ async function loadComponent(id, file) {
             if (window.lucide) lucide.createIcons();
             updateLangUI();
             applyTranslations();
+            if (id === 'header-placeholder') {
+                window.setLoadingProgress(15);
+            }
         }
     } catch (e) { console.error("Component Error:", e); }
 }

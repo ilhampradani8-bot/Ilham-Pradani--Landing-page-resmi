@@ -731,12 +731,18 @@ function initPageNavIndicator() {
 
 // EXECUTION
 document.addEventListener('DOMContentLoaded', async () => {
+    if (window.setLoadingProgress) window.setLoadingProgress(5);
     await loadComponent('header-placeholder', 'include/header.html');
+    if (window.setLoadingProgress) window.setLoadingProgress(25);
     await loadComponent('footer-placeholder', 'include/footer.html');
+    if (window.setLoadingProgress) window.setLoadingProgress(45);
     initServicesTabs();
     await applyTranslations();
+    if (window.setLoadingProgress) window.setLoadingProgress(55);
     await loadArtikel();
+    if (window.setLoadingProgress) window.setLoadingProgress(75);
     await loadPortofolio();
+    if (window.setLoadingProgress) window.setLoadingProgress(85);
     
     // Initialize Swiper sliders
     if (window.Swiper) {
@@ -824,6 +830,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Initialize Floating Page Navigation Indicator
     initPageNavIndicator();
+
+    if (window.setLoadingProgress) window.setLoadingProgress(100);
 
     // Journal Scroll Navigation
     const jUpBtn = document.getElementById('journal-scroll-up');

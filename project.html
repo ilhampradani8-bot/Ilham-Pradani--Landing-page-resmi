@@ -237,10 +237,13 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
+            if (window.setLoadingProgress) window.setLoadingProgress(5);
             // Load components using main.js logic
             if (window.loadComponent) {
                 await loadComponent('header-placeholder', 'include/header.html');
+                if (window.setLoadingProgress) window.setLoadingProgress(40);
                 await loadComponent('footer-placeholder', 'include/footer.html');
+                if (window.setLoadingProgress) window.setLoadingProgress(70);
             }
             
             if (window.lucide) lucide.createIcons();
@@ -285,6 +288,8 @@
                 nav.style.top = '40px';
                 if (window.innerWidth <= 768) nav.style.top = '60px';
             }
+
+            if (window.setLoadingProgress) window.setLoadingProgress(100);
         });
     </script>
 </body>
