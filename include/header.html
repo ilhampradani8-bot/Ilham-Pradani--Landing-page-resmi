@@ -61,45 +61,68 @@
                 </div>
             </div>
 
-            <!-- Projek/Proposal Dropdown (Full Width) -->
+            <!-- Pengembangan Dropdown (Full Width) -->
             <div class="relative group h-full flex items-center static">
                 <button class="hover:text-blue-600 transition-colors flex items-center gap-1.5 uppercase h-full" data-t="nav_project_proposal">
                     Pengembangan <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-hover:rotate-180 transition-transform"></i>
                 </button>
                 <div class="fixed left-0 top-20 w-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-40 bg-[#ecf0f3]/95 backdrop-blur-md border-b border-gray-300 shadow-[0_15px_30px_rgba(163,177,198,0.25)]">
-                    <div class="max-w-4xl mx-auto px-8 py-8 grid grid-cols-4 gap-6 justify-center">
+                    <div class="max-w-7xl mx-auto px-8 py-8 grid grid-cols-4 gap-8">
                         
-                        <!-- Proposal Project Card -->
-                        <a href="project.html" class="flex flex-col items-center justify-center p-6 bg-[#ecf0f3] text-gray-700 hover:text-blue-600 shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2.5px_2.5px_5px_#b8bec9,inset_-2.5px_-2.5px_5px_#ffffff] rounded-2xl transition-all group/card text-center gap-2.5">
-                            <div class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] group-hover/card:scale-110 transition-transform">
-                                <i data-lucide="file-text" class="w-5 h-5"></i>
+                        <!-- Column 1: Proposal Project -->
+                        <div>
+                            <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Proposal Project</h4>
+                            <div class="flex flex-col gap-3">
+                                <a href="project.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i> TradingSafe
+                                </a>
+                                <a href="javascript:void(0)" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i> Ojek-Asia
+                                </a>
                             </div>
-                            <span class="text-[10px] font-black uppercase tracking-wider">Proposal Project</span>
-                        </a>
+                        </div>
 
-                        <!-- Karya Ilmiah Card -->
-                        <a href="javascript:void(0)" class="flex flex-col items-center justify-center p-6 bg-[#ecf0f3] text-gray-700 hover:text-blue-600 shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2.5px_2.5px_5px_#b8bec9,inset_-2.5px_-2.5px_5px_#ffffff] rounded-2xl transition-all group/card text-center gap-2.5">
-                            <div class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] group-hover/card:scale-110 transition-transform">
-                                <i data-lucide="award" class="w-5 h-5"></i>
+                        <!-- Column 2: Riset & Akademis -->
+                        <div>
+                            <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Riset & Akademis</h4>
+                            <div class="flex flex-col gap-3">
+                                <a href="javascript:void(0)" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <i data-lucide="award" class="w-4 h-4 text-blue-600"></i> Karya Ilmiah
+                                </a>
+                                <a href="javascript:void(0)" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <i data-lucide="book-open" class="w-4 h-4 text-blue-600"></i> Publikasi Penelitian
+                                </a>
                             </div>
-                            <span class="text-[10px] font-black uppercase tracking-wider">Karya Ilmiah</span>
-                        </a>
+                        </div>
 
-                        <!-- Publikasi Penelitian Card -->
-                        <a href="javascript:void(0)" class="flex flex-col items-center justify-center p-6 bg-[#ecf0f3] text-gray-700 hover:text-blue-600 shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2.5px_2.5px_5px_#b8bec9,inset_-2.5px_-2.5px_5px_#ffffff] rounded-2xl transition-all group/card text-center gap-2.5">
-                            <div class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] group-hover/card:scale-110 transition-transform">
-                                <i data-lucide="book-open" class="w-5 h-5"></i>
+                        <!-- Column 3: Publikasi Tulis -->
+                        <div>
+                            <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Publikasi Tulis</h4>
+                            <div class="flex flex-col gap-3">
+                                <a href="baca.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <i data-lucide="newspaper" class="w-4 h-4 text-blue-600"></i> Artikel
+                                </a>
+                                <a href="javascript:void(0)" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <i data-lucide="file-edit" class="w-4 h-4 text-blue-600"></i> Essay
+                                </a>
                             </div>
-                            <span class="text-[10px] font-black uppercase tracking-wider">Publikasi Penelitian</span>
-                        </a>
+                        </div>
 
-                        <!-- Artikel Card -->
-                        <a href="baca.html" class="flex flex-col items-center justify-center p-6 bg-[#ecf0f3] text-gray-700 hover:text-blue-600 shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2.5px_2.5px_5px_#b8bec9,inset_-2.5px_-2.5px_5px_#ffffff] rounded-2xl transition-all group/card text-center gap-2.5">
-                            <div class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] group-hover/card:scale-110 transition-transform">
-                                <i data-lucide="newspaper" class="w-5 h-5"></i>
+                        <!-- Column 4: Usaha / Startup -->
+                        <div>
+                            <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Usaha / Startup</h4>
+                            <div class="flex flex-col gap-3">
+                                <a href="project.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <i data-lucide="trending-up" class="w-4 h-4 text-blue-600"></i> TradingSafe
+                                </a>
+                                <a href="javascript:void(0)" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <img src="documents/Logo/easyfastlogotransaparan.png" alt="EasyMarket" class="w-4 h-4 object-contain"> EasyMarket
+                                </a>
+                                <a href="javascript:void(0)" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <i data-lucide="navigation" class="w-4 h-4 text-blue-600"></i> Ojek-Asia
+                                </a>
                             </div>
-                            <span class="text-[10px] font-black uppercase tracking-wider">Artikel</span>
-                        </a>
+                        </div>
 
                     </div>
                 </div>
