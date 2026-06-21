@@ -87,6 +87,12 @@ async function loadArtikel() {
             new Swiper('.articles-swiper', {
                 slidesPerView: 1,
                 spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
                 breakpoints: {
                     768: {
                         slidesPerView: 2,
@@ -482,6 +488,31 @@ function init3DCarousel(container) {
             animate(activeIndex);
         });
     });
+
+    const prevBtn = document.getElementById('portfolio-prev');
+    const nextBtn = document.getElementById('portfolio-next');
+    if (prevBtn) {
+        prevBtn.onclick = (e) => {
+            e.preventDefault();
+            if (activeIndex > 0) {
+                activeIndex--;
+            } else {
+                activeIndex = count - 1;
+            }
+            animate(activeIndex);
+        };
+    }
+    if (nextBtn) {
+        nextBtn.onclick = (e) => {
+            e.preventDefault();
+            if (activeIndex < count - 1) {
+                activeIndex++;
+            } else {
+                activeIndex = 0;
+            }
+            animate(activeIndex);
+        };
+    }
     
     // Explicitly reset any previous handlers
     container.onwheel = null;
@@ -793,4 +824,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Initialize Floating Page Navigation Indicator
     initPageNavIndicator();
+
+    // Journal Scroll Navigation
+    const jUpBtn = document.getElementById('journal-scroll-up');
+    const jDownBtn = document.getElementById('journal-scroll-down');
+    const jContainer = document.getElementById('jurnal-list-container');
+    if (jUpBtn && jContainer) {
+        jUpBtn.onclick = (e) => {
+            e.preventDefault();
+            jContainer.scrollBy({ top: -180, behavior: 'smooth' });
+        };
+    }
+    if (jDownBtn && jContainer) {
+        jDownBtn.onclick = (e) => {
+            e.preventDefault();
+            jContainer.scrollBy({ top: 180, behavior: 'smooth' });
+        };
+    }
 });
