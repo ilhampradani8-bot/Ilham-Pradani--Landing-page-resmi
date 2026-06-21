@@ -1,6 +1,7 @@
-<nav class="fixed w-full z-50 bg-[#ecf0f3] shadow-[0_4px_20px_rgba(163,177,198,0.35)] transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+<nav id="top-navbar" class="fixed w-full z-50 bg-[#ecf0f3]/40 backdrop-blur-md border-b border-white/20 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between relative">
         
+        <!-- Profile / Identity -->
         <div class="flex items-center gap-2 sm:gap-4 min-w-0">
             <div onclick="openProfileZoom()" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] cursor-pointer hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] transition-all bg-[#ecf0f3] flex items-center justify-center p-0.5 shrink-0">
                 <img src="image/hero.jpg" alt="Profile" class="w-full h-full object-cover rounded-lg">
@@ -11,32 +12,188 @@
             </a>
         </div>
         
-        <div class="hidden lg:flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-600">
-            <a href="index.html#services" class="hover:text-blue-600 transition-colors" data-t="nav_services">Keahlian</a>
-            <a href="index.html#partnership" class="hover:text-blue-600 transition-colors" data-t="nav_partnership">Kerjasama</a>
-            <a href="index.html#portofolio" class="hover:text-blue-600 transition-colors" data-t="nav_portfolio">Portofolio</a>
-            <a href="index.html#reviews" class="hover:text-blue-600 transition-colors" data-t="nav_reviews">Ulasan</a>
-            <a href="index.html#artikel" class="hover:text-blue-600 transition-colors" data-t="nav_journal">Jurnal</a>
-            <div class="relative group">
-                <button class="hover:text-blue-600 transition-colors flex items-center gap-1 uppercase" data-t="nav_info">Informasi <i data-lucide="chevron-down" class="w-3 h-3 group-hover:rotate-180 transition-transform"></i></button>
-                <div class="absolute left-0 top-full pt-4 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                    <div class="bg-[#ecf0f3] rounded-2xl p-2 shadow-[8px_8px_16px_#b8bec9,-8px_-8px_16px_#ffffff] border border-white/40">
-                        <a href="view.html?page=about" class="block px-4 py-3 hover:bg-gray-200/50 text-[10px] text-gray-600 hover:text-blue-600 font-extrabold transition-colors border-b border-gray-200/70 rounded-xl">ABOUT ME</a>
-                        <a href="id/bussines/proposal/proposal.html" class="block px-4 py-3 hover:bg-gray-200/50 text-[10px] text-blue-600 hover:text-blue-700 font-bold transition-colors border-b border-gray-200/70 rounded-xl">PROPOSAL</a>
-                        <a href="view.html?page=contact" class="block px-4 py-3 hover:bg-gray-200/50 text-[10px] text-gray-600 hover:text-blue-600 font-extrabold transition-colors border-b border-gray-200/70 rounded-xl">CONTACT</a>
-                        <a href="view.html?page=faq" class="block px-4 py-3 hover:bg-gray-200/50 text-[10px] text-gray-600 hover:text-blue-600 font-extrabold transition-colors border-b border-gray-200/70 rounded-xl">FAQ</a>
-                        <a href="view.html?page=privacy" class="block px-4 py-3 hover:bg-gray-200/50 text-[10px] text-gray-600 hover:text-blue-600 font-extrabold transition-colors rounded-xl">PRIVACY</a>
+        <!-- Desktop Mega Menu Navigation -->
+        <div class="hidden lg:flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-600 h-full">
+            
+            <!-- Menu Utama (Full Width Dropdown) -->
+            <div class="relative group h-full flex items-center static">
+                <button class="hover:text-blue-600 transition-colors flex items-center gap-1.5 uppercase h-full" data-t="nav_main_menu">
+                    Home <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-hover:rotate-180 transition-transform"></i>
+                </button>
+                <div class="fixed left-0 top-20 w-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-40 bg-[#ecf0f3]/95 backdrop-blur-md border-b border-gray-300 shadow-[0_15px_30px_rgba(163,177,198,0.25)]">
+                    <div class="max-w-7xl mx-auto px-8 py-8 grid grid-cols-4 gap-8">
+                        <div>
+                            <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Navigasi Halaman</h4>
+                            <div class="flex flex-col gap-3">
+                                <a href="index.html#services" class="nav-link text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2" data-section="services" data-t="nav_services"><i data-lucide="shield-check" class="w-4 h-4 text-blue-600"></i> Keahlian</a>
+                                <a href="index.html#partnership" class="nav-link text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2" data-section="partnership" data-t="nav_partnership"><i data-lucide="handshake" class="w-4 h-4 text-blue-600"></i> Kerjasama</a>
+                                <a href="index.html#teacher" class="nav-link text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2" data-section="teacher" data-t="nav_teacher"><i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i> Akademis</a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Publikasi & Karya</h4>
+                            <div class="flex flex-col gap-3">
+                                <a href="index.html#portofolio" class="nav-link text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2" data-section="portofolio" data-t="nav_portfolio"><i data-lucide="briefcase" class="w-4 h-4 text-blue-600"></i> Portofolio</a>
+                                <a href="index.html#reviews" class="nav-link text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2" data-section="reviews" data-t="nav_reviews"><i data-lucide="star" class="w-4 h-4 text-blue-600"></i> Ulasan</a>
+                                <a href="index.html#daftar-jurnal" class="nav-link text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2" data-section="daftar-jurnal" data-t="nav_journal"><i data-lucide="book-open" class="w-4 h-4 text-blue-600"></i> Jurnal Ilmiah</a>
+                                <a href="index.html#awards" class="nav-link text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2" data-section="awards" data-t="nav_awards"><i data-lucide="award" class="w-4 h-4 text-blue-600"></i> Sertifikat</a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Menu Lainnya</h4>
+                            <div class="flex flex-col gap-3">
+                                <a href="proposal" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i> Proposal Bisnis</a>
+                                <a href="about" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="user" class="w-4 h-4 text-blue-600"></i> Profil Lengkap</a>
+                                <a href="faq" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4 text-blue-600"></i> FAQ / Bantuan</a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Hubungi Kami</h4>
+                            <div class="flex flex-col gap-3">
+                                <a href="contact" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-blue-600"></i> Halaman Kontak</a>
+                                <a href="mailto:algojodua2@gmail.com" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-blue-600"></i> Email Kemitraan</a>
+                                <a href="https://wa.me/6288971071138" target="_blank" class="text-green-600 hover:text-green-700 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="message-square" class="w-4 h-4 text-green-600"></i> WhatsApp Resmi</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Projek/Proposal Dropdown (Full Width) -->
+            <div class="relative group h-full flex items-center static">
+                <button class="hover:text-blue-600 transition-colors flex items-center gap-1.5 uppercase h-full" data-t="nav_project_proposal">
+                    Pengembangan <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-hover:rotate-180 transition-transform"></i>
+                </button>
+                <div class="fixed left-0 top-20 w-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-40 bg-[#ecf0f3]/95 backdrop-blur-md border-b border-gray-300 shadow-[0_15px_30px_rgba(163,177,198,0.25)]">
+                    <div class="max-w-4xl mx-auto px-8 py-8 grid grid-cols-4 gap-6 justify-center">
+                        
+                        <!-- Proposal Project Card -->
+                        <a href="proposal" class="flex flex-col items-center justify-center p-6 bg-[#ecf0f3] text-gray-700 hover:text-blue-600 shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2.5px_2.5px_5px_#b8bec9,inset_-2.5px_-2.5px_5px_#ffffff] rounded-2xl transition-all group/card text-center gap-2.5">
+                            <div class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] group-hover/card:scale-110 transition-transform">
+                                <i data-lucide="file-text" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider">Proposal Project</span>
+                        </a>
+
+                        <!-- Karya Ilmiah Card -->
+                        <a href="javascript:void(0)" class="flex flex-col items-center justify-center p-6 bg-[#ecf0f3] text-gray-700 hover:text-blue-600 shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2.5px_2.5px_5px_#b8bec9,inset_-2.5px_-2.5px_5px_#ffffff] rounded-2xl transition-all group/card text-center gap-2.5">
+                            <div class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] group-hover/card:scale-110 transition-transform">
+                                <i data-lucide="award" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider">Karya Ilmiah</span>
+                        </a>
+
+                        <!-- Publikasi Penelitian Card -->
+                        <a href="javascript:void(0)" class="flex flex-col items-center justify-center p-6 bg-[#ecf0f3] text-gray-700 hover:text-blue-600 shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2.5px_2.5px_5px_#b8bec9,inset_-2.5px_-2.5px_5px_#ffffff] rounded-2xl transition-all group/card text-center gap-2.5">
+                            <div class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] group-hover/card:scale-110 transition-transform">
+                                <i data-lucide="book-open" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider">Publikasi Penelitian</span>
+                        </a>
+
+                        <!-- Artikel Card -->
+                        <a href="baca.html" class="flex flex-col items-center justify-center p-6 bg-[#ecf0f3] text-gray-700 hover:text-blue-600 shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2.5px_2.5px_5px_#b8bec9,inset_-2.5px_-2.5px_5px_#ffffff] rounded-2xl transition-all group/card text-center gap-2.5">
+                            <div class="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] group-hover/card:scale-110 transition-transform">
+                                <i data-lucide="newspaper" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider">Artikel</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Dropdown (Full Width) -->
+            <div class="relative group h-full flex items-center static">
+                <button class="hover:text-blue-600 transition-colors flex items-center gap-1.5 uppercase h-full" data-t="nav_info">
+                    Info <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-hover:rotate-180 transition-transform"></i>
+                </button>
+                <div class="fixed left-0 top-20 w-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-40 bg-[#ecf0f3]/95 backdrop-blur-md border-b border-gray-300 shadow-[0_15px_30px_rgba(163,177,198,0.25)]">
+                    <div class="max-w-7xl mx-auto px-8 py-10 grid grid-cols-4 gap-8">
+                        <div>
+                            <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4 block">Tentang</span>
+                            <a href="about" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="info" class="w-4 h-4 text-blue-600"></i> Biodata Lengkap</a>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4 block">Bantuan</span>
+                            <a href="faq" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4 text-blue-600"></i> Pertanyaan Umum (FAQ)</a>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4 block">Kebijakan</span>
+                            <a href="privacy" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4 text-blue-600"></i> Kebijakan Privasi</a>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4 block">Disclaimer</span>
+                            <a href="disclaimer" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-blue-600"></i> Batasan Tanggung Jawab</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Dropdown (Full Width) -->
+            <div class="relative group h-full flex items-center static">
+                <button class="hover:text-blue-600 transition-colors flex items-center gap-1.5 uppercase h-full" data-t="nav_contact">
+                    Contact <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-hover:rotate-180 transition-transform"></i>
+                </button>
+                <div class="fixed left-0 top-20 w-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-40 bg-[#ecf0f3]/95 backdrop-blur-md border-b border-gray-300 shadow-[0_15px_30px_rgba(163,177,198,0.25)]">
+                    <div class="max-w-7xl mx-auto px-8 py-10 grid grid-cols-3 gap-12">
+                        <div class="flex flex-col gap-3">
+                            <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest">Hubungi Kami</span>
+                            <p class="text-[11px] text-gray-500 normal-case leading-relaxed font-medium">Buka konsultasi untuk arsitektur sistem IT, analisis siber forensik, dan konsultasi legalitas hukum digital.</p>
+                            <a href="contact" class="mt-2 inline-flex items-center gap-2 px-4 py-2 bg-[#ecf0f3] text-blue-600 shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-xl text-[10px] font-black uppercase transition-all w-fit">
+                                Halaman Kontak <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </a>
+                        </div>
+                        <div class="flex flex-col gap-3 border-l border-gray-300/60 pl-12 justify-center">
+                            <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1">Surel Kemitraan</span>
+                            <a href="mailto:algojodua2@gmail.com" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-blue-600"></i> algojodua2@gmail.com</a>
+                        </div>
+                        <div class="flex flex-col gap-3 border-l border-gray-300/60 pl-12 justify-center">
+                            <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1">WhatsApp Hubungi</span>
+                            <a href="https://wa.me/6288971071138" target="_blank" class="text-green-600 hover:text-green-700 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="message-square" class="w-4 h-4 text-green-600"></i> +62 889-7107-1138</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="flex items-center gap-3 sm:gap-6 shrink-0">
-            <div class="hidden md:flex items-center bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-full p-1 border border-white/20">
-                <button onclick="switchLang('id')" id="btn-id" class="px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer text-gray-600">ID</button>
-                <button onclick="switchLang('en')" id="btn-en" class="px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer text-gray-600">EN</button>
+            <!-- Language Dropdown -->
+            <div class="relative group hidden md:block">
+                <button class="flex items-center gap-1.5 px-3 py-2 bg-[#ecf0f3] text-gray-700 shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-xl text-[10px] font-black uppercase transition-all">
+                    <span id="active-lang-label">ID</span>
+                    <i data-lucide="globe" class="w-3.5 h-3.5 text-blue-600"></i>
+                    <i data-lucide="chevron-down" class="w-2.5 h-2.5 group-hover:rotate-180 transition-transform"></i>
+                </button>
+                <div class="absolute right-0 top-full pt-2 w-36 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                    <div class="bg-[#ecf0f3] rounded-2xl p-1.5 shadow-[8px_8px_16px_#b8bec9,-8px_-8px_16px_#ffffff] border border-white/40 max-h-60 overflow-y-auto custom-scrollbar">
+                        <button onclick="switchLang('id')" class="w-full text-left px-3 py-2 hover:bg-gray-200/55 text-[9px] text-gray-700 hover:text-blue-600 font-extrabold rounded-lg transition-colors flex items-center justify-between">
+                            <span>Indonesia</span> <span class="text-gray-400 font-medium">ID</span>
+                        </button>
+                        <button onclick="switchLang('en')" class="w-full text-left px-3 py-2 hover:bg-gray-200/55 text-[9px] text-gray-700 hover:text-blue-600 font-extrabold rounded-lg transition-colors flex items-center justify-between">
+                            <span>English</span> <span class="text-gray-400 font-medium">EN</span>
+                        </button>
+                        <button onclick="switchLang('zh')" class="w-full text-left px-3 py-2 hover:bg-gray-200/55 text-[9px] text-gray-700 hover:text-blue-600 font-extrabold rounded-lg transition-colors flex items-center justify-between">
+                            <span>中文 (Mandarin)</span> <span class="text-gray-400 font-medium">ZH</span>
+                        </button>
+                        <button onclick="switchLang('ja')" class="w-full text-left px-3 py-2 hover:bg-gray-200/55 text-[9px] text-gray-700 hover:text-blue-600 font-extrabold rounded-lg transition-colors flex items-center justify-between">
+                            <span>日本語 (Jepang)</span> <span class="text-gray-400 font-medium">JA</span>
+                        </button>
+                        <button onclick="switchLang('ko')" class="w-full text-left px-3 py-2 hover:bg-gray-200/55 text-[9px] text-gray-700 hover:text-blue-600 font-extrabold rounded-lg transition-colors flex items-center justify-between">
+                            <span>한국어 (Korea)</span> <span class="text-gray-400 font-medium">KO</span>
+                        </button>
+                        <button onclick="switchLang('ru')" class="w-full text-left px-3 py-2 hover:bg-gray-200/55 text-[9px] text-gray-700 hover:text-blue-600 font-extrabold rounded-lg transition-colors flex items-center justify-between">
+                            <span>Русский (Rusia)</span> <span class="text-gray-400 font-medium">RU</span>
+                        </button>
+                        <button onclick="switchLang('fr')" class="w-full text-left px-3 py-2 hover:bg-gray-200/55 text-[9px] text-gray-700 hover:text-blue-600 font-extrabold rounded-lg transition-colors flex items-center justify-between">
+                            <span>Français (Prancis)</span> <span class="text-gray-400 font-medium">FR</span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
+            <!-- Hire Me Menu -->
             <div class="relative group hidden md:block">
                 <button class="flex items-center gap-2 px-5 py-2.5 bg-[#ecf0f3] text-blue-600 shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-xl text-xs font-extrabold transition-all">
                     <span data-t="nav_hire">Hire Me</span>
@@ -56,6 +213,7 @@
                 </div>
             </div>
 
+            <!-- Mobile Trigger -->
             <button onclick="toggleMobileMenu(true)" class="lg:hidden text-gray-700 hover:text-blue-600 transition-colors shrink-0 w-10 h-10 flex items-center justify-center focus:outline-none">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
@@ -63,8 +221,9 @@
     </div>
 </nav>
 
+<!-- Mobile Drawer -->
 <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#ecf0f3] hidden flex-col transition-all duration-300">
-    <div class="flex items-center justify-between px-4 sm:px-6 h-20 border-b border-gray-200">
+    <div class="flex items-center justify-between px-4 sm:px-6 h-20 border-b border-gray-200 flex-shrink-0">
         <span class="text-gray-800 font-black text-sm tracking-tighter uppercase">Menu</span>
         <button onclick="toggleMobileMenu(false)" class="text-gray-800 p-2 hover:text-blue-600 transition-colors focus:outline-none">
             <i data-lucide="x" class="w-8 h-8"></i>
@@ -72,27 +231,39 @@
     </div>
     
     <div class="flex-1 flex flex-col p-6 space-y-6 overflow-y-auto">
-        <nav class="flex flex-col space-y-4 text-xl sm:text-2xl font-black uppercase tracking-tighter">
-            <a href="index.html#services" onclick="toggleMobileMenu(false)" class="text-gray-800 hover:text-blue-600 transition-colors" data-t="nav_services">Keahlian</a>
-            <a href="index.html#partnership" onclick="toggleMobileMenu(false)" class="text-gray-800 hover:text-blue-600 transition-colors" data-t="nav_partnership">Kerjasama</a>
-            <a href="index.html#portofolio" onclick="toggleMobileMenu(false)" class="text-gray-800 hover:text-blue-600 transition-colors" data-t="nav_portfolio">Portofolio</a>
-            <a href="index.html#reviews" onclick="toggleMobileMenu(false)" class="text-gray-800 hover:text-blue-600 transition-colors" data-t="nav_reviews">Ulasan</a>
-            <a href="index.html#artikel" onclick="toggleMobileMenu(false)" class="text-gray-800 hover:text-blue-600 transition-colors" data-t="nav_journal">Jurnal</a>
-            <a href="view.html?page=about" onclick="toggleMobileMenu(false)" class="text-blue-600 text-sm font-extrabold hover:text-blue-700 transition-colors">About Me</a>
-            <a href="id/bussines/proposal/proposal.html" onclick="toggleMobileMenu(false)" class="text-blue-600 text-sm font-extrabold hover:text-blue-700 transition-colors">Proposal Pengembangan</a>
-            <a href="view.html?page=faq" onclick="toggleMobileMenu(false)" class="text-blue-600 text-sm font-extrabold hover:text-blue-700 transition-colors">FAQ</a>
+        <nav class="flex flex-col space-y-3.5 text-lg sm:text-xl font-black uppercase tracking-tighter">
+            <a href="index.html#services" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="services" data-t="nav_services">Keahlian</a>
+            <a href="index.html#partnership" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="partnership" data-t="nav_partnership">Kerjasama</a>
+            <a href="index.html#teacher" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="teacher" data-t="nav_teacher">Akademis</a>
+            <a href="index.html#portofolio" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="portofolio" data-t="nav_portfolio">Portofolio</a>
+            <a href="index.html#reviews" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="reviews" data-t="nav_reviews">Ulasan</a>
+            <a href="index.html#daftar-jurnal" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="daftar-jurnal" data-t="nav_journal">Jurnal</a>
+            <a href="index.html#awards" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="awards" data-t="nav_awards">Sertifikat</a>
+            <a href="index.html#contact" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="contact" data-t="nav_contact">Kontak</a>
+            <div class="h-px bg-gray-200 my-1"></div>
+            <div class="flex flex-wrap gap-4 text-xs font-bold text-blue-600">
+                <a href="proposal" onclick="toggleMobileMenu(false)" class="hover:text-blue-800 transition-colors">Proposal</a>
+                <a href="about" onclick="toggleMobileMenu(false)" class="hover:text-blue-800 transition-colors">About Me</a>
+                <a href="faq" onclick="toggleMobileMenu(false)" class="hover:text-blue-800 transition-colors">FAQ</a>
+                <a href="privacy" onclick="toggleMobileMenu(false)" class="hover:text-blue-800 transition-colors">Privacy</a>
+            </div>
         </nav>
 
-        <div class="pt-8 border-t border-gray-200 space-y-6">
-            <div class="flex flex-col gap-4">
+        <div class="pt-6 border-t border-gray-200 space-y-6">
+            <div class="flex flex-col gap-3">
                 <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Language</span>
-                <div class="flex gap-4">
-                    <button onclick="switchLang('id')" class="text-sm font-black text-gray-700 px-4 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg" id="m-btn-id">ID</button>
-                    <button onclick="switchLang('en')" class="text-sm font-black text-gray-700 px-4 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg" id="m-btn-en">EN</button>
+                <div class="flex flex-wrap gap-2" id="mobile-lang-list">
+                    <button onclick="switchLang('id')" class="text-[10px] font-black text-gray-700 px-3 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg" id="m-btn-id">ID</button>
+                    <button onclick="switchLang('en')" class="text-[10px] font-black text-gray-700 px-3 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg" id="m-btn-en">EN</button>
+                    <button onclick="switchLang('zh')" class="text-[10px] font-black text-gray-700 px-3 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg" id="m-btn-zh">ZH</button>
+                    <button onclick="switchLang('ja')" class="text-[10px] font-black text-gray-700 px-3 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg" id="m-btn-ja">JA</button>
+                    <button onclick="switchLang('ko')" class="text-[10px] font-black text-gray-700 px-3 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg" id="m-btn-ko">KO</button>
+                    <button onclick="switchLang('ru')" class="text-[10px] font-black text-gray-700 px-3 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg" id="m-btn-ru">RU</button>
+                    <button onclick="switchLang('fr')" class="text-[10px] font-black text-gray-700 px-3 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg" id="m-btn-fr">FR</button>
                 </div>
             </div>
 
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-3">
                 <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Quick Connect</span>
                 <div class="grid grid-cols-2 gap-4">
                     <a href="mailto:algojodua2@gmail.com" class="flex items-center justify-center gap-2 p-4 bg-[#ecf0f3] shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] active:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-xl text-blue-600 transition-all">

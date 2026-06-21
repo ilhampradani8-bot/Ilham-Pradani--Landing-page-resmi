@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/proposal", "destination": "/project.html" },
+    { "source": "/project", "destination": "/project.html" },
+    { "source": "/about", "destination": "/view.html" },
+    { "source": "/contact", "destination": "/view.html" },
+    { "source": "/disclaimer", "destination": "/view.html" },
+    { "source": "/faq", "destination": "/view.html" },
+    { "source": "/privacy", "destination": "/view.html" },
+    { "source": "/terms", "destination": "/view.html" }
+  ]
+}

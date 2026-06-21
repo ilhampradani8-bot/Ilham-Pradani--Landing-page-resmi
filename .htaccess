@@ -1,0 +1,23 @@
+RewriteEngine On
+
+# 1. Clean path /proposal and /project redirecting to project.html
+RewriteRule ^proposal$ project.html [L]
+RewriteRule ^proposal/$ project.html [L]
+
+RewriteRule ^project$ project.html [L]
+RewriteRule ^project/$ project.html [L]
+
+# 2. Clean paths for subpages (about, contact, disclaimer, faq, privacy, terms) redirecting to view.html
+RewriteRule ^(about|contact|disclaimer|faq|privacy|terms)$ view.html [L]
+RewriteRule ^(about|contact|disclaimer|faq|privacy|terms)/$ view.html [L]
+
+# 3. Remove .html extension for index, project, view redirecting them to clean URLs (excluding baca.html)
+RewriteCond %{REQUEST_URI} !^/view\.html
+RewriteCond %{REQUEST_URI} !^/baca\.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+# 4. Redirect .html requests to clean URLs (except view.html and baca.html)
+RewriteCond %{THE_REQUEST} \s/+(index|project)\.html [NC]
+RewriteRule ^ /%1 [R=301,L]

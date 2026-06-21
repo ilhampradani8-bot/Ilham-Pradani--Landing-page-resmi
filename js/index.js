@@ -229,28 +229,28 @@ function initServicesTabs() {
 
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = `service-tab-btn flex items-center gap-3 p-3 text-left rounded-2xl transition-all w-full shrink-0 md:w-auto
-            ${index === 0 ? 'bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'bg-[#ecf0f3] shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
+        btn.className = `service-tab-btn flex items-center gap-1.5 md:gap-3 p-1.5 md:p-3 text-left rounded-lg md:rounded-2xl transition-all w-full min-w-0
+            ${index === 0 ? 'bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
         btn.innerHTML = `
-            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${index === 0 ? 'bg-blue-600 text-white shadow-sm' : 'bg-[#ecf0f3] shadow-[inset_1px_1px_3px_#b8bec9,inset_-1px_-1px_3px_#ffffff] text-gray-500'}">
-                <i data-lucide="${iconName}" class="w-4 h-4"></i>
+            <div class="w-5 h-5 md:w-8 md:h-8 rounded-md md:rounded-xl flex items-center justify-center shrink-0 ${index === 0 ? 'bg-blue-600 text-white shadow-sm' : 'bg-[#ecf0f3] shadow-[inset_1px_1px_2px_#b8bec9,inset_-1px_-1px_2px_#ffffff] text-gray-500'}">
+                <i data-lucide="${iconName}" class="w-3 h-3 md:w-4 md:h-4"></i>
             </div>
-            <span class="text-xs uppercase tracking-wider font-extrabold truncate" ${dataT ? `data-t="${dataT.replace('_t', '_tab')}"` : ''}>${titleText}</span>
+            <span class="text-[8px] md:text-xs uppercase tracking-wider font-extrabold truncate min-w-0" ${dataT ? `data-t="${dataT.replace('_t', '_tab')}"` : ''}>${titleText}</span>
         `;
         
         btn.addEventListener('click', () => {
             cards.forEach(c => c.classList.add('hidden'));
             card.classList.remove('hidden');
-            card.className = "neu-card w-full h-full p-5 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
-
+            card.className = "neu-card w-full h-full p-4 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
+ 
             document.querySelectorAll('.service-tab-btn').forEach((b, idx) => {
-                b.className = `service-tab-btn flex items-center gap-3 p-3 text-left rounded-2xl transition-all w-full shrink-0 md:w-auto bg-[#ecf0f3]
-                    ${idx === index ? 'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
+                b.className = `service-tab-btn flex items-center gap-1.5 md:gap-3 p-1.5 md:p-3 text-left rounded-lg md:rounded-2xl transition-all w-full min-w-0 bg-[#ecf0f3]
+                    ${idx === index ? 'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
                 
                 const iconContainer = b.querySelector('div');
                 if (iconContainer) {
-                    iconContainer.className = `w-8 h-8 rounded-xl flex items-center justify-center shrink-0
-                        ${idx === index ? 'bg-blue-600 text-white shadow-sm' : 'bg-[#ecf0f3] shadow-[inset_1px_1px_3px_#b8bec9,inset_-1px_-1px_3px_#ffffff] text-gray-500'}`;
+                    iconContainer.className = `w-5 h-5 md:w-8 md:h-8 rounded-md md:rounded-xl flex items-center justify-center shrink-0
+                        ${idx === index ? 'bg-blue-600 text-white shadow-sm' : 'bg-[#ecf0f3] shadow-[inset_1px_1px_2px_#b8bec9,inset_-1px_-1px_2px_#ffffff] text-gray-500'}`;
                 }
             });
         });
@@ -260,7 +260,7 @@ function initServicesTabs() {
         if (index > 0) {
             card.classList.add('hidden');
         } else {
-            card.className = "neu-card w-full h-full p-8 sm:p-12 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
+            card.className = "neu-card w-full h-full p-4 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
         }
     });
 
@@ -279,6 +279,64 @@ function initParallaxScroll() {
         const scrollTop = window.scrollY;
         const viewportHeight = window.innerHeight;
         
+        // 1. Transparent/Glassmorphic Header in Hero section
+        const navbar = document.getElementById('top-navbar');
+        if (navbar) {
+            if (scrollTop < 80) {
+                navbar.className = "fixed w-full z-50 bg-[#ecf0f3]/40 backdrop-blur-md border-b border-white/20 shadow-none transition-all duration-300";
+            } else {
+                navbar.className = "fixed w-full z-50 bg-[#ecf0f3] shadow-[0_4px_20px_rgba(163,177,198,0.35)] border-transparent transition-all duration-300";
+            }
+        }
+
+        // 2. Active Section Navigation Link Highlight (Scroll Spy)
+        const currentIndex = Math.min(
+            sections.length - 1,
+            Math.max(0, Math.round(scrollTop / viewportHeight))
+        );
+        const activeSection = sections[currentIndex];
+        const activeId = activeSection ? activeSection.getAttribute('id') : '';
+
+        // Highlight Top-Level triggers
+        const mainTrigger = document.querySelector('[data-t="nav_main_menu"]');
+        if (mainTrigger) {
+            const isMainActive = ['services', 'partnership', 'teacher', 'portofolio', 'reviews', 'daftar-jurnal', 'awards'].includes(activeId);
+            if (isMainActive) {
+                mainTrigger.className = "hover:text-blue-600 transition-colors flex items-center gap-1.5 uppercase h-full text-blue-600 font-black";
+            } else {
+                mainTrigger.className = "hover:text-blue-600 transition-colors flex items-center gap-1.5 uppercase h-full text-gray-600 font-bold";
+            }
+        }
+
+        const contactTrigger = document.querySelector('[data-t="nav_contact"]');
+        if (contactTrigger) {
+            if (activeId === 'contact') {
+                contactTrigger.className = "hover:text-blue-600 transition-colors flex items-center gap-1.5 uppercase h-full text-blue-600 font-black";
+            } else {
+                contactTrigger.className = "hover:text-blue-600 transition-colors flex items-center gap-1.5 uppercase h-full text-gray-600 font-bold";
+            }
+        }
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            const secId = link.getAttribute('data-section');
+            if (secId === activeId) {
+                link.className = "nav-link hover:text-blue-600 transition-all duration-300 px-2.5 py-1.5 rounded-full text-blue-600 font-extrabold shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff]";
+            } else {
+                link.className = "nav-link hover:text-blue-600 transition-all duration-300 px-2.5 py-1.5 rounded-full text-gray-600 font-bold";
+            }
+        });
+
+        const mNavLinks = document.querySelectorAll('.m-nav-link');
+        mNavLinks.forEach(link => {
+            const secId = link.getAttribute('data-section');
+            if (secId === activeId) {
+                link.className = "m-nav-link text-blue-600 hover:text-blue-600 font-black transition-colors";
+            } else {
+                link.className = "m-nav-link text-gray-800 hover:text-blue-600 font-medium transition-colors";
+            }
+        });
+
         sections.forEach((section, index) => {
             const sectionTop = index * viewportHeight;
             const relativeScroll = scrollTop - sectionTop;
@@ -540,6 +598,106 @@ function renderPortfolioGrid(data) {
     init3DCarousel(container);
 }
 
+// Floating Page Navigation Indicator
+function initPageNavIndicator() {
+    let container = document.getElementById('page-nav-indicator');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'page-nav-indicator';
+        container.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex gap-2 px-3 py-2 bg-[#ecf0f3] rounded-full shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] border border-white/20 items-center justify-center pointer-events-auto transition-opacity duration-300';
+        document.body.appendChild(container);
+    }
+
+    const sections = Array.from(document.querySelectorAll('main > section.scroll-section'));
+    if (sections.length === 0) return;
+
+    const lang = localStorage.getItem('preferred_lang') || 'id';
+    const sectionNames = {
+        id: {
+            'home': 'Beranda',
+            'services': 'Layanan',
+            'partnership': 'Mitra',
+            'teacher': 'Akademis',
+            'portofolio': 'Karya',
+            'reviews': 'Ulasan',
+            'artikel': 'Artikel',
+            'daftar-jurnal': 'Jurnal',
+            'awards': 'Sertifikat',
+            'contact': 'Kontak'
+        },
+        en: {
+            'home': 'Home',
+            'services': 'Services',
+            'partnership': 'Partnership',
+            'teacher': 'Academic',
+            'portofolio': 'Portfolio',
+            'reviews': 'Reviews',
+            'artikel': 'Articles',
+            'daftar-jurnal': 'Journals',
+            'awards': 'Certificates',
+            'contact': 'Contact'
+        }
+    };
+
+    container.innerHTML = '';
+
+    sections.forEach((section, index) => {
+        const id = section.getAttribute('id');
+        const name = (sectionNames[lang] && sectionNames[lang][id]) ? sectionNames[lang][id] : id;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'group relative p-1 focus:outline-none flex items-center justify-center';
+        btn.setAttribute('aria-label', name);
+        
+        const dot = document.createElement('span');
+        dot.className = `h-2 rounded-full transition-all duration-300 ${index === 0 ? 'w-5 bg-blue-600' : 'w-2 bg-gray-400 group-hover:bg-gray-600'}`;
+        btn.appendChild(dot);
+
+        const tooltip = document.createElement('span');
+        tooltip.className = 'absolute bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-[9px] font-bold rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50';
+        tooltip.textContent = name;
+        btn.appendChild(tooltip);
+
+        btn.addEventListener('click', () => {
+            const viewportHeight = window.innerHeight;
+            const targetTop = index * viewportHeight;
+            if (window.lenis) {
+                window.lenis.scrollTo(targetTop, { duration: 1.2 });
+            } else {
+                window.scrollTo({ top: targetTop, behavior: 'smooth' });
+            }
+        });
+
+        container.appendChild(btn);
+    });
+
+    const updateActiveDot = () => {
+        const scrollTop = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        const currentIndex = Math.min(
+            sections.length - 1,
+            Math.max(0, Math.round(scrollTop / viewportHeight))
+        );
+
+        const buttons = container.querySelectorAll('button');
+        buttons.forEach((btn, idx) => {
+            const dot = btn.querySelector('span');
+            if (dot) {
+                if (idx === currentIndex) {
+                    dot.className = 'h-2 w-5 bg-blue-600 rounded-full transition-all duration-300';
+                } else {
+                    dot.className = 'h-2 w-2 bg-gray-400 group-hover:bg-gray-600 rounded-full transition-all duration-300';
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', updateActiveDot, { passive: true });
+    window.addEventListener('resize', updateActiveDot);
+    updateActiveDot();
+}
+
 // EXECUTION
 document.addEventListener('DOMContentLoaded', async () => {
     await loadComponent('header-placeholder', 'include/header.html');
@@ -573,6 +731,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         new Swiper('.partnership-swiper', {
             slidesPerView: 1,
             spaceBetween: 16,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            navigation: {
+                nextEl: '.partnership-next',
+                prevEl: '.partnership-prev',
+            },
             pagination: {
                 el: '.partnership-swiper-pagination',
                 clickable: true,
@@ -588,8 +756,41 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
         });
+
+        // Google Reviews Slider
+        new Swiper('.reviews-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            navigation: {
+                nextEl: '.reviews-next',
+                prevEl: '.reviews-prev',
+            },
+            pagination: {
+                el: '.reviews-swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                },
+                1150: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                }
+            }
+        });
     }
 
     // Initialize Parallax Scroll Stack Effect
     initParallaxScroll();
+
+    // Initialize Floating Page Navigation Indicator
+    initPageNavIndicator();
 });

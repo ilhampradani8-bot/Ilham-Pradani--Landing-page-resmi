@@ -38,45 +38,40 @@
         function updateLangUI() {
             const lang = localStorage.getItem('preferred_lang') || 'id';
 
-            const btnId = document.getElementById('btn-id');
-            const btnEn = document.getElementById('btn-en');
-            const mBtnId = document.getElementById('m-btn-id');
-            const mBtnEn = document.getElementById('m-btn-en');
-            const fBtnId = document.getElementById('f-btn-id');
-            const fBtnEn = document.getElementById('f-btn-en');
-
-            // Desktop buttons
-            if (btnId && btnEn) {
-                if (lang === 'en') {
-                    btnEn.className = "px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer text-blue-600 shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff]";
-                    btnId.className = "px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer text-gray-600";
-                } else {
-                    btnId.className = "px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer text-blue-600 shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff]";
-                    btnEn.className = "px-4 py-1.5 text-[10px] font-black rounded-full transition-all cursor-pointer text-gray-600";
-                }
+            // 1. Desktop dropdown label
+            const activeLangLabel = document.getElementById('active-lang-label');
+            if (activeLangLabel) {
+                activeLangLabel.textContent = lang.toUpperCase();
             }
 
-            // Mobile buttons
-            if (mBtnId && mBtnEn) {
-                if (lang === 'en') {
-                    mBtnEn.className = "text-sm font-black text-blue-600 px-4 py-2 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-lg transition-all";
-                    mBtnId.className = "text-sm font-black text-gray-700 px-4 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg transition-all";
-                } else {
-                    mBtnId.className = "text-sm font-black text-blue-600 px-4 py-2 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-lg transition-all";
-                    mBtnEn.className = "text-sm font-black text-gray-700 px-4 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg transition-all";
+            // 2. Mobile buttons
+            const langList = ['id', 'en', 'zh', 'ja', 'ko', 'ru', 'fr'];
+            langList.forEach(l => {
+                const mBtn = document.getElementById(`m-btn-${l}`);
+                if (mBtn) {
+                    if (l === lang) {
+                        mBtn.className = "text-[10px] font-black text-blue-600 px-3 py-2 bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-lg transition-all";
+                    } else {
+                        mBtn.className = "text-[10px] font-black text-gray-700 px-3 py-2 bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] rounded-lg transition-all";
+                    }
                 }
-            }
+            });
 
-            // Footer buttons
-            if (fBtnId && fBtnEn) {
-                if (lang === 'en') {
-                    fBtnEn.className = "text-[9px] font-extrabold text-blue-600 transition-colors";
-                    fBtnId.className = "text-[9px] font-extrabold text-gray-700 hover:text-blue-600 transition-colors";
-                } else {
-                    fBtnId.className = "text-[9px] font-extrabold text-blue-600 transition-colors";
-                    fBtnEn.className = "text-[9px] font-extrabold text-gray-700 hover:text-blue-600 transition-colors";
-                }
+            // 3. Footer buttons
+            const fActiveLang = document.getElementById('f-active-lang');
+            if (fActiveLang) {
+                fActiveLang.textContent = lang.toUpperCase();
             }
+            langList.forEach(l => {
+                const fBtn = document.getElementById(`f-btn-${l}`);
+                if (fBtn) {
+                    if (l === lang) {
+                        fBtn.className = "block w-full text-left px-2 py-1 text-[9px] font-black text-blue-400 bg-gray-950 rounded transition-colors";
+                    } else {
+                        fBtn.className = "block w-full text-left px-2 py-1 text-[9px] font-extrabold text-gray-400 hover:text-white rounded transition-colors";
+                    }
+                }
+            });
         }
 
         async function applyTranslations() {
@@ -107,8 +102,19 @@
         }
 
         async function loadPageContent() {
-            const params = new URLSearchParams(window.location.search);
-            const page = params.get('page') || 'about';
+            let page = 'about';
+            const path = window.location.pathname.replace(/^\/|\/$/g, '').split('/').pop();
+            const validPages = ['about', 'contact', 'disclaimer', 'faq', 'privacy', 'terms'];
+            
+            if (path && validPages.includes(path)) {
+                page = path;
+            } else {
+                const params = new URLSearchParams(window.location.search);
+                const queryPage = params.get('page');
+                if (queryPage && validPages.includes(queryPage)) {
+                    page = queryPage;
+                }
+            }
             const container = document.getElementById('content-container');
             
             try {

@@ -6,33 +6,25 @@
   "nav_journal": "Jurnal",
   "nav_hire": "Hire Me",
   "hero_title": "Arsitek Sistem & Pakar AI Mandiri.",
-  
-
-
-
   "article_badge": "Tech & Legal Journal",
   "article_title": "Insight Profesional.",
   "article_btn_all": "Lihat Semua Jurnal",
   "badge_new": "BARU",
   "list_title": "Arsip Lengkap Jurnal",
-
   "footer_desc": "Arsitek Sistem & Pakar AI Mandiri. Integrasi presisi teknis dan kepatuhan hukum untuk ekosistem digital masa depan.",
   "footer_nav_title": "Navigasi",
   "footer_connect": "Koneksi",
   "footer_location": "Lokasi Operasional",
   "footer_lang_label": "Bahasa",
   "footer_copy": "© 2026 Dr. Ilham Pradani C.L. Hak Cipta Dilindungi.",
-
   "contact_badge": "Hubungi Sekarang",
   "contact_title": "Mari Berdiskusi.",
   "contact_desc": "Siap membantu transformasi digital bisnis Anda dengan solusi teknis yang presisi dan aman secara regulasi.",
   "contact_wa": "WhatsApp Bisnis",
   "contact_mail": "Email Profesional",
-
   "portofolio_title": "Eksplorasi Karya.",
   "portofolio_desc": "Implementasi teknis dari visi strategis dan solusi digital.",
   "portfolio_nav_hint": "Klik kartu untuk menelusuri karya",
-
   "partnership_title": "Sinergi Strategis.",
   "partnership_desc": "Tujuh pilar keahlian yang mengintegrasikan hukum, teknologi, dan keamanan siber.",
   "p_1_t": "Integrasi Hukum & Teknologi (S.H., M.TI.)",
@@ -49,30 +41,26 @@
   "p_6_d": "Pembangunan sistem dari nol yang siap tumbuh bersama besarnya data bisnis Anda.",
   "p_7_t": "Konsultansi Strategis",
   "p_7_d": "Pendampingan penuh dalam transformasi digital dan efisiensi infrastruktur TI perusahaan.",
-
   "service_title": "Layanan Eksklusif.",
   "service_desc": "Solusi teknologi tingkat tinggi yang dirancang dengan presisi arsitektural dan kepatuhan hukum.",
   "s_1_t": "Fullstack System Architect",
-  "s_1_d": "Rancang bangun arsitektur ekosistem web end-to-end berkinerja tinggi dari nol. Mengintegrasikan skalabilitas sistem cloud, pemodelan database tingkat lanjut, efisiensi caching, dan keamanan tangguh untuk aplikasi enterprise skala global.",
+  "s_1_d": "Rancang bangun dan rancangan arsitektur ekosistem web end-to-end berkinerja tinggi dari dasar. Kami mengintegrasikan skalabilitas sistem cloud multi-region, pemodelan database relasional dan non-relasional tingkat lanjut, efisiensi caching berlapis dengan Redis, penyeimbangan beban kerja (load balancing) yang optimal, serta keamanan enkripsi tangguh untuk aplikasi berskala enterprise secara global guna menjamin waktu aktif (uptime) maksimal.",
   "s_2_t": "AI & LLM Orchestration",
-  "s_2_d": "Implementasi AI canggih dan integrasi Large Language Models (LLM) seperti Claude. Mengotomasi proses bisnis kompleks melalui orkestrasi agen otonom, rekayasa prompt sistematis, dan integrasi API kustom yang aman.",
+  "s_2_d": "Implementasi kecerdasan buatan (AI) tingkat lanjut dan integrasi Large Language Models (LLM) tercanggih seperti Claude, GPT-4, dan model lokal. Kami mengotomatisasi seluruh alur proses bisnis yang kompleks melalui pengembangan jaringan orkestrasi agen otonom, rekayasa prompt sistematis (prompt engineering), retrieval-augmented generation (RAG) untuk basis pengetahuan internal, dan integrasi API kustom yang aman.",
   "s_3_t": "Legal-Tech Compliance",
-  "s_3_d": "Audit kepatuhan hukum teknologi digital terpadu untuk memastikan infrastruktur siber Anda memenuhi regulasi global (GDPR, UU PDP, ISO 27001). Melindungi bisnis Anda dari risiko sanksi hukum dan kebocoran data.",
+  "s_3_d": "Audit kepatuhan hukum teknologi digital terpadu secara menyeluruh untuk memastikan infrastruktur siber dan tata kelola data perusahaan Anda sepenuhnya memenuhi regulasi internasional dan nasional seperti GDPR, UU Pelindungan Data Pribadi (UU PDP), regulasi OJK, serta standar industri ISO 27001. Kami merancang kebijakan privasi, tata kelola keamanan siber, dan mitigasi risiko hukum teknologi untuk melindungi bisnis Anda dari sanksi perdata maupun pidana.",
   "s_4_t": "Android APK Development",
-  "s_4_d": "Pengembangan aplikasi Android native kelas dunia menggunakan Kotlin dan arsitektur MVVM modern. Menjamin proses optimasi performa, keamanan kode tingkat tinggi, hingga keberhasilan verifikasi regulasi Google Play Store.",
+  "s_4_d": "Pengembangan aplikasi mobile native Android kelas dunia dengan performa tinggi menggunakan bahasa Kotlin, Jetpack Compose, dan pola arsitektur MVVM/Clean Architecture modern. Kami menjamin proses optimasi memori secara ketat, integrasi API real-time, enkripsi penyimpanan data lokal (SQLite/Room), pengamanan kode terhadap reverse engineering (ProGuard/R8), hingga pemenuhan standar kebijakan Google Play Store.",
   "s_5_t": "AI for Algorithmic Trading",
-  "s_5_d": "Pengembangan sistem perdagangan kuantitatif otomatis bertenaga AI. Memanfaatkan algoritma pembelajaran mesin untuk analisis data pasar real-time, manajemen risiko ketat, dan eksekusi strategi trading dengan latensi ultra-rendah.",
+  "s_5_d": "Rancang bangun sistem perdagangan algoritma kuantitatif otomatis bertenaga kecerdasan buatan. Menggunakan model pembelajaran mesin (machine learning) untuk menganalisis arus data pasar (market data feed) secara real-time, mendeteksi pola arbitrase, mengoptimalkan alokasi portofolio secara dinamis, mengelola risiko penarikan modal (drawdown), serta mengeksekusi order dengan latensi mikrodetik melalui konektivitas API broker langsung.",
   "s_6_t": "Professional Pentesting",
-  "s_6_d": "Simulasi serangan siber tingkat lanjut (Offensive Security) secara menyeluruh. Menemukan dan mengeksploitasi kerentanan keamanan pada sistem, jaringan, dan aplikasi sebelum dimanfaatkan oleh aktor ancaman berbahaya.",
-
+  "s_6_d": "Simulasi serangan siber ofensif tingkat lanjut (Offensive Security) secara legal dan komprehensif pada seluruh aset digital Anda. Kami melakukan pengujian penetrasi (pentest) pada jaringan internal/eksternal, aplikasi berbasis web, API, dan infrastruktur cloud untuk mengidentifikasi celah keamanan (vulnerabilities), mengeksploitasi potensi risiko secara aman, serta memberikan rekomendasi remediasi teknis yang mendalam sebelum dieksploitasi oleh pihak yang tidak bertanggung jawab.",
   "hero_badge": "Arsitek Sistem & Pakar AI",
   "hero_title_1": "Presisi Teknis.",
   "hero_title_2": "Kepatuhan Hukum.",
   "hero_desc": "Mengintegrasikan arsitektur sistem tingkat tinggi dengan kepastian hukum untuk solusi digital yang aman, skalabel, dan visioner.",
   "hero_cta_1": "Eksplorasi Jurnal",
   "hero_cta_2": "Mulai Kerjasama",
-
-  
   "teacher_badge": "Les Privat Bahasa Inggris",
   "teacher_title": "kursus bahasa Inggris: <br><span class='text-blue-600'>British Accent.</span>",
   "teacher_desc": "Program les privat Bahasa Inggris eksklusif. Tingkatkan kapabilitas komunikasi global Anda dengan pelafalan dan intonasi British yang presisi.",
@@ -81,13 +69,11 @@
   "teacher_wa_sub": "Diskusi jadwal & kurikulum",
   "teacher_web_title": "Platform Pembelajaran",
   "teacher_web_sub": "Segera Hadir",
-
   "nav_reviews": "Ulasan",
   "nav_info": "Informasi",
   "review_badge": "Ulasan Google Terverifikasi",
   "review_title": "Apa Kata Mereka.",
   "review_visit": "Kunjungi Ulasan Google",
-
   "faq_title": "FAQ.",
   "faq_subtitle": "Jawaban atas pertanyaan teknis dan profesional Anda.",
   "faq_cat_tech": "Layanan Teknis",
@@ -95,7 +81,6 @@
   "faq_cat_security": "Keamanan Siber",
   "faq_cat_ai": "Kecerdasan Buatan",
   "faq_cat_other": "Lainnya",
-
   "faq_tech_q1": "Apa itu arsitektur sistem Fullstack?",
   "faq_tech_a1": "Arsitektur Fullstack mencakup pengembangan sisi depan (frontend) dan sisi belakang (backend) secara terintegrasi untuk menciptakan ekosistem digital yang utuh.",
   "faq_tech_q2": "Mengapa skalabilitas penting?",
@@ -106,7 +91,6 @@
   "faq_tech_a4": "Kami menghubungkan sistem Anda dengan layanan pihak ketiga (seperti Payment Gateway atau Maps) melalui protokol aman.",
   "faq_tech_q5": "Apakah melayani perbaikan sistem lama?",
   "faq_tech_a5": "Ya, kami melayani audit dan refactoring kode pada sistem legacy agar lebih modern dan aman.",
-
   "faq_legal_q1": "Mengapa hukum penting dalam IT?",
   "faq_legal_a1": "Kepatuhan hukum melindungi bisnis Anda dari tuntutan pidana dan perdata terkait penyalahgunaan data atau pelanggaran hak cipta.",
   "faq_legal_q2": "Apa itu kepatuhan GDPR/UU PDP?",
@@ -117,7 +101,6 @@
   "faq_legal_a4": "Layanan kami difokuskan pada titik temu antara hukum dan teknologi (Legal-Tech).",
   "faq_legal_q5": "Bagaimana kontrak digital dijamin keabsahannya?",
   "faq_legal_a5": "Kami menerapkan sistem tanda tangan digital dan enkripsi yang sesuai dengan standar keabsahan hukum nasional.",
-
   "faq_sec_q1": "Apa itu Pentesting?",
   "faq_sec_a1": "Pentesting adalah uji penetrasi untuk mencari celah keamanan pada sistem sebelum eksploitasi oleh pihak yang tidak bertanggung jawab.",
   "faq_sec_q2": "Seberapa sering audit keamanan dilakukan?",
@@ -128,7 +111,6 @@
   "faq_sec_a4": "Tentu, seluruh proses konsultasi dilindungi oleh Non-Disclosure Agreement (NDA) yang kuat.",
   "faq_sec_q5": "Apa itu penguatan infrastruktur?",
   "faq_sec_a5": "Proses mengamankan sistem dengan mengurangi risiko serangan melalui penutupan celah yang tidak perlu.",
-
   "faq_ai_q1": "Apa itu LLM Orchestration?",
   "faq_ai_a1": "Pengaturan alur kerja model bahasa besar (seperti Claude atau GPT) untuk menghasilkan output yang spesifik bagi bisnis Anda.",
   "faq_ai_q2": "Bagaimana AI membantu efisiensi bisnis?",
@@ -139,7 +121,6 @@
   "faq_ai_a4": "Ya, dengan konfigurasi privat dan penggunaan server lokal yang memastikan data tidak keluar dari lingkungan perusahaan.",
   "faq_ai_q5": "Bagaimana AI membantu dalam trading?",
   "faq_ai_a5": "AI menganalisis pola pasar dalam milidetik untuk mengeksekusi strategi trading yang presisi dan minim emosi.",
-
   "faq_other_q1": "Bagaimana cara memulai kerjasama?",
   "faq_other_a1": "Anda dapat menghubungi kami via WhatsApp atau Email untuk jadwal diskusi awal secara gratis.",
   "faq_other_q2": "Berapa lama pengerjaan satu proyek?",
@@ -150,7 +131,6 @@
   "faq_other_a4": "Sesi privat untuk meningkatkan kemampuan bicara bahasa Inggris dengan aksen British yang elegan dan profesional.",
   "faq_other_q5": "Bagaimana sistem pembayarannya?",
   "faq_other_a5": "Kami menerima transfer bank, PayPal, dan sistem pembayaran termin (milestone) sesuai kesepakatan.",
-
   "about_hero_badge": "Profil Terverifikasi",
   "about_hero_title": "Dr. Ilham Pradani C.L.",
   "about_bio_p1": "Saya adalah seorang praktisi teknologi yang menggabungkan presisi arsitektur sistem tingkat tinggi dengan kepastian hukum digital. Sebagai seorang <strong>Systems Architect</strong> dan <strong>Peneliti Keamanan Siber</strong>, fokus utama saya adalah membangun ekosistem digital yang tidak hanya inovatif, tetapi juga sepenuhnya patuh terhadap regulasi hukum yang berlaku.",
@@ -158,14 +138,12 @@
   "about_stat_exp": "Tahun Pengalaman",
   "about_stat_lang": "Bahasa Pemrograman",
   "about_testimonial_title": "Testimoni Klien",
-
   "contact_hero_title": "Hubungi Kami.",
   "contact_hero_subtitle": "Siap melayani kebutuhan teknologi dan hukum digital Anda.",
   "contact_office_title": "Kantor Pusat",
   "contact_op_title": "Waktu Operasional",
   "contact_op_days": "Senin - Jumat: 08:00 - 17:00 WIB<br>Sabtu: 09:00 - 14:00 WIB<br>Minggu: Tutup",
   "contact_status": "Tersedia untuk Proyek",
-
   "privacy_title": "Privasi & Data.",
   "privacy_subtitle": "Komitmen kami terhadap keamanan informasi Anda.",
   "privacy_sec1_t": "1. Pengumpulan Informasi",
@@ -175,7 +153,6 @@
   "privacy_sec3_t": "3. Penggunaan Cookies",
   "privacy_sec3_d": "Situs ini menggunakan cookies minimal untuk meningkatkan pengalaman pengguna, seperti menyimpan preferensi bahasa (ID/EN). Cookies ini tidak digunakan untuk melacak aktivitas pribadi di luar domain platform kami.",
   "privacy_update": "Terakhir diperbarui: 27 April 2026",
-
   "disclaimer_title": "Disclaimer.",
   "disclaimer_subtitle": "Batasan tanggung jawab dan penggunaan informasi.",
   "disclaimer_p1": "Informasi yang disediakan di situs web ini bertujuan untuk keperluan informasi umum dan portofolio profesional saja. Meskipun kami berupaya memberikan data yang akurat dan terkini, Dr. Ilham Pradani C.L. tidak memberikan jaminan dalam bentuk apa pun mengenai kelengkapan atau akurasi konten.",
@@ -204,5 +181,10 @@
   "award_cat_vuln": "Vulnerability Research",
   "award_cat_offense": "Offensive Security Certified",
   "award_cat_ethical": "Ethical Hacking Master",
-  "award_cat_method": "Offensive Methodology"
+  "award_cat_method": "Offensive Methodology",
+  "nav_teacher": "Akademis",
+  "nav_awards": "Sertifikat",
+  "nav_contact": "Kontak",
+  "nav_main_menu": "Home",
+  "nav_project_proposal": "Pengembangan"
 }
