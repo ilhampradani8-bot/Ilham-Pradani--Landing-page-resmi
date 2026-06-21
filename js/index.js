@@ -241,7 +241,7 @@ function initServicesTabs() {
         btn.addEventListener('click', () => {
             cards.forEach(c => c.classList.add('hidden'));
             card.classList.remove('hidden');
-            card.className = "neu-card w-full h-full p-8 sm:p-12 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
+            card.className = "neu-card w-full h-full p-5 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
 
             document.querySelectorAll('.service-tab-btn').forEach((b, idx) => {
                 b.className = `service-tab-btn flex items-center gap-3 p-3 text-left rounded-2xl transition-all w-full shrink-0 md:w-auto bg-[#ecf0f3]
