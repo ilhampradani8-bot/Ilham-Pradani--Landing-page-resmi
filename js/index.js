@@ -34,7 +34,7 @@ async function loadArtikel() {
             const label = isToday ? `<span class="absolute top-4 right-4 px-2 py-1 bg-red-600 text-white text-[9px] font-black rounded-sm animate-pulse z-10">${labelText}</span>` : '';
 
             gridHtml += `
-                <a href="baca.html?id=${item.id}" class="neu-card group relative bg-[#ecf0f3] overflow-hidden hover:scale-[1.01] transition-all duration-500 reveal-el flex flex-col sm:flex-row h-auto sm:h-52 w-full">
+                <a href="baca.html?id=${item.id}" class="swiper-slide neu-card group relative bg-[#ecf0f3] overflow-hidden hover:scale-[1.01] transition-all duration-500 reveal-el flex flex-col sm:flex-row h-auto sm:h-52 w-full">
                     ${label}
                     <div class="w-full sm:w-2/5 h-36 sm:h-full overflow-hidden bg-gray-200 relative shrink-0">
                         <img src="${getVal(item, 'gambar')}" 
@@ -61,7 +61,7 @@ async function loadArtikel() {
                             <h3 class="text-base sm:text-md font-extrabold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
                                 ${getVal(item, 'judul')}
                             </h3>
-                            <p class="text-gray-600 text-xs line-clamp-2 sm:line-clamp-3 leading-relaxed mb-4 font-medium">
+                            <p class="text-gray-650 text-xs line-clamp-2 sm:line-clamp-3 leading-relaxed mb-4 font-medium">
                                 ${getVal(item, 'kutipan')}
                             </p>
                         </div>
@@ -81,6 +81,24 @@ async function loadArtikel() {
 
         if (window.lucide) lucide.createIcons();
         initScrollAnimations();
+
+        // Initialize Swiper for articles
+        if (window.Swiper) {
+            new Swiper('.articles-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30
+                    }
+                },
+                pagination: {
+                    el: '.articles-pagination',
+                    clickable: true
+                }
+            });
+        }
     } catch (e) { console.error("Article Error:", e); }
 }
 
@@ -192,6 +210,102 @@ function initScrollAnimations() {
         el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
         observer.observe(el);
     });
+}
+
+function initServicesTabs() {
+    const tabsList = document.getElementById('services-tabs-list');
+    const contentPanel = document.getElementById('services-content-panel');
+    if (!tabsList || !contentPanel) return;
+
+    const cards = Array.from(contentPanel.children);
+    tabsList.innerHTML = '';
+
+    cards.forEach((card, index) => {
+        const titleEl = card.querySelector('[data-t^="s_"][data-t$="_t"]');
+        const iconEl = card.querySelector('[data-lucide]');
+        const iconName = iconEl ? iconEl.getAttribute('data-lucide') : 'layout';
+        const titleText = titleEl ? titleEl.textContent : `Service ${index + 1}`;
+        const dataT = titleEl ? titleEl.getAttribute('data-t') : '';
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `service-tab-btn flex items-center gap-3 p-3 text-left rounded-2xl transition-all w-full shrink-0 md:w-auto
+            ${index === 0 ? 'bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'bg-[#ecf0f3] shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
+        btn.innerHTML = `
+            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${index === 0 ? 'bg-blue-600 text-white shadow-sm' : 'bg-[#ecf0f3] shadow-[inset_1px_1px_3px_#b8bec9,inset_-1px_-1px_3px_#ffffff] text-gray-500'}">
+                <i data-lucide="${iconName}" class="w-4 h-4"></i>
+            </div>
+            <span class="text-xs uppercase tracking-wider font-extrabold truncate" ${dataT ? `data-t="${dataT.replace('_t', '_tab')}"` : ''}>${titleText}</span>
+        `;
+        
+        btn.addEventListener('click', () => {
+            cards.forEach(c => c.classList.add('hidden'));
+            card.classList.remove('hidden');
+            card.className = "neu-card w-full h-full p-8 sm:p-12 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
+
+            document.querySelectorAll('.service-tab-btn').forEach((b, idx) => {
+                b.className = `service-tab-btn flex items-center gap-3 p-3 text-left rounded-2xl transition-all w-full shrink-0 md:w-auto bg-[#ecf0f3]
+                    ${idx === index ? 'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
+                
+                const iconContainer = b.querySelector('div');
+                if (iconContainer) {
+                    iconContainer.className = `w-8 h-8 rounded-xl flex items-center justify-center shrink-0
+                        ${idx === index ? 'bg-blue-600 text-white shadow-sm' : 'bg-[#ecf0f3] shadow-[inset_1px_1px_3px_#b8bec9,inset_-1px_-1px_3px_#ffffff] text-gray-500'}`;
+                }
+            });
+        });
+
+        tabsList.appendChild(btn);
+
+        if (index > 0) {
+            card.classList.add('hidden');
+        } else {
+            card.className = "neu-card w-full h-full p-8 sm:p-12 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
+        }
+    });
+
+    if (window.lucide) lucide.createIcons();
+}
+
+function initParallaxScroll() {
+    const sections = Array.from(document.querySelectorAll('main > section'));
+    
+    sections.forEach((section, index) => {
+        section.style.zIndex = index + 1;
+        section.classList.add('scroll-section');
+    });
+
+    const handleScroll = () => {
+        const scrollTop = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        
+        sections.forEach((section, index) => {
+            const sectionTop = index * viewportHeight;
+            const relativeScroll = scrollTop - sectionTop;
+            const inner = section.querySelector('.section-inner');
+            
+            if (inner) {
+                if (relativeScroll > 0 && relativeScroll < viewportHeight) {
+                    const progress = relativeScroll / viewportHeight; // 0 to 1
+                    const scale = 1 - (0.06 * progress); // Scale from 1 to 0.94
+                    const translateY = -15 * progress; // Translate up to -15vh
+                    const opacity = 1 - (0.5 * progress); // Fade from 1 to 0.5
+                    inner.style.transform = `translateY(${translateY}vh) scale(${scale})`;
+                    inner.style.opacity = `${opacity}`;
+                } else if (relativeScroll >= viewportHeight) {
+                    inner.style.transform = `translateY(-15vh) scale(0.94)`;
+                    inner.style.opacity = `0.5`;
+                } else {
+                    inner.style.transform = `translateY(0) scale(1)`;
+                    inner.style.opacity = `1`;
+                }
+            }
+        });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    handleScroll();
 }
 
 let allPortfolioData = [];
@@ -430,12 +544,14 @@ function renderPortfolioGrid(data) {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadComponent('header-placeholder', 'include/header.html');
     await loadComponent('footer-placeholder', 'include/footer.html');
+    initServicesTabs();
     await applyTranslations();
     await loadArtikel();
     await loadPortofolio();
     
-    // Initialize Award Slider (Swiper)
+    // Initialize Swiper sliders
     if (window.Swiper) {
+        // Award Slider
         new Swiper('.blog-slider', {
             spaceBetween: 30,
             effect: 'fade',
@@ -452,5 +568,28 @@ document.addEventListener('DOMContentLoaded', async () => {
                 clickable: true,
             }
         });
+
+        // Partnership Slider
+        new Swiper('.partnership-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            pagination: {
+                el: '.partnership-swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 24,
+                }
+            }
+        });
     }
+
+    // Initialize Parallax Scroll Stack Effect
+    initParallaxScroll();
 });

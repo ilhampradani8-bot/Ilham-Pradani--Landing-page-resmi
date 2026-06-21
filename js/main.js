@@ -172,16 +172,42 @@ if (typeof Lenis !== 'undefined') {
     requestAnimationFrame(raf);
 
     // Sync Lenis scroll with hash links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetEl = document.getElementById(targetId);
-            if (targetEl) {
-                lenis.scrollTo(targetEl, {
-                    offset: -80,
-                    duration: 1.2,
-                });
+            const href = this.getAttribute('href');
+            try {
+                const url = new URL(href, window.location.href);
+                const currentPath = window.location.pathname;
+                const targetPath = url.pathname;
+                
+                // If it's a hash link pointing to the current page
+                if (url.hash && (
+                    targetPath === currentPath || 
+                    targetPath === '/' || 
+                    (currentPath.endsWith('/') && targetPath.endsWith('index.html')) ||
+                    (currentPath.endsWith('index.html') && targetPath.endsWith('/'))
+                )) {
+                    const targetEl = document.getElementById(url.hash.substring(1));
+                    if (targetEl) {
+                        e.preventDefault();
+                        lenis.scrollTo(targetEl, {
+                            offset: -80,
+                            duration: 1.2,
+                        });
+                    }
+                }
+            } catch (err) {
+                // Fallback for simple relative hashes
+                if (href.startsWith('#')) {
+                    const targetEl = document.getElementById(href.substring(1));
+                    if (targetEl) {
+                        e.preventDefault();
+                        lenis.scrollTo(targetEl, {
+                            offset: -80,
+                            duration: 1.2,
+                        });
+                    }
+                }
             }
         });
     });
