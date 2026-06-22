@@ -278,28 +278,32 @@
 
     <div id="header-placeholder"></div>
 
-    <!-- Sticky Tab Navigation (Frozen below top nav) -->
-    <div class="sticky top-20 z-[49] bg-[#fdfbf7]/95 dark:bg-[#181614]/95 backdrop-blur-md border-b border-gray-200/50 dark:border-white/10 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-            <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none w-full justify-center md:justify-start">
-                <button onclick="switchTab('dev-process')" id="tab-dev-process" class="tab-btn active px-4 py-2 text-xs sm:text-sm font-sans font-bold rounded-lg transition-all flex items-center gap-2">
+    <!-- Sticky Tabs Sidebar Container -->
+    <div class="max-w-7xl mx-auto px-6 py-8 lg:py-12 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Sticky Tabs Sidebar (Kiri) -->
+        <div class="w-full lg:w-[190px] shrink-0 lg:sticky lg:top-24 lg:self-start z-40">
+            <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-2 pb-3 lg:pb-0 border-b border-gray-200/60 lg:border-b-0 lg:border-r lg:border-gray-200/60 dark:border-white/10 pr-0 lg:pr-4 scrollbar-none whitespace-nowrap">
+                <button onclick="switchTab('dev-process')" id="tab-dev-process" class="tab-btn active px-3 py-2 text-xs font-sans font-bold rounded-xl transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start">
                     <i data-lucide="cpu" class="w-4 h-4"></i>
                     <span class="lang-id">Proses Pengembangan</span>
                     <span class="lang-en hidden">Development Process</span>
                 </button>
-                <button onclick="switchTab('proposal')" id="tab-proposal" class="tab-btn px-4 py-2 text-xs sm:text-sm font-sans font-bold rounded-lg transition-all flex items-center gap-2">
+                <button onclick="switchTab('proposal')" id="tab-proposal" class="tab-btn px-3 py-2 text-xs font-sans font-bold rounded-xl transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start">
                     <i data-lucide="file-text" class="w-4 h-4"></i>
                     <span class="lang-id">Proposal Bisnis</span>
                     <span class="lang-en hidden">Business Proposal</span>
                 </button>
-                <button onclick="switchTab('contact')" id="tab-contact" class="tab-btn px-4 py-2 text-xs sm:text-sm font-sans font-bold rounded-lg transition-all flex items-center gap-2">
+                <button onclick="switchTab('contact')" id="tab-contact" class="tab-btn px-3 py-2 text-xs font-sans font-bold rounded-xl transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start">
                     <i data-lucide="phone" class="w-4 h-4"></i>
                     <span class="lang-id">Kontak & Akses</span>
                     <span class="lang-en hidden">Contact & Access</span>
                 </button>
             </div>
         </div>
-    </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 min-w-0">
 
     <!-- Floating Capsule Toolbar -->
     <div class="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-4 py-2 floating-capsule">
@@ -402,7 +406,7 @@
     </div>
 
     <!-- TAB 1: PROSES PENGEMBANGAN (Classic Book Layout) -->
-    <div id="content-dev-process" class="w-full max-w-[850px] mx-auto px-6 py-12 book-content">
+    <div id="content-dev-process" class="w-full max-w-[850px] mx-auto book-content">
         <h1 class="serif-title lang-id">PROSES PENGEMBANGAN & DESAIN SISTEM</h1>
         <h1 class="serif-title lang-en hidden">DEVELOPMENT PROCESS & SYSTEM DESIGN</h1>
         
@@ -471,11 +475,11 @@
 
 
     <!-- TAB 2: PROPOSAL BISNIS (Classic Book Layout) -->
-    <div id="content-proposal" class="hidden w-full px-6 md:px-12 py-12">
+    <div id="content-proposal" class="hidden w-full">
         <div class="flex flex-col lg:flex-row gap-12 max-w-full">
             
             <!-- Left Sidebar Navigation (Nav Kiri) -->
-            <div class="w-full lg:w-[320px] shrink-0 lg:self-start sticky top-36 z-40 bg-[#fdfbf7]/90 dark:bg-[#181614]/90 backdrop-blur-md py-3 lg:py-0 border-b border-gray-200/50 lg:border-b-0 transition-colors duration-300">
+            <div class="w-full lg:w-[230px] shrink-0 lg:self-start sticky top-24 z-40 bg-[#fdfbf7]/90 dark:bg-[#181614]/90 backdrop-blur-md py-3 lg:py-0 border-b border-gray-200/50 lg:border-b-0 transition-colors duration-300">
                 <!-- Wrapper for horizontal scrolling on mobile, vertical scrolling on desktop -->
                 <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-y-auto pb-2 lg:pb-6 gap-2.5 max-h-[calc(100vh-200px)] pr-2 scrollbar-none whitespace-nowrap lg:whitespace-normal">
                     <div class="hidden lg:block font-sans text-[10px] font-extrabold uppercase tracking-widest text-[#5e5954] mb-3 px-1">
@@ -898,7 +902,7 @@
 
 
     <!-- TAB 3: CONTACT & ACCESS VIEW (Classic Book Layout) -->
-    <div id="content-contact" class="hidden w-full max-w-[850px] mx-auto px-6 py-12 book-content">
+    <div id="content-contact" class="hidden w-full max-w-[850px] mx-auto book-content">
         <h1 class="serif-title lang-id">INFORMASI KONTAK & AKSES PROTOTIPE</h1>
         <h1 class="serif-title lang-en hidden">CONTACT INFORMATION & PROTOTYPE ACCESS</h1>
 
@@ -967,6 +971,8 @@
             </ul>
         </section>
     </div>
+        </div> <!-- End of Main Content Area -->
+    </div> <!-- End of max-w-7xl Layout -->
 
 
     <div id="footer-placeholder"></div>
