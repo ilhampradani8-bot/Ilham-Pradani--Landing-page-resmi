@@ -1,5 +1,5 @@
 {
-  "nav_name": "博士。伊尔哈姆·普拉达尼 C.L.",
+  "nav_name": "伊尔哈姆·普拉达尼",
   "nav_services": "技能",
   "nav_partnership": "合作",
   "nav_portfolio": "文件夹",
@@ -182,9 +182,17 @@
   "award_cat_offense": "进攻性安全认证",
   "award_cat_ethical": "道德黑客大师",
   "award_cat_method": "进攻方法论",
+  "award_7_t": "通信和数字部认证 - 账户安全",
+  "award_7_d": "印尼通信和数字部官方认证，旨在验证防止和减轻个人账户泄露以及保护凭据数据方面的能力。",
+  "award_8_t": "助理数据科学家 (Python) - 国家级",
+  "award_8_d": "使用 Python 编程进行数据科学的国家能力认证，涵盖定量数据分析、预测建模和数据集处理。",
+  "award_9_t": "通信和数字部认证 - 数据科学导论",
+  "award_9_d": "印尼通信和数字部官方认证，涵盖数据科学的基本概念以及数据分析在各个工业领域的应用。",
+  "award_cat_komdigi": "印尼通信和数字部",
+  "award_cat_ds": "数据科学和 Python",
   "nav_teacher": "学术",
   "nav_awards": "证书",
   "nav_contact": "联系方式",
   "nav_main_menu": "首页",
-  "nav_project_proposal": "发展"
+  "nav_project_proposal": "Project"
 }

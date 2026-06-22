@@ -281,6 +281,20 @@ function initParallaxScroll() {
         section.classList.add('scroll-section');
     });
 
+    let sectionOffsets = [];
+    const calculateOffsets = () => {
+        const scrollTop = window.scrollY;
+        sectionOffsets = sections.map(sec => {
+            const rect = sec.getBoundingClientRect();
+            return {
+                top: rect.top + scrollTop,
+                height: rect.height
+            };
+        });
+    };
+    calculateOffsets();
+    window.addEventListener('resize', calculateOffsets);
+
     const handleScroll = () => {
         const scrollTop = window.scrollY;
         const viewportHeight = window.innerHeight;
@@ -296,10 +310,17 @@ function initParallaxScroll() {
         }
 
         // 2. Active Section Navigation Link Highlight (Scroll Spy)
-        const currentIndex = Math.min(
-            sections.length - 1,
-            Math.max(0, Math.round(scrollTop / viewportHeight))
-        );
+        let currentIndex = 0;
+        let minDiff = Infinity;
+        const viewportCenter = scrollTop + viewportHeight / 2;
+        sectionOffsets.forEach((offset, idx) => {
+            const secCenter = offset.top + offset.height / 2;
+            const diff = Math.abs(secCenter - viewportCenter);
+            if (diff < minDiff) {
+                minDiff = diff;
+                currentIndex = idx;
+            }
+        });
         const activeSection = sections[currentIndex];
         const activeId = activeSection ? activeSection.getAttribute('id') : '';
 
@@ -344,11 +365,15 @@ function initParallaxScroll() {
         });
 
         sections.forEach((section, index) => {
-            const sectionTop = index * viewportHeight;
-            const relativeScroll = scrollTop - sectionTop;
             const inner = section.querySelector('.section-inner');
-            
             if (inner) {
+                if (window.innerWidth < 1024) {
+                    inner.style.transform = '';
+                    inner.style.opacity = '';
+                    return;
+                }
+                const sectionTop = index * viewportHeight;
+                const relativeScroll = scrollTop - sectionTop;
                 if (relativeScroll > 0 && relativeScroll < viewportHeight) {
                     const progress = relativeScroll / viewportHeight; // 0 to 1
                     const scale = 1 - (0.06 * progress); // Scale from 1 to 0.94
@@ -635,12 +660,29 @@ function initPageNavIndicator() {
     if (!container) {
         container = document.createElement('div');
         container.id = 'page-nav-indicator';
-        container.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex gap-2 px-3 py-2 bg-[#ecf0f3] rounded-full shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] border border-white/20 items-center justify-center pointer-events-auto transition-opacity duration-300';
+        container.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex gap-1.5 px-2.5 py-1 bg-[#ecf0f3]/50 backdrop-blur-md rounded-full border border-white/30 shadow-[0_4px_12px_rgba(0,0,0,0.05)] items-center justify-center pointer-events-auto transition-opacity duration-300';
         document.body.appendChild(container);
     }
 
     const sections = Array.from(document.querySelectorAll('main > section.scroll-section'));
     if (sections.length === 0) return;
+
+    let sectionOffsets = [];
+    const calculateOffsets = () => {
+        const scrollTop = window.scrollY;
+        sectionOffsets = sections.map(sec => {
+            const rect = sec.getBoundingClientRect();
+            return {
+                top: rect.top + scrollTop,
+                height: rect.height
+            };
+        });
+    };
+    calculateOffsets();
+    window.addEventListener('resize', () => {
+        calculateOffsets();
+        updateActiveDot();
+    });
 
     const lang = localStorage.getItem('preferred_lang') || 'id';
     const sectionNames = {
@@ -682,7 +724,7 @@ function initPageNavIndicator() {
         btn.setAttribute('aria-label', name);
         
         const dot = document.createElement('span');
-        dot.className = `h-2 rounded-full transition-all duration-300 ${index === 0 ? 'w-5 bg-blue-600' : 'w-2 bg-gray-400 group-hover:bg-gray-600'}`;
+        dot.className = `h-1.5 rounded-full transition-all duration-300 ${index === 0 ? 'w-4 bg-blue-600' : 'w-1.5 bg-gray-400/60 group-hover:bg-gray-600/90'}`;
         btn.appendChild(dot);
 
         const tooltip = document.createElement('span');
@@ -691,12 +733,13 @@ function initPageNavIndicator() {
         btn.appendChild(tooltip);
 
         btn.addEventListener('click', () => {
-            const viewportHeight = window.innerHeight;
-            const targetTop = index * viewportHeight;
-            if (window.lenis) {
-                window.lenis.scrollTo(targetTop, { duration: 1.2 });
-            } else {
-                window.scrollTo({ top: targetTop, behavior: 'smooth' });
+            const targetElement = sections[index];
+            if (targetElement) {
+                if (window.lenis) {
+                    window.lenis.scrollTo(targetElement, { duration: 1.2 });
+                } else {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
 
@@ -706,26 +749,33 @@ function initPageNavIndicator() {
     const updateActiveDot = () => {
         const scrollTop = window.scrollY;
         const viewportHeight = window.innerHeight;
-        const currentIndex = Math.min(
-            sections.length - 1,
-            Math.max(0, Math.round(scrollTop / viewportHeight))
-        );
+        const viewportCenter = scrollTop + viewportHeight / 2;
+
+        let currentIndex = 0;
+        let minDiff = Infinity;
+        sectionOffsets.forEach((offset, idx) => {
+            const secCenter = offset.top + offset.height / 2;
+            const diff = Math.abs(secCenter - viewportCenter);
+            if (diff < minDiff) {
+                minDiff = diff;
+                currentIndex = idx;
+            }
+        });
 
         const buttons = container.querySelectorAll('button');
         buttons.forEach((btn, idx) => {
             const dot = btn.querySelector('span');
             if (dot) {
                 if (idx === currentIndex) {
-                    dot.className = 'h-2 w-5 bg-blue-600 rounded-full transition-all duration-300';
+                    dot.className = 'h-1.5 w-4 bg-blue-600 rounded-full transition-all duration-300';
                 } else {
-                    dot.className = 'h-2 w-2 bg-gray-400 group-hover:bg-gray-600 rounded-full transition-all duration-300';
+                    dot.className = 'h-1.5 w-1.5 bg-gray-400/60 group-hover:bg-gray-600/90 rounded-full transition-all duration-300';
                 }
             }
         });
     };
 
     window.addEventListener('scroll', updateActiveDot, { passive: true });
-    window.addEventListener('resize', updateActiveDot);
     updateActiveDot();
 }
 
@@ -748,9 +798,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (window.Swiper) {
         // Award Slider
         new Swiper('.blog-slider', {
-            spaceBetween: 30,
+            spaceBetween: 0,
             effect: 'fade',
             loop: true,
+            autoHeight: true,
             mousewheel: {
                 invert: false,
             },

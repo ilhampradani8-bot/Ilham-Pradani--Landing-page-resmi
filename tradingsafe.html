@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TradingSafe | Executive Insight</title>
+    
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    
+    <style>
+        :root {
+            --book-bg: #fdfbf7; /* Warm, classic paper color */
+            --book-text: #1c1a17;
+            --book-secondary: #5e5954;
+            --book-border: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            background-color: var(--book-bg);
+            color: var(--book-text);
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Mode CSS Variables */
+        body.dark-mode {
+            --book-bg: #181614; /* Dark warm paper */
+            --book-text: #e3e0dc;
+            --book-secondary: #a09a95;
+            --book-border: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Classic Book Design Typography */
+        .book-content {
+            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+            font-size: 1.125rem; /* 18px */
+            line-height: 1.8;
+        }
+
+        .book-content h1 {
+            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+            font-weight: bold;
+            color: #111111;
+            font-size: 2.75rem;
+            line-height: 1.2;
+            border-bottom: 2px solid #111111;
+            padding-bottom: 0.75rem;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.dark-mode .book-content h1 {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .book-content h2 {
+            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+            font-weight: bold;
+            color: #111111;
+            font-size: 1.75rem;
+            line-height: 1.3;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+            padding-bottom: 0.5rem;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.dark-mode .book-content h2 {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .book-content h3 {
+            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+            font-weight: bold;
+            color: #111111;
+            font-size: 1.35rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .book-content h3 {
+            color: #ffffff;
+        }
+
+        .book-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Drop cap for classic look */
+        .drop-cap::first-letter {
+            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+            font-size: 4rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: 0.5rem;
+            margin-top: 0.15rem;
+            font-weight: bold;
+        }
+
+        /* Reset fonts for header and footer */
+        #header-placeholder, #footer-placeholder, #header-placeholder *, #footer-placeholder * {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+
+        /* Card styles ONLY for left navigation buttons */
+        .nav-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 3px 3px 8px rgba(163, 177, 198, 0.2), -3px -3px 8px #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #4a5568;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        body.dark-mode .nav-card {
+            background: #23211f;
+            color: #c5c2be;
+            border-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), -3px -3px 8px rgba(255, 255, 255, 0.02);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 4px 4px 12px rgba(163, 177, 198, 0.3), -4px -4px 12px #ffffff;
+            color: #0066cc;
+        }
+
+        body.dark-mode .nav-card:hover {
+            color: #3399ff;
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-card.active {
+            background: #0066cc;
+            color: #ffffff !important;
+            border-color: #0066cc;
+            box-shadow: 4px 4px 12px rgba(0, 102, 204, 0.25);
+        }
+
+        body.dark-mode .nav-card.active {
+            background: #0066cc;
+            color: #ffffff !important;
+            border-color: #0066cc;
+            box-shadow: 4px 4px 12px rgba(0, 102, 204, 0.4);
+        }
+
+        /* Classic Book Divider */
+        .book-divider {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0));
+            margin: 3.5rem 0;
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark-mode .book-divider {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+        }
+
+        /* Scroll Top Padding */
+        html {
+            scroll-padding-top: 240px;
+        }
+
+        @media (min-width: 1024px) {
+            html {
+                scroll-padding-top: 180px;
+            }
+        }
+
+        #adsterra-banner-unit {
+            min-height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.03);
+            margin: 30px 0;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.dark-mode #adsterra-banner-unit {
+            background: #23211f;
+            border-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Hide scrollbar utility */
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Floating Capsule Toolbar */
+        .floating-capsule {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 9999px;
+            box-shadow: 4px 4px 15px rgba(163, 177, 198, 0.3), -4px -4px 15px #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .floating-capsule {
+            background: rgba(35, 33, 31, 0.95);
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4), -4px -4px 15px rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Tab buttons styling */
+        .tab-btn {
+            color: var(--book-secondary);
+            border: 1px solid transparent;
+        }
+        .tab-btn:hover {
+            color: #0066cc;
+        }
+        body.dark-mode .tab-btn:hover {
+            color: #3399ff;
+        }
+        .tab-btn.active {
+            background: rgba(0, 102, 204, 0.08);
+            color: #0066cc;
+            border-color: rgba(0, 102, 204, 0.15);
+        }
+        body.dark-mode .tab-btn.active {
+            background: rgba(51, 153, 255, 0.08);
+            color: #3399ff;
+            border-color: rgba(51, 153, 255, 0.15);
+        }
+
+        /* Modern Apple-like cards for the overview, adapted for dark/light mode */
+        .overview-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+        }
+        body.dark-mode .overview-card {
+            background: rgba(35, 33, 31, 0.5);
+            border-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .overview-card:hover {
+            border-color: #0066cc;
+            transform: translateY(-2px);
+        }
+        body.dark-mode .overview-card:hover {
+            border-color: #3399ff;
+        }
+    </style>
+</head>
+
+<body class="transition-colors duration-300">
+
+    <div id="header-placeholder"></div>
+
+    <!-- Sticky Tab Navigation (Frozen below top nav) -->
+    <div class="sticky top-20 z-[49] bg-[#fdfbf7]/95 dark:bg-[#181614]/95 backdrop-blur-md border-b border-gray-200/50 dark:border-white/10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+            <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none w-full justify-center md:justify-start">
+                <button onclick="switchTab('dev-process')" id="tab-dev-process" class="tab-btn active px-4 py-2 text-xs sm:text-sm font-sans font-bold rounded-lg transition-all flex items-center gap-2">
+                    <i data-lucide="cpu" class="w-4 h-4"></i>
+                    <span class="lang-id">Proses Pengembangan</span>
+                    <span class="lang-en hidden">Development Process</span>
+                </button>
+                <button onclick="switchTab('proposal')" id="tab-proposal" class="tab-btn px-4 py-2 text-xs sm:text-sm font-sans font-bold rounded-lg transition-all flex items-center gap-2">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span class="lang-id">Proposal Bisnis</span>
+                    <span class="lang-en hidden">Business Proposal</span>
+                </button>
+                <button onclick="switchTab('contact')" id="tab-contact" class="tab-btn px-4 py-2 text-xs sm:text-sm font-sans font-bold rounded-lg transition-all flex items-center gap-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    <span class="lang-id">Kontak & Akses</span>
+                    <span class="lang-en hidden">Contact & Access</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Capsule Toolbar -->
+    <div class="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-4 py-2 floating-capsule">
+        <!-- Theme Toggle -->
+        <button id="dark-mode-toggle" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+            <i data-lucide="moon" class="w-4 h-4"></i>
+        </button>
+        <!-- Divider -->
+        <span class="w-[1px] h-4 bg-gray-300 dark:bg-white/10"></span>
+        <!-- Language Switcher Button -->
+        <button id="lang-toggle" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none">
+            <i data-lucide="languages" class="w-3.5 h-3.5 text-[#0066cc]"></i>
+            <span>English</span>
+        </button>
+        <!-- Divider -->
+        <span class="w-[1px] h-4 bg-gray-300 dark:bg-white/10"></span>
+        <!-- Contact & Prototype Button -->
+        <button onclick="openContactModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-[#0066cc]"></i>
+            <span>Kontak & Prototipe</span>
+        </button>
+    </div>
+
+    <!-- Contact & Prototype Modal (Popup) -->
+    <div id="contact-modal" class="fixed inset-0 z-[10000] hidden items-center justify-center p-4 bg-black/40 backdrop-blur-sm transition-opacity duration-300">
+        <div class="bg-white dark:bg-[#1e1c1a] w-full max-w-md rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl p-6 relative transform scale-95 transition-transform duration-300">
+            <!-- Close Button -->
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-white focus:outline-none">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            
+            <h3 class="font-sans text-lg font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-3 mb-4">
+                <span class="lang-id">Akses Project & Kontak</span>
+                <span class="lang-en hidden">Project Access & Contact</span>
+            </h3>
+            
+            <div class="space-y-4 font-sans text-sm">
+                <!-- Prototype Section -->
+                <div class="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/30 rounded-xl">
+                    <div class="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold mb-2">
+                        <i data-lucide="rocket" class="w-4 h-4"></i>
+                        <span class="lang-id">Prototipe Produksi</span>
+                        <span class="lang-en hidden">Production Prototype</span>
+                    </div>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-id">Akses langsung ke server produksi platform TradingSafe untuk melihat demo fungsional:</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-en hidden">Direct access to the TradingSafe production server to view the functional demo:</p>
+                    <a href="https://tradingsafe.mijdigital.my" target="_blank" class="flex items-center justify-between w-full px-4 py-2.5 bg-[#0066cc] text-white font-bold rounded-lg hover:bg-blue-700 transition-colors text-xs text-center">
+                        <span>tradingsafe.mijdigital.my</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                
+                <!-- Contact Details -->
+                <div class="space-y-3 pt-2 text-gray-700 dark:text-gray-300">
+                    <div class="flex items-start gap-2.5">
+                        <i data-lucide="user" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                        <div>
+                            <div class="text-xs text-gray-400 lang-id">Pengembang</div>
+                            <div class="text-xs text-gray-400 lang-en hidden">Developer</div>
+                            <div class="font-semibold text-gray-900 dark:text-white">Ilham Pradani S.H.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <i data-lucide="mail" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                        <div>
+                            <div class="text-xs text-gray-400 lang-id">Email Resmi</div>
+                            <div class="text-xs text-gray-400 lang-en hidden">Official Email</div>
+                            <a href="mailto:051071552@ecampus.ut.ac.id" class="text-[#0066cc] hover:underline">051071552@ecampus.ut.ac.id</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <i data-lucide="message-square" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                        <div>
+                            <div class="text-xs text-gray-400">WhatsApp</div>
+                            <a href="https://wa.me/6288971071138" class="text-[#0066cc] hover:underline" target="_blank">+62 889-7107-1138</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <i data-lucide="globe" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                        <div>
+                            <div class="text-xs text-gray-400 lang-id">Website Portofolio</div>
+                            <div class="text-xs text-gray-400 lang-en hidden">Portfolio Websites</div>
+                            <div class="flex gap-2.5">
+                                <a href="https://www.ilhampradani.me" target="_blank" class="text-[#0066cc] hover:underline">ilhampradani.me</a>
+                                <span class="text-gray-300">|</span>
+                                <a href="https://www.mijdigital.my" target="_blank" class="text-[#0066cc] hover:underline">mijdigital.my</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 border-t border-gray-100 dark:border-white/5 pt-4 text-right">
+                <button onclick="closeContactModal()" class="px-4 py-2 bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-200 font-bold rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 text-xs transition-colors focus:outline-none">
+                    <span class="lang-id">Tutup</span>
+                    <span class="lang-en hidden">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 1: PROSES PENGEMBANGAN (Classic Book Layout) -->
+    <div id="content-dev-process" class="w-full max-w-[850px] mx-auto px-6 py-12 book-content">
+        <h1 class="serif-title lang-id">PROSES PENGEMBANGAN & DESAIN SISTEM</h1>
+        <h1 class="serif-title lang-en hidden">DEVELOPMENT PROCESS & SYSTEM DESIGN</h1>
+        
+        <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between mb-8">
+            <span class="lang-id">Dokumentasi Teknis</span>
+            <span class="lang-en hidden">Technical Documentation</span>
+            <span>TradingSafe</span>
+        </div>
+
+        <section class="mb-12">
+            <h2 class="lang-id">1. VISI UTAMA & LANDASAN PROYEK</h2>
+            <h2 class="lang-en hidden">1. PRIMARY VISION & PROJECT FOUNDATION</h2>
+            <p class="drop-cap lang-id">
+                Menjadi "The SpaceX of Trading Bots"—sebuah misi untuk menghilangkan hambatan emosional dalam perdagangan aset digital melalui teknologi otomasi yang bekerja tanpa lelah, 24/7, untuk pertumbuhan aset Anda. Kami berkomitmen untuk membangun fondasi infrastruktur tepercaya yang memungkinkan setiap orang memiliki akses setara ke teknologi eksekusi tingkat dunia. Kami mengundang institusi dan rekan profesional untuk berkolaborasi bersama guna mewujudkan visi besar ini.
+            </p>
+            <p class="drop-cap lang-en hidden">
+                To become "The SpaceX of Trading Bots"—a mission to eliminate emotional barriers in digital asset trading through automation technology that runs tirelessly 24/7. We are committed to building a trusted infrastructure foundation that allows everyone equal access to world-class execution technology. We invite institutions and professional peers to collaborate in realizing this grand vision.
+            </p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="lang-id">2. MISI STRATEGIS</h2>
+            <h2 class="lang-en hidden">2. STRATEGIC MISSION</h2>
+            <p class="lang-id"><strong>Demokratisasi Teknologi:</strong> Demokratisasi teknologi trading tingkat institusi untuk semua kalangan tanpa diskriminasi modal.</p>
+            <p class="lang-en hidden"><strong>Democratization:</strong> Democratizing institutional-grade trading technology for everyone regardless of capital scale.</p>
+            
+            <p class="lang-id"><strong>Kedaulatan Aset:</strong> Menjaga kedaulatan aset pengguna melalui sistem keamanan non-kustodian yang transparan.</p>
+            <p class="lang-en hidden"><strong>Asset Sovereignty:</strong> Securing user asset sovereignty through transparent non-custodial security systems.</p>
+            
+            <p class="lang-id"><strong>Inovasi Latensi:</strong> Inovasi berkelanjutan pada sistem eksekusi untuk latensi yang tak tertandingi di pasar global.</p>
+            <p class="lang-en hidden"><strong>Latency Innovation:</strong> Continuous innovation in execution systems for unmatched low latency in global markets.</p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="lang-id">3. KEUNGGULAN INTI</h2>
+            <h2 class="lang-en hidden">3. CORE ADVANTAGES</h2>
+            <p class="lang-id"><strong>Kecepatan Tinggi:</strong> Mesin eksekusi yang dioptimalkan untuk respon milidetik di pasar global.</p>
+            <p class="lang-en hidden"><strong>High Speed:</strong> Execution engine optimized for millisecond response in global markets.</p>
+            
+            <p class="lang-id"><strong>Privasi Strategi:</strong> Arsitektur data terisolasi yang memastikan rahasia dagang pengguna tetap aman.</p>
+            <p class="lang-en hidden"><strong>Strategy Privacy:</strong> Isolated data architecture ensuring user trade secrets remain secure.</p>
+            
+            <p class="lang-id"><strong>Konektivitas Universal:</strong> Jaringan penghubung universal ke bursa aset digital utama di seluruh dunia.</p>
+            <p class="lang-en hidden"><strong>Universal Connectivity:</strong> Universal network connecting to major digital asset exchanges worldwide.</p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="lang-id">4. ARSITEKTUR MESIN & HUKUM</h2>
+            <h2 class="lang-en hidden">4. ENGINE & LEGAL ARCHITECTURE</h2>
+            <p class="lang-id">
+                Infrastruktur kami dibangun menggunakan arsitektur Rust tingkat rendah untuk memproses data pasar dengan latensi minimal dan stabilitas optimal. Dari sisi hukum, platform diklasifikasikan sebagai penyedia SaaS (Software as a Service) non-kustodian, sehingga meniadakan risiko penahanan dana pihak ketiga dan mematuhi regulasi global modern.
+            </p>
+            <p class="lang-en hidden">
+                Our infrastructure is built using low-level Rust architecture to process market data with minimal latency and optimal stability. Legally, the platform is classified as a non-custodial SaaS (Software as a Service) provider, removing third-party custodian risks and aligning with modern global regulations.
+            </p>
+        </section>
+
+        <!-- Ad Slot -->
+        <div id="overview-ad-slot" class="w-full max-w-4xl mx-auto mb-16">
+            <div class="text-center mb-2">
+                <span class="text-[9px] text-gray-400 uppercase tracking-widest font-sans">Partner Insight</span>
+            </div>
+            <div id="overview-ad-unit" class="min-height-[90px] flex justify-center items-center bg-white dark:bg-[#23211f] border border-gray-150 dark:border-white/5 rounded-xl shadow-sm p-2"></div>
+        </div>
+    </div>
+
+
+    <!-- TAB 2: PROPOSAL BISNIS (Classic Book Layout) -->
+    <div id="content-proposal" class="hidden w-full px-6 md:px-12 py-12">
+        <div class="flex flex-col lg:flex-row gap-12 max-w-full">
+            
+            <!-- Left Sidebar Navigation (Nav Kiri) -->
+            <div class="w-full lg:w-[320px] shrink-0 lg:self-start sticky top-36 z-40 bg-[#fdfbf7]/90 dark:bg-[#181614]/90 backdrop-blur-md py-3 lg:py-0 border-b border-gray-200/50 lg:border-b-0 transition-colors duration-300">
+                <!-- Wrapper for horizontal scrolling on mobile, vertical scrolling on desktop -->
+                <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-y-auto pb-2 lg:pb-6 gap-2.5 max-h-[calc(100vh-200px)] pr-2 scrollbar-none whitespace-nowrap lg:whitespace-normal">
+                    <div class="hidden lg:block font-sans text-[10px] font-extrabold uppercase tracking-widest text-[#5e5954] mb-3 px-1">
+                        <span class="lang-id">Daftar Isi Proposal</span>
+                        <span class="lang-en hidden">Proposal Contents</span>
+                    </div>
+                    
+                    <button class="nav-card active shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-1')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">01</span> 
+                        <span class="lang-id">Ringkasan Eksekutif</span>
+                        <span class="lang-en hidden">Executive Summary</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-2')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">02</span> 
+                        <span class="lang-id">Analisis Masalah & Pasar</span>
+                        <span class="lang-en hidden">Market Analysis</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-3')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">03</span> 
+                        <span class="lang-id">Keunggulan Teknologi</span>
+                        <span class="lang-en hidden">Technical Advantages</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-4')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">04</span> 
+                        <span class="lang-id">Protokol Keamanan</span>
+                        <span class="lang-en hidden">Security Protocol</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-5')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">05</span> 
+                        <span class="lang-id">Alur Kerja Pengguna</span>
+                        <span class="lang-en hidden">User Journey</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-6')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">06</span> 
+                        <span class="lang-id">Model Bisnis</span>
+                        <span class="lang-en hidden">Business Model</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-7')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">07</span> 
+                        <span class="lang-id">Peta Jalan (Roadmap)</span>
+                        <span class="lang-en hidden">Roadmap</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-8')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">08</span> 
+                        <span class="lang-id">Kesiapan Infrastruktur & Tim</span>
+                        <span class="lang-en hidden">Infra & Team Readiness</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-9')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">09</span> 
+                        <span class="lang-id">Investasi & Tim</span>
+                        <span class="lang-en hidden">Investment & Team</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-10')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">10</span> 
+                        <span class="lang-id">Skema Pendapatan</span>
+                        <span class="lang-en hidden">Revenue Scheme</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-11')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">11</span> 
+                        <span class="lang-id">Legalitas & Kepatuhan</span>
+                        <span class="lang-en hidden">Legal & Compliance</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-12')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">12</span> 
+                        <span class="lang-id">Pemasaran & Ekspansi</span>
+                        <span class="lang-en hidden">Marketing & Expansion</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-13')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">13</span> 
+                        <span class="lang-id">Proyeksi Keuangan</span>
+                        <span class="lang-en hidden">Financial Projection</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-14')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">14</span> 
+                        <span class="lang-id">Penutup: Visi Platform</span>
+                        <span class="lang-en hidden">Conclusion</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Content Area (Desain Buku Klasik) -->
+            <div class="flex-grow book-content max-w-[850px] lg:pl-4">
+                
+                <!-- Main Header Title -->
+                <div class="mb-12">
+                    <h1 class="serif-title lang-id">PROPOSAL PENGEMBANGAN PLATFORM AUTOMATED TRADING BOT GENERASI BARU (PROYEK: TRADINGSAFE)</h1>
+                    <h1 class="serif-title lang-en hidden">DEVELOPMENT PROPOSAL FOR NEXT-GENERATION AUTOMATED TRADING BOT PLATFORM (PROJECT: TRADINGSAFE)</h1>
+                    
+                    <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between">
+                        <span class="lang-id">Hak Cipta Terpelihara © 2026</span>
+                        <span class="lang-en hidden">All Rights Reserved © 2026</span>
+                        
+                        <span class="lang-id">Investasi & Teknologi</span>
+                        <span class="lang-en hidden">Investment & Technology</span>
+                    </div>
+                </div>
+
+                <!-- 1. Ringkasan Eksekutif -->
+                <section id="sec-1" class="book-section mb-12">
+                    <h2 class="lang-id">1. RINGKASAN EKSEKUTIF</h2>
+                    <h2 class="lang-en hidden">1. EXECUTIVE SUMMARY</h2>
+                    
+                    <p class="drop-cap lang-id">
+                        Proyek ini bertujuan untuk membangun platform otomasi perdagangan aset kripto (trading bot) yang berfokus pada kecepatan eksekusi tinggi, keamanan non-kustodian, dan aksesibilitas pasar lokal maupun global. Mengadopsi teknologi Rust untuk engine utama, platform ini menawarkan latensi yang jauh lebih rendah dibandingkan kompetitor global seperti Bitsgap, dengan struktur biaya yang lebih kompetitif dan optimasi SEO yang superior melalui kerangka kerja Next.js.
+                    </p>
+                    <p class="drop-cap lang-en hidden">
+                        This project aims to build a next-generation automated crypto trading bot platform focusing on high execution speed, non-custodial security, and local/global market accessibility. Utilizing Rust for the core engine, the platform offers significantly lower latency than global competitors like Bitsgap, with a more competitive fee structure and superior SEO optimization via the Next.js framework.
+                    </p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 2. Analisis Permasalahan dan Peluang Pasar -->
+                <section id="sec-2" class="book-section mb-12">
+                    <h2 class="lang-id">2. ANALISIS PERMASALAHAN DAN PELUANG PASAR</h2>
+                    <h2 class="lang-en hidden">2. PROBLEM ANALYSIS AND MARKET OPPORTUNITY</h2>
+                    
+                    <p class="lang-id">Dalam memetakan kondisi pasar otomasi perdagangan saat ini, kami mengidentifikasi empat pilar hambatan utama yang dihadapi trader:</p>
+                    <p class="lang-en hidden">In mapping the current automated trading market, we identify four main pillars of obstacles faced by traders:</p>
+                    
+                    <p class="lang-id"><strong>Aksesibilitas Harga:</strong> Platform berskala global seringkali menerapkan struktur biaya berlangganan bulanan yang sangat tinggi, membatasi partisipasi dari kalangan trader ritel berskala menengah ke bawah.</p>
+                    <p class="lang-en hidden"><strong>Price Accessibility:</strong> Global platforms often apply high subscription fees, limiting participation from low-to-mid-tier retail traders.</p>
+                    
+                    <p class="lang-id"><strong>Dukungan Exchange Lokal:</strong> Mayoritas platform robot trading internasional tidak menyediakan konektivitas atau dukungan API terhadap bursa-bursa aset digital lokal yang terdaftar resmi di wilayah regional Indonesia dan Malaysia.</p>
+                    <p class="lang-en hidden"><strong>Local Exchange Support:</strong> Most international trading bot platforms do not support API connectivity for local digital asset exchanges officially registered in Indonesia and Malaysia.</p>
+                    
+                    <p class="lang-id"><strong>Kecepatan Eksekusi:</strong> Implementasi bahasa pemrograman tingkat tinggi (high-level languages) pada infrastruktur kompetitor sering mendatangkan isu latensi, menghambat eksekusi presisi untuk strategi arbitrase sensitif.</p>
+                    <p class="lang-en hidden"><strong>Execution Speed:</strong> High-level language implementation on competitor infrastructure often leads to latency issues, hindering precise execution for sensitive strategies like arbitrage.</p>
+                    
+                    <p class="lang-id"><strong>Pilihan Pengguna:</strong> Tidak tersedianya batasan opsi operasional yang memisahkan mode sederhana (Lite) bagi kalangan pemula dengan mode kompleks (Pro) untuk kebutuhan trader institusional.</p>
+                    <p class="lang-en hidden"><strong>User Options:</strong> Lack of a simple operational mode (Lite) for beginners and complex mode (Pro) for institutional trader requirements.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 3. Keunggulan Teknologi -->
+                <section id="sec-3" class="book-section mb-12">
+                    <h2 class="lang-id">3. KEUNGGULAN TEKNOLOGI (Mengapa Kami Berbeda?)</h2>
+                    <h2 class="lang-en hidden">3. TECHNICAL ADVANTAGES (Why We Are Different?)</h2>
+                    
+                    <p class="lang-id">Kami memilih kombinasi arsitektur teknologi terbaik demi menjamin aspek keamanan, kenyamanan, dan kesiapan infrastruktur jangka panjang:</p>
+                    <p class="lang-en hidden">We choose the best technology combination to guarantee long-term security, comfort, and infrastructure readiness:</p>
+                    
+                    <h3 class="lang-id">Kecepatan Eksekusi (Rust)</h3>
+                    <h3 class="lang-en hidden">Execution Speed (Rust)</h3>
+                    <p class="lang-id">Mesin utama platform sepenuhnya dikembangkan menggunakan bahasa pemrograman Rust. Serupa dengan mesin mobil balap, Rust memberikan keunggulan eksekusi perintah beli atau jual dalam hitungan milidetik guna menangkap momentum fluktuasi harga secara real-time.</p>
+                    <p class="lang-en hidden">The platform's core engine is fully developed in Rust. Similar to a race car engine, Rust provides the advantage of executing buy or sell orders within milliseconds to capture real-time price fluctuations.</p>
+                    
+                    <h3 class="lang-id">Integrasi Web3 & Blockchain</h3>
+                    <h3 class="lang-en hidden">Web3 & Blockchain Integration</h3>
+                    <p class="lang-id">Mengintegrasikan RainbowKit, Viem/Wagmi, serta Ethers.js. Platform kami tidak terbatas pada bursa tersentral (CEX) melainkan siap mendukung ekosistem DeFi (Decentralized Finance) dengan konektivitas dompet kripto secara non-kustodian.</p>
+                    <p class="lang-en hidden">Integrating RainbowKit, Viem/Wagmi, and Ethers.js. Our platform is not limited to centralized exchanges (CEX) but is fully ready to support DeFi (Decentralized Finance) ecosystems with non-custodial wallet connectivity.</p>
+                    
+                    <h3 class="lang-id">Tampilan Aman & Cepat (Next.js)</h3>
+                    <h3 class="lang-en hidden">Secure & Fast Interface (Next.js)</h3>
+                    <p class="lang-id">Menggunakan kerangka kerja Next.js yang menjamin keamanan antarmuka setara dengan aplikasi perbankan modern, pemuatan yang instan di perangkat desktop maupun seluler, serta struktur ramah mesin pencari Google (SEO-friendly).</p>
+                    <p class="lang-en hidden">Utilizing the Next.js framework, which guarantees interface security equivalent to modern banking applications, instant loading on desktop and mobile devices, and a Google SEO-friendly structure.</p>
+                    
+                    <h3 class="lang-id">Penyimpanan Data Canggih (TimescaleDB & Redis)</h3>
+                    <h3 class="lang-en hidden">Advanced Data Storage (TimescaleDB & Redis)</h3>
+                    <p class="lang-id">Untuk kebutuhan simulasi performa (backtesting), sistem mengandalkan TimescaleDB dan Redis guna memproses jutaan baris data harga historis dalam hitungan detik.</p>
+                    <p class="lang-en hidden">For strategy simulation (backtesting), the system relies on TimescaleDB and Redis to process millions of rows of historical price data in seconds.</p>
+                    
+                    <h3 class="lang-id">Koneksi Universal (CCXT & OpenLimit)</h3>
+                    <h3 class="lang-en hidden">Universal Connection (CCXT & OpenLimit)</h3>
+                    <p class="lang-id">Memungkinkan integrasi universal ke lebih dari 120+ bursa kripto di seluruh dunia, termasuk bursa regional yang jarang terakomodasi oleh kompetitor internasional.</p>
+                    <p class="lang-en hidden">Enables universal integration to over 120+ crypto exchanges worldwide, including regional exchanges rarely supported by international competitors.</p>
+                    
+                    <h3 class="lang-id">Self-Learning Journal (Auto-Log)</h3>
+                    <h3 class="lang-en hidden">Self-Learning Journal (Auto-Log)</h3>
+                    <p class="lang-id">Sistem secara otomatis mendokumentasikan setiap aksi perdagangan ke dalam jurnal digital khusus, membantu proses evaluasi strategi tanpa pencatatan manual.</p>
+                    <p class="lang-en hidden">The system automatically documents every trade action into a dedicated digital journal, helping evaluate strategies without manual logging.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 4. Protokol Keamanan & Skema Non-Kustodian -->
+                <section id="sec-4" class="book-section mb-12">
+                    <h2 class="lang-id">4. PROTOKOL KEAMANAN & SKEMA NON-KUSTODIAN</h2>
+                    <h2 class="lang-en hidden">4. SECURITY PROTOCOLS & NON-CUSTODIAL SCHEME</h2>
+                    
+                    <p class="lang-id">Kepercayaan penuh pengguna dijaga melalui penegakan tiga pilar arsitektur keamanan sistem:</p>
+                    <p class="lang-en hidden">Complete user trust is maintained through the enforcement of three system security architecture pillars:</p>
+                    
+                    <p class="lang-id"><strong>Dana Tetap di Tangan Pengguna:</strong> Sistem sepenuhnya bersifat Non-Custodial. Seluruh aset kripto tetap tersimpan aman di dalam akun bursa masing-masing pengguna. Platform hanya bertindak sebagai media instruksi eksekusi jarak jauh.</p>
+                    <p class="lang-en hidden"><strong>Assets Remain in User's Hands:</strong> The system is fully non-custodial. All crypto assets remain securely stored inside the user's exchange account. The platform only acts as a remote execution client.</p>
+                    
+                    <p class="lang-id"><strong>Izin Terbatas (No-Withdrawal):</strong> API Key yang dihubungkan ke platform hanya diberikan izin untuk membaca saldo dan mengeksekusi order. Hak penarikan (withdrawal) sepenuhnya dibatasi dan ditolak oleh sistem.</p>
+                    <p class="lang-en hidden"><strong>Limited Permission (No-Withdrawal):</strong> API Keys connected to the platform are only granted permission to view balances and execute trades. Withdrawal rights are fully blocked and rejected by the system.</p>
+                    
+                    <p class="lang-id"><strong>Privasi Strategi (Local AI):</strong> Melalui integrasi modul kecerdasan buatan terisolasi secara lokal, seluruh pemrosesan strategi trading bersifat privat tanpa kebocoran data pihak ketiga.</p>
+                    <p class="lang-en hidden"><strong>Strategy Privacy (Local AI):</strong> Through the integration of a locally isolated AI module, all strategy analysis is private, with zero leak of user trade secrets to third parties.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 5. Alur Kerja Pengguna -->
+                <section id="sec-5" class="book-section mb-12">
+                    <h2 class="lang-id">5. ALUR KERJA PENGGUNA (USER JOURNEY)</h2>
+                    <h2 class="lang-en hidden">5. USER JOURNEY</h2>
+                    
+                    <p class="lang-id">Sistem dirancang dengan langkah navigasi yang sangat sederhana untuk memastikan kenyamanan pengguna:</p>
+                    <p class="lang-en hidden">The system is designed with a very simple navigation flow to ensure user convenience:</p>
+                    
+                    <p class="lang-id">1. <em>Registrasi & Onboarding:</em> Pembuatan akun dengan dukungan lokalisasi multi-bahasa (ID, EN, MS).</p>
+                    <p class="lang-en hidden">1. <em>Registration & Onboarding:</em> Account creation with multi-language localization support (ID, EN, MS).</p>
+                    
+                    <p class="lang-id">2. <em>Dashboard Utama:</em> Akses pemantauan aktivitas bot secara langsung dengan sinkronisasi Socket.IO.</p>
+                    <p class="lang-en hidden">2. <em>Main Dashboard:</em> Direct bot activity monitoring with Socket.IO real-time synchronization.</p>
+                    
+                    <p class="lang-id">3. <em>Konfigurasi Strategi:</em> Memilih variasi algoritma trading bot (DCA, Grid, Combo, Trailing) atau penyusunan formula kustom.</p>
+                    <p class="lang-en hidden">3. <em>Strategy Configuration:</em> Choosing trading bot algorithm variations (DCA, Grid, Combo, Trailing) or custom formula setup.</p>
+                    
+                    <p class="lang-id">4. <em>Integrasi API:</em> Menghubungkan kredensial API Key bursa pilihan di dalam hub integrasi.</p>
+                    <p class="lang-en hidden">4. <em>API Integration:</em> Connecting exchange API Key credentials inside the integration hub.</p>
+                    
+                    <p class="lang-id">5. <em>Simulasi & Uji Coba:</em> Menjalankan modul backtesting sebelum mengaktifkan bot di pasar modal nyata.</p>
+                    <p class="lang-en hidden">5. <em>Simulation & Backtesting:</em> Running the backtesting module before activating the bot in live markets.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 6. Model Bisnis dan Monetisasi -->
+                <section id="sec-6" class="book-section mb-12">
+                    <h2 class="lang-id">6. MODEL BISNIS DAN MONETISASI</h2>
+                    <h2 class="lang-en hidden">6. BUSINESS MODEL AND MONETIZATION</h2>
+                    
+                    <p class="lang-id">Model bisnis kami dirancang untuk skalabilitas industri berulang:</p>
+                    <p class="lang-en hidden">Our business model is designed for recurring industrial scalability:</p>
+                    
+                    <p class="lang-id"><strong>SaaS Membership:</strong> Pemungutan biaya berlangganan tetap secara periodik tanpa memotong porsi margin profit perdagangan pengguna ritel.</p>
+                    <p class="lang-en hidden"><strong>SaaS Membership:</strong> Fixed periodic subscription fees without taking a cut of the retail user's trading profit margin.</p>
+                    
+                    <p class="lang-id"><strong>Tiered Pricing:</strong> Menyediakan klasifikasi paket Lite untuk kebutuhan standar, dan paket Pro dengan kelengkapan indikator analisis teknikal tingkat lanjut.</p>
+                    <p class="lang-en hidden"><strong>Tiered Pricing:</strong> Providing Lite packages for basic needs and Pro packages with advanced technical indicators.</p>
+                    
+                    <p class="lang-id"><strong>White-Label API:</strong> Penjualan lisensi infrastruktur bagi mitra bisnis internasional yang ingin menyediakan platform serupa dengan merek mereka sendiri.</p>
+                    <p class="lang-en hidden"><strong>White-Label API:</strong> Licensing our infrastructure to international business partners who want to run a similar platform under their own brand.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 7. Peta Jalan Pengembangan -->
+                <section id="sec-7" class="book-section mb-12">
+                    <h2 class="lang-id">7. PETA JALAN PENGEMBANGAN (ROADMAP)</h2>
+                    <h2 class="lang-en hidden">7. DEVELOPMENT ROADMAP</h2>
+                    
+                    <p class="lang-id"><strong>Fase 1 (Bulan 1):</strong> Peluncuran versi Beta yang mengusung variasi bot statis standar dan integrasi bursa terpopuler.</p>
+                    <p class="lang-en hidden"><strong>Phase 1 (Month 1):</strong> Beta version launch featuring standard static bot variations and integration with popular exchanges.</p>
+                    
+                    <p class="lang-id"><strong>Fase 2 (Bulan 3):</strong> Implementasi penuh engine eksekusi Rust, aktivasi mode Pro dengan bantuan TA-Lib, serta pembukaan opsi arbitrase latensi rendah.</p>
+                    <p class="lang-en hidden"><strong>Phase 2 (Month 3):</strong> Full Rust engine integration, Pro mode activation with TA-Lib, and low-latency arbitrage options.</p>
+                    
+                    <p class="lang-id"><strong>Fase 3 (Fase Lanjutan):</strong> Integrasi modul asisten kecerdasan buatan (AI Analyser) luring serta ekspansi fungsionalitas Web3 secara menyeluruh.</p>
+                    <p class="lang-en hidden"><strong>Phase 3 (Advanced Phase):</strong> Offline AI Analyser assistant integration and complete Web3 functionality expansion.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 8. Kesiapan Infrastruktur dan Tim -->
+                <section id="sec-8" class="book-section mb-12">
+                    <h2 class="lang-id">8. KESIAPAN INFRASTRUKTUR DAN TIM</h2>
+                    <h2 class="lang-en hidden">8. INFRASTRUCTURE & TEAM READINESS</h2>
+                    
+                    <p class="lang-id"><strong>Spesifikasi Hardware:</strong> Infrastruktur saat ini beroperasi menggunakan Virtual Private Server (VPS) dari Digital Ocean dengan spesifikasi prosesor Intel, 2 vCPU, memori RAM sebesar 8 GB, dan media penyimpanan SSD 160 GB.</p>
+                    <p class="lang-en hidden"><strong>Hardware Specifications:</strong> The infrastructure currently operates on a Digital Ocean VPS featuring an Intel CPU, 2 vCPUs, 8 GB RAM, and a 160 GB SSD.</p>
+                    
+                    <p class="lang-id"><strong>Sumber Daya Manusia:</strong> Proyek dipimpin secara mandiri oleh Ilham Pradani, pengembang dengan rekam jejak 10+ tahun dalam dunia rekayasa perangkat lunak fullstack dengan fokus keahlian pemrograman Rust dan Python.</p>
+                    <p class="lang-en hidden"><strong>Human Resources:</strong> The project is led by Ilham Pradani, a full-stack engineer with 10+ years of software engineering experience specializing in Rust and Python automation.</p>
+                </section>
+
+                <!-- Ad Slot 1 -->
+                <div id="adsterra-banner-unit">
+                    <!-- Adsterra Banner Injected here -->
+                </div>
+
+                <hr class="book-divider">
+
+                <!-- 9. Rencana Investasi dan Pengembangan Tim -->
+                <section id="sec-9" class="book-section mb-12">
+                    <h2 class="lang-id">9. RENCANA INVESTASI DAN PENGEMBANGAN TIM</h2>
+                    <h2 class="lang-en hidden">9. INVESTMENT & TEAM EXPANSION PLAN</h2>
+                    
+                    <p class="lang-id">Pendanaan awal akan diarahkan ke empat pos strategis demi kelancaran operasional jangka pendek:</p>
+                    <p class="lang-en hidden">Initial funding will be allocated to four strategic posts for short-term operational smoothness:</p>
+                    
+                    <p class="lang-id"><strong>Pengembangan & Server:</strong> Pengalokasian utama untuk kompensasi tim developer inti dan pembiayaan server cadangan berskala industri untuk mengantisipasi lonjakan trafik saat rilis.</p>
+                    <p class="lang-en hidden"><strong>Development & Server:</strong> Main allocation for developer compensation and high-spec backup servers to handle high traffic surges.</p>
+                    
+                    <p class="lang-id"><strong>Perekrutan Layanan Pelanggan (CS):</strong> Membentuk tim dukungan CS berdedikasi tinggi demi melayani bantuan teknis real-time bagi para pengguna platform.</p>
+                    <p class="lang-en hidden"><strong>Customer Service Recruitment (CS):</strong> Hiring a dedicated CS support team to build user trust with real-time assistance.</p>
+                    
+                    <p class="lang-id"><strong>Pemasaran Global:</strong> Kampanye berbayar Google Ads dan optimasi SEO terstruktur yang mencakup target wilayah Indonesia, Malaysia, dan Inggris.</p>
+                    <p class="lang-en hidden"><strong>Global Marketing:</strong> Targeted Google Ads campaigns and structured SEO optimization covering Indonesia, Malaysia, and the UK.</p>
+                    
+                    <p class="lang-id"><strong>Operasional & Legal:</strong> Pengurusan administrasi komunitas, legalitas hukum, perlindungan merek dagang, dan pemeliharaan harian sistem.</p>
+                    <p class="lang-en hidden"><strong>Operations & Legal:</strong> Community management, legal compliance, trademark protection, and daily system maintenance.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 10. Skema Keuntungan & Monetisasi -->
+                <section id="sec-10" class="book-section mb-12">
+                    <h2 class="lang-id">10. SKEMA KEUNTUNGAN & MONETISASI (Revenue Stream)</h2>
+                    <h2 class="lang-en hidden">10. REVENUE STREAM</h2>
+                    
+                    <p class="lang-id">Kami memproyeksikan arus kas masuk yang kokoh melalui tiga pintu monetisasi:</p>
+                    <p class="lang-en hidden">We project robust, predictable cash flows through three monetization channels:</p>
+                    
+                    <p class="lang-id"><em>Keanggotaan (Membership):</em> Keuntungan bulanan tetap dari pengguna ritel. Memberikan stabilitas arus kas masuk (predictable revenue) bahkan di kala tren pasar kripto sedang turun.</p>
+                    <p class="lang-en hidden"><em>Membership:</em> Fixed monthly recurring revenue from retail users. Provides cash flow stability (predictable revenue) even during crypto market downtrends.</p>
+                    
+                    <p class="lang-id"><em>Pembagian Keuntungan (Profit Sharing):</em> Sistem bagi hasil dari net profit bulanan khusus untuk pengguna kelas institusional dengan skema High-Water Mark.</p>
+                    <p class="lang-en hidden"><em>Profit Sharing:</em> Monthly net profit split scheme for professional and institutional traders using a High-Water Mark model.</p>
+                    
+                    <p class="lang-id"><em>Lisensi B2B (White-Label):</em> Model kemitraan sewa infrastruktur teknologi untuk korporasi eksternal yang ingin memiliki platform trading bot dengan merek sendiri.</p>
+                    <p class="lang-en hidden"><em>White-Label B2B:</em> Infrastructure licensing scheme for large enterprise/communities wishing to run their own branded platform.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 11. Aspek Legalitas, Kepatuhan, dan Akses Yurisdiksi Internasional -->
+                <section id="sec-11" class="book-section mb-12">
+                    <h2 class="lang-id">11. ASPEK LEGALITAS, KEPATUHAN, DAN AKSES YURISDIKSI INTERNASIONAL</h2>
+                    <h2 class="lang-en hidden">11. LEGAL COMPLIANCE & INTERNATIONAL JURISDICTIONS</h2>
+                    
+                    <p class="lang-id">Platform dibangun atas kepatuhan yang ketat terhadap standar regulasi pasar keuangan global:</p>
+                    <p class="lang-en hidden">The platform is built on strict compliance with global financial market regulatory standards:</p>
+                    
+                    <p class="lang-id"><strong>Penyedia Perangkat Lunak (SaaS):</strong> Di bawah hukum internasional, platform diklasifikasikan sebagai penyedia teknologi (SaaS Provider), bukan pengelola dana (Asset Manager), sehingga membebaskan platform dari kewajiban lisensi perbankan kustodian.</p>
+                    <p class="lang-en hidden"><strong>Software Provider (SaaS):</strong> Under international law, the platform is classified as a SaaS technology tool, not an asset manager, exempting it from financial broker licensing in many jurisdictions.</p>
+                    
+                    <p class="lang-id"><strong>Privasi Global (GDPR):</strong> Mengadopsi pedoman perlindungan privasi tertinggi di Uni Eropa untuk melindungi kerahasiaan data pengguna.</p>
+                    <p class="lang-en hidden"><strong>Global Privacy (GDPR):</strong> Adopting the highest privacy protection benchmarks (EU GDPR) to secure user API Key encryption.</p>
+                    
+                    <p class="lang-id"><strong>Batas Tanggung Jawab Non-Custodial:</strong> Sesuai standar regulasi MiCA di Eropa dan panduan SEC/CFTC di Amerika Serikat, kepemilikan dan kendali dana penuh berada di tangan pengguna, membebaskan platform dari risiko fluktuasi pasar.</p>
+                    <p class="lang-en hidden"><strong>Non-Custodial Liability Limits:</strong> Following MiCA (Europe) and SEC/CFTC (US) guidelines, user-retained asset control absolves the platform from liability for user-incurred market risks.</p>
+                    
+                    <p class="lang-id"><strong>Kepatuhan AML & KYC:</strong> Menyediakan opsi integrasi standar identitas global FATF guna kepatuhan anti pencucian uang di masa depan.</p>
+                    <p class="lang-en hidden"><strong>AML & KYC Compliance:</strong> Supports global FATF identity screening integration for future anti-money laundering compliance requirements.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 12. Strategi Pemasaran & Ekspansi Ekosistem -->
+                <section id="sec-12" class="book-section mb-12">
+                    <h2>12. <span class="lang-id">STRATEGI PEMASARAN & EKSPANSI EKOSISTEM</span><span class="lang-en hidden">MARKETING STRATEGY & ECOSYSTEM EXPANSION</span></h2>
+                    
+                    <p class="lang-id">Untuk menekan akuisisi biaya pengguna, kami menerapkan pendekatan teknologi modern:</p>
+                    <p class="lang-en hidden">To minimize user acquisition costs, we deploy modern automated marketing channels:</p>
+                    
+                    <p class="lang-id">1. <em>Otomasi Pemasaran (Bot-to-Bot):</em> Pemanfaatan bot internal untuk mempublikasikan analisis pasar harian di Threads, X (Twitter), dan Facebook.</p>
+                    <p class="lang-en hidden">1. <em>Automated Marketing (Bot-to-Bot):</em> Using internal bots to automatically post market analyses on Threads, X, and Facebook for organic traffic.</p>
+                    
+                    <p class="lang-id">2. <em>Distribusi Seluler (Huawei AppGallery):</em> Peluncuran resmi aplikasi "BotAsisten" di Huawei AppGallery demi menguasai segmen mobile alternatif.</p>
+                    <p class="lang-en hidden">2. <em>Mobile Distribution (Huawei AppGallery):</em> Releasing the mobile app "BotAsisten" on Huawei AppGallery to capture alternative mobile device segments.</p>
+                    
+                    <p class="lang-id">3. <em>Sistem Rujukan:</em> Insentif rujukan keanggotaan guna memacu pertumbuhan komunitas secara eksponensial.</p>
+                    <p class="lang-en hidden">3. <em>Loyalty Programs:</em> Referral incentives to spur exponential community-led user growth.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 13. Proyeksi Keuangan & Transparansi Investasi -->
+                <section id="sec-13" class="book-section mb-12">
+                    <h2 class="lang-id">13. PROYEKSI KEUANGAN & TRANSPARANSI INVESTASI</h2>
+                    <h2 class="lang-en hidden">13. FINANCIAL PROJECTIONS & INVESTMENT TRANSPARENCY</h2>
+                    
+                    <p class="lang-id">Kami mengedepankan efisiensi operasional dengan memanfaatkan penawaran infrastruktur awal dari GitHub Student Developer Pack.</p>
+                    <p class="lang-en hidden">We prioritize operational cost efficiency by utilizing initial infrastructure credits like GitHub Student Pack.</p>
+                    
+                    <p class="lang-id"><strong>Opsi Pendanaan:</strong> Menawarkan skema Milestone (6 bulan) untuk validasi pasar awal dan Full Scale (12 bulan) untuk penetrasi pasar global secara penuh.</p>
+                    <p class="lang-en hidden"><strong>Funding Options:</strong> Offering flexible Milestone (6 months) or Full Scale (12 months) options for global expansion.</p>
+                    
+                    <p class="lang-id"><strong>Titik Impas (BEP):</strong> Estimasi BEP tercapai pada bulan ke-7 operasional dengan perolehan 115-150 anggota aktif berbayar.</p>
+                    <p class="lang-en hidden"><strong>Break-Even Point (BEP):</strong> BEP is projected in Month 7 of operations, requiring 115-150 active subscribers.</p>
+                    
+                    <div class="mt-6 p-6 border border-gray-200 rounded-lg bg-gray-50/50">
+                        <p class="text-sm italic mb-4 lang-id">Rincian anggaran bulanan, laba-rugi, dan proyeksi finansial lengkap dapat diakses secara transparan:</p>
+                        <p class="text-sm italic mb-4 lang-en hidden">Detailed monthly budget, profit/loss statement, and financial projections can be accessed transparently:</p>
+                        
+                        <a href="https://docs.google.com/spreadsheets/d/1qTJ3zXiqJc2gnGz58k6plrOUnx0OzzeyhM1-lNhDP5c/edit?usp=sharing" target="_blank" class="inline-flex items-center gap-2 text-[#0066cc] hover:underline font-bold font-sans text-sm">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            <span class="lang-id">Buka Google Sheets Proyeksi Anggaran</span>
+                            <span class="lang-en hidden">Open Budget Projection Google Sheets</span>
+                        </a>
+                    </div>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 14. Penutup: Visi Platform -->
+                <section id="sec-14" class="book-section mb-12">
+                    <h2 class="lang-id">14. PENUTUP: VISI PLATFORM</h2>
+                    <h2 class="lang-en hidden">14. CONCLUSION: PLATFORM VISION</h2>
+                    
+                    <p class="lang-id">
+                        TradingSafe bukan sekadar alat otomasi perdagangan biasa, melainkan perwujudan misi besar dalam menciptakan asisten finansial nomor satu yang mampu mengeliminasi bias emosional trader. Kami berkomitmen untuk membangun fondasi infrastruktur tepercaya yang memungkinkan setiap orang memiliki akses setara ke teknologi eksekusi tingkat dunia. Kami mengundang para pelaku industri, mitra strategis, dan profesional sektor keuangan untuk berkolaborasi bersama guna mewujudkan visi besar ini.
+                    </p>
+                    <p class="lang-en hidden">
+                        TradingSafe is not just an automated trading tool, but a mission to build the leading financial assistant that removes emotional bias from digital asset trading. We commit to building a trusted infrastructure that provides everyone with equal access to world-class execution technology. We invite industry players, strategic partners, and financial sector professionals to collaborate with us in realizing this grand vision.
+                    </p>
+                    
+                    <div class="mt-8 pt-8 border-t border-gray-200">
+                        <p class="font-bold text-lg mb-1"><span class="lang-id">Kontak Pengembang:</span><span class="lang-en hidden">Developer Contact:</span></p>
+                        <p class="text-sm text-gray-600 font-sans">
+                            Ilham Pradani S.H. | <a href="mailto:051071552@ecampus.ut.ac.id" class="text-[#0066cc] hover:underline">051071552@ecampus.ut.ac.id</a>
+                        </p>
+                        <div class="flex gap-4 mt-3 font-sans text-xs">
+                            <a href="https://www.ilhampradani.me" target="_blank" class="text-[#0066cc] hover:underline font-bold">ilhampradani.me</a>
+                            <span class="text-gray-300">|</span>
+                            <a href="https://www.mijdigital.my" target="_blank" class="text-[#0066cc] hover:underline font-bold">mijdigital.my</a>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- TAB 3: CONTACT & ACCESS VIEW (Classic Book Layout) -->
+    <div id="content-contact" class="hidden w-full max-w-[850px] mx-auto px-6 py-12 book-content">
+        <h1 class="serif-title lang-id">INFORMASI KONTAK & AKSES PROTOTIPE</h1>
+        <h1 class="serif-title lang-en hidden">CONTACT INFORMATION & PROTOTYPE ACCESS</h1>
+
+        <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between mb-8">
+            <span class="lang-id">Hubungan Kemitraan</span>
+            <span class="lang-en hidden">Partnership Relations</span>
+            <span class="lang-id">Akses Resmi</span>
+            <span class="lang-en hidden">Official Access</span>
+        </div>
+
+        <section class="mb-12">
+            <h2 class="lang-id">1. AKSES PROTOTIPE PRODUKSI</h2>
+            <h2 class="lang-en hidden">1. PRODUCTION PROTOTYPE ACCESS</h2>
+            <p class="lang-id">
+                Untuk meninjau langsung fungsionalitas sistem, dasbor interaktif, dan eksekusi instruksi real-time, silakan mengakses server prototipe produksi kami melalui tautan berikut:
+            </p>
+            <p class="lang-en hidden">
+                To directly review the system functionality, interactive dashboard, and real-time execution, please access our live production prototype server via the following link:
+            </p>
+            <p class="font-sans text-base">
+                <a href="https://tradingsafe.mijdigital.my" target="_blank" class="inline-flex items-center gap-2 text-[#0066cc] dark:text-[#3399ff] font-bold hover:underline">
+                    <i data-lucide="rocket" class="w-4 h-4"></i> tradingsafe.mijdigital.my <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+            </p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="lang-id">2. DETAIL KEMITRAAN & KONTAK</h2>
+            <h2 class="lang-en hidden">2. PARTNERSHIP DETAILS & CONTACT</h2>
+            <p class="lang-id">
+                Segala bentuk korespondensi formal, proposal investasi, maupun pertanyaan seputar integrasi API dapat diajukan kepada perwakilan pengembang:
+            </p>
+            <p class="lang-en hidden">
+                All formal correspondence, investment proposals, and API integration inquiries can be directed to the developer representative:
+            </p>
+            
+            <ul class="space-y-4 font-sans text-sm text-gray-700 dark:text-gray-300">
+                <li class="flex items-start gap-3">
+                    <i data-lucide="user" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong class="text-gray-900 dark:text-white">Ilham Pradani S.H. (cand.)</strong>
+                        <div class="text-xs text-gray-500">Fullstack Software Engineer / Developer</div>
+                    </div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="mail" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong>Email Resmi:</strong> <a href="mailto:051071552@ecampus.ut.ac.id" class="text-[#0066cc] dark:text-[#3399ff] hover:underline">051071552@ecampus.ut.ac.id</a>
+                    </div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="message-square" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong>WhatsApp:</strong> <a href="https://wa.me/6288971071138" class="text-[#0066cc] dark:text-[#3399ff] hover:underline" target="_blank">+62 889-7107-1138</a>
+                    </div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="globe" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong>Situs Portofolio:</strong> 
+                        <a href="https://www.ilhampradani.me" target="_blank" class="text-[#0066cc] dark:text-[#3399ff] hover:underline">ilhampradani.me</a>
+                        <span class="mx-2 text-gray-300">|</span>
+                        <a href="https://www.mijdigital.my" target="_blank" class="text-[#0066cc] dark:text-[#3399ff] hover:underline">mijdigital.my</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Smooth scroll to a section on the page
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Tab Switching Logic
+        window.switchTab = function(tabId) {
+            // Hide all tab content
+            document.getElementById('content-dev-process').classList.add('hidden');
+            document.getElementById('content-proposal').classList.add('hidden');
+            document.getElementById('content-contact').classList.add('hidden');
+            
+            // Remove active classes
+            document.getElementById('tab-dev-process').classList.remove('active');
+            document.getElementById('tab-proposal').classList.remove('active');
+            document.getElementById('tab-contact').classList.remove('active');
+            
+            // Show target content
+            if (tabId === 'dev-process') {
+                document.getElementById('content-dev-process').classList.remove('hidden');
+                document.getElementById('tab-dev-process').classList.add('active');
+            } else if (tabId === 'proposal') {
+                document.getElementById('content-proposal').classList.remove('hidden');
+                document.getElementById('tab-proposal').classList.add('active');
+                if (window.handleScrollSpy) window.handleScrollSpy();
+            } else if (tabId === 'contact') {
+                document.getElementById('content-contact').classList.remove('hidden');
+                document.getElementById('tab-contact').classList.add('active');
+            }
+
+            // Scroll slightly below header to reset view
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // Modal triggers
+        window.openContactModal = function() {
+            const modal = document.getElementById('contact-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeContactModal = function() {
+            const modal = document.getElementById('contact-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (window.setLoadingProgress) window.setLoadingProgress(5);
+            
+            // Load components using main.js logic
+            if (window.loadComponent) {
+                await loadComponent('header-placeholder', 'include/header.html');
+                if (window.setLoadingProgress) window.setLoadingProgress(40);
+                await loadComponent('footer-placeholder', 'include/footer.html');
+                if (window.setLoadingProgress) window.setLoadingProgress(70);
+            }
+            
+            if (window.lucide) lucide.createIcons();
+
+            // Dark mode state management
+            const body = document.body;
+            const darkToggle = document.getElementById('dark-mode-toggle');
+            const savedTheme = localStorage.getItem('proposal_theme');
+
+            // Apply saved theme
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                updateDarkToggleIcon(true);
+            }
+
+            darkToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isDark = body.classList.toggle('dark-mode');
+                localStorage.setItem('proposal_theme', isDark ? 'dark' : 'light');
+                updateDarkToggleIcon(isDark);
+            });
+
+            function updateDarkToggleIcon(isDark) {
+                darkToggle.innerHTML = isDark 
+                    ? `<i data-lucide="sun" class="w-4 h-4 text-yellow-400"></i>`
+                    : `<i data-lucide="moon" class="w-4 h-4"></i>`;
+                if (window.lucide) lucide.createIcons();
+            }
+
+            // Language state management
+            const langToggle = document.getElementById('lang-toggle');
+            let currentLang = localStorage.getItem('preferred_lang') || 'id';
+
+            function updateLanguageUI(lang) {
+                currentLang = lang;
+                localStorage.setItem('preferred_lang', lang);
+                
+                // Show/hide elements based on language toggle
+                document.querySelectorAll('.lang-id').forEach(el => {
+                    if (lang === 'id') el.classList.remove('hidden');
+                    else el.classList.add('hidden');
+                });
+                document.querySelectorAll('.lang-en').forEach(el => {
+                    if (lang === 'en') el.classList.remove('hidden');
+                    else el.classList.add('hidden');
+                });
+
+                // Update toggle button text
+                if (langToggle) {
+                    langToggle.innerHTML = `
+                        <i data-lucide="languages" class="w-3.5 h-3.5 text-[#0066cc]"></i>
+                        <span>${lang === 'id' ? 'English' : 'Bahasa'}</span>
+                    `;
+                    if (window.lucide) lucide.createIcons();
+                }
+            }
+
+            // Click handler for language toggle
+            if (langToggle) {
+                langToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const newLang = currentLang === 'id' ? 'en' : 'id';
+                    updateLanguageUI(newLang);
+                });
+            }
+
+            // Init language on page load
+            updateLanguageUI(currentLang);
+
+            // Scroll Spy logic to highlight active section on the left navigation
+            const sections = document.querySelectorAll('.book-section');
+            const navLinks = document.querySelectorAll('.nav-card');
+            
+            window.handleScrollSpy = () => {
+                // Only run scrollspy if proposal container is active & visible
+                if (document.getElementById('content-proposal').classList.contains('hidden')) return;
+
+                const scrollTop = window.scrollY;
+                const viewportCenter = scrollTop + 250; // Offset calculation for scrollspy
+                
+                let currentIndex = 0;
+                let minDiff = Infinity;
+                
+                sections.forEach((sec, idx) => {
+                    const rect = sec.getBoundingClientRect();
+                    const top = rect.top + scrollTop;
+                    const diff = Math.abs(top - viewportCenter);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        currentIndex = idx;
+                    }
+                });
+                
+                navLinks.forEach((link, idx) => {
+                    if (idx === currentIndex) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', window.handleScrollSpy, { passive: true });
+            window.addEventListener('resize', window.handleScrollSpy);
+            window.handleScrollSpy();
+
+            // Inject Adsterra
+            const adContainer = document.getElementById('adsterra-banner-unit');
+            if (adContainer) {
+                const scriptOptions = document.createElement('script');
+                scriptOptions.type = 'text/javascript';
+                scriptOptions.text = `
+                    atOptions = {
+                        'key' : '70d4032d0634bd1a04e49f946a536c02',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                `;
+                adContainer.appendChild(scriptOptions);
+                const scriptInvoke = document.createElement('script');
+                scriptInvoke.type = 'text/javascript';
+                scriptInvoke.src = '//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js';
+                adContainer.appendChild(scriptInvoke);
+            }
+
+            // Inject Adsterra into overview tab
+            const overviewAdContainer = document.getElementById('overview-ad-unit');
+            if (overviewAdContainer) {
+                const scriptOptions = document.createElement('script');
+                scriptOptions.type = 'text/javascript';
+                scriptOptions.text = `
+                    atOptions = {
+                        'key' : '70d4032d0634bd1a04e49f946a536c02',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                `;
+                overviewAdContainer.appendChild(scriptOptions);
+                const scriptInvoke = document.createElement('script');
+                scriptInvoke.type = 'text/javascript';
+                scriptInvoke.src = '//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js';
+                overviewAdContainer.appendChild(scriptInvoke);
+            }
+
+            if (window.setLoadingProgress) window.setLoadingProgress(100);
+        });
+    </script>
+</body>
+
+</html>

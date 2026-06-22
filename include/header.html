@@ -5,12 +5,12 @@
         
         <!-- Profile / Identity -->
         <div class="flex items-center gap-2 sm:gap-4 min-w-0">
-            <div onclick="openProfileZoom()" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] cursor-pointer hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] transition-all bg-[#ecf0f3] flex items-center justify-center p-0.5 shrink-0">
-                <img src="image/hero.jpg" alt="Profile" class="w-full h-full object-cover rounded-lg">
+            <div onclick="openProfileZoom()" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden cursor-pointer hover:scale-105 transition-transform shrink-0">
+                <img src="image/hero.jpg" alt="Profile" class="w-full h-full object-cover rounded-full">
             </div>
             <a href="index.html" class="flex flex-col cursor-pointer group min-w-0">
-                <span class="font-extrabold text-[10px] xs:text-xs sm:text-sm tracking-tight text-gray-800 group-hover:text-blue-600 transition-colors uppercase whitespace-nowrap truncate" data-t="nav_name">DR. ILHAM PRADANI C.L.</span>
-                <span class="text-[8px] sm:text-[10px] text-blue-600 font-bold tracking-widest uppercase whitespace-nowrap truncate">S.H., M.TI.</span>
+                <span class="font-extrabold text-[10px] xs:text-xs sm:text-sm tracking-tight text-gray-800 group-hover:text-blue-600 transition-colors uppercase whitespace-nowrap truncate" data-t="nav_name">ILHAM PRADANI</span>
+                <span class="text-[8px] sm:text-[10px] text-blue-600 font-bold tracking-widest uppercase whitespace-nowrap truncate">S.H. (cand.)</span>
             </a>
         </div>
         
@@ -44,7 +44,7 @@
                         <div>
                             <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Menu Lainnya</h4>
                             <div class="flex flex-col gap-3">
-                                <a href="project.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i> Proposal Bisnis</a>
+                                <a href="tradingsafe.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i> Proposal Bisnis</a>
                                 <a href="view.html?page=about" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="user" class="w-4 h-4 text-blue-600"></i> Profil Lengkap</a>
                                 <a href="view.html?page=faq" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4 text-blue-600"></i> FAQ / Bantuan</a>
                             </div>
@@ -64,25 +64,41 @@
             <!-- Pengembangan Dropdown (Full Width) -->
             <div class="relative group h-full flex items-center static">
                 <button class="hover:text-blue-600 transition-colors flex items-center gap-1.5 uppercase h-full" data-t="nav_project_proposal">
-                    Pengembangan <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-hover:rotate-180 transition-transform"></i>
+                    Project <i data-lucide="chevron-down" class="w-3.5 h-3.5 group-hover:rotate-180 transition-transform"></i>
                 </button>
                 <div class="fixed left-0 top-20 w-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 z-40 bg-[#ecf0f3]/95 backdrop-blur-md border-b border-gray-300 shadow-[0_15px_30px_rgba(163,177,198,0.25)]">
                     <div class="max-w-7xl mx-auto px-8 py-8 grid grid-cols-4 gap-8">
                         
-                        <!-- Column 1: Proposal Project -->
+                        <!-- Column 1: Usaha / Startup -->
+                        <div>
+                            <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Usaha / Startup</h4>
+                            <div class="flex flex-col gap-3">
+                                <a href="tradingsafe.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <i data-lucide="trending-up" class="w-4 h-4 text-blue-600"></i> TradingSafe
+                                </a>
+                                <a href="easymarket.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <img src="documents/Logo/easyfastlogotransaparan.png" alt="EasyMarket" class="w-4 h-4 object-contain"> EasyMarket
+                                </a>
+                                <a href="ojekasia.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                    <i data-lucide="navigation" class="w-4 h-4 text-blue-600"></i> Ojek-Asia
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: Proposal Project -->
                         <div>
                             <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Proposal Project</h4>
                             <div class="flex flex-col gap-3">
-                                <a href="project.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                <a href="tradingsafe.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
                                     <i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i> TradingSafe
                                 </a>
-                                <a href="javascript:void(0)" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
+                                <a href="ojekasia.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
                                     <i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i> Ojek-Asia
                                 </a>
                             </div>
                         </div>
 
-                        <!-- Column 2: Riset & Akademis -->
+                        <!-- Column 3: Riset & Akademis -->
                         <div>
                             <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Riset & Akademis</h4>
                             <div class="flex flex-col gap-3">
@@ -95,7 +111,7 @@
                             </div>
                         </div>
 
-                        <!-- Column 3: Publikasi Tulis -->
+                        <!-- Column 4: Publikasi Tulis -->
                         <div>
                             <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Publikasi Tulis</h4>
                             <div class="flex flex-col gap-3">
@@ -104,22 +120,6 @@
                                 </a>
                                 <a href="javascript:void(0)" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
                                     <i data-lucide="file-edit" class="w-4 h-4 text-blue-600"></i> Essay
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Column 4: Usaha / Startup -->
-                        <div>
-                            <h4 class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-4">Usaha / Startup</h4>
-                            <div class="flex flex-col gap-3">
-                                <a href="project.html" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
-                                    <i data-lucide="trending-up" class="w-4 h-4 text-blue-600"></i> TradingSafe
-                                </a>
-                                <a href="javascript:void(0)" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
-                                    <img src="documents/Logo/easyfastlogotransaparan.png" alt="EasyMarket" class="w-4 h-4 object-contain"> EasyMarket
-                                </a>
-                                <a href="javascript:void(0)" class="text-gray-700 hover:text-blue-600 font-bold text-xs transition-colors flex items-center gap-2">
-                                    <i data-lucide="navigation" class="w-4 h-4 text-blue-600"></i> Ojek-Asia
                                 </a>
                             </div>
                         </div>
@@ -256,21 +256,110 @@
     </div>
     
     <div class="flex-1 flex flex-col p-6 space-y-6 overflow-y-auto">
-        <nav class="flex flex-col space-y-3.5 text-lg sm:text-xl font-black uppercase tracking-tighter">
-            <a href="index.html#services" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="services" data-t="nav_services">Keahlian</a>
-            <a href="index.html#partnership" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="partnership" data-t="nav_partnership">Kerjasama</a>
-            <a href="index.html#teacher" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="teacher" data-t="nav_teacher">Akademis</a>
-            <a href="index.html#portofolio" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="portofolio" data-t="nav_portfolio">Portofolio</a>
-            <a href="index.html#reviews" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="reviews" data-t="nav_reviews">Ulasan</a>
-            <a href="index.html#daftar-jurnal" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="daftar-jurnal" data-t="nav_journal">Jurnal</a>
-            <a href="index.html#awards" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="awards" data-t="nav_awards">Sertifikat</a>
-            <a href="index.html#contact" onclick="toggleMobileMenu(false)" class="m-nav-link text-gray-800 hover:text-blue-600 transition-colors" data-section="contact" data-t="nav_contact">Kontak</a>
-            <div class="h-px bg-gray-200 my-1"></div>
-            <div class="flex flex-wrap gap-4 text-xs font-bold text-blue-600">
-                <a href="project.html" onclick="toggleMobileMenu(false)" class="hover:text-blue-800 transition-colors">Proposal</a>
-                <a href="view.html?page=about" onclick="toggleMobileMenu(false)" class="hover:text-blue-800 transition-colors">About Me</a>
-                <a href="view.html?page=faq" onclick="toggleMobileMenu(false)" class="hover:text-blue-800 transition-colors">FAQ</a>
-                <a href="view.html?page=privacy" onclick="toggleMobileMenu(false)" class="hover:text-blue-800 transition-colors">Privacy</a>
+        <nav class="flex flex-col space-y-4">
+            <!-- Accordion 1: Menu Utama -->
+            <div class="mobile-accordion-item border-b border-gray-200/60 pb-2">
+                <button onclick="toggleAccordion('m-menu-utama')" class="w-full flex items-center justify-between text-sm font-extrabold text-gray-800 uppercase py-2 focus:outline-none">
+                    <div class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                        <span>Menu Utama</span>
+                    </div>
+                    <i data-lucide="chevron-down" id="arrow-m-menu-utama" class="w-4 h-4 transition-transform duration-300"></i>
+                </button>
+                <div id="m-menu-utama" class="hidden flex-col pl-3 mt-2 space-y-4">
+                    <div class="flex flex-col gap-2.5">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Navigasi Halaman</span>
+                        <a href="index.html#services" onclick="toggleMobileMenu(false)" class="m-nav-link text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2" data-section="services"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-600"></i> Keahlian</a>
+                        <a href="index.html#partnership" onclick="toggleMobileMenu(false)" class="m-nav-link text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2" data-section="partnership"><i data-lucide="handshake" class="w-3.5 h-3.5 text-blue-600"></i> Kerjasama</a>
+                        <a href="index.html#teacher" onclick="toggleMobileMenu(false)" class="m-nav-link text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2" data-section="teacher"><i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-blue-600"></i> Akademis</a>
+                    </div>
+                    <div class="flex flex-col gap-2.5 pt-1.5">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Publikasi & Karya</span>
+                        <a href="index.html#portofolio" onclick="toggleMobileMenu(false)" class="m-nav-link text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2" data-section="portofolio"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-blue-600"></i> Portofolio</a>
+                        <a href="index.html#reviews" onclick="toggleMobileMenu(false)" class="m-nav-link text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2" data-section="reviews"><i data-lucide="star" class="w-3.5 h-3.5 text-blue-600"></i> Ulasan</a>
+                        <a href="index.html#daftar-jurnal" onclick="toggleMobileMenu(false)" class="m-nav-link text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2" data-section="daftar-jurnal"><i data-lucide="book-open" class="w-3.5 h-3.5 text-blue-600"></i> Jurnal Ilmiah</a>
+                        <a href="index.html#awards" onclick="toggleMobileMenu(false)" class="m-nav-link text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2" data-section="awards"><i data-lucide="award" class="w-3.5 h-3.5 text-blue-600"></i> Sertifikat</a>
+                    </div>
+                    <div class="flex flex-col gap-2.5 pt-1.5">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Menu Lainnya</span>
+                        <a href="tradingsafe.html" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-600"></i> Proposal Bisnis</a>
+                        <a href="view.html?page=about" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="user" class="w-3.5 h-3.5 text-blue-600"></i> Profil Lengkap</a>
+                        <a href="view.html?page=faq" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="help-circle" class="w-3.5 h-3.5 text-blue-600"></i> FAQ / Bantuan</a>
+                    </div>
+                    <div class="flex flex-col gap-2.5 pt-1.5 pb-1">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Hubungi Kami</span>
+                        <a href="view.html?page=contact" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-blue-600"></i> Halaman Kontak</a>
+                        <a href="mailto:algojodua2@gmail.com" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-blue-600"></i> Email Kemitraan</a>
+                        <a href="https://wa.me/6288971071138" target="_blank" class="text-[11px] font-bold text-green-600 hover:text-green-700 transition-colors flex items-center gap-2"><i data-lucide="message-square" class="w-3.5 h-3.5 text-green-600"></i> WhatsApp Resmi</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion 2: Pengembangan -->
+            <div class="mobile-accordion-item border-b border-gray-200/60 pb-2">
+                <button onclick="toggleAccordion('m-menu-pengembangan')" class="w-full flex items-center justify-between text-sm font-extrabold text-gray-800 uppercase py-2 focus:outline-none">
+                    <div class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                        <span>Project</span>
+                    </div>
+                    <i data-lucide="chevron-down" id="arrow-m-menu-pengembangan" class="w-4 h-4 transition-transform duration-300"></i>
+                </button>
+                <div id="m-menu-pengembangan" class="hidden flex-col pl-3 mt-2 space-y-4">
+                    <div class="flex flex-col gap-2.5">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Usaha / Startup</span>
+                        <a href="tradingsafe.html" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="trending-up" class="w-3.5 h-3.5 text-blue-600"></i> TradingSafe</a>
+                        <a href="easymarket.html" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><img src="documents/Logo/easyfastlogotransaparan.png" alt="EasyMarket" class="w-3.5 h-3.5 object-contain"> EasyMarket</a>
+                        <a href="ojekasia.html" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="navigation" class="w-3.5 h-3.5 text-blue-600"></i> Ojek-Asia</a>
+                    </div>
+                    <div class="flex flex-col gap-2.5 pt-1.5">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Proposal Project</span>
+                        <a href="tradingsafe.html" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-600"></i> TradingSafe</a>
+                        <a href="ojekasia.html" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-600"></i> Ojek-Asia</a>
+                    </div>
+                    <div class="flex flex-col gap-2.5 pt-1.5">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Riset & Akademis</span>
+                        <a href="javascript:void(0)" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="award" class="w-3.5 h-3.5 text-blue-600"></i> Karya Ilmiah</a>
+                        <a href="javascript:void(0)" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="book-open" class="w-3.5 h-3.5 text-blue-600"></i> Publikasi Penelitian</a>
+                    </div>
+                    <div class="flex flex-col gap-2.5 pt-1.5 pb-1">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Publikasi Tulis</span>
+                        <a href="baca.html" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="newspaper" class="w-3.5 h-3.5 text-blue-600"></i> Artikel</a>
+                        <a href="javascript:void(0)" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="file-edit" class="w-3.5 h-3.5 text-blue-600"></i> Essay</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion 3: Info -->
+            <div class="mobile-accordion-item border-b border-gray-200/60 pb-2">
+                <button onclick="toggleAccordion('m-menu-info')" class="w-full flex items-center justify-between text-sm font-extrabold text-gray-800 uppercase py-2 focus:outline-none">
+                    <div class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                        <span>Info</span>
+                    </div>
+                    <i data-lucide="chevron-down" id="arrow-m-menu-info" class="w-4 h-4 transition-transform duration-300"></i>
+                </button>
+                <div id="m-menu-info" class="hidden flex-col pl-3 mt-2 space-y-3.5 pb-1">
+                    <a href="view.html?page=about" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="info" class="w-3.5 h-3.5 text-blue-600"></i> Biodata Lengkap</a>
+                    <a href="view.html?page=faq" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="help-circle" class="w-3.5 h-3.5 text-blue-600"></i> Pertanyaan Umum (FAQ)</a>
+                    <a href="view.html?page=privacy" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="shield" class="w-3.5 h-3.5 text-blue-600"></i> Kebijakan Privasi</a>
+                    <a href="view.html?page=disclaimer" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-blue-600"></i> Batasan Tanggung Jawab</a>
+                </div>
+            </div>
+
+            <!-- Accordion 4: Contact -->
+            <div class="mobile-accordion-item border-b border-gray-200/60 pb-2">
+                <button onclick="toggleAccordion('m-menu-contact')" class="w-full flex items-center justify-between text-sm font-extrabold text-gray-800 uppercase py-2 focus:outline-none">
+                    <div class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                        <span>Contact</span>
+                    </div>
+                    <i data-lucide="chevron-down" id="arrow-m-menu-contact" class="w-4 h-4 transition-transform duration-300"></i>
+                </button>
+                <div id="m-menu-contact" class="hidden flex-col pl-3 mt-2 space-y-3.5 pb-1">
+                    <a href="view.html?page=contact" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-blue-600"></i> Halaman Kontak</a>
+                    <a href="mailto:algojodua2@gmail.com" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-blue-600"></i> algojodua2@gmail.com</a>
+                    <a href="https://wa.me/6288971071138" target="_blank" onclick="toggleMobileMenu(false)" class="text-[11px] font-bold text-green-600 hover:text-green-700 transition-colors flex items-center gap-2"><i data-lucide="message-square" class="w-3.5 h-3.5 text-green-600"></i> +62 889-7107-1138</a>
+                </div>
             </div>
         </nav>
 

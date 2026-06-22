@@ -62,6 +62,22 @@ window.toggleMobileMenu = function (open) {
         }
     }
 };
+
+window.toggleAccordion = function (id) {
+    const element = document.getElementById(id);
+    const arrow = document.getElementById('arrow-' + id);
+    if (element) {
+        if (element.classList.contains('hidden')) {
+            element.classList.remove('hidden');
+            element.classList.add('flex');
+            if (arrow) arrow.classList.add('rotate-180');
+        } else {
+            element.classList.add('hidden');
+            element.classList.remove('flex');
+            if (arrow) arrow.classList.remove('rotate-180');
+        }
+    }
+};
 function updateLangUI() {
     const lang = localStorage.getItem('preferred_lang') || 'id';
 
@@ -104,7 +120,12 @@ function updateLangUI() {
 async function applyTranslations() {
     const lang = localStorage.getItem('preferred_lang') || 'id';
     try {
-        const response = await fetch(`lang/${lang}.json`);
+        const isDev = window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1' || 
+                      window.location.port === '5501' || 
+                      window.location.hostname.includes('139.59.122.230');
+        const url = `lang/${lang}.json` + (isDev ? `?t=${Date.now()}` : '');
+        const response = await fetch(url);
         if (!response.ok) return;
         const t = await response.json();
         document.querySelectorAll('[data-t]').forEach(el => {
@@ -134,7 +155,12 @@ async function loadComponent(id, file) {
     const el = document.getElementById(id);
     if (!el) return;
     try {
-        const res = await fetch(file);
+        const isDev = window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1' || 
+                      window.location.port === '5501' || 
+                      window.location.hostname.includes('139.59.122.230');
+        const url = file + (isDev ? `?t=${Date.now()}` : '');
+        const res = await fetch(url);
         if (res.ok) {
             el.innerHTML = await res.text();
             if (window.lucide) lucide.createIcons();

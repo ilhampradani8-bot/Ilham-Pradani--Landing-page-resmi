@@ -1,5 +1,5 @@
 {
-  "nav_name": "DR. ILHAM PRADANI C.L.",
+  "nav_name": "ILHAM PRADANI",
   "nav_services": "Keahlian",
   "nav_partnership": "Kerjasama",
   "nav_portfolio": "Portofolio",
@@ -182,9 +182,17 @@
   "award_cat_offense": "Offensive Security Certified",
   "award_cat_ethical": "Ethical Hacking Master",
   "award_cat_method": "Offensive Methodology",
+  "award_7_t": "Sertifikasi Komdigi - Keamanan Akun",
+  "award_7_d": "Sertifikasi resmi dari Kementerian Komunikasi dan Digital RI yang memvalidasi kompetensi dalam pencegahan dan mitigasi ancaman pembobolan akun pribadi serta perlindungan data kredensial.",
+  "award_8_t": "Associate Data Scientist (Python) - Nasional",
+  "award_8_d": "Sertifikasi kompetensi nasional dalam bidang sains data (Data Science) menggunakan pemrograman Python, meliputi analisis data kuantitatif, pemodelan prediktif, dan pengolahan dataset.",
+  "award_9_t": "Sertifikasi Komdigi - Pengenalan Data Science",
+  "award_9_d": "Sertifikasi resmi dari Kementerian Komunikasi dan Digital RI mengenai konsep dasar sains data dan penerapan pemanfaatan data analitik di berbagai sektor industri.",
+  "award_cat_komdigi": "Kementerian Komdigi RI",
+  "award_cat_ds": "Data Science & Python",
   "nav_teacher": "Akademis",
   "nav_awards": "Sertifikat",
   "nav_contact": "Kontak",
   "nav_main_menu": "Home",
-  "nav_project_proposal": "Pengembangan"
+  "nav_project_proposal": "Project"
 }

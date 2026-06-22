@@ -1,5 +1,5 @@
 {
-  "nav_name": "박사. 일함 프라다니 C.L.",
+  "nav_name": "일함 프라다니",
   "nav_services": "기능",
   "nav_partnership": "협력",
   "nav_portfolio": "포트폴리오",
@@ -182,9 +182,17 @@
   "award_cat_offense": "공격적인 보안 인증",
   "award_cat_ethical": "윤리적 해킹 마스터",
   "award_cat_method": "공격적인 방법론",
+  "award_7_t": "통신디지털부 인증 - 계정 보안",
+  "award_7_d": "개인 계정 침해 방지 및 완화, 그리고 자격 증명 데이터 보호 역량을 검증하는 인도네시아 공화국 통신디지털부의 공식 인증.",
+  "award_8_t": "어소시에이트 데이터 사이언티스트 (Python) - 국가 자격",
+  "award_8_d": "정량적 데이터 분석, 예측 모델링 및 데이터 세트 처리를 포함하여 Python 프로그래밍을 사용하는 데이터 과학 분야의 국가 역량 인증.",
+  "award_9_t": "통신디지털부 인증 - 데이터 과학 입문",
+  "award_9_d": "데이터 과학의 기본 개념과 다양한 산업 부문에 걸친 데이터 분석의 적용을 다루는 인도네시아 공화국 통신디지털부의 공식 인증.",
+  "award_cat_komdigi": "인도네시아 통신디지털부",
+  "award_cat_ds": "데이터 과학 및 Python",
   "nav_teacher": "학술",
   "nav_awards": "인증서",
   "nav_contact": "연락처",
   "nav_main_menu": "홈",
-  "nav_project_proposal": "개발"
+  "nav_project_proposal": "Project"
 }

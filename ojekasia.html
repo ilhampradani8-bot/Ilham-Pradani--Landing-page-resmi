@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ojek-Asia | Executive Insight</title>
+    
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    
+    <style>
+        :root {
+            --book-bg: #fdfbf7; /* Warm, classic paper color */
+            --book-text: #1c1a17;
+            --book-secondary: #5e5954;
+            --book-border: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            background-color: var(--book-bg);
+            color: var(--book-text);
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Mode CSS Variables */
+        body.dark-mode {
+            --book-bg: #181614; /* Dark warm paper */
+            --book-text: #e3e0dc;
+            --book-secondary: #a09a95;
+            --book-border: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Classic Book Design Typography */
+        .book-content {
+            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+            font-size: 1.125rem; /* 18px */
+            line-height: 1.8;
+        }
+
+        .book-content h1 {
+            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+            font-weight: bold;
+            color: #111111;
+            font-size: 2.75rem;
+            line-height: 1.2;
+            border-bottom: 2px solid #111111;
+            padding-bottom: 0.75rem;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.dark-mode .book-content h1 {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .book-content h2 {
+            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+            font-weight: bold;
+            color: #111111;
+            font-size: 1.75rem;
+            line-height: 1.3;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+            padding-bottom: 0.5rem;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.dark-mode .book-content h2 {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .book-content h3 {
+            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+            font-weight: bold;
+            color: #111111;
+            font-size: 1.35rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .book-content h3 {
+            color: #ffffff;
+        }
+
+        .book-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Drop cap for classic look */
+        .drop-cap::first-letter {
+            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+            font-size: 4rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: 0.5rem;
+            margin-top: 0.15rem;
+            font-weight: bold;
+        }
+
+        /* Reset fonts for header and footer */
+        #header-placeholder, #footer-placeholder, #header-placeholder *, #footer-placeholder * {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+
+        /* Card styles ONLY for left navigation buttons */
+        .nav-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 3px 3px 8px rgba(163, 177, 198, 0.2), -3px -3px 8px #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #4a5568;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        body.dark-mode .nav-card {
+            background: #23211f;
+            color: #c5c2be;
+            border-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), -3px -3px 8px rgba(255, 255, 255, 0.02);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 4px 4px 12px rgba(163, 177, 198, 0.3), -4px -4px 12px #ffffff;
+            color: #0066cc;
+        }
+
+        body.dark-mode .nav-card:hover {
+            color: #3399ff;
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-card.active {
+            background: #0066cc;
+            color: #ffffff !important;
+            border-color: #0066cc;
+            box-shadow: 4px 4px 12px rgba(0, 102, 204, 0.25);
+        }
+
+        body.dark-mode .nav-card.active {
+            background: #0066cc;
+            color: #ffffff !important;
+            border-color: #0066cc;
+            box-shadow: 4px 4px 12px rgba(0, 102, 204, 0.4);
+        }
+
+        /* Classic Book Divider */
+        .book-divider {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0));
+            margin: 3.5rem 0;
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark-mode .book-divider {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+        }
+
+        /* Scroll Top Padding */
+        html {
+            scroll-padding-top: 240px;
+        }
+
+        @media (min-width: 1024px) {
+            html {
+                scroll-padding-top: 180px;
+            }
+        }
+
+        #adsterra-banner-unit {
+            min-height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.03);
+            margin: 30px 0;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.dark-mode #adsterra-banner-unit {
+            background: #23211f;
+            border-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Hide scrollbar utility */
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Floating Capsule Toolbar */
+        .floating-capsule {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 9999px;
+            box-shadow: 4px 4px 15px rgba(163, 177, 198, 0.3), -4px -4px 15px #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .floating-capsule {
+            background: rgba(35, 33, 31, 0.95);
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4), -4px -4px 15px rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Tab buttons styling */
+        .tab-btn {
+            color: var(--book-secondary);
+            border: 1px solid transparent;
+        }
+        .tab-btn:hover {
+            color: #0066cc;
+        }
+        body.dark-mode .tab-btn:hover {
+            color: #3399ff;
+        }
+        .tab-btn.active {
+            background: rgba(0, 102, 204, 0.08);
+            color: #0066cc;
+            border-color: rgba(0, 102, 204, 0.15);
+        }
+        body.dark-mode .tab-btn.active {
+            background: rgba(51, 153, 255, 0.08);
+            color: #3399ff;
+            border-color: rgba(51, 153, 255, 0.15);
+        }
+
+        /* Modern Apple-like cards for the overview, adapted for dark/light mode */
+        .overview-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+        }
+        body.dark-mode .overview-card {
+            background: rgba(35, 33, 31, 0.5);
+            border-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .overview-card:hover {
+            border-color: #0066cc;
+            transform: translateY(-2px);
+        }
+        body.dark-mode .overview-card:hover {
+            border-color: #3399ff;
+        }
+    </style>
+</head>
+
+<body class="transition-colors duration-300">
+
+    <div id="header-placeholder"></div>
+
+    <!-- Sticky Tab Navigation (Frozen below top nav) -->
+    <div class="sticky top-20 z-[49] bg-[#fdfbf7]/95 dark:bg-[#181614]/95 backdrop-blur-md border-b border-gray-200/50 dark:border-white/10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+            <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none w-full justify-center md:justify-start">
+                <button onclick="switchTab('dev-process')" id="tab-dev-process" class="tab-btn active px-4 py-2 text-xs sm:text-sm font-sans font-bold rounded-lg transition-all flex items-center gap-2">
+                    <i data-lucide="cpu" class="w-4 h-4"></i>
+                    <span class="lang-id">Proses Pengembangan</span>
+                    <span class="lang-en hidden">Development Process</span>
+                </button>
+                <button onclick="switchTab('proposal')" id="tab-proposal" class="tab-btn px-4 py-2 text-xs sm:text-sm font-sans font-bold rounded-lg transition-all flex items-center gap-2">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span class="lang-id">Proposal Bisnis</span>
+                    <span class="lang-en hidden">Business Proposal</span>
+                </button>
+                <button onclick="switchTab('contact')" id="tab-contact" class="tab-btn px-4 py-2 text-xs sm:text-sm font-sans font-bold rounded-lg transition-all flex items-center gap-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    <span class="lang-id">Kontak & Akses</span>
+                    <span class="lang-en hidden">Contact & Access</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Capsule Toolbar -->
+    <div class="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-4 py-2 floating-capsule">
+        <!-- Theme Toggle -->
+        <button id="dark-mode-toggle" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+            <i data-lucide="moon" class="w-4 h-4"></i>
+        </button>
+        <!-- Divider -->
+        <span class="w-[1px] h-4 bg-gray-300 dark:bg-white/10"></span>
+        <!-- Language Switcher Button -->
+        <button id="lang-toggle" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none">
+            <i data-lucide="languages" class="w-3.5 h-3.5 text-[#0066cc]"></i>
+            <span>English</span>
+        </button>
+        <!-- Divider -->
+        <span class="w-[1px] h-4 bg-gray-300 dark:bg-white/10"></span>
+        <!-- Contact & Prototype Button -->
+        <button onclick="openContactModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-[#0066cc]"></i>
+            <span>Kontak & Prototipe</span>
+        </button>
+    </div>
+
+    <!-- Contact & Prototype Modal (Popup) -->
+    <div id="contact-modal" class="fixed inset-0 z-[10000] hidden items-center justify-center p-4 bg-black/40 backdrop-blur-sm transition-opacity duration-300">
+        <div class="bg-white dark:bg-[#1e1c1a] w-full max-w-md rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl p-6 relative transform scale-95 transition-transform duration-300">
+            <!-- Close Button -->
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-white focus:outline-none">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            
+            <h3 class="font-sans text-lg font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-3 mb-4">
+                <span class="lang-id">Akses Project & Kontak</span>
+                <span class="lang-en hidden">Project Access & Contact</span>
+            </h3>
+            
+            <div class="space-y-4 font-sans text-sm">
+                <!-- Prototype Section -->
+                <div class="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/30 rounded-xl">
+                    <div class="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold mb-2">
+                        <i data-lucide="rocket" class="w-4 h-4"></i>
+                        <span class="lang-id">Prototipe Produksi</span>
+                        <span class="lang-en hidden">Production Prototype</span>
+                    </div>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-id">Akses langsung ke server produksi platform TradingSafe untuk melihat demo fungsional:</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-en hidden">Direct access to the TradingSafe production server to view the functional demo:</p>
+                    <a href="https://tradingsafe.mijdigital.my" target="_blank" class="flex items-center justify-between w-full px-4 py-2.5 bg-[#0066cc] text-white font-bold rounded-lg hover:bg-blue-700 transition-colors text-xs text-center">
+                        <span>tradingsafe.mijdigital.my</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                
+                <!-- Contact Details -->
+                <div class="space-y-3 pt-2 text-gray-700 dark:text-gray-300">
+                    <div class="flex items-start gap-2.5">
+                        <i data-lucide="user" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                        <div>
+                            <div class="text-xs text-gray-400 lang-id">Pengembang</div>
+                            <div class="text-xs text-gray-400 lang-en hidden">Developer</div>
+                            <div class="font-semibold text-gray-900 dark:text-white">Ilham Pradani S.H.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <i data-lucide="mail" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                        <div>
+                            <div class="text-xs text-gray-400 lang-id">Email Resmi</div>
+                            <div class="text-xs text-gray-400 lang-en hidden">Official Email</div>
+                            <a href="mailto:051071552@ecampus.ut.ac.id" class="text-[#0066cc] hover:underline">051071552@ecampus.ut.ac.id</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <i data-lucide="message-square" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                        <div>
+                            <div class="text-xs text-gray-400">WhatsApp</div>
+                            <a href="https://wa.me/6288971071138" class="text-[#0066cc] hover:underline" target="_blank">+62 889-7107-1138</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <i data-lucide="globe" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                        <div>
+                            <div class="text-xs text-gray-400 lang-id">Website Portofolio</div>
+                            <div class="text-xs text-gray-400 lang-en hidden">Portfolio Websites</div>
+                            <div class="flex gap-2.5">
+                                <a href="https://www.ilhampradani.me" target="_blank" class="text-[#0066cc] hover:underline">ilhampradani.me</a>
+                                <span class="text-gray-300">|</span>
+                                <a href="https://www.mijdigital.my" target="_blank" class="text-[#0066cc] hover:underline">mijdigital.my</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 border-t border-gray-100 dark:border-white/5 pt-4 text-right">
+                <button onclick="closeContactModal()" class="px-4 py-2 bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-200 font-bold rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 text-xs transition-colors focus:outline-none">
+                    <span class="lang-id">Tutup</span>
+                    <span class="lang-en hidden">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 1: PROSES PENGEMBANGAN (Classic Book Layout) -->
+    <div id="content-dev-process" class="w-full max-w-[850px] mx-auto px-6 py-12 book-content">
+        <h1 class="serif-title lang-id">PROSES PENGEMBANGAN & DESAIN SISTEM</h1>
+        <h1 class="serif-title lang-en hidden">DEVELOPMENT PROCESS & SYSTEM DESIGN</h1>
+        
+        <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between mb-8">
+            <span class="lang-id">Dokumentasi Teknis</span>
+            <span class="lang-en hidden">Technical Documentation</span>
+            <span>Ojek-Asia</span>
+        </div>
+
+        <section class="mb-12">
+            <h2 class="lang-id">1. VISI UTAMA & LANDASAN MOBILITAS</h2>
+            <h2 class="lang-en hidden">1. PRIMARY VISION & MOBILITY FOUNDATION</h2>
+            <p class="drop-cap lang-id">
+                Menghadirkan solusi mobilitas on-demand terdepan di Asia Tenggara yang menjembatani kenyamanan berkendara dengan kemakmuran ekonomi pengemudi lokal secara berkelanjutan, menciptakan jaringan transportasi regional terpadu yang memberdayakan masyarakat.
+            </p>
+            <p class="drop-cap lang-en hidden">
+                Delivering leading on-demand mobility solutions in Southeast Asia that bridge comfortable transportation with sustainable economic prosperity for local drivers, establishing an integrated regional transportation network that empowers communities.
+            </p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="lang-id">2. MISI STRATEGIS</h2>
+            <h2 class="lang-en hidden">2. STRATEGIC MISSION</h2>
+            <p class="lang-id"><strong>Layanan Terjangkau:</strong> Menyediakan layanan ojek dan pengiriman paket yang terjangkau serta handal bagi seluruh lapisan masyarakat.</p>
+            <p class="lang-en hidden"><strong>Affordable Services:</strong> Providing affordable and reliable ride-hailing and parcel delivery services for everyone.</p>
+            
+            <p class="lang-id"><strong>Pemberdayaan Mitra:</strong> Memberdayakan kesejahteraan mitra pengemudi melalui skema bagi hasil yang adil.</p>
+            <p class="lang-en hidden"><strong>Partner Empowerment:</strong> Empowering driver partner welfare through a fair revenue-sharing scheme.</p>
+            
+            <p class="lang-id"><strong>Asuransi Terintegrasi:</strong> Penyediaan asuransi keselamatan terintegrasi untuk pengemudi dan penumpang di setiap perjalanan.</p>
+            <p class="lang-en hidden"><strong>Integrated Safety:</strong> Providing integrated safety insurance for both drivers and passengers.</p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="lang-id">3. KEUNGGULAN INTI</h2>
+            <h2 class="lang-en hidden">3. CORE ADVANTAGES</h2>
+            <p class="lang-id"><strong>Penjemputan Cepat:</strong> Pemberian order otomatis kepada armada terdekat menggunakan smart location system.</p>
+            <p class="lang-en hidden"><strong>Rapid Pickup:</strong> Automatic order matching to the closest fleet using a smart location system.</p>
+            
+            <p class="lang-id"><strong>Keselamatan:</strong> Verifikasi identitas ketat bagi penumpang dan pengemudi demi keamanan perjalanan.</p>
+            <p class="lang-en hidden"><strong>Safety First:</strong> Strict identity verification for both passengers and drivers to ensure safe travels.</p>
+            
+            <p class="lang-id"><strong>Kearifan Lokal:</strong> Adaptasi sistem operasional sesuai kebutuhan dan kebiasaan mobilitas masyarakat lokal.</p>
+            <p class="lang-en hidden"><strong>Local Adaptations:</strong> Operational adaptation tailored to the custom and mobility habits of local citizens.</p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="lang-id">4. TEKNOLOGI PENENTUAN LOKASI & REGULASI</h2>
+            <h2 class="lang-en hidden">4. LOCATION TECHNOLOGY & COMPLIANCE</h2>
+            <p class="lang-id">
+                Aplikasi kami didukung oleh sistem penentuan koordinat presisi tinggi. Dengan algoritma pemetaan klaster dinamis, Ojek-Asia dapat menyalurkan perjalanan dalam hitungan detik, meminimalkan waktu tunggu penumpang dan mengoptimalkan ritase harian pengemudi secara berkelanjutan. Kami mematuhi seluruh perizinan dinas perhubungan dan kepolisian setempat di wilayah operasional kami.
+            </p>
+            <p class="lang-en hidden">
+                Our application is powered by a high-precision coordinate dispatch system. With a dynamic cluster mapping algorithm, Ojek-Asia pairs rides in seconds, minimizing passenger wait times and optimizing daily trips for drivers. We strictly comply with transportation licensing and regional police permits across our operational territories.
+            </p>
+        </section>
+
+        <!-- Ad Slot -->
+        <div id="overview-ad-slot" class="w-full max-w-4xl mx-auto mb-16">
+            <div class="text-center mb-2">
+                <span class="text-[9px] text-gray-400 uppercase tracking-widest font-sans">Partner Insight</span>
+            </div>
+            <div id="overview-ad-unit" class="min-height-[90px] flex justify-center items-center bg-white dark:bg-[#23211f] border border-gray-150 dark:border-white/5 rounded-xl shadow-sm p-2"></div>
+        </div>
+    </div>
+
+    <!-- TAB 2: PROPOSAL BISNIS -->
+    <div id="content-proposal" class="hidden w-full px-6 md:px-12 py-12">
+        <div class="flex flex-col lg:flex-row gap-12 max-w-full">
+            
+            <!-- Left Sidebar Navigation (Nav Kiri) -->
+            <div class="w-full lg:w-[320px] shrink-0 lg:self-start sticky top-36 z-40 bg-[#fdfbf7]/90 dark:bg-[#181614]/90 backdrop-blur-md py-3 lg:py-0 border-b border-gray-200/50 lg:border-b-0 transition-colors duration-300">
+                <!-- Wrapper for horizontal scrolling on mobile, vertical scrolling on desktop -->
+                <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-y-auto pb-2 lg:pb-6 gap-2.5 max-h-[calc(100vh-200px)] pr-2 scrollbar-none whitespace-nowrap lg:whitespace-normal">
+                    <div class="hidden lg:block font-sans text-[10px] font-extrabold uppercase tracking-widest text-[#5e5954] mb-3 px-1">
+                        <span class="lang-id">Daftar Isi Proposal</span>
+                        <span class="lang-en hidden">Proposal Contents</span>
+                    </div>
+                    
+                    <button class="nav-card active shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-1')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">01</span> 
+                        <span class="lang-id">Ringkasan Eksekutif</span>
+                        <span class="lang-en hidden">Executive Summary</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-2')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">02</span> 
+                        <span class="lang-id">Visi Utama</span>
+                        <span class="lang-en hidden">Primary Vision</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-3')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">03</span> 
+                        <span class="lang-id">Misi Strategis</span>
+                        <span class="lang-en hidden">Strategic Mission</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-4')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">04</span> 
+                        <span class="lang-id">Keunggulan Inti</span>
+                        <span class="lang-en hidden">Core Advantages</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-5')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">05</span> 
+                        <span class="lang-id">Teknologi Lokasi</span>
+                        <span class="lang-en hidden">Location Technology</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-6')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">06</span> 
+                        <span class="lang-id">Kepatuhan Regulasi</span>
+                        <span class="lang-en hidden">Regulatory Compliance</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-7')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">07</span> 
+                        <span class="lang-id">Hubungi Kami</span>
+                        <span class="lang-en hidden">Contact Us</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Content Area (Desain Buku Klasik) -->
+            <div class="flex-grow book-content max-w-[850px] lg:pl-4">
+                
+                <!-- Main Header Title -->
+                <div class="mb-12">
+                    <h1 class="serif-title lang-id">PROPOSAL MOBILITAS ON-DEMAND & PENGIRIMAN REGIONAL (PROYEK: OJEK-ASIA)</h1>
+                    <h1 class="serif-title lang-en hidden">ON-DEMAND MOBILITY & REGIONAL DELIVERY PROPOSAL (PROJECT: OJEK-ASIA)</h1>
+                    
+                    <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between">
+                        <span class="lang-id">Hak Cipta Terpelihara © 2026</span>
+                        <span class="lang-en hidden">All Rights Reserved © 2026</span>
+                        
+                        <span class="lang-id">Investasi & Teknologi</span>
+                        <span class="lang-en hidden">Investment & Technology</span>
+                    </div>
+                </div>
+
+                <!-- 1. Ringkasan Eksekutif -->
+                <section id="sec-1" class="book-section mb-12">
+                    <h2 class="lang-id">1. RINGKASAN EKSEKUTIF</h2>
+                    <h2 class="lang-en hidden">1. EXECUTIVE SUMMARY</h2>
+                    
+                    <p class="drop-cap lang-id">
+                        Ojek-Asia adalah platform mobilitas dan pengiriman on-demand regional yang mengutamakan kesejahteraan mitra dan kenyamanan pengguna. Platform ini bertujuan menghadirkan solusi mobilitas terdepan di wilayah Asia Tenggara dengan menjembatani kemudahan berkendara harian bersama skema kompensasi yang adil dan berkelanjutan bagi para mitra pengemudi lokal.
+                    </p>
+                    <p class="drop-cap lang-en hidden">
+                        Ojek-Asia is a regional on-demand mobility and delivery platform prioritizing partner welfare and user convenience. The platform aims to deliver leading mobility solutions in Southeast Asia by bridging daily transit ease with a fair and sustainable compensation scheme for local driver partners.
+                    </p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 2. Visi Utama -->
+                <section id="sec-2" class="book-section mb-12">
+                    <h2 class="lang-id">2. VISI UTAMA</h2>
+                    <h2 class="lang-en hidden">2. PRIMARY VISION</h2>
+                    
+                    <p class="lang-id">
+                        Menghadirkan solusi mobilitas on-demand terdepan di Asia Tenggara yang menjembatani kenyamanan berkendara dengan kemakmuran ekonomi pengemudi lokal secara berkelanjutan, menciptakan jaringan transportasi regional terpadu yang memberdayakan masyarakat.
+                    </p>
+                    <p class="lang-en hidden">
+                        To deliver leading on-demand mobility solutions in Southeast Asia that bridge comfortable transit with the economic prosperity of local drivers, establishing an integrated regional transportation network that empowers communities.
+                    </p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 3. Misi Strategis -->
+                <section id="sec-3" class="book-section mb-12">
+                    <h2 class="lang-id">3. MISI STRATEGIS</h2>
+                    <h2 class="lang-en hidden">3. STRATEGIC MISSION</h2>
+                    
+                    <p class="lang-id">Dalam mewujudkan visi besar kami, Ojek-Asia menjalankan tiga misi utama:</p>
+                    <p class="lang-en hidden">To achieve our grand vision, Ojek-Asia pursues three core missions:</p>
+                    
+                    <p class="lang-id"><strong>Layanan Terjangkau:</strong> Menyediakan layanan ojek dan pengiriman paket yang terjangkau, cepat, serta handal bagi seluruh lapisan masyarakat.</p>
+                    <p class="lang-en hidden"><strong>Affordable Services:</strong> Providing affordable, prompt, and reliable ride-hailing and parcel delivery services for all social classes.</p>
+                    
+                    <p class="lang-id"><strong>Pemberdayaan Mitra:</strong> Memberdayakan kesejahteraan mitra pengemudi melalui skema pembagian pendapatan yang adil, transparan, dan menguntungkan.</p>
+                    <p class="lang-en hidden"><strong>Partner Empowerment:</strong> Empowering driver partner welfare through a fair, transparent, and profitable revenue-sharing scheme.</p>
+                    
+                    <p class="lang-id"><strong>Asuransi Terintegrasi:</strong> Menyediakan perlindungan dan asuransi keselamatan terpadu bagi pengemudi maupun penumpang di setiap perjalanan.</p>
+                    <p class="lang-en hidden"><strong>Integrated Insurance:</strong> Offering integrated safety insurance protection for both drivers and passengers on every single journey.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 4. Keunggulan Inti -->
+                <section id="sec-4" class="book-section mb-12">
+                    <h2 class="lang-id">4. KEUNGGULAN INTI</h2>
+                    <h2 class="lang-en hidden">4. CORE ADVANTAGES</h2>
+                    
+                    <p class="lang-id">Platform kami menawarkan keunggulan bersaing utama melalui tiga aspek dasar:</p>
+                    <p class="lang-en hidden">Our platform offers key competitive advantages based on three fundamental pillars:</p>
+                    
+                    <p class="lang-id"><strong>Penjemputan Cepat:</strong> Algoritma alokasi rute kami secara otomatis mencocokkan pesanan kepada armada kurir terdekat menggunakan sistem pemetaan pintar.</p>
+                    <p class="lang-en hidden"><strong>Rapid Pickup:</strong> Our route allocation algorithm automatically matches orders to the nearest fleet courier using smart mapping systems.</p>
+                    
+                    <p class="lang-id"><strong>Keselamatan Terjamin:</strong> Verifikasi identitas yang ketat dan pemeriksaan latar belakang berkala dilakukan bagi penumpang maupun pengemudi demi menjamin ketenangan berkendara.</p>
+                    <p class="lang-en hidden"><strong>Assured Safety:</strong> Strict identity verification and periodic background checks are enforced for both passengers and drivers to ensure peace of mind.</p>
+                    
+                    <p class="lang-id"><strong>Kearifan Lokal:</strong> Penyesuaian sistem operasional dan metode pembayaran sesuai dengan tradisi, hukum, dan kebiasaan mobilitas masyarakat regional.</p>
+                    <p class="lang-en hidden"><strong>Local Adaptations:</strong> Customizing operational structures and payment methods to match regional laws, culture, and transit habits.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 5. Teknologi Penentuan Lokasi -->
+                <section id="sec-5" class="book-section mb-12">
+                    <h2 class="lang-id">5. TEKNOLOGI PENENTUAN LOKASI</h2>
+                    <h2 class="lang-en hidden">5. LOCATION TECHNOLOGY</h2>
+                    
+                    <p class="lang-id">
+                        Aplikasi kami didukung oleh sistem penentuan koordinat presisi tinggi. Dengan <strong>algoritma pemetaan klaster dinamis</strong>, Ojek-Asia dapat menyalurkan perjalanan dalam hitungan detik, meminimalkan waktu tunggu penumpang dan mengoptimalkan ritase harian pengemudi secara maksimal.
+                    </p>
+                    <p class="lang-en hidden">
+                        Our application is powered by a high-precision coordinate dispatch system. Using a <strong>dynamic cluster mapping algorithm</strong>, Ojek-Asia pairs rides in seconds, minimizing passenger wait times and maximizing daily trips for drivers.
+                    </p>
+                </section>
+
+                <!-- Ad Slot 1 -->
+                <div id="adsterra-banner-unit">
+                    <!-- Adsterra Banner Injected here -->
+                </div>
+
+                <hr class="book-divider">
+
+                <!-- 6. Kepatuhan Regulasi -->
+                <section id="sec-6" class="book-section mb-12">
+                    <h2 class="lang-id">6. KEPATUHAN REGULASI</h2>
+                    <h2 class="lang-en hidden">6. REGULATORY COMPLIANCE</h2>
+                    
+                    <p class="lang-id">
+                        Kami mematuhi seluruh perizinan dinas perhubungan dan kepolisian setempat di wilayah operasional kami. Kerangka kerja yang selaras dengan undang-undang ketenagakerjaan daerah memastikan kemitraan pengemudi tetap berjalan harmonis, legal, dan aman dari risiko sengketa perburuhan.
+                    </p>
+                    <p class="lang-en hidden">
+                        We strictly comply with transportation licensing and regional police permits across our operational territories. Aligning with regional labor guidelines ensures driver partnerships remain harmonious, legal, and risk-free.
+                    </p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 7. Hubungi Kami -->
+                <section id="sec-7" class="book-section mb-12">
+                    <h2 class="lang-id">7. HUBUNGI KAMI</h2>
+                    <h2 class="lang-en hidden">7. CONTACT US</h2>
+                    
+                    <p class="lang-id">
+                        Dapatkan rincian proposal pengembangan lengkap untuk investasi Ojek-Asia. Tim analis kami siap menyajikan proyeksi bisnis secara terperinci. Silakan hubungi kami untuk informasi kemitraan lebih lanjut.
+                    </p>
+                    <p class="lang-en hidden">
+                        Access the full development proposal for Ojek-Asia investment. Our analyst team is ready to present detailed business projections. Please contact us for further partnership details.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                        <a href="https://wa.me/6288971071138" target="_blank" class="px-6 py-3 bg-[#0066cc] text-white font-bold rounded-lg hover:bg-blue-700 transition-colors text-sm text-center inline-flex items-center justify-center gap-2 font-sans">
+                            <i data-lucide="message-square" class="w-4 h-4"></i> Hubungi WhatsApp
+                        </a>
+                        <a href="mailto:algojodua2@gmail.com" class="px-6 py-3 bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-white/10 font-bold rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 transition-colors text-sm text-center inline-flex items-center justify-center gap-2 font-sans">
+                            <i data-lucide="mail" class="w-4 h-4"></i> Kirim Email
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: CONTACT & ACCESS VIEW (Classic Book Layout) -->
+    <div id="content-contact" class="hidden w-full max-w-[850px] mx-auto px-6 py-12 book-content">
+        <h1 class="serif-title lang-id">INFORMASI KONTAK & AKSES PROTOTIPE</h1>
+        <h1 class="serif-title lang-en hidden">CONTACT INFORMATION & PROTOTYPE ACCESS</h1>
+
+        <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between mb-8">
+            <span class="lang-id">Hubungan Kemitraan</span>
+            <span class="lang-en hidden">Partnership Relations</span>
+            <span class="lang-id">Akses Resmi</span>
+            <span class="lang-en hidden">Official Access</span>
+        </div>
+
+        <section class="mb-12">
+            <h2 class="lang-id">1. AKSES PROTOTIPE PRODUKSI</h2>
+            <h2 class="lang-en hidden">1. PRODUCTION PROTOTYPE ACCESS</h2>
+            <p class="lang-id">
+                Untuk meninjau langsung fungsionalitas sistem, dasbor interaktif, dan eksekusi instruksi real-time, silakan mengakses server prototipe produksi kami melalui tautan berikut:
+            </p>
+            <p class="lang-en hidden">
+                To directly review the system functionality, interactive dashboard, and real-time execution, please access our live production prototype server via the following link:
+            </p>
+            <p class="font-sans text-base">
+                <a href="https://tradingsafe.mijdigital.my" target="_blank" class="inline-flex items-center gap-2 text-[#0066cc] dark:text-[#3399ff] font-bold hover:underline">
+                    <i data-lucide="rocket" class="w-4 h-4"></i> tradingsafe.mijdigital.my <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+            </p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="lang-id">2. DETAIL KEMITRAAN & KONTAK</h2>
+            <h2 class="lang-en hidden">2. PARTNERSHIP DETAILS & CONTACT</h2>
+            <p class="lang-id">
+                Segala bentuk korespondensi formal, proposal investasi, maupun pertanyaan seputar integrasi API dapat diajukan kepada perwakilan pengembang:
+            </p>
+            <p class="lang-en hidden">
+                All formal correspondence, investment proposals, and API integration inquiries can be directed to the developer representative:
+            </p>
+            
+            <ul class="space-y-4 font-sans text-sm text-gray-700 dark:text-gray-300">
+                <li class="flex items-start gap-3">
+                    <i data-lucide="user" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong class="text-gray-900 dark:text-white">Ilham Pradani S.H. (cand.)</strong>
+                        <div class="text-xs text-gray-500">Fullstack Software Engineer / Developer</div>
+                    </div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="mail" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong>Email Resmi:</strong> <a href="mailto:051071552@ecampus.ut.ac.id" class="text-[#0066cc] dark:text-[#3399ff] hover:underline">051071552@ecampus.ut.ac.id</a>
+                    </div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="message-square" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong>WhatsApp:</strong> <a href="https://wa.me/6288971071138" class="text-[#0066cc] dark:text-[#3399ff] hover:underline" target="_blank">+62 889-7107-1138</a>
+                    </div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="globe" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong>Situs Portofolio:</strong> 
+                        <a href="https://www.ilhampradani.me" target="_blank" class="text-[#0066cc] dark:text-[#3399ff] hover:underline">ilhampradani.me</a>
+                        <span class="mx-2 text-gray-300">|</span>
+                        <a href="https://www.mijdigital.my" target="_blank" class="text-[#0066cc] dark:text-[#3399ff] hover:underline">mijdigital.my</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Smooth scroll to a section on the page
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Tab Switching Logic
+        window.switchTab = function(tabId) {
+            // Hide all tab content
+            document.getElementById('content-dev-process').classList.add('hidden');
+            document.getElementById('content-proposal').classList.add('hidden');
+            document.getElementById('content-contact').classList.add('hidden');
+            
+            // Remove active classes
+            document.getElementById('tab-dev-process').classList.remove('active');
+            document.getElementById('tab-proposal').classList.remove('active');
+            document.getElementById('tab-contact').classList.remove('active');
+            
+            // Show target content
+            if (tabId === 'dev-process') {
+                document.getElementById('content-dev-process').classList.remove('hidden');
+                document.getElementById('tab-dev-process').classList.add('active');
+            } else if (tabId === 'proposal') {
+                document.getElementById('content-proposal').classList.remove('hidden');
+                document.getElementById('tab-proposal').classList.add('active');
+                if (window.handleScrollSpy) window.handleScrollSpy();
+            } else if (tabId === 'contact') {
+                document.getElementById('content-contact').classList.remove('hidden');
+                document.getElementById('tab-contact').classList.add('active');
+            }
+
+            // Scroll slightly below header to reset view
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // Modal triggers
+        window.openContactModal = function() {
+            const modal = document.getElementById('contact-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeContactModal = function() {
+            const modal = document.getElementById('contact-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (window.setLoadingProgress) window.setLoadingProgress(5);
+            
+            // Load components using main.js logic
+            if (window.loadComponent) {
+                await loadComponent('header-placeholder', 'include/header.html');
+                if (window.setLoadingProgress) window.setLoadingProgress(40);
+                await loadComponent('footer-placeholder', 'include/footer.html');
+                if (window.setLoadingProgress) window.setLoadingProgress(70);
+            }
+            
+            if (window.lucide) lucide.createIcons();
+
+            // Dark mode state management
+            const body = document.body;
+            const darkToggle = document.getElementById('dark-mode-toggle');
+            const savedTheme = localStorage.getItem('proposal_theme');
+
+            // Apply saved theme
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                updateDarkToggleIcon(true);
+            }
+
+            darkToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isDark = body.classList.toggle('dark-mode');
+                localStorage.setItem('proposal_theme', isDark ? 'dark' : 'light');
+                updateDarkToggleIcon(isDark);
+            });
+
+            function updateDarkToggleIcon(isDark) {
+                darkToggle.innerHTML = isDark 
+                    ? `<i data-lucide="sun" class="w-4 h-4 text-yellow-400"></i>`
+                    : `<i data-lucide="moon" class="w-4 h-4"></i>`;
+                if (window.lucide) lucide.createIcons();
+            }
+
+            // Language state management
+            const langToggle = document.getElementById('lang-toggle');
+            let currentLang = localStorage.getItem('preferred_lang') || 'id';
+
+            function updateLanguageUI(lang) {
+                currentLang = lang;
+                localStorage.setItem('preferred_lang', lang);
+                
+                // Show/hide elements based on language toggle
+                document.querySelectorAll('.lang-id').forEach(el => {
+                    if (lang === 'id') el.classList.remove('hidden');
+                    else el.classList.add('hidden');
+                });
+                document.querySelectorAll('.lang-en').forEach(el => {
+                    if (lang === 'en') el.classList.remove('hidden');
+                    else el.classList.add('hidden');
+                });
+
+                // Update toggle button text
+                if (langToggle) {
+                    langToggle.innerHTML = `
+                        <i data-lucide="languages" class="w-3.5 h-3.5 text-[#0066cc]"></i>
+                        <span>${lang === 'id' ? 'English' : 'Bahasa'}</span>
+                    `;
+                    if (window.lucide) lucide.createIcons();
+                }
+            }
+
+            // Click handler for language toggle
+            if (langToggle) {
+                langToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const newLang = currentLang === 'id' ? 'en' : 'id';
+                    updateLanguageUI(newLang);
+                });
+            }
+
+            // Init language on load
+            updateLanguageUI(currentLang);
+
+            // Scroll Spy logic to highlight active section on the left navigation
+            const sections = document.querySelectorAll('.book-section');
+            const navLinks = document.querySelectorAll('.nav-card');
+            
+            window.handleScrollSpy = () => {
+                if (document.getElementById('content-proposal').classList.contains('hidden')) return;
+
+                const scrollTop = window.scrollY;
+                const viewportCenter = scrollTop + 250; // Offset calculation for scrollspy
+                
+                let currentIndex = 0;
+                let minDiff = Infinity;
+                
+                sections.forEach((sec, idx) => {
+                    const rect = sec.getBoundingClientRect();
+                    const top = rect.top + scrollTop;
+                    const diff = Math.abs(top - viewportCenter);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        currentIndex = idx;
+                    }
+                });
+                
+                navLinks.forEach((link, idx) => {
+                    if (idx === currentIndex) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', window.handleScrollSpy, { passive: true });
+            window.addEventListener('resize', window.handleScrollSpy);
+            window.handleScrollSpy();
+
+            // Inject Adsterra
+            const adContainer = document.getElementById('adsterra-banner-unit');
+            if (adContainer) {
+                const scriptOptions = document.createElement('script');
+                scriptOptions.type = 'text/javascript';
+                scriptOptions.text = `
+                    atOptions = {
+                        'key' : '70d4032d0634bd1a04e49f946a536c02',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                `;
+                adContainer.appendChild(scriptOptions);
+                const scriptInvoke = document.createElement('script');
+                scriptInvoke.type = 'text/javascript';
+                scriptInvoke.src = '//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js';
+                adContainer.appendChild(scriptInvoke);
+            }
+
+            // Inject Adsterra into overview tab
+            const overviewAdContainer = document.getElementById('overview-ad-unit');
+            if (overviewAdContainer) {
+                const scriptOptions = document.createElement('script');
+                scriptOptions.type = 'text/javascript';
+                scriptOptions.text = `
+                    atOptions = {
+                        'key' : '70d4032d0634bd1a04e49f946a536c02',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                `;
+                overviewAdContainer.appendChild(scriptOptions);
+                const scriptInvoke = document.createElement('script');
+                scriptInvoke.type = 'text/javascript';
+                scriptInvoke.src = '//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js';
+                overviewAdContainer.appendChild(scriptInvoke);
+            }
+
+            if (window.setLoadingProgress) window.setLoadingProgress(100);
+        });
+    </script>
+</body>
+
+</html>

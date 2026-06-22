@@ -151,6 +151,13 @@
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #3b82f6;
         }
+
+        /* GPU Layer optimization for hardware accelerated scrolling */
+        .google-reviews-card, .blog-slider, .swiper-slide, .reviews-swiper, .scroll-section, .services-card, .btn, button, a {
+            will-change: transform;
+            transform: translate3d(0,0,0);
+            backface-visibility: hidden;
+        }
     </style>
     <style>
         /* Swiper Blog Slider Styles */
@@ -161,7 +168,7 @@
             margin: auto;
             background: #ecf0f3;
             box-shadow: 12px 12px 24px #b8c4df, -12px -12px 24px #ffffff;
-            padding: 25px 65px 25px 25px;
+            padding: 0;
             border-radius: 25px;
             height: 430px;
             transition: all .3s;
@@ -171,16 +178,18 @@
             .blog-slider {
                 max-width: 680px;
                 height: 430px;
-                padding-right: 65px;
             }
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1023px) {
             .blog-slider {
-                min-height: 310px !important;
+                width: 100% !important;
+                box-shadow: 6px 6px 12px #b8c4df, -6px -6px 12px #ffffff !important;
+                min-height: 400px !important;
                 height: auto !important;
-                margin: 25px auto 10px auto !important;
-                padding: 15px 15px 45px 15px !important;
+                margin: 35px auto 10px auto !important;
+                padding: 0 !important;
+                overflow: hidden !important;
             }
         }
 
@@ -193,11 +202,16 @@
         .blog-slider__item {
             display: flex;
             align-items: center;
+            padding: 25px 65px 25px 25px;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1023px) {
             .blog-slider__item {
                 flex-direction: column;
+                padding: 20px 15px 75px 15px !important;
             }
         }
 
@@ -243,12 +257,13 @@
             box-shadow: 4px 13px 30px 1px rgba(163, 177, 198, 0.35);
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1023px) {
             .blog-slider__img {
-                transform: translateY(-20px) !important;
-                width: 90% !important;
-                height: 140px !important;
-                margin-bottom: 0px !important;
+                transform: translateY(0) !important;
+                width: 80% !important;
+                max-width: 240px !important;
+                height: 130px !important;
+                margin-bottom: 10px !important;
                 margin-left: auto !important;
                 margin-right: auto !important;
             }
@@ -256,7 +271,8 @@
 
         @media screen and (max-width: 576px) {
             .blog-slider__img {
-                width: 92% !important;
+                max-width: 240px !important;
+                width: 80% !important;
             }
         }
 
@@ -283,17 +299,17 @@
             width: 100%;
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1023px) {
             .blog-slider__content {
-                margin-top: -10px !important;
+                margin-top: 0 !important;
                 text-align: center !important;
-                padding: 0 15px !important;
+                padding: 0 10px !important;
             }
         }
 
         @media screen and (max-width: 576px) {
             .blog-slider__content {
-                padding: 0 !important;
+                padding: 0 10px !important;
             }
         }
 
@@ -322,7 +338,7 @@
             letter-spacing: -0.02em;
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1023px) {
             .blog-slider__title {
                 font-size: 14px !important;
                 margin-bottom: 8px !important;
@@ -337,7 +353,7 @@
             font-weight: 500;
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1023px) {
             .blog-slider__text {
                 font-size: 10px !important;
                 margin-bottom: 12px !important;
@@ -367,7 +383,7 @@
             transform: translateY(-1px);
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1023px) {
             .blog-slider__button {
                 padding: 8px 20px !important;
                 font-size: 8px !important;
@@ -455,7 +471,7 @@
             box-shadow: 0px 0px 20px rgba(59, 130, 246, 0.3);
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1023px) {
             .blog-slider__pagination-container {
                 position: absolute !important;
                 bottom: 15px !important;
@@ -634,32 +650,52 @@
             }
         }
 
-        @media screen and (max-width: 1023px) {
-            #artikel-container {
-                display: grid !important;
-                grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
-                grid-auto-flow: column !important;
+        /* Horizontal scroll for mobile only (< 640px) */
+        @media screen and (max-width: 639px) {
+            .scroll-x-mobile {
+                display: flex !important;
+                flex-wrap: nowrap !important;
                 overflow-x: auto !important;
-                scroll-snap-type: x mandatory !important;
-                scroll-behavior: smooth !important;
-                gap: 16px !important;
-                padding-bottom: 12px;
-                padding-left: 4px;
-                padding-right: 4px;
                 -webkit-overflow-scrolling: touch;
-            }
-            #artikel-container::-webkit-scrollbar {
-                display: none !important;
-            }
-            #artikel-container {
                 scrollbar-width: none !important;
                 -ms-overflow-style: none !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+                padding-bottom: 8px;
+                width: 100%;
             }
-            #artikel-container > a {
-                scroll-snap-align: center !important;
-                width: 290px !important;
+            .scroll-x-mobile::-webkit-scrollbar {
+                display: none !important;
+            }
+            .scroll-x-mobile > * {
                 flex-shrink: 0 !important;
             }
+        }
+
+        /* Mobile fixes for sticky height and overflow issues */
+        @media screen and (max-width: 1023px) {
+            .scroll-section {
+                position: relative !important;
+                height: auto !important;
+                min-height: 100svh !important;
+                overflow: visible !important;
+            }
+            .section-inner {
+                height: auto !important;
+                min-height: 100svh !important;
+                padding-top: 80px !important;
+                padding-bottom: 60px !important;
+                justify-content: flex-start !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+
+        /* GPU Layer optimization for hardware accelerated scrolling */
+        .google-reviews-card, .blog-slider, .swiper-slide, .reviews-swiper, .scroll-section, .services-card, .btn, button, a {
+            will-change: transform;
+            transform: translate3d(0,0,0);
+            backface-visibility: hidden;
         }
     </style>
     <style>
@@ -786,7 +822,7 @@
                 </div>
                 <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-6 md:gap-12 items-center relative z-30 w-full">
 
-                    <div class="md:col-span-7 space-y-4 md:space-y-6 reveal-el">
+                    <div class="md:col-span-7 space-y-4 md:space-y-6 reveal-el order-2 md:order-1">
                         <div
                             class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] mb-2 md:mb-4 border border-white/20">
                             <span class="w-2 h-2 rounded-full bg-blue-600"></span>
@@ -811,8 +847,8 @@
                         </div>
                     </div>
 
-                    <div class="md:col-span-5 reveal-el flex justify-center" style="transition-delay: 100ms;">
-                        <div class="relative group w-36 h-36 md:w-full md:h-auto md:max-w-md">
+                    <div class="md:col-span-5 reveal-el flex justify-center order-1 md:order-2" style="transition-delay: 100ms;">
+                        <div class="relative group w-64 h-64 sm:w-80 sm:h-80 md:w-full md:h-auto md:max-w-md">
                             <img src="image/hero-removebg-preview.png" alt="Dr. Ilham Pradani"
                                 class="w-full h-full object-contain filter drop-shadow-[8px_8px_16px_rgba(163,177,198,0.5)] group-hover:scale-102 transition-transform duration-700">
                         </div>
@@ -1117,7 +1153,7 @@
                                 <p class="text-gray-655 text-[10px] sm:text-xs md:text-sm font-medium" data-t="portofolio_desc">Implementasi teknis dari visi strategis dan solusi digital.</p>
                             </div>
 
-                            <div id="portofolio-tabs" class="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-6 reveal-el">
+                            <div id="portofolio-tabs" class="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 mb-6 reveal-el scroll-x-mobile">
                                 <!-- Tabs will be rendered dynamically -->
                             </div>
 
@@ -1183,13 +1219,13 @@
                                 <div>
                                     <div class="flex items-center mb-4">
                                         <div class="google-reviews__left shrink-0">
-                                            <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                                            <span class="text-base font-extrabold text-[#4285F4] font-sans select-none">G</span>
                                         </div>
                                         <div class="google-reviews__right google-reviews-content">
                                             <div class="google-reviews-content__top">
                                                 <p class="google-reviews-content__txt">Google</p>
                                                 <p class="google-reviews-content__rating">5.0</p>
-                                                <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                                <span class="text-yellow-500 font-extrabold text-sm select-none tracking-wider">★★★★★</span>
                                             </div>
                                             <div class="google-reviews-content__bottom">
                                                 <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
@@ -1216,13 +1252,13 @@
                                 <div>
                                     <div class="flex items-center mb-4">
                                         <div class="google-reviews__left shrink-0">
-                                            <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                                            <span class="text-base font-extrabold text-[#4285F4] font-sans select-none">G</span>
                                         </div>
                                         <div class="google-reviews__right google-reviews-content">
                                             <div class="google-reviews-content__top">
                                                 <p class="google-reviews-content__txt">Google</p>
                                                 <p class="google-reviews-content__rating">5.0</p>
-                                                <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                                <span class="text-yellow-500 font-extrabold text-sm select-none tracking-wider">★★★★★</span>
                                             </div>
                                             <div class="google-reviews-content__bottom">
                                                 <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
@@ -1249,13 +1285,13 @@
                                 <div>
                                     <div class="flex items-center mb-4">
                                         <div class="google-reviews__left shrink-0">
-                                            <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                                            <span class="text-base font-extrabold text-[#4285F4] font-sans select-none">G</span>
                                         </div>
                                         <div class="google-reviews__right google-reviews-content">
                                             <div class="google-reviews-content__top">
                                                 <p class="google-reviews-content__txt">Google</p>
                                                 <p class="google-reviews-content__rating">5.0</p>
-                                                <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                                <span class="text-yellow-500 font-extrabold text-sm select-none tracking-wider">★★★★★</span>
                                             </div>
                                             <div class="google-reviews-content__bottom">
                                                 <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
@@ -1282,13 +1318,13 @@
                                 <div>
                                     <div class="flex items-center mb-4">
                                         <div class="google-reviews__left shrink-0">
-                                            <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                                            <span class="text-base font-extrabold text-[#4285F4] font-sans select-none">G</span>
                                         </div>
                                         <div class="google-reviews__right google-reviews-content">
                                             <div class="google-reviews-content__top">
                                                 <p class="google-reviews-content__txt">Google</p>
                                                 <p class="google-reviews-content__rating">5.0</p>
-                                                <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                                <span class="text-yellow-500 font-extrabold text-sm select-none tracking-wider">★★★★★</span>
                                             </div>
                                             <div class="google-reviews-content__bottom">
                                                 <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
@@ -1315,13 +1351,13 @@
                                 <div>
                                     <div class="flex items-center mb-4">
                                         <div class="google-reviews__left shrink-0">
-                                            <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                                            <span class="text-base font-extrabold text-[#4285F4] font-sans select-none">G</span>
                                         </div>
                                         <div class="google-reviews-content__right google-reviews-content">
                                             <div class="google-reviews-content__top">
                                                 <p class="google-reviews-content__txt">Google</p>
                                                 <p class="google-reviews-content__rating">5.0</p>
-                                                <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                                <span class="text-yellow-500 font-extrabold text-sm select-none tracking-wider">★★★★★</span>
                                             </div>
                                             <div class="google-reviews-content__bottom">
                                                 <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
@@ -1348,13 +1384,13 @@
                                 <div>
                                     <div class="flex items-center mb-4">
                                         <div class="google-reviews__left shrink-0">
-                                            <svg class="google-reviews__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 62" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Google" fill-rule="nonzero"><path d="M60,31.3072761 C60,28.7706593 59.7984568,26.9195955 59.3622814,25 L31,25 L31,36.4490413 L47.6480196,36.4490413 C47.3125,39.2942869 45.5,43.57917 41.4721451,46.458445 L41.4156852,46.8417497 L50.3833142,53.9366673 L51.0046039,54 C56.7105196,48.6181377 60,40.6996586 60,31.3072761" fill="#4285F4"/><path d="M30.5657629,62 C38.8970642,62 45.8912635,59.2297813 51,54.4515421 L41.2628153,46.8336198 C38.6571564,48.668815 35.1599385,49.9499666 30.5657629,49.9499666 C22.4058244,49.9499666 15.4801702,44.5138451 13.0113651,37 L12.6494943,37.0310322 L3.12456298,44.4756517 L3,44.8253605 C8.07422764,55.0053471 18.4970996,62 30.5657629,62" fill="#34A853"/><path d="M13,37.2106585 C12.3634086,35.2805499 11.9949894,33.2123897 11.9949894,31.0755601 C11.9949894,28.9384929 12.3634086,26.8705703 12.9665073,24.9404616 L12.9496455,24.5293958 L3.52481299,17 L3.2164496,17.1508826 C1.17270482,21.3558724 0,26.0779022 0,31.0755601 C0,36.0732179 1.17270482,40.7950102 3.2164496,45 L13,37.2106585" fill="#FBBC05"/><path d="M30.4481731,12.0497947 C36.2176437,12.0497947 40.1094593,14.577485 42.3286132,16.6898214 L51,8.10250167 C45.6744072,3.08173398 38.7439347,0 30.4481731,0 C18.4309922,0 8.05258203,6.99441421 3,17.1744008 L12.9345323,25 C15.4269324,17.4861549 22.3230431,12.0497947 30.4481731,12.0497947" fill="#EB4335"/></g></g></svg>
+                                            <span class="text-base font-extrabold text-[#4285F4] font-sans select-none">G</span>
                                         </div>
                                         <div class="google-reviews__right google-reviews-content">
                                             <div class="google-reviews-content__top">
                                                 <p class="google-reviews-content__txt">Google</p>
                                                 <p class="google-reviews-content__rating">5.0</p>
-                                                <svg class="google-reviews-content__stars" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 15"><g fill="#FBBC05"><polygon points="7.5 11.25 3.09161061 13.5676275 3.93353806 8.65881373 0.367076128 5.18237254 5.2958053 4.46618627 7.5 0 9.7041947 4.46618627 14.6329239 5.18237254 11.0664619 8.65881373 11.9083894 13.5676275"/><polygon points="26.5 11.25 22.0916106 13.5676275 22.9335381 8.65881373 19.3670761 5.18237254 24.2958053 4.46618627 26.5 0 28.7041947 4.46618627 33.6329239 5.18237254 30.0664619 8.65881373 30.9083894 13.5676275"/><polygon points="46.5 11.25 42.0916106 13.5676275 42.9335381 8.65881373 39.3670761 5.18237254 44.2958053 4.46618627 46.5 0 48.7041947 4.46618627 53.6329239 5.18237254 50.0664619 8.65881373 50.9083894 13.5676275"/><polygon points="65.5 11.25 61.0916106 13.5676275 61.9335381 8.65881373 58.3670761 5.18237254 63.2958053 4.46618627 65.5 0 67.7041947 4.46618627 72.6329239 5.18237254 69.0664619 8.65881373 69.9083894 13.5676275"/><polygon points="84.5 11.25 80.0916106 13.5676275 80.9335381 8.65881373 77.3670761 5.18237254 82.2958053 4.46618627 84.5 0 86.7041947 4.46618627 91.6329239 5.18237254 88.0664619 8.65881373 88.9083894 13.5676275"/></g></svg>
+                                                <span class="text-yellow-500 font-extrabold text-sm select-none tracking-wider">★★★★★</span>
                                             </div>
                                             <div class="google-reviews-content__bottom">
                                                 <p class="google-reviews-content__info">Ulasan Terverifikasi Google</p>
@@ -1432,7 +1468,7 @@
                         </div>
                     </div>
 
-                    <div id="jurnal-categories" class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 mb-4 shrink-0 reveal-el">
+                    <div id="jurnal-categories" class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 mb-4 shrink-0 reveal-el scroll-x-mobile">
                         <!-- Categories will be rendered here -->
                     </div>
 
@@ -1458,13 +1494,13 @@
 
         <!-- AWARD SECTION -->
         <section id="awards" class="scroll-section">
-            <div class="section-inner px-6">
+            <div class="section-inner px-4 sm:px-6">
                 <div class="max-w-7xl mx-auto mb-1 sm:mb-3 md:mb-6 w-full">
                 <div class="flex flex-col items-center text-center reveal-el">
                     <!-- Large Title and Laurels -->
                     <div class="inline-flex items-center gap-2 md:gap-4 mb-2 md:mb-4">
                         <!-- Left Laurel -->
-                        <svg class="w-6 h-6 md:w-10 md:h-10 text-blue-600/40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <svg class="hidden sm:inline-block w-6 h-6 md:w-10 md:h-10 text-blue-600/40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1">
                             <path d="M12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9" />
                             <path d="M5 12l2-2" />
@@ -1474,12 +1510,12 @@
                         </svg>
 
                         <div class="flex flex-col items-center">
-                            <h2 class="text-xs sm:text-sm md:text-xl font-bold text-blue-600 uppercase tracking-[0.2em]"
+                            <h2 class="text-[10px] sm:text-sm md:text-xl font-bold text-blue-600 uppercase tracking-[0.2em]"
                                 data-t="award_badge">Prestasi & Sertifikasi</h2>
                         </div>
 
                         <!-- Right Laurel -->
-                        <svg class="w-6 h-6 md:w-10 md:h-10 text-blue-600/40 scale-x-[-1]" viewBox="0 0 24 24" fill="none"
+                        <svg class="hidden sm:inline-block w-6 h-6 md:w-10 md:h-10 text-blue-600/40 scale-x-[-1]" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="1">
                             <path d="M12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9" />
                             <path d="M5 12l2-2" />
@@ -1496,8 +1532,8 @@
             </div>
 
             <!-- Swiper Blog Slider -->
-            <div class="max-w-7xl mx-auto px-6 relative z-30">
-                <div class="blog-slider">
+            <div class="max-w-7xl mx-auto px-0 sm:px-6 relative z-30 w-full">
+                <div class="blog-slider w-full">
                     <div class="blog-slider__wrp swiper-wrapper">
 
                         <!-- Award 1: CompTIA -->
@@ -1596,6 +1632,48 @@
                                     infrastruktur informasi strategis.</div>
                                 <a href="https://www.giac.org/" target="_blank" class="blog-slider__button">VERIFY
                                     CERTIFICATE</a>
+                            </div>
+                        </div>
+
+                        <!-- Award 7: Komdigi - Akun -->
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="documents/Logo/komdigi.png" alt="Komdigi Account Security">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code" data-t="award_cat_komdigi">Kementerian Komdigi RI</span>
+                                <div class="blog-slider__title" data-t="award_7_t">Sertifikasi Komdigi - Keamanan Akun</div>
+                                <div class="blog-slider__text" data-t="award_7_d">Sertifikasi resmi dari Kementerian Komunikasi dan Digital RI yang memvalidasi kompetensi dalam pencegahan dan mitigasi ancaman pembobolan akun pribadi serta perlindungan data kredensial.</div>
+                                <a href="documents/certification_komdigi/Sertifikat_ILHAM PRADANI_Ancaman Pembobolan Akun Pribadi dan Pencegahannya.pdf"
+                                    target="_blank" download class="blog-slider__button">DOWNLOAD CERTIFICATE</a>
+                            </div>
+                        </div>
+
+                        <!-- Award 8: Komdigi - ADS -->
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="documents/Logo/komdigi.png" alt="Komdigi Associate Data Scientist">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code" data-t="award_cat_ds">Data Science & Python</span>
+                                <div class="blog-slider__title" data-t="award_8_t">Associate Data Scientist (Python) - Nasional</div>
+                                <div class="blog-slider__text" data-t="award_8_d">Sertifikasi kompetensi nasional dalam bidang sains data (Data Science) menggunakan pemrograman Python, meliputi analisis data kuantitatif, pemodelan prediktif, dan pengolahan dataset.</div>
+                                <a href="documents/certification_komdigi/Sertifikat_ILHAM PRADANI_Associate Data Scientist + Python - Nasional.pdf"
+                                    target="_blank" download class="blog-slider__button">DOWNLOAD CERTIFICATE</a>
+                            </div>
+                        </div>
+
+                        <!-- Award 9: Komdigi - Intro DS -->
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="documents/Logo/komdigi.png" alt="Komdigi Intro Data Science">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code" data-t="award_cat_komdigi">Kementerian Komdigi RI</span>
+                                <div class="blog-slider__title" data-t="award_9_t">Sertifikasi Komdigi - Pengenalan Data Science</div>
+                                <div class="blog-slider__text" data-t="award_9_d">Sertifikasi resmi dari Kementerian Komunikasi dan Digital RI mengenai konsep dasar sains data dan penerapan pemanfaatan data analitik di berbagai sektor industri.</div>
+                                <a href="documents/certification_komdigi/Sertifikat_ILHAM PRADANI_Pengenalan Data Science dan Pemanfaatannya di Berbagai Sektor.pdf"
+                                    target="_blank" download class="blog-slider__button">DOWNLOAD CERTIFICATE</a>
                             </div>
                         </div>
 

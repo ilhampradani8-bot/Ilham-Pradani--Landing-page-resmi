@@ -1,5 +1,5 @@
 {
-  "nav_name": "DR.イルハム・プラダーニ C.L.",
+  "nav_name": "イルハム・プラダーニ",
   "nav_services": "スキル",
   "nav_partnership": "協力",
   "nav_portfolio": "ポートフォリオ",
@@ -182,9 +182,17 @@
   "award_cat_offense": "攻撃的セキュリティ認定済み",
   "award_cat_ethical": "エシカルハッキングマスター",
   "award_cat_method": "攻撃方法論",
+  "award_7_t": "通信デジタル省認定 - アカウントセキュリティ",
+  "award_7_d": "個人アカウントのハッキング防止と対策、および資格情報のデータ保護における能力を証明する、インドネシア共和国通信デジタル省による公式認定。",
+  "award_8_t": "アソシエイトデータサイエンティスト (Python) - 国家資格",
+  "award_8_d": "Pythonプログラミングを用いたデータサイエンスにおける国家能力認定。定量データ分析、予測モデリング、データセット処理を含みます。",
+  "award_9_t": "通信デジタル省認定 - データサイエンス入門",
+  "award_9_d": "データサイエンスの基本概念と、様々な産業セクターにおけるデータ分析の応用をカバーする、インドネシア共和国通信デジタル省による公式認定。",
+  "award_cat_komdigi": "インドネシア通信デジタル省",
+  "award_cat_ds": "データサイエンス & Python",
   "nav_teacher": "学術",
   "nav_awards": "証明書",
   "nav_contact": "連絡先",
   "nav_main_menu": "ホーム",
-  "nav_project_proposal": "開発"
+  "nav_project_proposal": "Project"
 }

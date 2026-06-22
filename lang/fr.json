@@ -1,5 +1,5 @@
 {
-  "nav_name": "DR. ILHAM PRADANI C.L.",
+  "nav_name": "ILHAM PRADANI",
   "nav_services": "Compétence",
   "nav_partnership": "Coopération",
   "nav_portfolio": "Portefeuille",
@@ -182,9 +182,17 @@
   "award_cat_offense": "Certifié en sécurité offensive",
   "award_cat_ethical": "Maître du piratage éthique",
   "award_cat_method": "Méthodologie offensive",
+  "award_7_t": "Certification Komdigi - Sécurité des comptes",
+  "award_7_d": "Certification officielle du ministère de la Communication et du Numérique de la République d'Indonésie validant la compétence dans la prévention et l'atténuation des violations de comptes personnels et la protection des données d'identification.",
+  "award_8_t": "Scientifique de données associé (Python) - National",
+  "award_8_d": "Certification nationale de compétence en science des données utilisant la programmation Python, couvrant l'analyse de données quantitatives, la modélisation prédictive et le traitement d'ensembles de données.",
+  "award_9_t": "Certification Komdigi - Intro à la science des données",
+  "award_9_d": "Certification officielle du ministère de la Communication et du Numérique de la République d'Indonésie couvrant les concepts fondamentaux de la science des données et l'application de l'analyse des données dans divers secteurs industriels.",
+  "award_cat_komdigi": "Ministère de Komdigi RI",
+  "award_cat_ds": "Science des données & Python",
   "nav_teacher": "Académique",
   "nav_awards": "Certificats",
   "nav_contact": "Contact",
   "nav_main_menu": "Accueil",
-  "nav_project_proposal": "Développement"
+  "nav_project_proposal": "Project"
 }
