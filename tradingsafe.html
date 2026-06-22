@@ -18,6 +18,7 @@
             --book-text: #1c1a17;
             --book-secondary: #5e5954;
             --book-border: rgba(0, 0, 0, 0.08);
+            --book-accent: #0066cc;
         }
 
         body {
@@ -34,6 +35,7 @@
             --book-text: #e3e0dc;
             --book-secondary: #a09a95;
             --book-border: rgba(255, 255, 255, 0.08);
+            --book-accent: #3399ff;
         }
 
         /* Classic Book Design Typography */
@@ -112,54 +114,56 @@
             font-family: 'Plus Jakarta Sans', sans-serif !important;
         }
 
-        /* Card styles ONLY for left navigation buttons */
+        /* Neobrutalism nav-card styling */
         .nav-card {
             background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 3px 3px 8px rgba(163, 177, 198, 0.2), -3px -3px 8px #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border: 2px solid #1a1a1a;
+            box-shadow: 2px 2px 0px 0px #1a1a1a;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #4a5568;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #1a1a1a;
             text-align: left;
-            padding: 0.75rem 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.6rem 0.8rem;
+            transition: all 0.1s ease-in-out;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
         body.dark-mode .nav-card {
-            background: #23211f;
-            color: #c5c2be;
-            border-color: rgba(255, 255, 255, 0.05);
-            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), -3px -3px 8px rgba(255, 255, 255, 0.02);
+            background: #181614;
+            color: #ffffff;
+            border-color: #ffffff;
+            box-shadow: 2px 2px 0px 0px #ffffff;
         }
 
         .nav-card:hover {
-            transform: translateY(-1px);
-            box-shadow: 4px 4px 12px rgba(163, 177, 198, 0.3), -4px -4px 12px #ffffff;
-            color: #0066cc;
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px 0px #1a1a1a;
+            color: #1a1a1a;
         }
 
         body.dark-mode .nav-card:hover {
-            color: #3399ff;
-            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
+            box-shadow: 1px 1px 0px 0px #ffffff;
+            color: #ffffff;
         }
 
         .nav-card.active {
-            background: #0066cc;
+            background: var(--book-accent);
             color: #ffffff !important;
-            border-color: #0066cc;
-            box-shadow: 4px 4px 12px rgba(0, 102, 204, 0.25);
+            border-color: #1a1a1a;
+            box-shadow: 2px 2px 0px 0px #1a1a1a;
+            transform: translate(1px, 1px);
         }
 
         body.dark-mode .nav-card.active {
-            background: #0066cc;
+            background: var(--book-accent);
             color: #ffffff !important;
-            border-color: #0066cc;
-            box-shadow: 4px 4px 12px rgba(0, 102, 204, 0.4);
+            border-color: #ffffff;
+            box-shadow: 2px 2px 0px 0px #ffffff;
+            transform: translate(1px, 1px);
         }
 
         /* Classic Book Divider */
@@ -229,26 +233,52 @@
             border-color: rgba(255, 255, 255, 0.08);
         }
 
-        /* Tab buttons styling */
+        /* Neobrutalism Tab buttons styling */
         .tab-btn {
-            color: var(--book-secondary);
-            border: 1px solid transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 850;
+            font-size: 11px !important;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #1a1a1a;
+            background: #ffffff;
+            border: 2px solid #1a1a1a;
+            border-radius: 8px;
+            box-shadow: 3px 3px 0px 0px #1a1a1a;
+            transition: all 0.1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        body.dark-mode .tab-btn {
+            color: #ffffff;
+            background: #181614;
+            border-color: #ffffff;
+            box-shadow: 3px 3px 0px 0px #ffffff;
         }
         .tab-btn:hover {
-            color: #0066cc;
+            transform: translate(1px, 1px);
+            box-shadow: 2px 2px 0px 0px #1a1a1a;
+            color: #1a1a1a;
         }
         body.dark-mode .tab-btn:hover {
-            color: #3399ff;
+            box-shadow: 2px 2px 0px 0px #ffffff;
+            color: #ffffff;
         }
         .tab-btn.active {
-            background: rgba(0, 102, 204, 0.08);
-            color: #0066cc;
-            border-color: rgba(0, 102, 204, 0.15);
+            background: var(--book-accent);
+            color: #ffffff !important;
+            border-color: #1a1a1a;
+            box-shadow: 3px 3px 0px 0px #1a1a1a;
+            transform: translate(0, 0);
         }
         body.dark-mode .tab-btn.active {
-            background: rgba(51, 153, 255, 0.08);
-            color: #3399ff;
-            border-color: rgba(51, 153, 255, 0.15);
+            background: var(--book-accent);
+            color: #ffffff !important;
+            border-color: #ffffff;
+            box-shadow: 3px 3px 0px 0px #ffffff;
+            transform: translate(0, 0);
         }
 
         /* Modern Apple-like cards for the overview, adapted for dark/light mode */
@@ -279,25 +309,25 @@
     <div id="header-placeholder"></div>
 
     <!-- Sticky Tabs Sidebar Container -->
-    <div class="max-w-7xl mx-auto px-6 py-8 lg:py-12 flex flex-col lg:flex-row gap-8">
+    <div class="max-w-7xl mx-auto px-6 pt-24 pb-8 lg:pt-28 lg:pb-12 flex flex-col lg:flex-row gap-4">
         
         <!-- Sticky Tabs Sidebar (Kiri) -->
-        <div class="w-full lg:w-[190px] shrink-0 lg:sticky lg:top-24 lg:self-start z-40">
-            <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-2 pb-3 lg:pb-0 border-b border-gray-200/60 lg:border-b-0 lg:border-r lg:border-gray-200/60 dark:border-white/10 pr-0 lg:pr-4 scrollbar-none whitespace-nowrap">
-                <button onclick="switchTab('dev-process')" id="tab-dev-process" class="tab-btn active px-3 py-2 text-xs font-sans font-bold rounded-xl transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start">
-                    <i data-lucide="cpu" class="w-4 h-4"></i>
-                    <span class="lang-id">Proses Pengembangan</span>
-                    <span class="lang-en hidden">Development Process</span>
+        <div class="w-full lg:w-[155px] shrink-0 lg:sticky lg:top-28 lg:self-start z-40">
+            <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-3 pb-3 lg:pb-0 border-b border-gray-200/60 lg:border-b-0 scrollbar-none whitespace-nowrap">
+                <button onclick="switchTab('dev-process')" id="tab-dev-process" class="tab-btn active px-3 py-2.5 text-xs font-sans font-bold rounded-lg transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start whitespace-normal text-left">
+                    <i data-lucide="cpu" class="w-4 h-4 shrink-0"></i>
+                    <span class="lang-id block leading-tight">Update<br class="hidden lg:inline">Pengembangan</span>
+                    <span class="lang-en hidden block leading-tight">Development<br class="hidden lg:inline">Update</span>
                 </button>
-                <button onclick="switchTab('proposal')" id="tab-proposal" class="tab-btn px-3 py-2 text-xs font-sans font-bold rounded-xl transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start">
-                    <i data-lucide="file-text" class="w-4 h-4"></i>
-                    <span class="lang-id">Proposal Bisnis</span>
-                    <span class="lang-en hidden">Business Proposal</span>
+                <button onclick="switchTab('proposal')" id="tab-proposal" class="tab-btn px-3 py-2.5 text-xs font-sans font-bold rounded-lg transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start whitespace-normal text-left">
+                    <i data-lucide="file-text" class="w-4 h-4 shrink-0"></i>
+                    <span class="lang-id block leading-tight">Proposal</span>
+                    <span class="lang-en hidden block leading-tight">Proposal</span>
                 </button>
-                <button onclick="switchTab('contact')" id="tab-contact" class="tab-btn px-3 py-2 text-xs font-sans font-bold rounded-xl transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start">
-                    <i data-lucide="phone" class="w-4 h-4"></i>
-                    <span class="lang-id">Kontak & Akses</span>
-                    <span class="lang-en hidden">Contact & Access</span>
+                <button onclick="switchTab('contact')" id="tab-contact" class="tab-btn px-3 py-2.5 text-xs font-sans font-bold rounded-lg transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start whitespace-normal text-left">
+                    <i data-lucide="phone" class="w-4 h-4 shrink-0"></i>
+                    <span class="lang-id block leading-tight">Kontak</span>
+                    <span class="lang-en hidden block leading-tight">Contact</span>
                 </button>
             </div>
         </div>
@@ -406,80 +436,375 @@
     </div>
 
     <!-- TAB 1: PROSES PENGEMBANGAN (Classic Book Layout) -->
-    <div id="content-dev-process" class="w-full max-w-[850px] mx-auto book-content">
-        <h1 class="serif-title lang-id">PROSES PENGEMBANGAN & DESAIN SISTEM</h1>
-        <h1 class="serif-title lang-en hidden">DEVELOPMENT PROCESS & SYSTEM DESIGN</h1>
-        
-        <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between mb-8">
-            <span class="lang-id">Dokumentasi Teknis</span>
-            <span class="lang-en hidden">Technical Documentation</span>
-            <span>TradingSafe</span>
-        </div>
-
-        <section class="mb-12">
-            <h2 class="lang-id">1. VISI UTAMA & LANDASAN PROYEK</h2>
-            <h2 class="lang-en hidden">1. PRIMARY VISION & PROJECT FOUNDATION</h2>
-            <p class="drop-cap lang-id">
-                Menjadi "The SpaceX of Trading Bots"—sebuah misi untuk menghilangkan hambatan emosional dalam perdagangan aset digital melalui teknologi otomasi yang bekerja tanpa lelah, 24/7, untuk pertumbuhan aset Anda. Kami berkomitmen untuk membangun fondasi infrastruktur tepercaya yang memungkinkan setiap orang memiliki akses setara ke teknologi eksekusi tingkat dunia. Kami mengundang institusi dan rekan profesional untuk berkolaborasi bersama guna mewujudkan visi besar ini.
-            </p>
-            <p class="drop-cap lang-en hidden">
-                To become "The SpaceX of Trading Bots"—a mission to eliminate emotional barriers in digital asset trading through automation technology that runs tirelessly 24/7. We are committed to building a trusted infrastructure foundation that allows everyone equal access to world-class execution technology. We invite institutions and professional peers to collaborate in realizing this grand vision.
-            </p>
-        </section>
-
-        <section class="mb-12">
-            <h2 class="lang-id">2. MISI STRATEGIS</h2>
-            <h2 class="lang-en hidden">2. STRATEGIC MISSION</h2>
-            <p class="lang-id"><strong>Demokratisasi Teknologi:</strong> Demokratisasi teknologi trading tingkat institusi untuk semua kalangan tanpa diskriminasi modal.</p>
-            <p class="lang-en hidden"><strong>Democratization:</strong> Democratizing institutional-grade trading technology for everyone regardless of capital scale.</p>
+    <div id="content-dev-process" class="w-full">
+        <div class="flex flex-col lg:flex-row gap-6 max-w-full">
             
-            <p class="lang-id"><strong>Kedaulatan Aset:</strong> Menjaga kedaulatan aset pengguna melalui sistem keamanan non-kustodian yang transparan.</p>
-            <p class="lang-en hidden"><strong>Asset Sovereignty:</strong> Securing user asset sovereignty through transparent non-custodial security systems.</p>
-            
-            <p class="lang-id"><strong>Inovasi Latensi:</strong> Inovasi berkelanjutan pada sistem eksekusi untuk latensi yang tak tertandingi di pasar global.</p>
-            <p class="lang-en hidden"><strong>Latency Innovation:</strong> Continuous innovation in execution systems for unmatched low latency in global markets.</p>
-        </section>
-
-        <section class="mb-12">
-            <h2 class="lang-id">3. KEUNGGULAN INTI</h2>
-            <h2 class="lang-en hidden">3. CORE ADVANTAGES</h2>
-            <p class="lang-id"><strong>Kecepatan Tinggi:</strong> Mesin eksekusi yang dioptimalkan untuk respon milidetik di pasar global.</p>
-            <p class="lang-en hidden"><strong>High Speed:</strong> Execution engine optimized for millisecond response in global markets.</p>
-            
-            <p class="lang-id"><strong>Privasi Strategi:</strong> Arsitektur data terisolasi yang memastikan rahasia dagang pengguna tetap aman.</p>
-            <p class="lang-en hidden"><strong>Strategy Privacy:</strong> Isolated data architecture ensuring user trade secrets remain secure.</p>
-            
-            <p class="lang-id"><strong>Konektivitas Universal:</strong> Jaringan penghubung universal ke bursa aset digital utama di seluruh dunia.</p>
-            <p class="lang-en hidden"><strong>Universal Connectivity:</strong> Universal network connecting to major digital asset exchanges worldwide.</p>
-        </section>
-
-        <section class="mb-12">
-            <h2 class="lang-id">4. ARSITEKTUR MESIN & HUKUM</h2>
-            <h2 class="lang-en hidden">4. ENGINE & LEGAL ARCHITECTURE</h2>
-            <p class="lang-id">
-                Infrastruktur kami dibangun menggunakan arsitektur Rust tingkat rendah untuk memproses data pasar dengan latensi minimal dan stabilitas optimal. Dari sisi hukum, platform diklasifikasikan sebagai penyedia SaaS (Software as a Service) non-kustodian, sehingga meniadakan risiko penahanan dana pihak ketiga dan mematuhi regulasi global modern.
-            </p>
-            <p class="lang-en hidden">
-                Our infrastructure is built using low-level Rust architecture to process market data with minimal latency and optimal stability. Legally, the platform is classified as a non-custodial SaaS (Software as a Service) provider, removing third-party custodian risks and aligning with modern global regulations.
-            </p>
-        </section>
-
-        <!-- Ad Slot -->
-        <div id="overview-ad-slot" class="w-full max-w-4xl mx-auto mb-16">
-            <div class="text-center mb-2">
-                <span class="text-[9px] text-gray-400 uppercase tracking-widest font-sans">Partner Insight</span>
+            <!-- Left Sidebar Navigation (Nav Kiri) for Dev Update -->
+            <div class="w-full lg:w-[200px] shrink-0 lg:self-start sticky top-28 z-40 bg-[#fdfbf7]/90 dark:bg-[#181614]/90 backdrop-blur-md py-3 lg:py-0 border-b border-gray-200/50 lg:border-b-0 transition-colors duration-300">
+                <!-- Wrapper for horizontal scrolling on mobile, vertical scrolling on desktop -->
+                <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-y-auto pb-2 lg:pb-6 gap-2.5 max-h-[calc(100vh-200px)] pr-2 scrollbar-none whitespace-nowrap lg:whitespace-normal">
+                    <div class="hidden lg:block font-sans text-[10px] font-extrabold uppercase tracking-widest text-[#5e5954] mb-3 px-1">
+                        <span class="lang-id">Kategori Pengembangan</span>
+                        <span class="lang-en hidden">Development Categories</span>
+                    </div>
+                    
+                    <button class="nav-card active shrink-0 w-auto lg:w-full" onclick="switchDevSubTab('development')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">01</span> 
+                        <span class="lang-id">Development</span>
+                        <span class="lang-en hidden">Development</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="switchDevSubTab('marketing')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">02</span> 
+                        <span class="lang-id">Marketing</span>
+                        <span class="lang-en hidden">Marketing</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="switchDevSubTab('assets')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">03</span> 
+                        <span class="lang-id">Assets</span>
+                        <span class="lang-en hidden">Assets</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="switchDevSubTab('licensing')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">04</span> 
+                        <span class="lang-id">Perizinan</span>
+                        <span class="lang-en hidden">Licensing</span>
+                    </button>
+                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="switchDevSubTab('investor')">
+                        <span class="w-5 text-center text-[10px] text-gray-400">05</span> 
+                        <span class="lang-id">Investor</span>
+                        <span class="lang-en hidden">Investor</span>
+                    </button>
+                </div>
             </div>
-            <div id="overview-ad-unit" class="min-height-[90px] flex justify-center items-center bg-white dark:bg-[#23211f] border border-gray-150 dark:border-white/5 rounded-xl shadow-sm p-2"></div>
+            
+            <!-- Right Content Area -->
+            <div class="flex-grow max-w-[850px] lg:pl-4">
+
+                <!-- Last Updated Date -->
+                <div class="text-[11px] font-sans text-gray-400 dark:text-gray-500 mb-6 flex items-center gap-1.5 justify-end">
+                    <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                    <span class="lang-id">Terakhir diperbarui: 22 Juni 2026</span>
+                    <span class="lang-en hidden">Last updated: June 22, 2026</span>
+                </div>
+
+                <!-- 1. Development Subtab (Borderless & Full Width) -->
+                <div id="dev-subtab-development" class="dev-subtab-content transition-all">
+                    <section class="dev-section book-content">
+                        <h2 class="lang-id text-2xl font-extrabold text-gray-900 dark:text-white mb-4">1. STATUS PENGEMBANGAN & PENGUJIAN</h2>
+                        <h2 class="lang-en hidden text-2xl font-extrabold text-gray-900 dark:text-white mb-4">1. DEVELOPMENT STATUS & TESTING</h2>
+                        
+                        <p class="font-sans text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Proses pengembangan arsitektur platform TradingSafe, baik pada komponen Frontend maupun Backend, saat ini telah mencapai tingkat kematangan <strong>80%</strong>. Platform sedang berada dalam fase pengujian intensif (stress testing) serta pencarian dan pengoptimalan parameter strategi perdagangan terbaik demi menjamin keamanan dan profitabilitas yang maksimal bagi calon pengguna sebelum peluncuran resmi.
+                        </p>
+
+                        <!-- Development Progress Status -->
+                        <div class="space-y-4 my-6">
+                            <div>
+                                <div class="flex justify-between text-sm font-bold mb-1">
+                                    <span class="text-gray-700 dark:text-gray-300">Frontend Core Development</span>
+                                    <span class="text-[#0066cc]">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 dark:bg-gray-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-[#0066cc] h-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm font-bold mb-1">
+                                    <span class="text-gray-700 dark:text-gray-300">Backend Core Development</span>
+                                    <span class="text-[#0066cc]">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 dark:bg-gray-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-[#0066cc] h-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                                <strong>Status Fase Saat Ini:</strong> Pengujian & Riset Strategi (Menjalankan pengujian data historis / Backtest serta simulasi real-time).
+                            </div>
+                        </div>
+
+                        <!-- Technical Documentation & Interface Gallery -->
+                        <div class="space-y-12 mt-8">
+                            <!-- 1. Landing Page -->
+                            <div class="space-y-3">
+                                <h4 class="font-sans font-extrabold text-base text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-2">A. Halaman Beranda Utama (Landing Page)</h4>
+                                <img src="documents/tradingsafe-data/frontendtradingsafe.png" alt="Landing Page" class="w-full h-auto block rounded-lg">
+                                <p class="font-sans text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    <strong>Penjelasan Detail:</strong> Gerbang utama ekosistem TradingSafe. Halaman beranda ini dirancang secara modern dengan performa tinggi dan ramah mesin pencari (SEO). Halaman ini menyajikan proposisi nilai platform, alur kerja sistem non-kustodian secara transparan melalui infografis interaktif, serta menyediakan fitur peralihan tema gelap/terang dan bahasa untuk kemudahan navigasi bagi pengguna internasional.
+                                </p>
+                            </div>
+
+                            <!-- 2. Admin Dashboard -->
+                            <div class="space-y-3">
+                                <h4 class="font-sans font-extrabold text-base text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-2">B. Dasbor Administrasi Pusat (Admin Dashboard)</h4>
+                                <img src="documents/tradingsafe-data/ts-admindashboard.png" alt="Admin Dashboard" class="w-full h-auto block rounded-lg">
+                                <p class="font-sans text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    <strong>Penjelasan Detail:</strong> Panel kontrol admin berfungsi untuk memantau performa telemetri server secara real-time, statistik komparatif volume perdagangan pengguna, dan status sinkronisasi API Key. Dilengkapi dengan sistem notifikasi kegagalan koneksi API, log audit keamanan yang ketat, dan pengaturan parameter darurat secara global untuk menjaga integritas seluruh sistem.
+                                </p>
+                            </div>
+
+                            <!-- 3. User Dashboard -->
+                            <div class="space-y-3">
+                                <h4 class="font-sans font-extrabold text-base text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-2">C. Dasbor Portofolio Pengguna (User Dashboard)</h4>
+                                <img src="documents/tradingsafe-data/userdashboardtradingsafe.png" alt="User Dashboard" class="w-full h-auto block rounded-lg">
+                                <p class="font-sans text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    <strong>Penjelasan Detail:</strong> Dasbor utama bagi pengguna untuk memantau aktivitas bot perdagangan aktif, grafik pertumbuhan ekuitas, dan daftar transaksi secara komprehensif. Pengguna memiliki kendali penuh untuk menyalakan atau mematikan bot secara instan serta memantau integrasi saldo bursa eksternal secara transparan.
+                                </p>
+                            </div>
+
+                            <!-- 4. Strategy Settings -->
+                            <div class="space-y-3">
+                                <h4 class="font-sans font-extrabold text-base text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-2">D. Konfigurasi Parameter Strategi (Strategy Settings)</h4>
+                                <img src="documents/tradingsafe-data/strategiseting-ts.png" alt="Strategy Settings" class="w-full h-auto block rounded-lg">
+                                <p class="font-sans text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    <strong>Penjelasan Detail:</strong> Panel konfigurasi taktis yang memungkinkan pengguna mengatur strategi perdagangan dengan tingkat penyesuaian yang sangat tinggi (Stop Loss, Take Profit, Trailing Step, dan multi-indikator kustom). Sistem validasi input yang aman memastikan tidak ada kombinasi parameter yang membahayakan portofolio pengguna.
+                                </p>
+                            </div>
+
+                            <!-- 5. Backtest & Simulation -->
+                            <div class="space-y-3">
+                                <h4 class="font-sans font-extrabold text-base text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-2">E. Simulator Pengujian Historis & Saldo Tiruan (Backtest & Simulation)</h4>
+                                <img src="documents/tradingsafe-data/modebacktest&simulationmoney.png" alt="Backtest & Simulation" class="w-full h-auto block rounded-lg">
+                                <p class="font-sans text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    <strong>Penjelasan Detail:</strong> Simulator tingkat lanjut untuk menguji strategi perdagangan menggunakan data pasar historis. Pengguna dapat menjalankan uji coba secara instan dan aman menggunakan saldo virtual tiruan (*paper trading*) untuk mengukur rasio profitabilitas, maksimum penarikan modal (*drawdown*), serta rasio keberhasilan sebelum menerapkannya di pasar nyata.
+                                </p>
+                            </div>
+
+                            <!-- 6. Mobile Responsive UI -->
+                            <div class="space-y-3">
+                                <h4 class="font-sans font-extrabold text-base text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-2">F. Tampilan Antarmuka Responsif Mobile (Mobile UI)</h4>
+                                <div class="flex justify-start">
+                                    <img src="documents/tradingsafe-data/mobile-ui-ts.png" alt="Mobile UI" class="w-full max-w-[280px] h-auto block rounded-lg">
+                                </div>
+                                <p class="font-sans text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                    <strong>Penjelasan Detail:</strong> Seluruh modul TradingSafe dioptimalkan secara penuh untuk akses mobile menggunakan desain adaptif yang responsif. Menjamin konsistensi navigasi, kemudahan pembacaan grafik, dan kecepatan eksekusi kendali manual bagi pengguna yang aktif memantau pasar melalui ponsel cerdas atau tablet.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 2. Marketing Subtab (Borderless & Full Width) -->
+                <div id="dev-subtab-marketing" class="dev-subtab-content transition-all hidden">
+                    <section class="dev-section book-content">
+                        <h2 class="lang-id text-2xl font-extrabold text-gray-900 dark:text-white mb-4">2. MARKETING & STRATEGI KOMUNITAS</h2>
+                        <h2 class="lang-en hidden text-2xl font-extrabold text-gray-900 dark:text-white mb-4">2. MARKETING & COMMUNITY STRATEGY</h2>
+                        
+                        <p class="font-sans text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                            Strategi pemasaran TradingSafe difokuskan pada pembangunan komunitas berbasis kepercayaan dan edukasi produk finansial non-kustodian. Kami percaya bahwa transparansi penuh adalah kunci utama untuk menarik minat investor modern. Untuk berdiskusi langsung, berbagi wawasan, dan bergabung dengan komunitas pengembang, silakan gunakan tautan resmi berikut:
+                        </p>
+                        
+                        <!-- Telegram Channels -->
+                        <div class="mb-8">
+                            <h3 class="font-sans font-bold text-base text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-2 mb-4 flex items-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4 text-blue-500"></i>
+                                <span>Grup & Saluran Telegram</span>
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-2">
+                                    <div>
+                                        <div class="text-sm font-bold text-gray-800 dark:text-gray-200">Grup Utama (Diskusi & Promosi)</div>
+                                        <div class="text-xs text-gray-400">Komunitas utama untuk berdiskusi strategi dan promosi TradingSafe.</div>
+                                    </div>
+                                    <a href="https://t.me/sucsestrackor" target="_blank" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 transition-colors inline-flex items-center gap-1.5 shrink-0 self-start sm:self-center">
+                                        <span>Gabung Grup</span>
+                                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-2 border-t border-gray-100 dark:border-white/5">
+                                    <div>
+                                        <div class="text-sm font-bold text-gray-800 dark:text-gray-200">Analisa Down Prediction</div>
+                                        <div class="text-xs text-gray-400">Saluran khusus analisa prediksi tren turun pasar secara teknikal.</div>
+                                    </div>
+                                    <a href="https://t.me/+JJv_M7IXbINmZDY1" target="_blank" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 transition-colors inline-flex items-center gap-1.5 shrink-0 self-start sm:self-center">
+                                        <span>Gabung Saluran</span>
+                                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-2 border-t border-gray-100 dark:border-white/5">
+                                    <div>
+                                        <div class="text-sm font-bold text-gray-800 dark:text-gray-200">Analisa Up Prediction</div>
+                                        <div class="text-xs text-gray-400">Saluran khusus analisa prediksi tren naik pasar secara teknikal.</div>
+                                    </div>
+                                    <a href="https://t.me/+evHmTWM1-sg0Mjc9" target="_blank" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 transition-colors inline-flex items-center gap-1.5 shrink-0 self-start sm:self-center">
+                                        <span>Gabung Saluran</span>
+                                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Channels -->
+                        <div class="mb-8">
+                            <h3 class="font-sans font-bold text-base text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-2 mb-4 flex items-center gap-2">
+                                <i data-lucide="message-circle" class="w-4 h-4 text-green-500"></i>
+                                <span>Grup WhatsApp Resmi</span>
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-2">
+                                    <div>
+                                        <div class="text-sm font-bold text-gray-800 dark:text-gray-200">WhatsApp Group Utama</div>
+                                        <div class="text-xs text-gray-400">Wadah komunikasi utama sesama pengguna WhatsApp.</div>
+                                    </div>
+                                    <a href="https://chat.whatsapp.com/Km8KyIY9DcjBNCrCtLGEg0" target="_blank" class="px-4 py-2 rounded-lg bg-green-600 text-white font-bold text-xs hover:bg-green-700 transition-colors inline-flex items-center gap-1.5 shrink-0 self-start sm:self-center">
+                                        <span>Gabung Grup</span>
+                                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-2 border-t border-gray-100 dark:border-white/5">
+                                    <div>
+                                        <div class="text-sm font-bold text-gray-800 dark:text-gray-200">WhatsApp Down Prediction</div>
+                                        <div class="text-xs text-gray-400">Update analisa berkala saat tren pergerakan harga pasar menurun.</div>
+                                    </div>
+                                    <a href="https://chat.whatsapp.com/FwCUMIKEEHHGpUgD4nRsQH" target="_blank" class="px-4 py-2 rounded-lg bg-green-600 text-white font-bold text-xs hover:bg-green-700 transition-colors inline-flex items-center gap-1.5 shrink-0 self-start sm:self-center">
+                                        <span>Gabung Grup</span>
+                                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                                    </a>
+                                </div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-2 border-t border-gray-100 dark:border-white/5">
+                                    <div>
+                                        <div class="text-sm font-bold text-gray-800 dark:text-gray-200">WhatsApp Up Prediction</div>
+                                        <div class="text-xs text-gray-400">Update analisa berkala saat tren pergerakan harga pasar menanjak.</div>
+                                    </div>
+                                    <a href="https://chat.whatsapp.com/JbeuHghMghl8TKWiZFke" target="_blank" class="px-4 py-2 rounded-lg bg-green-600 text-white font-bold text-xs hover:bg-green-700 transition-colors inline-flex items-center gap-1.5 shrink-0 self-start sm:self-center">
+                                        <span>Gabung Grup</span>
+                                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-gray-400 mt-6 italic">
+                            *Catatan: Akses cepat ke komunitas Telegram dan layanan WhatsApp pengembang juga selalu tersedia pada bagian kaki halaman (footer).
+                        </p>
+                    </section>
+                </div>
+
+                <!-- 3. Assets Subtab (Borderless & Full Width) -->
+                <div id="dev-subtab-assets" class="dev-subtab-content transition-all hidden">
+                    <section class="dev-section book-content">
+                        <h2 class="lang-id text-2xl font-extrabold text-gray-900 dark:text-white mb-4">3. DAFTAR ASET & MANAJEMEN KEDAULATAN</h2>
+                        <h2 class="lang-en hidden text-2xl font-extrabold text-gray-900 dark:text-white mb-4">3. ASSET LIST & SOVEREIGNTY MANAGEMENT</h2>
+                        
+                        <p class="font-sans text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                            Manajemen aset proyek TradingSafe mencakup infrastruktur server, lisensi domain, manajemen enkripsi *client-side*, dan pengelolaan alokasi keuangan yang dicatat secara transparan.
+                        </p>
+
+                        <!-- Asset Inventory List -->
+                        <div class="mb-8">
+                            <h3 class="font-sans font-bold text-base text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-2 mb-4 flex items-center gap-2">
+                                <i data-lucide="database" class="w-4 h-4 text-blue-500"></i>
+                                <span>Inventaris Aset Infrastruktur</span>
+                            </h3>
+                            
+                            <div class="space-y-4">
+                                <!-- VPS -->
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-3 border-b border-gray-100 dark:border-white/5">
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-bold text-gray-800 dark:text-gray-200">Server Utama (VPS)</span>
+                                            <span class="px-2 py-0.5 text-[10px] font-bold bg-green-100 dark:bg-green-950/30 text-green-700 dark:text-green-400 rounded-full">Aktif</span>
+                                        </div>
+                                        <div class="text-xs text-gray-400 mt-1">DigitalOcean VPS 8GB RAM, 1 Tahun Langganan (Aktif sejak Mei 2025).</div>
+                                    </div>
+                                    <span class="text-xs font-semibold text-gray-500 dark:text-gray-400">DigitalOcean (8GB)</span>
+                                </div>
+                                
+                                <!-- Domain -->
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-3 border-b border-gray-100 dark:border-white/5">
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-bold text-gray-800 dark:text-gray-200">Domain Utama</span>
+                                            <span class="px-2 py-0.5 text-[10px] font-bold bg-amber-100 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400 rounded-full">Subdomain</span>
+                                        </div>
+                                        <div class="text-xs text-gray-400 mt-1">Tautan rute server: <a href="https://tradingsafe.mijdigital.my" target="_blank" class="text-blue-500 hover:underline">tradingsafe.mijdigital.my</a> (status saat ini subdomain).</div>
+                                    </div>
+                                    <span class="text-xs font-semibold text-gray-500 dark:text-gray-400">mijdigital.my</span>
+                                </div>
+
+                        <!-- Spreadsheet -->
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-3">
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-sm font-bold text-gray-800 dark:text-gray-200">Laporan Anggaran & Alokasi Modal</span>
+                                            <span class="px-2 py-0.5 text-[10px] font-bold bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-400 rounded-full">Excel</span>
+                                        </div>
+                                        <div class="text-xs text-gray-400 mt-1">Dokumen spreadsheet untuk alokasi modal proyek, anggaran bulanan, dan proyeksi laba rugi.</div>
+                                    </div>
+                                    <a href="https://docs.google.com/spreadsheets/d/1qTJ3zXiqJc2gnGz58k6plrOUnx0OzzeyhM1-lNhDP5c/edit?usp=sharing" target="_blank" class="px-4 py-2 rounded-lg bg-[#107c41] text-white font-bold text-xs hover:bg-[#0e6c38] transition-colors inline-flex items-center gap-1.5 shrink-0 self-start sm:self-center">
+                                        <span>Buka Excel</span>
+                                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 4. Perizinan Subtab (Borderless & Full Width) -->
+                <div id="dev-subtab-licensing" class="dev-subtab-content transition-all hidden">
+                    <section class="dev-section book-content">
+                        <h2 class="lang-id text-2xl font-extrabold text-gray-900 dark:text-white mb-4">4. PERIZINAN</h2>
+                        <h2 class="lang-en hidden text-2xl font-extrabold text-gray-900 dark:text-white mb-4">4. LICENSING</h2>
+                        
+                        <div class="flex items-center gap-3 py-6 text-gray-700 dark:text-gray-300">
+                            <div class="w-9 h-9 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="file-clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="lang-id font-sans text-sm font-semibold text-gray-800 dark:text-gray-200">
+                                    Saat ini platform TradingSafe sedang dalam tahap pengurusan Izin resmi, baik regulasi dalam negeri (domestik) maupun luar negeri (internasional).
+                                </p>
+                                <p class="lang-en hidden font-sans text-sm font-semibold text-gray-800 dark:text-gray-200">
+                                    Currently, the TradingSafe platform is in the process of acquiring official permits and licenses, both for domestic and international regulations.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 5. Investor Subtab (Borderless & Full Width) -->
+                <div id="dev-subtab-investor" class="dev-subtab-content transition-all hidden">
+                    <section class="dev-section book-content">
+                        <h2 class="lang-id text-2xl font-extrabold text-gray-900 dark:text-white mb-4">5. INVESTOR & PENDANA</h2>
+                        <h2 class="lang-en hidden text-2xl font-extrabold text-gray-900 dark:text-white mb-4">5. INVESTORS & FUNDING</h2>
+                        
+                        <div class="space-y-4">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 py-4">
+                                <div class="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 shrink-0">
+                                    <img src="documents/Logo/mij-logo.jpeg" alt="MIJ Digital" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-sans font-extrabold text-lg text-gray-900 dark:text-white">MIJ Digital</h4>
+                                    <span class="inline-block px-2.5 py-0.5 text-xs font-bold bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-400 rounded-full mt-1">Angel Investor</span>
+                                    <p class="lang-id font-sans text-sm text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                                        MIJ Digital bertindak sebagai Angel Investor utama yang memberikan dukungan finansial awal, pembinaan strategis, serta pengembangan infrastruktur dasar untuk mempercepat kematangan ekosistem TradingSafe.
+                                    </p>
+                                    <p class="lang-en hidden font-sans text-sm text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                                        MIJ Digital serves as the primary Angel Investor, providing initial financial backing, strategic guidance, and foundational infrastructure development to accelerate the ecosystem maturity of TradingSafe.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Ad Slot -->
+                <div id="overview-ad-slot" class="w-full max-w-4xl mx-auto mt-12 mb-6">
+                    <div class="text-center mb-2">
+                        <span class="text-[9px] text-gray-400 uppercase tracking-widest font-sans">Partner Insight</span>
+                    </div>
+                    <div id="overview-ad-unit" class="min-height-[90px] flex justify-center items-center bg-white dark:bg-[#23211f] border border-gray-150 dark:border-white/5 rounded-xl shadow-sm p-2"></div>
+                </div>
+            </div>
         </div>
     </div>
 
 
     <!-- TAB 2: PROPOSAL BISNIS (Classic Book Layout) -->
     <div id="content-proposal" class="hidden w-full">
-        <div class="flex flex-col lg:flex-row gap-12 max-w-full">
+        <div class="flex flex-col lg:flex-row gap-6 max-w-full">
             
             <!-- Left Sidebar Navigation (Nav Kiri) -->
-            <div class="w-full lg:w-[230px] shrink-0 lg:self-start sticky top-24 z-40 bg-[#fdfbf7]/90 dark:bg-[#181614]/90 backdrop-blur-md py-3 lg:py-0 border-b border-gray-200/50 lg:border-b-0 transition-colors duration-300">
+            <div class="w-full lg:w-[200px] shrink-0 lg:self-start sticky top-28 z-40 bg-[#fdfbf7]/90 dark:bg-[#181614]/90 backdrop-blur-md py-3 lg:py-0 border-b border-gray-200/50 lg:border-b-0 transition-colors duration-300">
                 <!-- Wrapper for horizontal scrolling on mobile, vertical scrolling on desktop -->
                 <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-y-auto pb-2 lg:pb-6 gap-2.5 max-h-[calc(100vh-200px)] pr-2 scrollbar-none whitespace-nowrap lg:whitespace-normal">
                     <div class="hidden lg:block font-sans text-[10px] font-extrabold uppercase tracking-widest text-[#5e5954] mb-3 px-1">
@@ -985,9 +1310,7 @@
             if (el) {
                 el.scrollIntoView({ behavior: 'smooth' });
             }
-        }
-
-        // Tab Switching Logic
+        }        // Tab Switching Logic
         window.switchTab = function(tabId) {
             // Hide all tab content
             document.getElementById('content-dev-process').classList.add('hidden');
@@ -1011,9 +1334,46 @@
                 document.getElementById('content-contact').classList.remove('hidden');
                 document.getElementById('tab-contact').classList.add('active');
             }
-
-            // Scroll slightly below header to reset view
+ 
+            // Scroll to top of the page smoothly
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // Dev Process Sub-Tab Switching Logic
+        window.switchDevSubTab = function(subtabId) {
+            // Hide all dev subtab contents
+            document.querySelectorAll('.dev-subtab-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Show target subtab
+            const targetEl = document.getElementById('dev-subtab-' + subtabId);
+            if (targetEl) {
+                targetEl.classList.remove('hidden');
+            }
+            
+            // Update active state in sub-navigation buttons
+            const navCards = document.querySelectorAll('#content-dev-process .nav-card');
+            navCards.forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Highlight active button based on clicked id
+            let index = 0;
+            if (subtabId === 'marketing') index = 1;
+            else if (subtabId === 'assets') index = 2;
+            else if (subtabId === 'licensing') index = 3;
+            else if (subtabId === 'investor') index = 4;
+            
+            if (navCards[index]) {
+                navCards[index].classList.add('active');
+            }
+            
+            // Scroll back up to the content title area smoothly
+            const titleEl = document.querySelector('#content-dev-process .serif-title');
+            if (titleEl) {
+                titleEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         };
 
         // Modal triggers
@@ -1114,36 +1474,34 @@
             updateLanguageUI(currentLang);
 
             // Scroll Spy logic to highlight active section on the left navigation
-            const sections = document.querySelectorAll('.book-section');
-            const navLinks = document.querySelectorAll('.nav-card');
-            
             window.handleScrollSpy = () => {
-                // Only run scrollspy if proposal container is active & visible
-                if (document.getElementById('content-proposal').classList.contains('hidden')) return;
-
-                const scrollTop = window.scrollY;
-                const viewportCenter = scrollTop + 250; // Offset calculation for scrollspy
-                
-                let currentIndex = 0;
-                let minDiff = Infinity;
-                
-                sections.forEach((sec, idx) => {
-                    const rect = sec.getBoundingClientRect();
-                    const top = rect.top + scrollTop;
-                    const diff = Math.abs(top - viewportCenter);
-                    if (diff < minDiff) {
-                        minDiff = diff;
-                        currentIndex = idx;
-                    }
-                });
-                
-                navLinks.forEach((link, idx) => {
-                    if (idx === currentIndex) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
+                if (!document.getElementById('content-proposal').classList.contains('hidden')) {
+                    const sections = document.querySelectorAll('#content-proposal .book-section');
+                    const navLinks = document.querySelectorAll('#content-proposal .nav-card');
+                    const scrollTop = window.scrollY;
+                    const viewportCenter = scrollTop + 250; // Offset calculation for scrollspy
+                    
+                    let currentIndex = 0;
+                    let minDiff = Infinity;
+                    
+                    sections.forEach((sec, idx) => {
+                        const rect = sec.getBoundingClientRect();
+                        const top = rect.top + scrollTop;
+                        const diff = Math.abs(top - viewportCenter);
+                        if (diff < minDiff) {
+                            minDiff = diff;
+                            currentIndex = idx;
+                        }
+                    });
+                    
+                    navLinks.forEach((link, idx) => {
+                        if (idx === currentIndex) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
             };
             
             window.addEventListener('scroll', window.handleScrollSpy, { passive: true });
