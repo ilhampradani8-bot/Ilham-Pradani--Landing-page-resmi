@@ -335,88 +335,69 @@
         <!-- Main Content Area -->
         <div class="flex-1 min-w-0">
 
-    <!-- Floating Capsule Toolbar -->
-    <div class="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-4 py-2 floating-capsule">
-        <!-- Theme Toggle -->
-        <button id="dark-mode-toggle" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
-            <i data-lucide="moon" class="w-4 h-4"></i>
-        </button>
-        <!-- Divider -->
-        <span class="w-[1px] h-4 bg-gray-300 dark:bg-white/10"></span>
-        <!-- Language Switcher Button -->
-        <button id="lang-toggle" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none">
-            <i data-lucide="languages" class="w-3.5 h-3.5 text-[#0066cc]"></i>
-            <span>English</span>
-        </button>
-        <!-- Divider -->
-        <span class="w-[1px] h-4 bg-gray-300 dark:bg-white/10"></span>
-        <!-- Contact & Prototype Button -->
-        <button onclick="openContactModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none">
-            <i data-lucide="info" class="w-3.5 h-3.5 text-[#0066cc]"></i>
-            <span>Kontak & Prototipe</span>
-        </button>
-    </div>
-
-    <!-- Contact & Prototype Modal (Popup) -->
-    <div id="contact-modal" class="fixed inset-0 z-[10000] hidden items-center justify-center p-4 bg-black/40 backdrop-blur-sm transition-opacity duration-300">
-        <div class="bg-white dark:bg-[#1e1c1a] w-full max-w-md rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl p-6 relative transform scale-95 transition-transform duration-300">
-            <!-- Close Button -->
-            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-white focus:outline-none">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
+    <!-- Floating Capsule Toolbar & Dropdown Container -->
+    <div class="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3">
+        <!-- Contact & Prototype Dropdown (Dropdown Menu) -->
+        <div id="contact-dropdown" class="hidden w-80 bg-white dark:bg-[#1e1c1a] rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl p-5 mb-2 font-sans text-xs flex-col space-y-4 max-h-[80vh] overflow-y-auto">
+            <!-- Header inside Dropdown -->
+            <div class="flex justify-between items-center border-b border-gray-100 dark:border-white/5 pb-2">
+                <h3 class="font-sans font-bold text-gray-900 dark:text-white flex items-center gap-1.5">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-[#0066cc]"></i>
+                    <span class="lang-id">Akses Project & Kontak</span>
+                    <span class="lang-en hidden">Project Access & Contact</span>
+                </h3>
+                <button onclick="toggleContactDropdown(event)" class="text-gray-400 hover:text-gray-600 dark:hover:text-white focus:outline-none">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
             
-            <h3 class="font-sans text-lg font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-3 mb-4">
-                <span class="lang-id">Akses Project & Kontak</span>
-                <span class="lang-en hidden">Project Access & Contact</span>
-            </h3>
-            
-            <div class="space-y-4 font-sans text-sm">
+            <div class="space-y-4">
                 <!-- Prototype Section -->
-                <div class="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/30 rounded-xl">
-                    <div class="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold mb-2">
-                        <i data-lucide="rocket" class="w-4 h-4"></i>
+                <div class="p-3 bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/30 rounded-xl">
+                    <div class="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold mb-1">
+                        <i data-lucide="rocket" class="w-3.5 h-3.5"></i>
                         <span class="lang-id">Prototipe Produksi</span>
                         <span class="lang-en hidden">Production Prototype</span>
                     </div>
-                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-id">Akses langsung ke server produksi platform TradingSafe untuk melihat demo fungsional:</p>
-                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-en hidden">Direct access to the TradingSafe production server to view the functional demo:</p>
-                    <a href="https://tradingsafe.mijdigital.my" target="_blank" class="flex items-center justify-between w-full px-4 py-2.5 bg-[#0066cc] text-white font-bold rounded-lg hover:bg-blue-700 transition-colors text-xs text-center">
+                    <p class="text-[10px] text-gray-600 dark:text-gray-400 mb-2 lang-id">Akses langsung ke server produksi platform TradingSafe untuk melihat demo fungsional:</p>
+                    <p class="text-[10px] text-gray-600 dark:text-gray-400 mb-2 lang-en hidden">Direct access to the TradingSafe production server to view the functional demo:</p>
+                    <a href="https://tradingsafe.mijdigital.my" target="_blank" class="flex items-center justify-between w-full px-3 py-2 bg-[#0066cc] text-white font-bold rounded-lg hover:bg-blue-700 transition-colors text-[10px] text-center">
                         <span>tradingsafe.mijdigital.my</span>
-                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
                     </a>
                 </div>
                 
                 <!-- Contact Details -->
-                <div class="space-y-3 pt-2 text-gray-700 dark:text-gray-300">
-                    <div class="flex items-start gap-2.5">
-                        <i data-lucide="user" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                <div class="space-y-2.5 text-gray-700 dark:text-gray-300">
+                    <div class="flex items-start gap-2">
+                        <i data-lucide="user" class="w-3.5 h-3.5 text-[#5e5954] shrink-0 mt-0.5"></i>
                         <div>
-                            <div class="text-xs text-gray-400 lang-id">Pengembang</div>
-                            <div class="text-xs text-gray-400 lang-en hidden">Developer</div>
+                            <div class="text-[9px] text-gray-400 lang-id">Pengembang</div>
+                            <div class="text-[9px] text-gray-400 lang-en hidden">Developer</div>
                             <div class="font-semibold text-gray-900 dark:text-white">Ilham Pradani S.H.</div>
                         </div>
                     </div>
-                    <div class="flex items-start gap-2.5">
-                        <i data-lucide="mail" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div class="flex items-start gap-2">
+                        <i data-lucide="mail" class="w-3.5 h-3.5 text-[#5e5954] shrink-0 mt-0.5"></i>
                         <div>
-                            <div class="text-xs text-gray-400 lang-id">Email Resmi</div>
-                            <div class="text-xs text-gray-400 lang-en hidden">Official Email</div>
+                            <div class="text-[9px] text-gray-400 lang-id">Email Resmi</div>
+                            <div class="text-[9px] text-gray-400 lang-en hidden">Official Email</div>
                             <a href="mailto:051071552@ecampus.ut.ac.id" class="text-[#0066cc] hover:underline">051071552@ecampus.ut.ac.id</a>
                         </div>
                     </div>
-                    <div class="flex items-start gap-2.5">
-                        <i data-lucide="message-square" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div class="flex items-start gap-2">
+                        <i data-lucide="message-square" class="w-3.5 h-3.5 text-[#5e5954] shrink-0 mt-0.5"></i>
                         <div>
-                            <div class="text-xs text-gray-400">WhatsApp</div>
+                            <div class="text-[9px] text-gray-400">WhatsApp</div>
                             <a href="https://wa.me/6288971071138" class="text-[#0066cc] hover:underline" target="_blank">+62 889-7107-1138</a>
                         </div>
                     </div>
-                    <div class="flex items-start gap-2.5">
-                        <i data-lucide="globe" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
+                    <div class="flex items-start gap-2">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-[#5e5954] shrink-0 mt-0.5"></i>
                         <div>
-                            <div class="text-xs text-gray-400 lang-id">Website Portofolio</div>
-                            <div class="text-xs text-gray-400 lang-en hidden">Portfolio Websites</div>
-                            <div class="flex gap-2.5">
+                            <div class="text-[9px] text-gray-400 lang-id">Website Portofolio</div>
+                            <div class="text-[9px] text-gray-400 lang-en hidden">Portfolio Websites</div>
+                            <div class="flex gap-2">
                                 <a href="https://www.ilhampradani.me" target="_blank" class="text-[#0066cc] hover:underline">ilhampradani.me</a>
                                 <span class="text-gray-300">|</span>
                                 <a href="https://www.mijdigital.my" target="_blank" class="text-[#0066cc] hover:underline">mijdigital.my</a>
@@ -425,13 +406,28 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="mt-6 border-t border-gray-100 dark:border-white/5 pt-4 text-right">
-                <button onclick="closeContactModal()" class="px-4 py-2 bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-200 font-bold rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 text-xs transition-colors focus:outline-none">
-                    <span class="lang-id">Tutup</span>
-                    <span class="lang-en hidden">Close</span>
-                </button>
-            </div>
+        </div>
+
+        <!-- Floating Capsule Toolbar -->
+        <div class="flex items-center gap-3 px-4 py-2 floating-capsule shadow-lg">
+            <!-- Theme Toggle -->
+            <button id="dark-mode-toggle" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-150 dark:hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                <i data-lucide="moon" class="w-4 h-4"></i>
+            </button>
+            <!-- Divider -->
+            <span class="w-[1px] h-4 bg-gray-300 dark:bg-white/10"></span>
+            <!-- Language Switcher Button -->
+            <button id="lang-toggle" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-150 dark:hover:bg-white/5 transition-colors focus:outline-none">
+                <i data-lucide="languages" class="w-3.5 h-3.5 text-[#0066cc]"></i>
+                <span>English</span>
+            </button>
+            <!-- Divider -->
+            <span class="w-[1px] h-4 bg-gray-300 dark:bg-white/10"></span>
+            <!-- Contact & Prototype Button (Toggles Dropdown) -->
+            <button onclick="toggleContactDropdown(event)" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-150 dark:hover:bg-white/5 transition-colors focus:outline-none">
+                <i data-lucide="info" class="w-3.5 h-3.5 text-[#0066cc]"></i>
+                <span>Kontak & Prototipe</span>
+            </button>
         </div>
     </div>
 
@@ -1376,24 +1372,24 @@
             }
         };
 
-        // Modal triggers
-        window.openContactModal = function() {
-            const modal = document.getElementById('contact-modal');
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                document.body.style.overflow = 'hidden';
+        // Dropdown triggers
+        window.toggleContactDropdown = function(e) {
+            if (e) e.stopPropagation();
+            const dropdown = document.getElementById('contact-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
+                dropdown.classList.toggle('flex');
             }
         };
 
-        window.closeContactModal = function() {
-            const modal = document.getElementById('contact-modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.style.overflow = '';
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('contact-dropdown');
+            const btn = document.querySelector('[onclick*="toggleContactDropdown"]');
+            if (dropdown && !dropdown.contains(e.target) && btn && !btn.contains(e.target)) {
+                dropdown.classList.add('hidden');
+                dropdown.classList.remove('flex');
             }
-        };
+        });
 
         document.addEventListener('DOMContentLoaded', async () => {
             if (window.setLoadingProgress) window.setLoadingProgress(5);

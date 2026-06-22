@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>EasyMarket | Executive Insight</title>
+    <title>EasyMarket - Pusat Produk Digital & Akun Premium</title>
+    <meta name="description" content="EasyMarket menyediakan akun premium streaming, lisensi software Windows & Office, Canva Pro, ChatGPT Plus, dan VPN dengan sistem bot aktif 24jam, harga terjangkau, serta garansi terpercaya.">
+    <meta name="keywords" content="EasyMarket, Akun Premium, Netflix Premium, Canva Pro, Spotify Premium, Lisensi Windows, Office 2021, VPN Murah, Produk Digital">
     
     <script src="https://cdn.tailwindcss.com/3.4.1"></script>
     <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
@@ -14,195 +16,94 @@
     
     <style>
         :root {
-            --book-bg: #fdfbf7; /* Warm, classic paper color */
-            --book-text: #1c1a17;
-            --book-secondary: #5e5954;
-            --book-border: rgba(0, 0, 0, 0.08);
+            --bg-light: #f8fafc;
+            --bg-dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f8fafc;
+            --primary: #0066cc;
+            --primary-hover: #0052a3;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --border-dark: rgba(255, 255, 255, 0.08);
         }
 
         body {
-            background-color: var(--book-bg);
-            color: var(--book-text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Dark Mode CSS Variables */
         body.dark-mode {
-            --book-bg: #181614; /* Dark warm paper */
-            --book-text: #e3e0dc;
-            --book-secondary: #a09a95;
-            --book-border: rgba(255, 255, 255, 0.08);
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
         }
 
-        /* Classic Book Design Typography */
-        .book-content {
-            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
-            font-size: 1.125rem; /* 18px */
-            line-height: 1.8;
+        /* Pin top-navbar to very top */
+        #top-navbar {
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
         }
 
-        .book-content h1 {
-            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
-            font-weight: bold;
-            color: #111111;
-            font-size: 2.75rem;
-            line-height: 1.2;
-            border-bottom: 2px solid #111111;
-            padding-bottom: 0.75rem;
-            transition: color 0.3s ease, border-color 0.3s ease;
-        }
-
-        body.dark-mode .book-content h1 {
-            color: #ffffff;
-            border-color: #ffffff;
-        }
-
-        .book-content h2 {
-            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
-            font-weight: bold;
-            color: #111111;
-            font-size: 1.75rem;
-            line-height: 1.3;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
-            padding-bottom: 0.5rem;
-            transition: color 0.3s ease, border-color 0.3s ease;
-        }
-
-        body.dark-mode .book-content h2 {
-            color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .book-content h3 {
-            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
-            font-weight: bold;
-            color: #111111;
-            font-size: 1.35rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .book-content h3 {
-            color: #ffffff;
-        }
-
-        .book-content p {
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-
-        /* Drop cap for classic look */
-        .drop-cap::first-letter {
-            font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
-            font-size: 4rem;
-            float: left;
-            line-height: 0.8;
-            margin-right: 0.5rem;
-            margin-top: 0.15rem;
-            font-weight: bold;
-        }
-
-        /* Reset fonts for header and footer */
-        #header-placeholder, #footer-placeholder, #header-placeholder *, #footer-placeholder * {
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-        }
-
-        /* Card styles ONLY for left navigation buttons */
-        .nav-card {
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 3px 3px 8px rgba(163, 177, 198, 0.2), -3px -3px 8px #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.7);
+        /* Custom buttons styling for flat list (NO card shape, NO shadows, NO rounded borders) */
+        .tab-btn {
+            background: transparent !important;
+            color: #64748b;
+            border: none;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #4a5568;
-            text-align: left;
-            padding: 0.75rem 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            transition: all 0.2s ease;
+            box-shadow: none !important;
+            border-radius: 0 !important;
         }
 
-        body.dark-mode .nav-card {
-            background: #23211f;
-            color: #c5c2be;
-            border-color: rgba(255, 255, 255, 0.05);
-            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), -3px -3px 8px rgba(255, 255, 255, 0.02);
+        body.dark-mode .tab-btn {
+            color: #94a3b8;
         }
 
-        .nav-card:hover {
-            transform: translateY(-1px);
-            box-shadow: 4px 4px 12px rgba(163, 177, 198, 0.3), -4px -4px 12px #ffffff;
-            color: #0066cc;
+        .tab-btn:hover {
+            color: var(--primary);
         }
 
-        body.dark-mode .nav-card:hover {
-            color: #3399ff;
-            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
+        body.dark-mode .tab-btn:hover {
+            color: #38bdf8;
         }
 
-        .nav-card.active {
-            background: #0066cc;
-            color: #ffffff !important;
-            border-color: #0066cc;
-            box-shadow: 4px 4px 12px rgba(0, 102, 204, 0.25);
+        /* Active tab button indicator colors */
+        .tab-btn.active {
+            color: var(--primary) !important;
+            font-weight: 800;
         }
 
-        body.dark-mode .nav-card.active {
-            background: #0066cc;
-            color: #ffffff !important;
-            border-color: #0066cc;
-            box-shadow: 4px 4px 12px rgba(0, 102, 204, 0.4);
+        body.dark-mode .tab-btn.active {
+            color: #38bdf8 !important;
         }
 
-        /* Classic Book Divider */
-        .book-divider {
-            border: 0;
-            height: 1px;
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0));
-            margin: 3.5rem 0;
-            transition: background-color 0.3s ease;
-        }
-
-        body.dark-mode .book-divider {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
-        }
-
-        /* Scroll Top Padding */
-        html {
-            scroll-padding-top: 240px;
-        }
-
-        @media (min-width: 1024px) {
-            html {
-                scroll-padding-top: 180px;
+        /* Border limitations based on device screens */
+        @media (max-width: 1023px) {
+            .tab-btn {
+                border-right: 1px solid var(--border-light);
+            }
+            body.dark-mode .tab-btn {
+                border-right-color: var(--border-dark);
             }
         }
 
-        #adsterra-banner-unit {
-            min-height: 90px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.03);
-            margin: 30px 0;
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        body.dark-mode #adsterra-banner-unit {
-            background: #23211f;
-            border-color: rgba(255, 255, 255, 0.05);
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        @media (min-width: 1024px) {
+            .tab-btn {
+                border-bottom: 1px solid var(--border-light);
+                border-left: 3px solid transparent;
+            }
+            body.dark-mode .tab-btn {
+                border-bottom-color: var(--border-dark);
+            }
+            .tab-btn.active {
+                border-left-color: var(--primary) !important;
+            }
+            body.dark-mode .tab-btn.active {
+                border-left-color: #38bdf8 !important;
+            }
         }
 
         /* Hide scrollbar utility */
@@ -217,59 +118,37 @@
         /* Floating Capsule Toolbar */
         .floating-capsule {
             background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 9999px;
-            box-shadow: 4px 4px 15px rgba(163, 177, 198, 0.3), -4px -4px 15px #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
 
         body.dark-mode .floating-capsule {
-            background: rgba(35, 33, 31, 0.95);
-            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4), -4px -4px 15px rgba(255, 255, 255, 0.02);
-            border-color: rgba(255, 255, 255, 0.08);
-        }
-
-        /* Tab buttons styling */
-        .tab-btn {
-            color: var(--book-secondary);
-            border: 1px solid transparent;
-        }
-        .tab-btn:hover {
-            color: #0066cc;
-        }
-        body.dark-mode .tab-btn:hover {
-            color: #3399ff;
-        }
-        .tab-btn.active {
-            background: rgba(0, 102, 204, 0.08);
-            color: #0066cc;
-            border-color: rgba(0, 102, 204, 0.15);
-        }
-        body.dark-mode .tab-btn.active {
-            background: rgba(51, 153, 255, 0.08);
-            color: #3399ff;
-            border-color: rgba(51, 153, 255, 0.15);
-        }
-
-        /* Modern Apple-like cards for the overview, adapted for dark/light mode */
-        .overview-card {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 20px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.02);
-            transition: all 0.3s ease;
-        }
-        body.dark-mode .overview-card {
-            background: rgba(35, 33, 31, 0.5);
+            background: rgba(30, 41, 59, 0.95);
             border-color: rgba(255, 255, 255, 0.05);
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
-        .overview-card:hover {
-            border-color: #0066cc;
-            transform: translateY(-2px);
+
+        /* Product Row layout (Flat list, bordered only) */
+        .product-item {
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--border-light);
         }
-        body.dark-mode .overview-card:hover {
-            border-color: #3399ff;
+        body.dark-mode .product-item {
+            border-bottom-color: var(--border-dark);
+        }
+        .product-item:hover {
+            background: rgba(0, 102, 204, 0.03);
+        }
+        body.dark-mode .product-item:hover {
+            background: rgba(56, 189, 248, 0.02);
+        }
+
+        /* Custom Scroll Padding */
+        html {
+            scroll-padding-top: 140px;
         }
     </style>
 </head>
@@ -278,553 +157,1096 @@
 
     <div id="header-placeholder"></div>
 
-    <!-- Sticky Tabs Sidebar Container -->
-    <div class="max-w-7xl mx-auto px-6 py-8 lg:py-12 flex flex-col lg:flex-row gap-8">
+    <!-- Main Layout Container (Using flex vertical divider line instead of cards) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 mt-28 lg:mt-32">
         
-        <!-- Sticky Tabs Sidebar (Kiri) -->
-        <div class="w-full lg:w-[190px] shrink-0 lg:sticky lg:top-24 lg:self-start z-40">
-            <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-2 pb-3 lg:pb-0 border-b border-gray-200/60 lg:border-b-0 lg:border-r lg:border-gray-200/60 dark:border-white/10 pr-0 lg:pr-4 scrollbar-none whitespace-nowrap">
-                <button onclick="switchTab('dev-process')" id="tab-dev-process" class="tab-btn active px-3 py-2 text-xs font-sans font-bold rounded-xl transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start">
-                    <i data-lucide="cpu" class="w-4 h-4"></i>
-                    <span class="lang-id">Proses Pengembangan</span>
-                    <span class="lang-en hidden">Development Process</span>
-                </button>
-                <button onclick="switchTab('proposal')" id="tab-proposal" class="tab-btn px-3 py-2 text-xs font-sans font-bold rounded-xl transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start">
-                    <i data-lucide="file-text" class="w-4 h-4"></i>
-                    <span class="lang-id">Proposal Bisnis</span>
-                    <span class="lang-en hidden">Business Proposal</span>
-                </button>
-                <button onclick="switchTab('contact')" id="tab-contact" class="tab-btn px-3 py-2 text-xs font-sans font-bold rounded-xl transition-all flex items-center gap-2 w-auto lg:w-full lg:justify-start">
-                    <i data-lucide="phone" class="w-4 h-4"></i>
-                    <span class="lang-id">Kontak & Akses</span>
-                    <span class="lang-en hidden">Contact & Access</span>
-                </button>
+        <div class="flex flex-col lg:flex-row lg:divide-x lg:divide-gray-200/60 lg:dark:divide-white/10">
+            <!-- Sidebar Navigation Left (Far left corner, full width layout, bordered only, no card container) -->
+            <div class="w-full lg:w-[220px] shrink-0 lg:pr-8 lg:sticky lg:top-28 lg:self-start z-30">
+                <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible scrollbar-none whitespace-nowrap border-b lg:border-b-0 border-gray-200/60 dark:border-white/10">
+                    
+                    <button onclick="switchTab('pengenalan')" id="tab-pengenalan" class="tab-btn active px-4 py-3.5 text-xs font-bold flex items-center gap-3 w-auto lg:w-full justify-start shrink-0">
+                        <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
+                        <span class="lang-id">Pengenalan</span>
+                        <span class="lang-en hidden">Introduction</span>
+                        <span class="lang-zh hidden">介绍</span>
+                    </button>
+                    
+                    <button onclick="switchTab('produk')" id="tab-produk" class="tab-btn px-4 py-3.5 text-xs font-bold flex items-center gap-3 w-auto lg:w-full justify-start shrink-0">
+                        <i data-lucide="shopping-bag" class="w-4 h-4 shrink-0"></i>
+                        <span class="lang-id">Produk</span>
+                        <span class="lang-en hidden">Products</span>
+                        <span class="lang-zh hidden">产品</span>
+                    </button>
+
+                    <button onclick="switchTab('order')" id="tab-order" class="tab-btn px-4 py-3.5 text-xs font-bold flex items-center gap-3 w-auto lg:w-full justify-start shrink-0">
+                        <i data-lucide="help-circle" class="w-4 h-4 shrink-0"></i>
+                        <span class="lang-id">Cara Order</span>
+                        <span class="lang-en hidden">How to Order</span>
+                        <span class="lang-zh hidden">如何订购</span>
+                    </button>
+
+                    <button onclick="switchTab('sk')" id="tab-sk" class="tab-btn px-4 py-3.5 text-xs font-bold flex items-center gap-3 w-auto lg:w-full justify-start shrink-0">
+                        <i data-lucide="shield-alert" class="w-4 h-4 shrink-0"></i>
+                        <span class="lang-id">S&K</span>
+                        <span class="lang-en hidden">T&C</span>
+                        <span class="lang-zh hidden">条款与条件</span>
+                    </button>
+
+                    <button onclick="switchTab('oss')" id="tab-oss" class="tab-btn px-4 py-3.5 text-xs font-bold flex items-center gap-3 w-auto lg:w-full justify-start shrink-0">
+                        <i data-lucide="award" class="w-4 h-4 shrink-0"></i>
+                        <span class="lang-id">Izin</span>
+                        <span class="lang-en hidden">License</span>
+                        <span class="lang-zh hidden">许可证</span>
+                    </button>
+
+                    <button onclick="switchTab('investor')" id="tab-investor" class="tab-btn px-4 py-3.5 text-xs font-bold flex items-center gap-3 w-auto lg:w-full justify-start shrink-0">
+                        <i data-lucide="handshake" class="w-4 h-4 shrink-0"></i>
+                        <span class="lang-id">Kerjasama</span>
+                        <span class="lang-en hidden">Cooperation</span>
+                        <span class="lang-zh hidden">合作</span>
+                    </button>
+                </div>
             </div>
+
+            <!-- Content Area Right (Flat layout, separated by thin borders) -->
+            <div class="flex-grow min-w-0 lg:pl-8">
+
+                <!-- TAB 1: PENGENALAN -->
+                <div id="content-pengenalan" class="space-y-8">
+                    <!-- Title & Description -->
+                    <div class="space-y-4">
+                        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">EasyMarket</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl lang-id">
+                            Usaha penjualan produk digital dengan sistem bot aktif 24 jam dan Customer Service (CS) aktif.
+                        </p>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl lang-en hidden">
+                            Digital goods distribution business featuring a 24-hour active automated bot system and active Customer Service.
+                        </p>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl lang-zh hidden">
+                            EasyMarket是一家数字化商品销售企业，拥有24小时全天候活跃的自动机器人系统和专业的在线客服（CS）。
+                        </p>
+                    </div>
+
+                    <!-- Visual Section & Logo Display -->
+                    <div class="flex flex-col md:flex-row items-center gap-8 py-6">
+                        <div class="shrink-0 w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
+                            <img src="documents/Logo/easyfastlogotransaparan.png" alt="EasyMarket Logo" class="w-full h-full object-contain">
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="text-lg font-bold lang-id">Keunggulan Utama:</h3>
+                            <h3 class="text-lg font-bold lang-en hidden">Key Advantages:</h3>
+                            <h3 class="text-lg font-bold lang-zh hidden">核心优势：</h3>
+                            <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+                                    <span class="lang-id">Sistem Bot Aktif 24 Jam Non-Stop</span>
+                                    <span class="lang-en hidden">24-Hour Non-Stop Active Bot System</span>
+                                    <span class="lang-zh hidden">24小时不间断活跃的机器人系统</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+                                    <span class="lang-id">Customer Service (CS) Aktif & Responsif</span>
+                                    <span class="lang-en hidden">Active & Responsive Customer Service</span>
+                                    <span class="lang-zh hidden">活跃且快速响应的客户服务</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Direct Bot Links -->
+                    <div class="space-y-3 pt-4 border-t border-gray-200/60 dark:border-white/10">
+                        <h4 class="text-sm font-bold text-gray-700 dark:text-gray-300 lang-id">Akses Bot & Kontak Resmi:</h4>
+                        <h4 class="text-sm font-bold text-gray-700 dark:text-gray-300 lang-en hidden">Official Bot Access & Contacts:</h4>
+                        <h4 class="text-sm font-bold text-gray-700 dark:text-gray-300 lang-zh hidden">官方机器人通道与联系方式：</h4>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://wa.me/6287886405222" target="_blank" class="px-5 py-3 bg-[#0d9488] text-white font-bold rounded-xl text-xs hover:bg-teal-700 transition flex items-center gap-2 shadow-sm">
+                                <i data-lucide="message-square" class="w-4 h-4"></i> WhatsApp Bot: wa.me/6287886405222
+                            </a>
+                            <a href="https://t.me/safemarketfast_bot" target="_blank" class="px-5 py-3 bg-[#0066cc] text-white font-bold rounded-xl text-xs hover:bg-blue-700 transition flex items-center gap-2 shadow-sm">
+                                <i data-lucide="send" class="w-4 h-4"></i> Telegram Bot: t.me/safemarketfast_bot
+                            </a>
+                        </div>
+                        <p class="text-xs text-gray-400 font-medium pt-2 lang-id">
+                            Telegram Owner: <a href="https://t.me/ilhampradani_sh" target="_blank" class="text-[#0066cc] dark:text-[#38bdf8] hover:underline font-bold">@ilhampradani_sh</a>
+                        </p>
+                        <p class="text-xs text-gray-400 font-medium pt-2 lang-en hidden">
+                            Telegram Owner: <a href="https://t.me/ilhampradani_sh" target="_blank" class="text-[#0066cc] dark:text-[#38bdf8] hover:underline font-bold">@ilhampradani_sh</a>
+                        </p>
+                        <p class="text-xs text-gray-400 font-medium pt-2 lang-zh hidden">
+                            电报负责人: <a href="https://t.me/ilhampradani_sh" target="_blank" class="text-[#0066cc] dark:text-[#38bdf8] hover:underline font-bold">@ilhampradani_sh</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- TAB 2: PRODUK (Flat Search & Minimal List Layout) -->
+                <div id="content-produk" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <h2 class="text-2xl font-bold tracking-tight lang-id">Daftar Produk & Harga</h2>
+                        <h2 class="text-2xl font-bold tracking-tight lang-en hidden">Product List & Pricing</h2>
+                        <h2 class="text-2xl font-bold tracking-tight lang-zh hidden">产品列表与定价</h2>
+                        
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-id">Temukan daftar produk digital premium dan lisensi resmi dengan harga pas terbaik.</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-en hidden">Discover our curated selection of premium digital goods and official software licenses at the best flat rates.</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-zh hidden">以最优惠的固定价格发现我们精选的优质数字商品和官方软件许可证。</p>
+                    </div>
+
+                    <!-- Search and Filters Panel (Flat, bounded by borders) -->
+                    <div class="border-y border-gray-200/60 dark:border-white/10 py-5 space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <!-- Search Input -->
+                            <div class="relative flex-grow max-w-md">
+                                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                                <input type="text" id="product-search" placeholder="Cari Canva, Office, Netflix..." class="w-full pl-9 pr-4 py-2 text-xs bg-white dark:bg-slate-900 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0066cc] dark:focus:ring-[#38bdf8] transition">
+                            </div>
+                            
+                            <!-- Sort Filter -->
+                            <div class="flex items-center gap-2 text-xs font-semibold">
+                                <span class="text-gray-400 lang-id">Urutan:</span>
+                                <span class="text-gray-400 lang-en hidden">Sort:</span>
+                                <span class="text-gray-400 lang-zh hidden">排序方式:</span>
+                                <select id="sort-select" onchange="applyFilters()" class="bg-transparent border-none text-[#0066cc] dark:text-[#38bdf8] focus:ring-0 cursor-pointer text-xs p-0 font-bold">
+                                    <option value="default">Default</option>
+                                    <option value="price-asc">Harga Terendah</option>
+                                    <option value="price-desc">Harga Tertinggi</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Category Tabs -->
+                        <div class="flex overflow-x-auto gap-2 pb-1 scrollbar-none whitespace-nowrap" id="category-filters">
+                            <button onclick="filterCategory('All')" data-category="All" class="category-btn px-4 py-1.5 text-xs font-bold rounded-full bg-[#0066cc]/10 text-[#0066cc] dark:bg-[#38bdf8]/10 dark:text-[#38bdf8] active">
+                                <span class="lang-id">Semua</span>
+                                <span class="lang-en hidden">All</span>
+                                <span class="lang-zh hidden">全部</span>
+                            </button>
+                            <button onclick="filterCategory('Streaming')" data-category="Streaming" class="category-btn px-4 py-1.5 text-xs font-bold rounded-full bg-slate-100 dark:bg-slate-800 text-gray-500 dark:text-gray-300">
+                                <span class="lang-id">Streaming & Hiburan</span>
+                                <span class="lang-en hidden">Streaming & Entertainment</span>
+                                <span class="lang-zh hidden">流媒体与娱乐</span>
+                            </button>
+                            <button onclick="filterCategory('Creative')" data-category="Creative" class="category-btn px-4 py-1.5 text-xs font-bold rounded-full bg-slate-100 dark:bg-slate-800 text-gray-500 dark:text-gray-300">
+                                <span class="lang-id">Desain & Kreatif</span>
+                                <span class="lang-en hidden">Design & Creative</span>
+                                <span class="lang-zh hidden">设计与创意</span>
+                            </button>
+                            <button onclick="filterCategory('Productivity')" data-category="Productivity" class="category-btn px-4 py-1.5 text-xs font-bold rounded-full bg-slate-100 dark:bg-slate-800 text-gray-500 dark:text-gray-300">
+                                <span class="lang-id">AI & Produktivitas</span>
+                                <span class="lang-en hidden">AI & Productivity</span>
+                                <span class="lang-zh hidden">AI 与生产力</span>
+                            </button>
+                            <button onclick="filterCategory('OS & Office')" data-category="OS & Office" class="category-btn px-4 py-1.5 text-xs font-bold rounded-full bg-slate-100 dark:bg-slate-800 text-gray-500 dark:text-gray-300">
+                                <span class="lang-id">Lisensi OS & Office</span>
+                                <span class="lang-en hidden">OS & Office Licenses</span>
+                                <span class="lang-zh hidden">系统与办公软件授权</span>
+                            </button>
+                            <button onclick="filterCategory('VPN & Security')" data-category="VPN & Security" class="category-btn px-4 py-1.5 text-xs font-bold rounded-full bg-slate-100 dark:bg-slate-800 text-gray-500 dark:text-gray-300">
+                                <span class="lang-id">VPN & Keamanan</span>
+                                <span class="lang-en hidden">VPN & Security</span>
+                                <span class="lang-zh hidden">VPN 与网络安全</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Products Table/List Layout (Flat bordered layout, no rounded corners, no cards) -->
+                    <div class="border-t border-gray-200/60 dark:border-white/10 mt-6">
+                        <!-- Table Headings -->
+                        <div class="grid grid-cols-12 gap-2 px-4 py-3 bg-gray-50/50 dark:bg-slate-800/20 text-[10px] uppercase tracking-wider font-extrabold text-gray-400">
+                            <div class="col-span-8">
+                                <span class="lang-id">Nama Produk / Lisensi</span>
+                                <span class="lang-en hidden">Product / License Name</span>
+                                <span class="lang-zh hidden">产品/授权名称</span>
+                            </div>
+                            <div class="col-span-4 text-right">
+                                <span class="lang-id">Harga</span>
+                                <span class="lang-en hidden">Price</span>
+                                <span class="lang-zh hidden">价格</span>
+                            </div>
+                        </div>
+
+                        <!-- Table Rows Container -->
+                        <div id="product-list-container" class="divide-y divide-gray-100 dark:divide-white/5">
+                            <!-- Rendered by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: CARA ORDER -->
+                <div id="content-order" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <h2 class="text-2xl font-bold tracking-tight lang-id">Panduan Alur Transaksi</h2>
+                        <h2 class="text-2xl font-bold tracking-tight lang-en hidden">Transaction Guide</h2>
+                        <h2 class="text-2xl font-bold tracking-tight lang-zh hidden">交易流程指南</h2>
+                        
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-id">Proses transaksi digital otomatis dan aman.</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-en hidden">Automated and secure digital transaction flow.</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-zh hidden">自动且安全的数字交易流程。</p>
+                    </div>
+
+                    <div class="space-y-6 text-sm text-gray-500 dark:text-gray-400 leading-relaxed py-4 border-t border-gray-200/60 dark:border-white/10">
+                        <div class="flex gap-4">
+                            <span class="font-extrabold text-[#0066cc] dark:text-[#38bdf8] text-base">01.</span>
+                            <div>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-id">Pilih Produk</strong>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-en hidden">Select Product</strong>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-zh hidden">选择产品</strong>
+                                
+                                <span class="lang-id">Pilih produk digital yang Anda butuhkan di halaman tab **Produk**.</span>
+                                <span class="lang-en hidden">Select the digital products or licenses you need in the **Products** tab.</span>
+                                <span class="lang-zh hidden">在**产品**标签页中选择您需要的数字产品或授权许可。</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="font-extrabold text-[#0066cc] dark:text-[#38bdf8] text-base">02.</span>
+                            <div>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-id">Metode Pembayaran QRIS</strong>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-en hidden">QRIS Payment Method</strong>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-zh hidden">QRIS 支付方式</strong>
+                                
+                                <span class="lang-id">Lakukan pembayaran aman. Transaksi **hanya didukung menggunakan QRIS**.</span>
+                                <span class="lang-en hidden">Complete a secure payment. Transactions are **only supported via QRIS**.</span>
+                                <span class="lang-zh hidden">完成安全支付。交易**仅支持通过 QRIS** 进行。</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="font-extrabold text-[#0066cc] dark:text-[#38bdf8] text-base">03.</span>
+                            <div>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-id">Serah Terima Akun</strong>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-en hidden">Account Delivery</strong>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-zh hidden">账号交付</strong>
+                                
+                                <span class="lang-id">Akun premium atau detail lisensi digital akan langsung diberikan setelah pembayaran dikonfirmasi.</span>
+                                <span class="lang-en hidden">Premium accounts or digital license details will be delivered instantly after payment confirmation.</span>
+                                <span class="lang-zh hidden">付款确认后，将立即交付高级账号或数字授权详情。</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="font-extrabold text-[#0066cc] dark:text-[#38bdf8] text-base">04.</span>
+                            <div>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-id">Permintaan OTP Login</strong>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-en hidden">OTP Login Request</strong>
+                                <strong class="text-gray-800 dark:text-gray-200 block text-base mb-1 lang-zh hidden">OTP 登录请求</strong>
+                                
+                                <span class="lang-id">Di akhir langkah, untuk login masuk ke akun digital Anda, silakan hubungi admin resmi kami untuk mendapatkan kode OTP login.</span>
+                                <span class="lang-en hidden">Finally, to access your digital account, please contact our official admin to obtain the verification login OTP.</span>
+                                <span class="lang-zh hidden">最后，如需访问您的数字账号，请联系我们的官方管理员以获取登录验证码（OTP）。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: SYARAT & KETENTUAN (S&K) -->
+                <div id="content-sk" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <h2 class="text-2xl font-bold tracking-tight lang-id">Syarat & Ketentuan Layanan</h2>
+                        <h2 class="text-2xl font-bold tracking-tight lang-en hidden">Terms & Conditions of Service</h2>
+                        <h2 class="text-2xl font-bold tracking-tight lang-zh hidden">服务条款与条件</h2>
+                        
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-id">Harap baca dengan seksama sebelum melakukan transaksi. Terakhir diperbarui: 27 September 2025</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-en hidden">Please read carefully before conducting transactions. Last updated: September 27, 2025</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-zh hidden">交易前请仔细阅读。最后更新日期：2025 年 9 月 27 日</p>
+                    </div>
+
+                    <!-- Sub-tabs Navigation inside S&K (Flat styling) -->
+                    <div class="flex flex-wrap gap-2 border-b border-gray-200/60 dark:border-white/10 pb-2">
+                        <button onclick="switchSKSubTab('sk-deskripsi')" id="sk-tab-deskripsi" class="px-3 py-1.5 text-[11px] font-bold transition-all border-b-2 text-[#0066cc] dark:text-[#38bdf8] border-[#0066cc] dark:border-[#38bdf8]">
+                            <span class="lang-id">Deskripsi & Layanan</span>
+                            <span class="lang-en hidden">Description & Service</span>
+                            <span class="lang-zh hidden">描述与服务</span>
+                        </button>
+                        <button onclick="switchSKSubTab('sk-pembelian')" id="sk-tab-pembelian" class="px-3 py-1.5 text-[11px] font-bold transition-all border-b-2 text-gray-500 dark:text-gray-400 border-transparent hover:text-gray-800 dark:hover:text-white">
+                            <span class="lang-id">Pembelian & Pembayaran</span>
+                            <span class="lang-en hidden">Purchase & Payment</span>
+                            <span class="lang-zh hidden">购买与支付</span>
+                        </button>
+                        <button onclick="switchSKSubTab('sk-refund')" id="sk-tab-refund" class="px-3 py-1.5 text-[11px] font-bold transition-all border-b-2 text-gray-500 dark:text-gray-400 border-transparent hover:text-gray-800 dark:hover:text-white">
+                            <span class="lang-id">Garansi & Refund</span>
+                            <span class="lang-en hidden">Warranty & Refund</span>
+                            <span class="lang-zh hidden">保修与退款</span>
+                        </button>
+                        <button onclick="switchSKSubTab('sk-privasi')" id="sk-tab-privasi" class="px-3 py-1.5 text-[11px] font-bold transition-all border-b-2 text-gray-500 dark:text-gray-400 border-transparent hover:text-gray-800 dark:hover:text-white">
+                            <span class="lang-id">Privasi & Keamanan</span>
+                            <span class="lang-en hidden">Privacy & Security</span>
+                            <span class="lang-zh hidden">隐私与安全</span>
+                        </button>
+                    </div>
+
+                    <!-- Sub-tab Content: Deskripsi -->
+                    <div id="sk-content-deskripsi" class="sk-sub-content space-y-4 text-xs text-gray-600 dark:text-gray-400 leading-relaxed py-2">
+                        <!-- ID -->
+                        <div class="lang-id space-y-4">
+                            <p>Dengan menggunakan layanan kami, Anda menyetujui syarat dan ketentuan yang berlaku. Harap baca dengan seksama sebelum melakukan transaksi.</p>
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">Penerimaan Syarat</h4>
+                                <p>Dengan mengakses dan menggunakan layanan EASYMARKET, Anda menyetujui untuk terikat oleh syarat dan ketentuan ini. Jika Anda tidak menyetujui syarat ini, mohon untuk tidak menggunakan layanan kami.</p>
+                            </div>
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">1. Deskripsi Layanan</h4>
+                                <p>EASYMARKET adalah platform penyedia akses premium untuk berbagai layanan digital, termasuk namun tidak terbatas pada:</p>
+                                <ul class="list-disc pl-5 space-y-1 mt-1">
+                                    <li><strong>Layanan Streaming:</strong> Netflix, Disney+, Prime Video, YouTube Premium, Spotify, dan platform streaming musik/video lainnya.</li>
+                                    <li><strong>Software & Tools:</strong> Adobe Creative Suite, Microsoft Office 365, serta aplikasi produktivitas dan kreatif lainnya.</li>
+                                </ul>
+                                <p class="mt-2 font-semibold text-gray-800 dark:text-gray-200">Penting untuk Diketahui:</p>
+                                <p>Semua produk yang kami jual adalah akun premium asli yang diperoleh melalui metode legal. Kami tidak menjual akun bajakan atau hasil pelanggaran copyright.</p>
+                            </div>
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">2. Tanggung Jawab Pengguna</h4>
+                                <p class="font-semibold text-gray-805 dark:text-gray-200">2.1 Penggunaan yang Diizinkan:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Menggunakan layanan hanya untuk tujuan pribadi dan legal</li>
+                                    <li>Memberikan informasi yang akurat dan terkini</li>
+                                    <li>Menjaga kerahasiaan informasi akun yang Anda beli</li>
+                                    <li>Tidak membagikan akun kepada pihak ketiga tanpa izin</li>
+                                    <li>Melaporkan masalah teknis atau keamanan kepada customer service</li>
+                                </ul>
+                                <p class="font-semibold text-gray-805 dark:text-gray-200 mt-2">2.2 Larangan Penggunaan:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Mengubah password atau informasi akun tanpa persetujuan</li>
+                                    <li>Menjual kembali akun yang telah dibeli</li>
+                                    <li>Menggunakan layanan untuk aktivitas ilegal</li>
+                                    <li>Membuat klaim chargeback yang tidak berdasar</li>
+                                    <li>Menyalahgunakan sistem customer service</li>
+                                    <li>Mengakses akun menggunakan VPN dari negara yang tidak didukung</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- EN -->
+                        <div class="lang-en hidden space-y-4">
+                            <p>By using our service, you agree to the applicable terms and conditions. Please read them carefully before conducting a transaction.</p>
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">Acceptance of Terms</h4>
+                                <p>By accessing and using EASYMARKET services, you agree to be bound by these terms and conditions. If you do not agree to these terms, please do not use our services.</p>
+                            </div>
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">1. Service Description</h4>
+                                <p>EASYMARKET is a platform providing premium access to various digital services, including but not limited to:</p>
+                                <ul class="list-disc pl-5 space-y-1 mt-1">
+                                    <li><strong>Streaming Services:</strong> Netflix, Disney+, Prime Video, YouTube Premium, Spotify, and other music/video streaming platforms.</li>
+                                    <li><strong>Software & Tools:</strong> Adobe Creative Suite, Microsoft Office 365, and other productivity/creative applications.</li>
+                                </ul>
+                                <p class="mt-2 font-semibold text-gray-800 dark:text-gray-200">Important to Know:</p>
+                                <p>All products we sell are genuine premium accounts obtained through legal methods. We do not sell pirated accounts or products violating copyright.</p>
+                            </div>
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">2. User Responsibilities</h4>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200">2.1 Permitted Use:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Use services only for personal and legal purposes</li>
+                                    <li>Provide accurate and current information</li>
+                                    <li>Maintain the confidentiality of purchased account details</li>
+                                    <li>Do not share accounts with third parties without authorization</li>
+                                    <li>Report technical or security issues to customer service</li>
+                                </ul>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">2.2 Prohibited Use:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Change passwords or account details without approval</li>
+                                    <li>Resell accounts after purchase</li>
+                                    <li>Use services for illegal activities</li>
+                                    <li>Make groundless chargeback claims</li>
+                                    <li>Abuse the customer service system</li>
+                                    <li>Access accounts using VPN from unsupported countries</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- ZH -->
+                        <div class="lang-zh hidden space-y-4">
+                            <p>使用我们的服务即表示您同意适用的条款和条件。请在交易前仔细阅读。</p>
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">接受条款</h4>
+                                <p>访问和使用 EASYMARKET 服务即表示您同意受这些条款和条件的约束。如果您不同意这些条款，请勿使用我们的服务。</p>
+                            </div>
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">1. 服务描述</h4>
+                                <p>EASYMARKET 是一个提供各种数字服务高级访问权限的平台，包括但不限于：</p>
+                                <ul class="list-disc pl-5 space-y-1 mt-1">
+                                    <li><strong>流媒体服务：</strong>Netflix、Disney+、Prime Video、YouTube Premium、Spotify 及其他音乐/视频流媒体平台。</li>
+                                    <li><strong>软件与工具：</strong>Adobe Creative Suite、Microsoft Office 365 以及其他生产力和创意应用。</li>
+                                </ul>
+                                <p class="mt-2 font-semibold text-gray-800 dark:text-gray-200">重要须知：</p>
+                                <p>我们销售的所有产品均是通过合法渠道获得的真实高级账户。我们不销售盗版账户或违反版权的产品。</p>
+                            </div>
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">2. 用户责任</h4>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200">2.1 允许的使用：</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>仅将服务用于个人和合法目的</li>
+                                    <li>提供准确且最新的信息</li>
+                                    <li>对所购账户信息的机密性负责</li>
+                                    <li>未经授权，不得与第三方共享账户</li>
+                                    <li>向客服报告技术或安全问题</li>
+                                </ul>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">2.2 禁止的使用：</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>未经批准更改密码或账户信息</li>
+                                    <li>购买后转售账户</li>
+                                    <li>将服务用于非法活动</li>
+                                    <li>提出毫无根据的拒付申诉</li>
+                                    <li>滥用客户服务系统</li>
+                                    <li>使用不受支持国家的 VPN 访问账户</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sub-tab Content: Pembelian -->
+                    <div id="sk-content-pembelian" class="sk-sub-content hidden space-y-4 text-xs text-gray-600 dark:text-gray-400 leading-relaxed py-2">
+                        <!-- ID -->
+                        <div class="lang-id space-y-4">
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">3. Pembelian dan Pembayaran</h4>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200">3.1 Proses Pembelian:</p>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>Semua harga tertera dalam Rupiah (IDR) dan sudah termasuk pajak yang berlaku.</li>
+                                    <li>Pembayaran harus dilakukan sebelum akun dikirimkan.</li>
+                                    <li>Konfirmasi pembayaran diperlukan untuk memproses pesanan.</li>
+                                    <li>Waktu pengiriman akun: maksimal 24 jam setelah pembayaran dikonfirmasi.</li>
+                                </ul>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">3.2 Metode Pembayaran:</p>
+                                <p>Transfer Bank, E-Wallet, dan QRIS.</p>
+                            </div>
+                        </div>
+
+                        <!-- EN -->
+                        <div class="lang-en hidden space-y-4">
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">3. Purchase and Payment</h4>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200">3.1 Purchase Process:</p>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>All prices are listed in Indonesian Rupiah (IDR) and include applicable taxes.</li>
+                                    <li>Payment must be completed before the account details are delivered.</li>
+                                    <li>Payment confirmation is required to process your order.</li>
+                                    <li>Delivery timeframe: maximum 24 hours after payment confirmation.</li>
+                                </ul>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">3.2 Payment Methods:</p>
+                                <p>Bank Transfer, E-Wallet, and QRIS.</p>
+                            </div>
+                        </div>
+
+                        <!-- ZH -->
+                        <div class="lang-zh hidden space-y-4">
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">3. 购买与支付</h4>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200">3.1 购买流程：</p>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>所有价格均以印尼盾 (IDR) 标示，并已包含适用税费。</li>
+                                    <li>账户详细信息交付前必须完成支付。</li>
+                                    <li>确认付款后才能处理您的订单。</li>
+                                    <li>交付时间：付款确认后最多 24 小时。</li>
+                                </ul>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">3.2 支付方式：</p>
+                                <p>银行转账、电子钱包 (E-Wallet) 以及 QRIS 扫码支付。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sub-tab Content: Refund -->
+                    <div id="sk-content-refund" class="sk-sub-content hidden space-y-4 text-xs text-gray-600 dark:text-gray-400 leading-relaxed py-2">
+                        <!-- ID -->
+                        <div class="lang-id space-y-4">
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">4. Kebijakan Refund</h4>
+                                <p>Kami berkomitmen untuk memberikan layanan terbaik, namun dalam kondisi tertentu, refund dapat diproses sesuai ketentuan berikut:</p>
+                                
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">Refund Disetujui:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Akun tidak dapat diakses dari awal setelah 1x24 Jam</li>
+                                    <li>Akun tidak sesuai dengan deskripsi</li>
+                                    <li>Kesalahan sistem dari pihak kami</li>
+                                    <li>Double payment yang terbukti</li>
+                                </ul>
+
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">Refund Tidak Disetujui:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Akun sudah berhasil diakses</li>
+                                    <li>Perubahan pikiran setelah pembelian</li>
+                                    <li>Kesalahan pengguna dalam penggunaan</li>
+                                    <li>Permintaan refund setelah 7 hari</li>
+                                </ul>
+
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">Proses Refund:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Sertakan bukti pembayaran dan deskripsi masalah.</li>
+                                    <li>Tim kami akan melakukan investigasi dalam 1x24 jam.</li>
+                                    <li>Refund yang disetujui akan diproses dalam 1-7 hari kerja.</li>
+                                </ul>
+
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">Tujuan Pengiriman Refund:</p>
+                                <p>Refund hanya dapat dikirim ke rekening berikut: Bank SEABANK, BCA, QRIS (Semua QRIS yang didukung), atau E-Wallet DANA saja.</p>
+                                <p class="mt-2 text-amber-600 dark:text-amber-400 font-semibold">⚠️ Catatan Biaya Pengiriman E-Wallet:</p>
+                                <p>Pengiriman refund diwajibkan melalui transfer bank. Jika ingin menggunakan e-wallet (DANA), akan ada fee tambahan Rp1.500 - Rp2.000 dari pihak bank. EASYMARKET tidak menanggung fee tambahan tersebut.</p>
+                            </div>
+                        </div>
+
+                        <!-- EN -->
+                        <div class="lang-en hidden space-y-4">
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">4. Refund Policy</h4>
+                                <p>We are committed to providing the best service, but under certain conditions, refunds may be processed according to the following provisions:</p>
+                                
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">Approved Refunds:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Account is inaccessible from the start after 1x24 Hours</li>
+                                    <li>Account does not match the description</li>
+                                    <li>System error on our end</li>
+                                    <li>Proven double payments</li>
+                                </ul>
+
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">Disapproved Refunds:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Account has been successfully accessed</li>
+                                    <li>Change of mind after purchase</li>
+                                    <li>User error or misuse</li>
+                                    <li>Refund requests after 7 days</li>
+                                </ul>
+
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">Refund Process:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Include proof of payment and a description of the issue.</li>
+                                    <li>Our team will investigate within 1x24 hours.</li>
+                                    <li>Approved refunds will be processed within 1-7 business days.</li>
+                                </ul>
+
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">Refund Destination Accounts:</p>
+                                <p>Refunds can only be sent to the following: SEABANK, BCA, QRIS (all supported QRIS gateways), or DANA E-Wallet only.</p>
+                                <p class="mt-2 text-amber-600 dark:text-amber-400 font-semibold">⚠️ Note on E-Wallet Transfer Fees:</p>
+                                <p>Refund disbursements are required to go via bank transfer. If you prefer to use e-wallet (DANA), a surcharge fee of IDR 1,500 - IDR 2,000 will be charged by the bank. EASYMARKET does not cover this additional fee.</p>
+                            </div>
+                        </div>
+
+                        <!-- ZH -->
+                        <div class="lang-zh hidden space-y-4">
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">4. 退款政策</h4>
+                                <p>我们致力于提供最好的服务，但在特定条件下，可按照以下规定处理退款：</p>
+                                
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">批准退款的情况：</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>在付款 1x24 小时后，账户从一开始就无法访问</li>
+                                    <li>账户与描述不符</li>
+                                    <li>我方系统错误</li>
+                                    <li>经证实的重复付款</li>
+                                </ul>
+
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">不予退款的情况：</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>账户已成功登录访问</li>
+                                    <li>购买后改变主意</li>
+                                    <li>用户操作错误或使用不当</li>
+                                    <li>购买 7 天后提出的退款请求</li>
+                                </ul>
+
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">退款流程：</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>附上付款证明和问题说明。</li>
+                                    <li>我们的团队将在 1x24 小时内进行调查。</li>
+                                    <li>批准的退款将在 1-7 个工作日内处理。</li>
+                                </ul>
+
+                                <p class="font-semibold text-gray-800 dark:text-gray-200 mt-2">退款接收账户：</p>
+                                <p>退款仅能退还至以下账户：SEABANK 银行、BCA 银行、QRIS（所有支持的扫码网关）或 DANA 电子钱包。</p>
+                                <p class="mt-2 text-amber-600 dark:text-amber-400 font-semibold">⚠️ 关于电子钱包转账手续费的提示：</p>
+                                <p>退款结算须通过银行转账进行。如果您希望使用电子钱包（DANA），银行将收取 1,500 - 2,000 印尼盾的附加手续费。EASYMARKET 不承担这笔额外费用。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sub-tab Content: Privasi -->
+                    <div id="sk-content-privasi" class="sk-sub-content hidden space-y-4 text-xs text-gray-655 dark:text-gray-400 leading-relaxed py-2">
+                        <!-- ID -->
+                        <div class="lang-id space-y-4">
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">5. Privasi dan Keamanan</h4>
+                                <p>Kami sangat menghargai privasi dan keamanan data Anda. Informasi pribadi dan transaksi dilindungi dengan enkripsi SSL 256-bit dan tidak akan dibagikan kepada pihak ketiga.</p>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200">Komitmen Keamanan:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Data transaksi dienkripsi dengan teknologi SSL 256-bit</li>
+                                    <li>Tidak menyimpan informasi kartu kredit atau rekening bank</li>
+                                    <li>Akses akun pelanggan hanya oleh staff yang berwenang</li>
+                                    <li>Sistem monitoring keamanan 24/7</li>
+                                </ul>
+                            </div>
+
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">6. Perubahan Syarat & Ketentuan</h4>
+                                <p>Kami berhak untuk mengubah atau memperbarui syarat dan ketentuan ini sewaktu-waktu. Perubahan akan diberitahukan melalui notifikasi di website utama, email pelanggan terdaftar, pengumuman di media sosial resmi, atau pesan WhatsApp untuk transaksi aktif. Perubahan berlaku efektif 30 hari setelah pemberitahuan.</p>
+                            </div>
+                        </div>
+
+                        <!-- EN -->
+                        <div class="lang-en hidden space-y-4">
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">5. Privacy and Security</h4>
+                                <p>We deeply respect your privacy and data security. Personal and transaction details are protected by 256-bit SSL encryption and will not be shared with third parties.</p>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200">Security Commitment:</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>Transaction data is encrypted using 256-bit SSL technology</li>
+                                    <li>No storage of credit card or bank account details</li>
+                                    <li>Customer account access is restricted to authorized staff only</li>
+                                    <li>24/7 security monitoring system</li>
+                                </ul>
+                            </div>
+
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">6. Changes to Terms & Conditions</h4>
+                                <p>We reserve the right to modify or update these terms and conditions at any time. Changes will be announced via website notice, registered emails, official social media posts, or WhatsApp messages for active transactions. Changes become effective 30 days after notification.</p>
+                            </div>
+                        </div>
+
+                        <!-- ZH -->
+                        <div class="lang-zh hidden space-y-4">
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">5. 隐私与安全</h4>
+                                <p>我们高度重视您的隐私和数据安全。个人信息和交易详情均受到 256 位 SSL 加密保护，绝不与第三方共享。</p>
+                                <p class="font-semibold text-gray-800 dark:text-gray-200">安全承诺：</p>
+                                <ul class="list-disc pl-5 space-y-0.5">
+                                    <li>交易数据使用 256 位 SSL 技术进行加密</li>
+                                    <li>不存储信用卡或银行账户信息</li>
+                                    <li>客户账户的访问权限仅限于获授权的员工</li>
+                                    <li>24/7 全天候安全监控系统</li>
+                                </ul>
+                            </div>
+
+                            <div class="space-y-1.5">
+                                <h4 class="font-bold text-gray-800 dark:text-gray-200">6. 条款与条件的修改</h4>
+                                <p>我们保留随时修改或更新这些条款和条件的权利。修改将通过网站公告、注册邮箱、官方社交媒体公告或针对活跃交易的 WhatsApp 消息进行通知。修改在通知 30 天后生效。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: IZIN -->
+                <div id="content-oss" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <h2 class="text-2xl font-bold tracking-tight lang-id">Izin Usaha</h2>
+                        <h2 class="text-2xl font-bold tracking-tight lang-en hidden">Business License</h2>
+                        <h2 class="text-2xl font-bold tracking-tight lang-zh hidden">营业执照</h2>
+                        
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-id">EasyMarket beroperasi dengan legalitas resmi terdaftar di Sistem Online Single Submission (OSS).</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-en hidden">EasyMarket operates with official legality registered under the Online Single Submission (OSS) System.</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-zh hidden">EasyMarket 拥有在在线单一提交（OSS）系统下注册的官方合法资质。</p>
+                    </div>
+
+                    <!-- OSS Logo Display & Short Text -->
+                    <div class="flex flex-col sm:flex-row items-center gap-8 py-6 border-t border-gray-200/60 dark:border-white/10">
+                        <img src="documents/Logo/logo-oss-pemerintah.png" alt="OSS Logo" class="w-28 h-28 object-contain">
+                        
+                        <!-- ID -->
+                        <div class="space-y-2 lang-id">
+                            <h3 class="font-bold text-base">Terdaftar Resmi di OSS Republik Indonesia</h3>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl">
+                                Usaha kami telah mendapatkan izin resmi yang dikeluarkan oleh Lembaga Pengelola dan Penyelenggara OSS (Online Single Submission) Kementerian Investasi/BKPM Republik Indonesia untuk kategori penjualan komoditi jasa dan barang digital melalui media elektronik.
+                            </p>
+                        </div>
+
+                        <!-- EN -->
+                        <div class="space-y-2 lang-en hidden">
+                            <h3 class="font-bold text-base">Officially Registered under OSS Republic of Indonesia</h3>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl">
+                                Our business has obtained an official license issued by the OSS Institution (Online Single Submission) under the Ministry of Investment/BKPM of the Republic of Indonesia for the digital commodities, services, and electronic goods sales category.
+                            </p>
+                        </div>
+
+                        <!-- ZH -->
+                        <div class="space-y-2 lang-zh hidden">
+                            <h3 class="font-bold text-base">印度尼西亚共和国 OSS 系统正式注册登记</h3>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl">
+                                我们的业务已获得印度尼西亚共和国投资部/BKPM 辖下 OSS（在线单一提交）机构颁发的官方许可，属于通过电子媒体销售数字商品、服务和商品的类别。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 6: KERJASAMA -->
+                <div id="content-investor" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <h2 class="text-2xl font-bold tracking-tight lang-id">Hubungan Kerjasama Kemitraan</h2>
+                        <h2 class="text-2xl font-bold tracking-tight lang-en hidden">Partnership & Cooperation</h2>
+                        <h2 class="text-2xl font-bold tracking-tight lang-zh hidden">合作伙伴与合作关系</h2>
+                        
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-id">Kerjasama strategis bersama mitra terpercaya untuk penyaluran produk digital nasional.</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-en hidden">Strategic partnerships with trusted allies for the distribution of digital products.</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 lang-zh hidden">与值得信赖的伙伴建立战略合作，分销数字产品。</p>
+                    </div>
+
+                    <!-- Partner Logos (Flat Row, no cards) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 py-6 border-t border-gray-200/60 dark:border-white/10">
+                        <!-- Partnership Terpercaya -->
+                        <div class="flex items-center gap-4 py-4">
+                            <div class="w-20 h-20 bg-blue-500/10 text-[#0066cc] dark:bg-[#38bdf8]/10 dark:text-[#38bdf8] rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="handshake" class="w-10 h-10"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm lang-id">Partnership Terpercaya 3+</h4>
+                                <h4 class="font-bold text-sm lang-en hidden">Trusted Partnerships 3+</h4>
+                                <h4 class="font-bold text-sm lang-zh hidden">值得信赖的合作伙伴 3+</h4>
+                                
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 lang-id">Kolaborasi strategis dengan berbagai provider dan vendor digital terkemuka.</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 lang-en hidden">Strategic collaboration with various leading digital providers and vendors.</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 lang-zh hidden">与各大主流数字服务商及供应商的战略协同。</p>
+                            </div>
+                        </div>
+
+                        <!-- OSS -->
+                        <div class="flex items-center gap-4 py-4">
+                            <img src="documents/Logo/logo-oss-pemerintah.png" alt="OSS Logo" class="w-20 h-20 object-contain shrink-0">
+                            <div>
+                                <h4 class="font-bold text-sm lang-id">Legalitas Terdaftar (OSS)</h4>
+                                <h4 class="font-bold text-sm lang-en hidden">Registered Legality (OSS)</h4>
+                                <h4 class="font-bold text-sm lang-zh hidden">合法注册资质 (OSS)</h4>
+                                
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 lang-id">Operasional yang Terlindungi Secara Hukum & Regulasi Pemerintah</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 lang-en hidden">Operations fully protected under law and governmental regulations</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 lang-zh hidden">受到国家法律和政府行政规章保护的日常运营</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cooperation description -->
+                    <div class="space-y-4 text-sm text-gray-500 dark:text-gray-400 leading-relaxed border-t border-gray-200/60 dark:border-white/10 pt-4">
+                        <h3 class="font-bold text-base text-gray-800 dark:text-gray-200 lang-id">Bentuk Kerja Sama:</h3>
+                        <h3 class="font-bold text-base text-gray-800 dark:text-gray-200 lang-en hidden">Forms of Cooperation:</h3>
+                        <h3 class="font-bold text-base text-gray-800 dark:text-gray-200 lang-zh hidden">合作模式：</h3>
+                        
+                        <ul class="list-disc pl-5 space-y-2 text-xs lang-id">
+                            <li><strong>Reseller & Dropshipper:</strong> Pemesanan produk digital dalam jumlah banyak dengan potongan harga khusus untuk dijual kembali.</li>
+                            <li><strong>Integrasi API Bot:</strong> Hubungkan layanan bot Anda langsung dengan API penyedia kami untuk pengisian saldo otomatis.</li>
+                            <li><strong>Strategic Joint Vendor:</strong> Kerjasama suplai stok digital legal dengan garansi bersama.</li>
+                        </ul>
+
+                        <ul class="list-disc pl-5 space-y-2 text-xs lang-en hidden">
+                            <li><strong>Reseller & Dropshipper:</strong> Bulk purchasing of digital products with wholesale discounts for resale.</li>
+                            <li><strong>Bot API Integration:</strong> Connect your bot application directly to our API provider for automated inventory delivery.</li>
+                            <li><strong>Strategic Joint Vendor:</strong> Cooperative supply of legal digital goods with shared warranties.</li>
+                        </ul>
+
+                        <ul class="list-disc pl-5 space-y-2 text-xs lang-zh hidden">
+                            <li><strong>分销与代发：</strong> 批量订购数字产品，享受专属折扣，以便进行二次销售。</li>
+                            <li><strong>API 接口对接：</strong> 将您的机器人服务与我们的供应商 API 直接连接，实现自动交付。</li>
+                            <li><strong>战略联合供应：</strong> 合法数字商品供应合作，提供联合保障。</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div> <!-- End right content -->
         </div>
 
-        <!-- Main Content Area -->
-        <div class="flex-1 min-w-0">
+    </div> <!-- End layout -->
 
     <!-- Floating Capsule Toolbar -->
     <div class="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-4 py-2 floating-capsule">
         <!-- Theme Toggle -->
-        <button id="dark-mode-toggle" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+        <button id="dark-mode-toggle" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-800 dark:text-gray-200 hover:bg-gray-150 dark:hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
             <i data-lucide="moon" class="w-4 h-4"></i>
         </button>
         <!-- Divider -->
         <span class="w-[1px] h-4 bg-gray-300 dark:bg-white/10"></span>
         <!-- Language Switcher Button -->
-        <button id="lang-toggle" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none">
+        <button id="lang-toggle" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-150 dark:hover:bg-white/5 transition-colors focus:outline-none">
             <i data-lucide="languages" class="w-3.5 h-3.5 text-[#0066cc]"></i>
             <span>English</span>
         </button>
-        <!-- Divider -->
-        <span class="w-[1px] h-4 bg-gray-300 dark:bg-white/10"></span>
-        <!-- Contact & Prototype Button -->
-        <button onclick="openContactModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold font-sans text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors focus:outline-none">
-            <i data-lucide="info" class="w-3.5 h-3.5 text-[#0066cc]"></i>
-            <span>Kontak & Prototipe</span>
-        </button>
     </div>
-
-    <!-- Contact & Prototype Modal (Popup) -->
-    <div id="contact-modal" class="fixed inset-0 z-[10000] hidden items-center justify-center p-4 bg-black/40 backdrop-blur-sm transition-opacity duration-300">
-        <div class="bg-white dark:bg-[#1e1c1a] w-full max-w-md rounded-2xl border border-gray-200 dark:border-white/10 shadow-2xl p-6 relative transform scale-95 transition-transform duration-300">
-            <!-- Close Button -->
-            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-white focus:outline-none">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-            
-            <h3 class="font-sans text-lg font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-white/5 pb-3 mb-4">
-                <span class="lang-id">Akses Project & Kontak</span>
-                <span class="lang-en hidden">Project Access & Contact</span>
-            </h3>
-            
-            <div class="space-y-4 font-sans text-sm">
-                <!-- Prototype Section -->
-                <div class="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/30 rounded-xl">
-                    <div class="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-bold mb-2">
-                        <i data-lucide="rocket" class="w-4 h-4"></i>
-                        <span class="lang-id">Prototipe Produksi</span>
-                        <span class="lang-en hidden">Production Prototype</span>
-                    </div>
-                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-id">Akses langsung ke server produksi platform TradingSafe untuk melihat demo fungsional:</p>
-                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-en hidden">Direct access to the TradingSafe production server to view the functional demo:</p>
-                    <a href="https://tradingsafe.mijdigital.my" target="_blank" class="flex items-center justify-between w-full px-4 py-2.5 bg-[#0066cc] text-white font-bold rounded-lg hover:bg-blue-700 transition-colors text-xs text-center">
-                        <span>tradingsafe.mijdigital.my</span>
-                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-                
-                <!-- Contact Details -->
-                <div class="space-y-3 pt-2 text-gray-700 dark:text-gray-300">
-                    <div class="flex items-start gap-2.5">
-                        <i data-lucide="user" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
-                        <div>
-                            <div class="text-xs text-gray-400 lang-id">Pengembang</div>
-                            <div class="text-xs text-gray-400 lang-en hidden">Developer</div>
-                            <div class="font-semibold text-gray-900 dark:text-white">Ilham Pradani S.H.</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-2.5">
-                        <i data-lucide="mail" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
-                        <div>
-                            <div class="text-xs text-gray-400 lang-id">Email Resmi</div>
-                            <div class="text-xs text-gray-400 lang-en hidden">Official Email</div>
-                            <a href="mailto:051071552@ecampus.ut.ac.id" class="text-[#0066cc] hover:underline">051071552@ecampus.ut.ac.id</a>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-2.5">
-                        <i data-lucide="message-square" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
-                        <div>
-                            <div class="text-xs text-gray-400">WhatsApp</div>
-                            <a href="https://wa.me/6288971071138" class="text-[#0066cc] hover:underline" target="_blank">+62 889-7107-1138</a>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-2.5">
-                        <i data-lucide="globe" class="w-4 h-4 text-[#5e5954] shrink-0 mt-0.5"></i>
-                        <div>
-                            <div class="text-xs text-gray-400 lang-id">Website Portofolio</div>
-                            <div class="text-xs text-gray-400 lang-en hidden">Portfolio Websites</div>
-                            <div class="flex gap-2.5">
-                                <a href="https://www.ilhampradani.me" target="_blank" class="text-[#0066cc] hover:underline">ilhampradani.me</a>
-                                <span class="text-gray-300">|</span>
-                                <a href="https://www.mijdigital.my" target="_blank" class="text-[#0066cc] hover:underline">mijdigital.my</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-6 border-t border-gray-100 dark:border-white/5 pt-4 text-right">
-                <button onclick="closeContactModal()" class="px-4 py-2 bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-200 font-bold rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 text-xs transition-colors focus:outline-none">
-                    <span class="lang-id">Tutup</span>
-                    <span class="lang-en hidden">Close</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- TAB 1: PROSES PENGEMBANGAN (Classic Book Layout) -->
-    <div id="content-dev-process" class="w-full max-w-[850px] mx-auto book-content">
-        <h1 class="serif-title lang-id">PROSES PENGEMBANGAN & DESAIN SISTEM</h1>
-        <h1 class="serif-title lang-en hidden">DEVELOPMENT PROCESS & SYSTEM DESIGN</h1>
-        
-        <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between mb-8">
-            <span class="lang-id">Dokumentasi Teknis</span>
-            <span class="lang-en hidden">Technical Documentation</span>
-            <span>EasyMarket</span>
-        </div>
-
-        <section class="mb-12">
-            <h2 class="lang-id">1. VISI UTAMA & LANDASAN RANTAI PASOK</h2>
-            <h2 class="lang-en hidden">1. PRIMARY VISION & SUPPLY CHAIN FOUNDATION</h2>
-            <p class="drop-cap lang-id">
-                Menjadi pionir platform dagang-logistik pintar yang menyatukan UMKM lokal dengan rantai distribusi digital global secara mudah, efisien, dan transparan melalui ekosistem logistik pintar yang menyederhanakan perdagangan lintas batas.
-            </p>
-            <p class="drop-cap lang-en hidden">
-                To pioneer an integrated smart trade-logistics platform connecting local MSMEs with global digital distribution lines easily, efficiently, and transparently, simplifying cross-border commerce through a smart logistics ecosystem.
-            </p>
-        </section>
-
-        <section class="mb-12">
-            <h2 class="lang-id">2. MISI STRATEGIS</h2>
-            <h2 class="lang-en hidden">2. STRATEGIC MISSION</h2>
-            <p class="lang-id"><strong>Demokratisasi Niaga:</strong> Demokratisasi e-commerce & akses pasar terpadu bagi semua skala usaha tanpa hambatan masuk.</p>
-            <p class="lang-en hidden"><strong>Trade Democratization:</strong> Democratizing e-commerce & unified market access for all scales of business without entry barriers.</p>
-            
-            <p class="lang-id"><strong>Automasi Logistik:</strong> Automasi pergudangan dan pengiriman berbasis rute efisiensi AI untuk meminimalkan waktu kirim.</p>
-            <p class="lang-en hidden"><strong>Logistics Automation:</strong> Automating warehousing and delivery routing powered by AI efficiencies to minimize delivery times.</p>
-            
-            <p class="lang-id"><strong>Keamanan Finansial:</strong> Sistem pembayaran escrow aman non-custodial untuk kelancaran modal usaha.</p>
-            <p class="lang-en hidden"><strong>Financial Security:</strong> Providing a secure, non-custodial escrow payment system to smooth business working capital.</p>
-        </section>
-
-        <section class="mb-12">
-            <h2 class="lang-id">3. KEUNGGULAN INTI</h2>
-            <h2 class="lang-en hidden">3. CORE ADVANTAGES</h2>
-            <p class="lang-id"><strong>Optimasi Rute:</strong> Pencocokan kurir dan rute pengantaran instan menggunakan kecerdasan buatan.</p>
-            <p class="lang-en hidden"><strong>Route Optimization:</strong> Real-time courier dispatch and delivery route matching using artificial intelligence.</p>
-            
-            <p class="lang-id"><strong>Kepercayaan & Keamanan:</strong> Escrow system dan asuransi proteksi barang yang menjamin transaksi bebas risiko.</p>
-            <p class="lang-en hidden"><strong>Trust & Safety:</strong> Secure escrow system and goods protection insurance that guarantee risk-free transactions.</p>
-            
-            <p class="lang-id"><strong>Skala Global:</strong> Integrasi API dengan logistik nasional & regional demi kelancaran pengiriman.</p>
-            <p class="lang-en hidden"><strong>Global Scale:</strong> API integration with national & regional logistics networks for seamless international shipping.</p>
-        </section>
-
-        <section class="mb-12">
-            <h2 class="lang-id">4. TEKNOLOGI PENCINTAAN ALGORITMA AI & REGULASI</h2>
-            <h2 class="lang-en hidden">4. AI MATCHING TECHNOLOGY & COMPLIANCE</h2>
-            <p class="lang-id">
-                Infrastruktur kami memproses jutaan data permintaan barang dan kapasitas armada kurir secara real-time. Dengan algoritma heuristik canggih, EasyMarket memangkas inefisiensi rute hingga 35%, mengoptimalkan biaya logistik per unit barang secara signifikan demi efisiensi tinggi. Kami mengintegrasikan kepatuhan penuh terhadap regulasi perdagangan elektronik (e-commerce) dan perlindungan data konsumen.
-            </p>
-            <p class="lang-en hidden">
-                Our infrastructure processes millions of demand signals and courier fleet capacities in real-time. Using advanced heuristic algorithms, EasyMarket slashes routing inefficiencies by up to 35%, significantly reducing logistics costs per unit. We integrate full compliance with e-commerce regulations and customer data privacy standards.
-            </p>
-        </section>
-
-        <!-- Ad Slot -->
-        <div id="overview-ad-slot" class="w-full max-w-4xl mx-auto mb-16">
-            <div class="text-center mb-2">
-                <span class="text-[9px] text-gray-400 uppercase tracking-widest font-sans">Partner Insight</span>
-            </div>
-            <div id="overview-ad-unit" class="min-height-[90px] flex justify-center items-center bg-white dark:bg-[#23211f] border border-gray-150 dark:border-white/5 rounded-xl shadow-sm p-2"></div>
-        </div>
-    </div>
-
-    <!-- TAB 2: PROPOSAL BISNIS -->
-    <div id="content-proposal" class="hidden w-full">
-        <div class="flex flex-col lg:flex-row gap-12 max-w-full">
-            
-            <!-- Left Sidebar Navigation (Nav Kiri) -->
-            <div class="w-full lg:w-[230px] shrink-0 lg:self-start sticky top-24 z-40 bg-[#fdfbf7]/90 dark:bg-[#181614]/90 backdrop-blur-md py-3 lg:py-0 border-b border-gray-200/50 lg:border-b-0 transition-colors duration-300">
-                <!-- Wrapper for horizontal scrolling on mobile, vertical scrolling on desktop -->
-                <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-y-auto pb-2 lg:pb-6 gap-2.5 max-h-[calc(100vh-200px)] pr-2 scrollbar-none whitespace-nowrap lg:whitespace-normal">
-                    <div class="hidden lg:block font-sans text-[10px] font-extrabold uppercase tracking-widest text-[#5e5954] mb-3 px-1">
-                        <span class="lang-id">Daftar Isi Proposal</span>
-                        <span class="lang-en hidden">Proposal Contents</span>
-                    </div>
-                    
-                    <button class="nav-card active shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-1')">
-                        <span class="w-5 text-center text-[10px] text-gray-400">01</span> 
-                        <span class="lang-id">Ringkasan Eksekutif</span>
-                        <span class="lang-en hidden">Executive Summary</span>
-                    </button>
-                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-2')">
-                        <span class="w-5 text-center text-[10px] text-gray-400">02</span> 
-                        <span class="lang-id">Visi Utama</span>
-                        <span class="lang-en hidden">Primary Vision</span>
-                    </button>
-                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-3')">
-                        <span class="w-5 text-center text-[10px] text-gray-400">03</span> 
-                        <span class="lang-id">Misi Strategis</span>
-                        <span class="lang-en hidden">Strategic Mission</span>
-                    </button>
-                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-4')">
-                        <span class="w-5 text-center text-[10px] text-gray-400">04</span> 
-                        <span class="lang-id">Keunggulan Inti</span>
-                        <span class="lang-en hidden">Core Advantages</span>
-                    </button>
-                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-5')">
-                        <span class="w-5 text-center text-[10px] text-gray-400">05</span> 
-                        <span class="lang-id">Teknologi Pencocokan</span>
-                        <span class="lang-en hidden">Matching Technology</span>
-                    </button>
-                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-6')">
-                        <span class="w-5 text-center text-[10px] text-gray-400">06</span> 
-                        <span class="lang-id">Kepatuhan Niaga</span>
-                        <span class="lang-en hidden">Trade Compliance</span>
-                    </button>
-                    <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-7')">
-                        <span class="w-5 text-center text-[10px] text-gray-400">07</span> 
-                        <span class="lang-id">Hubungi Kami</span>
-                        <span class="lang-en hidden">Contact Us</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Right Content Area (Desain Buku Klasik) -->
-            <div class="flex-grow book-content max-w-[850px] lg:pl-4">
-                
-                <!-- Main Header Title -->
-                <div class="mb-12">
-                    <h1 class="serif-title lang-id">PROPOSAL PLATFORM SINERGI PASAR & LOGISTIK PINTAR (PROYEK: EASYMARKET)</h1>
-                    <h1 class="serif-title lang-en hidden">SMART LOGISTICS & INTEGRATED MARKETPLACE PROPOSAL (PROJECT: EASYMARKET)</h1>
-                    
-                    <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between">
-                        <span class="lang-id">Hak Cipta Terpelihara © 2026</span>
-                        <span class="lang-en hidden">All Rights Reserved © 2026</span>
-                        
-                        <span class="lang-id">Investasi & Teknologi</span>
-                        <span class="lang-en hidden">Investment & Technology</span>
-                    </div>
-                </div>
-
-                <!-- 1. Ringkasan Eksekutif -->
-                <section id="sec-1" class="book-section mb-12">
-                    <h2 class="lang-id">1. RINGKASAN EKSEKUTIF</h2>
-                    <h2 class="lang-en hidden">1. EXECUTIVE SUMMARY</h2>
-                    
-                    <p class="drop-cap lang-id">
-                        EasyMarket didesain untuk menjadi platform marketplace pintar terintegrasi dengan jaringan logistik digital mandiri. Fokus utama proyek ini adalah menyederhanakan rantai pasokan global, memotong inefisiensi alokasi pengiriman barang, dan memberdayakan pelaku usaha mikro, kecil, dan menengah (UMKM) agar memiliki akses langsung ke pasar internasional secara efisien menggunakan kecerdasan buatan.
-                    </p>
-                    <p class="drop-cap lang-en hidden">
-                        EasyMarket is designed as an integrated smart marketplace backed by a proprietary digital logistics network. The platform's primary goal is to simplify global supply chains, eliminate distribution inefficiencies, and empower micro, small, and medium enterprises (MSMEs) with direct, AI-optimized access to international trade networks.
-                    </p>
-                </section>
-
-                <hr class="book-divider">
-
-                <!-- 2. Visi Utama -->
-                <section id="sec-2" class="book-section mb-12">
-                    <h2 class="lang-id">2. VISI UTAMA</h2>
-                    <h2 class="lang-en hidden">2. PRIMARY VISION</h2>
-                    
-                    <p class="lang-id">
-                        Menjadi pionir platform dagang-logistik pintar terpadu yang menyatukan UMKM lokal dengan rantai distribusi digital global secara mudah, efisien, dan transparan melalui implementasi ekosistem logistik otonom terdesentralisasi.
-                    </p>
-                    <p class="lang-en hidden">
-                        To pioneer a unified, smart trade-logistics platform that integrates local MSMEs into global digital distribution lines easily, efficiently, and transparently through decentralized autonomous logistics ecosystems.
-                    </p>
-                </section>
-
-                <hr class="book-divider">
-
-                <!-- 3. Misi Strategis -->
-                <section id="sec-3" class="book-section mb-12">
-                    <h2 class="lang-id">3. MISI STRATEGIS</h2>
-                    <h2 class="lang-en hidden">3. STRATEGIC MISSION</h2>
-                    
-                    <p class="lang-id">Dalam mewujudkan visi kemitraan dagang kami, EasyMarket mengusung tiga misi strategis:</p>
-                    <p class="lang-en hidden">To realize our trade partnership vision, EasyMarket drives three strategic missions:</p>
-                    
-                    <p class="lang-id"><strong>Demokratisasi Niaga:</strong> Mendorong demokratisasi e-commerce dan menyediakan gerbang akses pasar terpadu bagi semua skala usaha tanpa biaya perantara yang mahal.</p>
-                    <p class="lang-en hidden"><strong>Democratizing Commerce:</strong> Powering e-commerce democratization and providing unified market gateways for all business scales without high intermediary costs.</p>
-                    
-                    <p class="lang-id"><strong>Automasi Pergudangan:</strong> Menerapkan automasi pergudangan dan pemetaan rute pengiriman logistik pintar berbasis analisis efisiensi kecerdasan buatan.</p>
-                    <p class="lang-en hidden"><strong>Warehouse Automation:</strong> Enforcing warehouse automation and smart delivery routing based on artificial intelligence efficiency analysis.</p>
-                    
-                    <p class="lang-id"><strong>Escrow Non-Kustodian:</strong> Mengintegrasikan sistem pembayaran escrow aman non-kustodian guna mempercepat perputaran arus modal kerja bagi mitra dagang.</p>
-                    <p class="lang-en hidden"><strong>Non-Custodial Escrow:</strong> Integrating secure, non-custodial escrow payments to accelerate working capital turnover for merchants.</p>
-                </section>
-
-                <hr class="book-divider">
-
-                <!-- 4. Keunggulan Inti -->
-                <section id="sec-4" class="book-section mb-12">
-                    <h2 class="lang-id">4. KEUNGGULAN INTI</h2>
-                    <h2 class="lang-en hidden">4. CORE ADVANTAGES</h2>
-                    
-                    <p class="lang-id">Platform EasyMarket berdiri di atas tiga keunggulan bersaing utama:</p>
-                    <p class="lang-en hidden">The EasyMarket platform stands on three core competitive advantages:</p>
-                    
-                    <p class="lang-id"><strong>Optimasi Rute AI:</strong> Proses penentuan kurir dan perumusan rute logistik instan yang menyesuaikan kepadatan lalu lintas dan volume kiriman secara otomatis.</p>
-                    <p class="lang-en hidden"><strong>AI Route Optimization:</strong> Instant courier dispatch and logistics pathfinding that adapts to real-time traffic and parcel volumes automatically.</p>
-                    
-                    <p class="lang-id"><strong>Sistem Kepercayaan:</strong> Protokol pembayaran rekber (escrow) dan kemitraan asuransi logistik bawaan yang menjamin keselamatan barang kiriman 100%.</p>
-                    <p class="lang-en hidden"><strong>Trust Ecosystem:</strong> Native escrow payment protocols and built-in cargo insurance partnerships that guarantee 100% parcel safety.</p>
-                    
-                    <p class="lang-id"><strong>Integrasi Skala Global:</strong> Koneksi API terbuka dengan penyedia jasa kurir nasional, regional, maupun ekspedisi kargo laut/udara internasional.</p>
-                    <p class="lang-en hidden"><strong>Global Scale Integration:</strong> Open API connections with local, regional, and international air/sea shipping freight services.</p>
-                </section>
-
-                <hr class="book-divider">
-
-                <!-- 5. Teknologi Pencocokan AI -->
-                <section id="sec-5" class="book-section mb-12">
-                    <h2 class="lang-id">5. TEKNOLOGI PENCOCOKAN AI</h2>
-                    <h2 class="lang-en hidden">5. MATCHING TECHNOLOGY</h2>
-                    
-                    <p class="lang-id">
-                        Infrastruktur kami memproses jutaan data permintaan barang dan kapasitas armada kurir secara real-time. Dengan <strong>algoritma heuristik canggih</strong>, EasyMarket memangkas inefisiensi rute logistik hingga 35%, mengoptimalkan biaya distribusi per unit barang secara signifikan untuk menekan harga jual akhir.
-                    </p>
-                    <p class="lang-en hidden">
-                        Our infrastructure processes millions of trade demand signals and courier capacities in real-time. Using <strong>advanced heuristic algorithms</strong>, EasyMarket slashes logistics route inefficiencies by up to 35%, significantly lowering per-unit distribution costs to offer better end consumer prices.
-                    </p>
-                </section>
-
-                <!-- Ad Slot 1 -->
-                <div id="adsterra-banner-unit">
-                    <!-- Adsterra Banner Injected here -->
-                </div>
-
-                <hr class="book-divider">
-
-                <!-- 6. Kepatuhan Niaga -->
-                <section id="sec-6" class="book-section mb-12">
-                    <h2 class="lang-id">6. KEPATUHAN NIAGA</h2>
-                    <h2 class="lang-en hidden">6. TRADE COMPLIANCE</h2>
-                    
-                    <p class="lang-id">
-                        Kami mengintegrasikan kepatuhan penuh terhadap regulasi perdagangan elektronik (e-commerce) dan perlindungan data privasi konsumen. Kerangka ini memastikan model operasional non-kustodian tetap kokoh serta siap berintegrasi dengan perbankan nasional maupun regional secara aman.
-                    </p>
-                    <p class="lang-en hidden">
-                        We integrate full compliance with e-commerce regulations and customer data privacy standards. This framework ensures our non-custodial operational model remains resilient and fully ready to integrate with national and regional banking safely.
-                    </p>
-                </section>
-
-                <hr class="book-divider">
-
-                <!-- 7. Hubungi Kami -->
-                <section id="sec-7" class="book-section mb-12">
-                    <h2 class="lang-id">7. HUBUNGI KAMI</h2>
-                    <h2 class="lang-en hidden">7. CONTACT US</h2>
-                    
-                    <p class="lang-id">
-                        Dapatkan rincian proposal pengembangan lengkap untuk investasi EasyMarket. Tim analis kami siap menyajikan proyeksi bisnis secara terperinci. Silakan hubungi kami untuk informasi kemitraan lebih lanjut.
-                    </p>
-                    <p class="lang-en hidden">
-                        Access the full development proposal for EasyMarket investment. Our analyst team is ready to present detailed business projections. Please contact us for further partnership details.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                        <a href="https://wa.me/6288971071138" target="_blank" class="px-6 py-3 bg-[#0d9488] text-white font-bold rounded-lg hover:bg-teal-700 transition-colors text-sm text-center inline-flex items-center justify-center gap-2 font-sans">
-                            <i data-lucide="message-square" class="w-4 h-4"></i> Hubungi WhatsApp
-                        </a>
-                        <a href="mailto:algojodua2@gmail.com" class="px-6 py-3 bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-white/10 font-bold rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 transition-colors text-sm text-center inline-flex items-center justify-center gap-2 font-sans">
-                            <i data-lucide="mail" class="w-4 h-4"></i> Kirim Email
-                        </a>
-                    </div>
-                </section>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- TAB 3: CONTACT & ACCESS VIEW (Classic Book Layout) -->
-    <div id="content-contact" class="hidden w-full max-w-[850px] mx-auto book-content">
-        <h1 class="serif-title lang-id">INFORMASI KONTAK & AKSES PROTOTIPE</h1>
-        <h1 class="serif-title lang-en hidden">CONTACT INFORMATION & PROTOTYPE ACCESS</h1>
-
-        <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between mb-8">
-            <span class="lang-id">Hubungan Kemitraan</span>
-            <span class="lang-en hidden">Partnership Relations</span>
-            <span class="lang-id">Akses Resmi</span>
-            <span class="lang-en hidden">Official Access</span>
-        </div>
-
-        <section class="mb-12">
-            <h2 class="lang-id">1. AKSES PROTOTIPE PRODUKSI</h2>
-            <h2 class="lang-en hidden">1. PRODUCTION PROTOTYPE ACCESS</h2>
-            <p class="lang-id">
-                Untuk meninjau langsung fungsionalitas sistem, dasbor interaktif, dan eksekusi instruksi real-time, silakan mengakses server prototipe produksi kami melalui tautan berikut:
-            </p>
-            <p class="lang-en hidden">
-                To directly review the system functionality, interactive dashboard, and real-time execution, please access our live production prototype server via the following link:
-            </p>
-            <p class="font-sans text-base">
-                <a href="https://tradingsafe.mijdigital.my" target="_blank" class="inline-flex items-center gap-2 text-[#0066cc] dark:text-[#3399ff] font-bold hover:underline">
-                    <i data-lucide="rocket" class="w-4 h-4"></i> tradingsafe.mijdigital.my <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                </a>
-            </p>
-        </section>
-
-        <section class="mb-12">
-            <h2 class="lang-id">2. DETAIL KEMITRAAN & KONTAK</h2>
-            <h2 class="lang-en hidden">2. PARTNERSHIP DETAILS & CONTACT</h2>
-            <p class="lang-id">
-                Segala bentuk korespondensi formal, proposal investasi, maupun pertanyaan seputar integrasi API dapat diajukan kepada perwakilan pengembang:
-            </p>
-            <p class="lang-en hidden">
-                All formal correspondence, investment proposals, and API integration inquiries can be directed to the developer representative:
-            </p>
-            
-            <ul class="space-y-4 font-sans text-sm text-gray-700 dark:text-gray-300">
-                <li class="flex items-start gap-3">
-                    <i data-lucide="user" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
-                    <div>
-                        <strong class="text-gray-900 dark:text-white">Ilham Pradani S.H. (cand.)</strong>
-                        <div class="text-xs text-gray-500">Fullstack Software Engineer / Developer</div>
-                    </div>
-                </li>
-                <li class="flex items-start gap-3">
-                    <i data-lucide="mail" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
-                    <div>
-                        <strong>Email Resmi:</strong> <a href="mailto:051071552@ecampus.ut.ac.id" class="text-[#0066cc] dark:text-[#3399ff] hover:underline">051071552@ecampus.ut.ac.id</a>
-                    </div>
-                </li>
-                <li class="flex items-start gap-3">
-                    <i data-lucide="message-square" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
-                    <div>
-                        <strong>WhatsApp:</strong> <a href="https://wa.me/6288971071138" class="text-[#0066cc] dark:text-[#3399ff] hover:underline" target="_blank">+62 889-7107-1138</a>
-                    </div>
-                </li>
-                <li class="flex items-start gap-3">
-                    <i data-lucide="globe" class="w-5 h-5 text-[#5e5954] shrink-0 mt-0.5"></i>
-                    <div>
-                        <strong>Situs Portofolio:</strong> 
-                        <a href="https://www.ilhampradani.me" target="_blank" class="text-[#0066cc] dark:text-[#3399ff] hover:underline">ilhampradani.me</a>
-                        <span class="mx-2 text-gray-300">|</span>
-                        <a href="https://www.mijdigital.my" target="_blank" class="text-[#0066cc] dark:text-[#3399ff] hover:underline">mijdigital.my</a>
-                    </div>
-                </li>
-            </ul>
-        </section>
-    </div>
-        </div> <!-- End of Main Content Area -->
-    </div> <!-- End of max-w-7xl Layout -->
-
 
     <div id="footer-placeholder"></div>
 
     <script src="js/main.js"></script>
     <script>
-        // Smooth scroll to a section on the page
-        function scrollToSection(id) {
-            const el = document.getElementById(id);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
+        // Product Database
+        const products = [
+            { name: "Alight Motion", variant: "1 Tahun - 1 Pcs", price: 22500, category: "Creative", brand: "alight" },
+            { name: "Apple Music", variant: "Head 1 Bulan", price: 21300, category: "Streaming", brand: "apple" },
+            { name: "BStation", variant: "1 Bulan Sharing", price: 12500, category: "Streaming", brand: "bstation" },
+            { name: "Canva", variant: "1 Bulan Pro (Invite)", price: 6300, category: "Creative", brand: "canva" },
+            { name: "Canva", variant: "Lifetime Garansi 1 Tahun", price: 27500, category: "Creative", brand: "canva" },
+            { name: "Canva", variant: "Head 1 Bulan", price: 10000, category: "Creative", brand: "canva" },
+            { name: "Canva", variant: "Lifetime Garansi 6 Bulan", price: 25000, category: "Creative", brand: "canva" },
+            { name: "Canva", variant: "6 Bulan Edu Garansi 3 Bulan", price: 10000, category: "Creative", brand: "canva" },
+            { name: "Canva", variant: "1 Tahun Edu Garansi 6 Bulan", price: 18800, category: "Creative", brand: "canva" },
+            { name: "Canva", variant: "Head Lifetime", price: 37500, category: "Creative", brand: "canva" },
+            { name: "CapCut Private", variant: "30 Days", price: 52500, category: "Creative", brand: "capcut" },
+            { name: "ChatGPT", variant: "Head 1 Bulan", price: 26300, category: "Productivity", brand: "chatgpt" },
+            { name: "ChatGPT", variant: "Private Plus 1B", price: 50000, category: "Productivity", brand: "chatgpt" },
+            { name: "Disney", variant: "1 Bulan Sharing 6 User", price: 43800, category: "Streaming", brand: "disney" },
+            { name: "HBO Max Premium", variant: "Sharing Ultimate", price: 32300, category: "Streaming", brand: "hbo" },
+            { name: "iQIYI", variant: "1 Bulan Premium", price: 16300, category: "Streaming", brand: "iqiyi" },
+            { name: "iQIYI", variant: "3 Bulan Premium", price: 18800, category: "Streaming", brand: "iqiyi" },
+            { name: "iQIYI", variant: "12 Bulan Premium", price: 25000, category: "Streaming", brand: "iqiyi" },
+            { name: "Kiro AI", variant: "Pro+ - 2000 Credits", price: 37500, category: "Productivity", brand: "kiro" },
+            { name: "Lisensi Windows", variant: "Office 2016 Professional Plus", price: 37500, category: "OS & Office", brand: "windows" },
+            { name: "Lisensi Windows", variant: "Office 2019 Professional Plus", price: 37500, category: "OS & Office", brand: "windows" },
+            { name: "Lisensi Windows", variant: "Office 2021 Professional Plus", price: 37500, category: "OS & Office", brand: "windows" },
+            { name: "Lisensi Windows", variant: "Office 365 Random", price: 31300, category: "OS & Office", brand: "windows" },
+            { name: "Lisensi Windows", variant: "Windows 10 Pro", price: 37500, category: "OS & Office", brand: "windows" },
+            { name: "Lisensi Windows", variant: "Windows 11 Pro", price: 37500, category: "OS & Office", brand: "windows" },
+            { name: "Netflix Premium", variant: "1 User 1 Profil", price: 51300, category: "Streaming", brand: "netflix" },
+            { name: "Netflix Premium", variant: "1 Day", price: 7500, category: "Streaming", brand: "netflix" },
+            { name: "Netflix Premium", variant: "3 Day", price: 10000, category: "Streaming", brand: "netflix" },
+            { name: "Netflix Premium", variant: "7 Day", price: 17500, category: "Streaming", brand: "netflix" },
+            { name: "Netflix Premium", variant: "2 User 1 Profil", price: 27500, category: "Streaming", brand: "netflix" },
+            { name: "Picsart", variant: "Famhead 1 Bulan", price: 15000, category: "Creative", brand: "picsart" },
+            { name: "Prime Video", variant: "Private 1 Bulan", price: 10000, category: "Streaming", brand: "prime" },
+            { name: "Scribd", variant: "1 Bulan", price: 18800, category: "Productivity", brand: "scribd" },
+            { name: "Spotify", variant: "Individual 3 Bulan", price: 23200, category: "Streaming", brand: "spotify" },
+            { name: "Vidplat", variant: "All Device 1Pcs", price: 50000, category: "Streaming", brand: "vidplat" },
+            { name: "Vidplat", variant: "Mobile Only 1Pcs", price: 40000, category: "Streaming", brand: "vidplat" },
+            { name: "Viu Premium", variant: "1 Tahun", price: 12500, category: "Streaming", brand: "viu" },
+            { name: "Viu Premium", variant: "Lifetime", price: 18800, category: "Streaming", brand: "viu" },
+            { name: "VPN", variant: "Express 1 Bulan", price: 18800, category: "VPN & Security", brand: "vpn" },
+            { name: "VPN", variant: "HMA 1 Bulan", price: 18800, category: "VPN & Security", brand: "vpn" },
+            { name: "VPN", variant: "Surfshark 3B", price: 50000, category: "VPN & Security", brand: "vpn" },
+            { name: "WeTV", variant: "Private", price: 41300, category: "Streaming", brand: "wetv" },
+            { name: "WeTV", variant: "WeTV Sharing 1B", price: 15000, category: "Streaming", brand: "wetv" },
+            { name: "YouTube", variant: "3 Bulan", price: 43800, category: "Streaming", brand: "youtube" },
+            { name: "YouTube", variant: "Famhead", price: 25000, category: "Streaming", brand: "youtube" },
+            { name: "YouTube", variant: "Individual 1 Bulan", price: 27500, category: "Streaming", brand: "youtube" },
+            { name: "Zoom Pro", variant: "Zoom 14D", price: 10000, category: "Productivity", brand: "zoom" }
+        ];
+
+        let activeCategoryFilter = 'All';
+
+        // Brand-specific Logo Badge Generator
+        function getBrandLogoBadge(brand, category) {
+            let bgColor = 'bg-[#0066cc]';
+
+            switch (brand) {
+                case 'netflix':
+                    bgColor = 'bg-[#e50914]';
+                    break;
+                case 'spotify':
+                    bgColor = 'bg-[#1db954]';
+                    break;
+                case 'canva':
+                    bgColor = 'bg-[#7d2ae8]';
+                    break;
+                case 'windows':
+                    bgColor = 'bg-[#0078d7]';
+                    break;
+                case 'apple':
+                    bgColor = 'bg-[#fc3c44]';
+                    break;
+                case 'chatgpt':
+                    bgColor = 'bg-[#10a37f]';
+                    break;
+                case 'youtube':
+                    bgColor = 'bg-[#ff0000]';
+                    break;
+                case 'zoom':
+                    bgColor = 'bg-[#2d8cff]';
+                    break;
+                case 'disney':
+                    bgColor = 'bg-[#0063e5]';
+                    break;
+                case 'hbo':
+                    bgColor = 'bg-[#5821a6]';
+                    break;
+                case 'capcut':
+                    bgColor = 'bg-[#1c1c1e]';
+                    break;
+                case 'bstation':
+                    bgColor = 'bg-[#ff69b4]';
+                    break;
+                case 'iqiyi':
+                    bgColor = 'bg-[#00c900]';
+                    break;
+                case 'viu':
+                    bgColor = 'bg-[#ffc107]';
+                    break;
+                case 'wetv':
+                    bgColor = 'bg-[#ff5c00]';
+                    break;
+                case 'vpn':
+                    bgColor = 'bg-[#4b5563]';
+                    break;
+                case 'alight':
+                    bgColor = 'bg-[#00d856]';
+                    break;
+                default:
+                    if (category === 'Streaming') {
+                        bgColor = 'bg-[#0066cc]';
+                    } else if (category === 'Creative') {
+                        bgColor = 'bg-[#a855f7]';
+                    } else {
+                        bgColor = 'bg-[#64748b]';
+                    }
+                    break;
             }
+
+            return `
+                <div class="w-8 h-8 rounded-lg ${bgColor} flex items-center justify-center shrink-0 select-none p-1.5 shadow-sm">
+                    <img src="documents/Logo/easyfastlogotransaparan.png" alt="Logo" class="w-full h-full object-contain brightness-0 invert">
+                </div>
+            `;
         }
+
+        // Render List Layout (Brand Logo, Variant details, Price - flat only)
+        function renderProducts(filteredList) {
+            const container = document.getElementById('product-list-container');
+            if (!container) return;
+            
+            if (filteredList.length === 0) {
+                container.innerHTML = `
+                    <div class="py-10 text-center text-gray-400 dark:text-gray-500">
+                        <i data-lucide="package-x" class="w-10 h-10 mx-auto mb-2 opacity-40"></i>
+                        <p class="font-bold text-xs">Produk tidak ditemukan</p>
+                    </div>
+                `;
+                if (window.lucide) lucide.createIcons();
+                return;
+            }
+
+            container.innerHTML = filteredList.map(prod => {
+                const formattedPrice = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(prod.price);
+                const brandBadge = getBrandLogoBadge(prod.brand, prod.category);
+                
+                const waText = encodeURIComponent(`Halo Admin EasyMarket, saya ingin memesan:\n\nProduk: ${prod.name}\nVariasi: ${prod.variant}\nHarga: ${formattedPrice}`);
+                const clickAction = `onclick="window.open('https://wa.me/6287886405222?text=${waText}', '_blank')"`
+
+                return `
+                    <div ${clickAction} class="grid grid-cols-12 gap-2 px-4 py-3.5 items-center product-item cursor-pointer transition">
+                        <div class="col-span-8 flex items-center gap-3">
+                            ${brandBadge}
+                            <div class="space-y-0.5">
+                                <div class="font-bold text-sm text-gray-800 dark:text-gray-100">${prod.name}</div>
+                                <div class="text-[10px] text-gray-400">${prod.variant}</div>
+                            </div>
+                        </div>
+                        <div class="col-span-4 text-right">
+                            <span class="font-extrabold text-sm text-[#0066cc] dark:text-[#38bdf8]">${formattedPrice}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            if (window.lucide) lucide.createIcons();
+        }
+
+        // Apply Search, Category Filters, Sorting
+        window.applyFilters = function() {
+            const query = document.getElementById('product-search').value.toLowerCase().trim();
+            const sortVal = document.getElementById('sort-select').value;
+
+            let result = [...products];
+
+            if (activeCategoryFilter !== 'All') {
+                result = result.filter(p => p.category === activeCategoryFilter);
+            }
+
+            if (query !== '') {
+                result = result.filter(p => p.name.toLowerCase().includes(query) || p.variant.toLowerCase().includes(query));
+            }
+
+            if (sortVal === 'price-asc') {
+                result.sort((a, b) => a.price - b.price);
+            } else if (sortVal === 'price-desc') {
+                result.sort((a, b) => b.price - a.price);
+            }
+
+            renderProducts(result);
+        };
+
+        // Category click handler
+        window.filterCategory = function(cat) {
+            activeCategoryFilter = cat;
+            
+            const buttons = document.querySelectorAll('#category-filters button');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === cat) {
+                    btn.className = "category-btn px-4 py-1.5 text-xs font-bold rounded-full bg-[#0066cc]/10 text-[#0066cc] dark:bg-[#38bdf8]/10 dark:text-[#38bdf8] active";
+                } else {
+                    btn.className = "category-btn px-4 py-1.5 text-xs font-bold rounded-full bg-slate-100 dark:bg-slate-800 text-gray-500 dark:text-gray-300";
+                }
+            });
+
+            applyFilters();
+        };
 
         // Tab Switching Logic
         window.switchTab = function(tabId) {
-            // Hide all tab content
-            document.getElementById('content-dev-process').classList.add('hidden');
-            document.getElementById('content-proposal').classList.add('hidden');
-            document.getElementById('content-contact').classList.add('hidden');
+            const tabs = ['pengenalan', 'produk', 'order', 'sk', 'oss', 'investor'];
             
-            // Remove active classes
-            document.getElementById('tab-dev-process').classList.remove('active');
-            document.getElementById('tab-proposal').classList.remove('active');
-            document.getElementById('tab-contact').classList.remove('active');
+            tabs.forEach(tab => {
+                const content = document.getElementById(`content-${tab}`);
+                const btn = document.getElementById(`tab-${tab}`);
+                if (content) content.classList.add('hidden');
+                if (btn) btn.classList.remove('active');
+            });
             
-            // Show target content
-            if (tabId === 'dev-process') {
-                document.getElementById('content-dev-process').classList.remove('hidden');
-                document.getElementById('tab-dev-process').classList.add('active');
-            } else if (tabId === 'proposal') {
-                document.getElementById('content-proposal').classList.remove('hidden');
-                document.getElementById('tab-proposal').classList.add('active');
-                if (window.handleScrollSpy) window.handleScrollSpy();
-            } else if (tabId === 'contact') {
-                document.getElementById('content-contact').classList.remove('hidden');
-                document.getElementById('tab-contact').classList.add('active');
-            }
+            const activeContent = document.getElementById(`content-${tabId}`);
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            if (activeBtn) activeBtn.classList.add('active');
 
-            // Scroll slightly below header to reset view
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
 
-        // Modal triggers
-        window.openContactModal = function() {
-            const modal = document.getElementById('contact-modal');
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                document.body.style.overflow = 'hidden';
+        window.switchSKSubTab = function(subTabId) {
+            // Hide all S&K sub-tab contents
+            const contents = document.querySelectorAll('.sk-sub-content');
+            contents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Remove active styles from S&K tab buttons
+            const tabs = ['deskripsi', 'pembelian', 'refund', 'privasi'];
+            tabs.forEach(tab => {
+                const btn = document.getElementById(`sk-tab-${tab}`);
+                if (btn) {
+                    btn.classList.remove('text-[#0066cc]', 'dark:text-[#38bdf8]', 'border-[#0066cc]', 'dark:border-[#38bdf8]');
+                    btn.classList.add('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                }
+            });
+
+            // Show active content
+            const activeContent = document.getElementById(`sk-content-${subTabId.split('-')[1]}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            // Set active button styles
+            const activeBtn = document.getElementById(`sk-tab-${subTabId.split('-')[1]}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                activeBtn.classList.add('text-[#0066cc]', 'dark:text-[#38bdf8]', 'border-[#0066cc]', 'dark:border-[#38bdf8]');
             }
         };
 
-        window.closeContactModal = function() {
-            const modal = document.getElementById('contact-modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                document.body.style.overflow = '';
-            }
-        };
 
+
+        // Initial setup on load
         document.addEventListener('DOMContentLoaded', async () => {
             if (window.setLoadingProgress) window.setLoadingProgress(5);
             
-            // Load components using main.js logic
             if (window.loadComponent) {
                 await loadComponent('header-placeholder', 'include/header.html');
                 if (window.setLoadingProgress) window.setLoadingProgress(40);
                 await loadComponent('footer-placeholder', 'include/footer.html');
                 if (window.setLoadingProgress) window.setLoadingProgress(70);
             }
+
+            const topNav = document.getElementById('top-navbar');
+            if (topNav) {
+                topNav.style.setProperty('top', '0', 'important');
+                topNav.style.setProperty('left', '0', 'important');
+                topNav.style.setProperty('right', '0', 'important');
+            }
             
             if (window.lucide) lucide.createIcons();
+
+            const searchInput = document.getElementById('product-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', applyFilters);
+            }
+
+            applyFilters();
 
             // Dark mode state management
             const body = document.body;
             const darkToggle = document.getElementById('dark-mode-toggle');
             const savedTheme = localStorage.getItem('proposal_theme');
 
-            // Apply saved theme
             if (savedTheme === 'dark') {
                 body.classList.add('dark-mode');
                 updateDarkToggleIcon(true);
@@ -852,7 +1274,6 @@
                 currentLang = lang;
                 localStorage.setItem('preferred_lang', lang);
                 
-                // Show/hide elements based on language toggle
                 document.querySelectorAll('.lang-id').forEach(el => {
                     if (lang === 'id') el.classList.remove('hidden');
                     else el.classList.add('hidden');
@@ -861,106 +1282,36 @@
                     if (lang === 'en') el.classList.remove('hidden');
                     else el.classList.add('hidden');
                 });
+                document.querySelectorAll('.lang-zh').forEach(el => {
+                    if (lang === 'zh') el.classList.remove('hidden');
+                    else el.classList.add('hidden');
+                });
 
-                // Update toggle button text
                 if (langToggle) {
+                    let label = '🇮🇩 Indo';
+                    if (lang === 'en') label = '🇬🇧 Eng';
+                    if (lang === 'zh') label = '🇨🇳 中文';
+                    
                     langToggle.innerHTML = `
                         <i data-lucide="languages" class="w-3.5 h-3.5 text-[#0066cc]"></i>
-                        <span>${lang === 'id' ? 'English' : 'Bahasa'}</span>
+                        <span>${label}</span>
                     `;
                     if (window.lucide) lucide.createIcons();
                 }
             }
 
-            // Click handler for language toggle
             if (langToggle) {
                 langToggle.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const newLang = currentLang === 'id' ? 'en' : 'id';
-                    updateLanguageUI(newLang);
+                    let nextLang = 'id';
+                    if (currentLang === 'id') nextLang = 'en';
+                    else if (currentLang === 'en') nextLang = 'zh';
+                    else if (currentLang === 'zh') nextLang = 'id';
+                    updateLanguageUI(nextLang);
                 });
             }
 
-            // Init language on load
             updateLanguageUI(currentLang);
-
-            // Scroll Spy logic to highlight active section on the left navigation
-            const sections = document.querySelectorAll('.book-section');
-            const navLinks = document.querySelectorAll('.nav-card');
-            
-            window.handleScrollSpy = () => {
-                if (document.getElementById('content-proposal').classList.contains('hidden')) return;
-
-                const scrollTop = window.scrollY;
-                const viewportCenter = scrollTop + 250; // Offset calculation for scrollspy
-                
-                let currentIndex = 0;
-                let minDiff = Infinity;
-                
-                sections.forEach((sec, idx) => {
-                    const rect = sec.getBoundingClientRect();
-                    const top = rect.top + scrollTop;
-                    const diff = Math.abs(top - viewportCenter);
-                    if (diff < minDiff) {
-                        minDiff = diff;
-                        currentIndex = idx;
-                    }
-                });
-                
-                navLinks.forEach((link, idx) => {
-                    if (idx === currentIndex) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-            };
-            
-            window.addEventListener('scroll', window.handleScrollSpy, { passive: true });
-            window.addEventListener('resize', window.handleScrollSpy);
-            window.handleScrollSpy();
-
-            // Inject Adsterra
-            const adContainer = document.getElementById('adsterra-banner-unit');
-            if (adContainer) {
-                const scriptOptions = document.createElement('script');
-                scriptOptions.type = 'text/javascript';
-                scriptOptions.text = `
-                    atOptions = {
-                        'key' : '70d4032d0634bd1a04e49f946a536c02',
-                        'format' : 'iframe',
-                        'height' : 90,
-                        'width' : 728,
-                        'params' : {}
-                    };
-                `;
-                adContainer.appendChild(scriptOptions);
-                const scriptInvoke = document.createElement('script');
-                scriptInvoke.type = 'text/javascript';
-                scriptInvoke.src = '//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js';
-                adContainer.appendChild(scriptInvoke);
-            }
-
-            // Inject Adsterra into overview tab
-            const overviewAdContainer = document.getElementById('overview-ad-unit');
-            if (overviewAdContainer) {
-                const scriptOptions = document.createElement('script');
-                scriptOptions.type = 'text/javascript';
-                scriptOptions.text = `
-                    atOptions = {
-                        'key' : '70d4032d0634bd1a04e49f946a536c02',
-                        'format' : 'iframe',
-                        'height' : 90,
-                        'width' : 728,
-                        'params' : {}
-                    };
-                `;
-                overviewAdContainer.appendChild(scriptOptions);
-                const scriptInvoke = document.createElement('script');
-                scriptInvoke.type = 'text/javascript';
-                scriptInvoke.src = '//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js';
-                overviewAdContainer.appendChild(scriptInvoke);
-            }
 
             if (window.setLoadingProgress) window.setLoadingProgress(100);
         });

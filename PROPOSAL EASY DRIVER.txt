@@ -1,0 +1,47 @@
+﻿PROPOSAL EASY DRIVER
+LAYANAN OJEK ONLINE UNTUK SEMUA KALANGAN DAN TEMPAT
+
+
+Founder: Ilham Pradani S.H 
+Website: www.ilhampradani.me / mijdigital.my 
+1: Ringkasan Eksekutif (Executive Summary)
+* Nama Bisnis: Easy Driver
+* Visi: Menjadi layanan transportasi dan pengiriman hiper-lokal yang mandiri, memberdayakan komunitas daerah tanpa membebani mitra pengemudi dengan modal awal.
+* Misi: Menyediakan platform pemetaan mandiri (MapsMandiri), membuka peluang kemitraan cabang di seluruh wilayah, dan menciptakan ekosistem ekonomi digital yang adil bagi pengemudi lokal.
+2: Latar Belakang Masalah & Solusi
+* Masalah: Tingginya potongan komisi aplikasi arus utama, mahalnya biaya API pihak ketiga (seperti layanan peta komersial) yang dibebankan ke biaya operasional, dan sulitnya ekspansi layanan ke daerah terpencil karena syarat pendaftaran/modal driver yang memberatkan.
+* Solusi Easy Driver:
+   * Menghadirkan layanan transportasi dengan biaya operasional sangat rendah melalui infrastruktur pemetaan sendiri.
+   * Sistem kemitraan daerah yang fleksibel.
+   * 100% gratis untuk pendaftaran mitra driver.
+3: Keunggulan Utama (Unique Selling Propositions)
+Bagian ini adalah inti dari ide bisnis Anda yang membedakannya dari kompetitor:
+* Teknologi MapsMandiri: Penjelasan bahwa Easy Driver tidak bergantung pada layanan peta berbayar yang mahal. Sistem menggunakan data open-source (seperti OpenStreetMap) yang di-host secara mandiri pada cloud server atau VPS (Virtual Private Server) yang ringan dan efisien (misalnya dengan konfigurasi 2 vCPU, RAM 8GB untuk node lokal). Hal ini menekan biaya overhead secara drastis.
+* Ekspansi "Setiap Daerah Bisa": Skema di mana tokoh masyarakat, pemuda lokal, atau komunitas dapat membuka "Kantor Cabang Virtual" atau pusat koordinasi daerah sebagai koordinator driver, dengan penyesuaian tarif yang sesuai dengan daya beli masing-masing daerah.
+* Zero-Capital untuk Driver: Penjelasan bahwa driver dapat langsung beroperasi hanya dengan verifikasi identitas, tanpa kewajiban membeli atribut awal (jaket/helm) atau membayar deposit.
+
+
+
+
+4: Infrastruktur & Teknologi
+* Arsitektur Pemetaan Lokal: Bagaimana MapsMandiri memproses rute dan jarak secara real-time di server internal.
+* Sistem Otonom & Otomatisasi: Penggunaan otomatisasi (seperti webhook dan integrasi API) untuk alur pesanan dari pelanggan ke driver secara langsung dan cepat, mengurangi beban kerja manual admin di daerah.
+* Keamanan Data: Jaminan keamanan data pengguna lokal yang tersimpan di server mandiri tanpa campur tangan pihak ketiga.
+* Biaya Overhead Server Rendah: Karena kecepatan eksekusi logika (runtime) Rust setara dengan C/C++, performa tinggi bisa didapat tanpa harus menyewa infrastruktur cloud computing skala besar yang mahal. Ini sejalan dengan visi bisnis untuk beroperasi secara mandiri dan menekan biaya operasional.
+* Arsitektur Offline-First & Low-Bandwidth: Aplikasi dirancang untuk tetap berfungsi pada jaringan 2G/EDGE. Sistem menggunakan kompresi payload data tingkat tinggi, sehingga pertukaran informasi rute dan pesanan hanya memakan ukuran byte yang sangat kecil.
+* Manajemen Memori Ekstrim (Hemat RAM): Menggunakan bahasa pemrograman Rust yang tidak memiliki Garbage Collector, sistem backend ini menjamin efisiensi memori yang sangat ketat. Sangat ringan sehingga sistem inti maupun node pemetaan bisa berjalan stabil dan maksimal, baik saat dikembangkan di local environment dengan sistem operasi minimalis seperti Alpine Linux, maupun ketika beroperasi menggunakan VPS standar dengan kapasitas 2 vCPU dan RAM 8 GB
+
+
+5: Model Operasional & Kemitraan
+* Syarat Pembukaan Kantor Daerah: Kriteria menjadi koordinator daerah (Kacab lokal) dan bagi hasil antara pusat dan daerah. Kacab lokal bertugas memverifikasi driver secara fisik dan menjadi pusat resolusi konflik.
+* Alur Pendaftaran Driver: Proses registrasi seamless, verifikasi KTP/SIM oleh Kacab lokal, langsung aktif.
+* Sistem Bagi Hasil: Persentase komisi yang sangat rendah (misal: 5-10% saja) karena biaya infrastruktur teknologi sudah ditekan lewat MapsMandiri.
+6: Strategi Pemasaran & Akuisisi
+* Guerilla Marketing Daerah: Bekerja sama dengan warung kopi, pangkalan ojek konvensional, dan UMKM desa untuk transisi ke digital.
+* Program Edukasi Driver: Pendekatan langsung dari Kacab untuk merangkul pengemudi konvensional agar mau menggunakan sistem tanpa takut potongan besar.
+7: Proyeksi Keuangan & Roadmap
+* Kebutuhan Biaya Awal: Alokasi dana untuk pemeliharaan server/VPS, pengembangan aplikasi/sistem otomatisasi, dan biaya legalitas.
+* Sumber Pendapatan: Biaya layanan (platform fee) flat per transaksi (bukan persentase) atau biaya berlangganan sistem bagi Kacab.
+* Roadmap Pengembangan:
+   * Bulan 1-3: Setup server, pengembangan algoritma MapsMandiri, dan uji coba tertutup di satu kecamatan.
+   * Bulan 4-6: Pembukaan kemitraan Kacab di 5 daerah berbeda dan peluncuran publik.

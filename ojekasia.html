@@ -407,60 +407,57 @@
 
     <!-- TAB 1: PROSES PENGEMBANGAN (Classic Book Layout) -->
     <div id="content-dev-process" class="w-full max-w-[850px] book-content">
-        <h1 class="serif-title lang-id">PROSES PENGEMBANGAN & DESAIN SISTEM</h1>
-        <h1 class="serif-title lang-en hidden">DEVELOPMENT PROCESS & SYSTEM DESIGN</h1>
+        <h1 class="serif-title lang-id">PROSES PENGEMBANGAN & DESAIN SISTEM (EASY DRIVER)</h1>
+        <h1 class="serif-title lang-en hidden">DEVELOPMENT PROCESS & SYSTEM DESIGN (EASY DRIVER)</h1>
         
         <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between mb-8">
             <span class="lang-id">Dokumentasi Teknis</span>
             <span class="lang-en hidden">Technical Documentation</span>
-            <span>Ojek-Asia</span>
+            <span>Easy Driver</span>
         </div>
 
         <section class="mb-12">
-            <h2 class="lang-id">1. VISI UTAMA & LANDASAN MOBILITAS</h2>
-            <h2 class="lang-en hidden">1. PRIMARY VISION & MOBILITY FOUNDATION</h2>
+            <h2 class="lang-id">1. TEKNOLOGI MAPSMANDIRI & INFRASTRUKTUR LOKAL</h2>
+            <h2 class="lang-en hidden">1. MAPSMANDIRI TECHNOLOGY & LOCAL INFRASTRUCTURE</h2>
             <p class="drop-cap lang-id">
-                Menghadirkan solusi mobilitas on-demand terdepan di Asia Tenggara yang menjembatani kenyamanan berkendara dengan kemakmuran ekonomi pengemudi lokal secara berkelanjutan, menciptakan jaringan transportasi regional terpadu yang memberdayakan masyarakat.
+                Easy Driver tidak bergantung pada layanan peta berbayar pihak ketiga yang mahal. Sistem kami menggunakan data pemetaan open-source (seperti OpenStreetMap) yang di-host secara mandiri pada cloud server atau VPS (Virtual Private Server) yang ringan dan efisien. Hal ini menekan biaya overhead operasional secara drastis dan menjamin keberlanjutan layanan di tingkat hiper-lokal.
             </p>
             <p class="drop-cap lang-en hidden">
-                Delivering leading on-demand mobility solutions in Southeast Asia that bridge comfortable transportation with sustainable economic prosperity for local drivers, establishing an integrated regional transportation network that empowers communities.
+                Easy Driver does not rely on expensive third-party proprietary map services. Our system operates on self-hosted open-source mapping data (such as OpenStreetMap) hosted on lightweight, efficient Virtual Private Servers (VPS). This drastically reduces operational overhead and guarantees hyper-local service sustainability.
             </p>
         </section>
 
         <section class="mb-12">
-            <h2 class="lang-id">2. MISI STRATEGIS</h2>
-            <h2 class="lang-en hidden">2. STRATEGIC MISSION</h2>
-            <p class="lang-id"><strong>Layanan Terjangkau:</strong> Menyediakan layanan ojek dan pengiriman paket yang terjangkau serta handal bagi seluruh lapisan masyarakat.</p>
-            <p class="lang-en hidden"><strong>Affordable Services:</strong> Providing affordable and reliable ride-hailing and parcel delivery services for everyone.</p>
+            <h2 class="lang-id">2. SPESIFIKASI BACKEND & EFISIENSI MEMORI</h2>
+            <h2 class="lang-en hidden">2. BACKEND SPECIFICATION & MEMORY EFFICIENCY</h2>
+            <p class="lang-id"><strong>Manajemen Memori Ekstrem:</strong> Menggunakan bahasa pemrograman Rust yang bekerja tanpa Garbage Collector, menjamin efisiensi alokasi memori yang sangat ketat dan andal.</p>
+            <p class="lang-en hidden"><strong>Extreme Memory Management:</strong> Built with Rust programming language operating without a Garbage Collector, guaranteeing tight and reliable memory allocation efficiency.</p>
             
-            <p class="lang-id"><strong>Pemberdayaan Mitra:</strong> Memberdayakan kesejahteraan mitra pengemudi melalui skema bagi hasil yang adil.</p>
-            <p class="lang-en hidden"><strong>Partner Empowerment:</strong> Empowering driver partner welfare through a fair revenue-sharing scheme.</p>
+            <p class="lang-id"><strong>Skalabilitas Ringan:</strong> Sistem inti dan node pemetaan dapat berjalan stabil baik di local environment dengan OS Alpine Linux, maupun di VPS standar dengan kapasitas minimal (2 vCPU, RAM 8 GB).</p>
+            <p class="lang-en hidden"><strong>Lightweight Scalability:</strong> Core systems and mapping nodes run stably in local environments with Alpine Linux OS or standard minimal capacity VPS (2 vCPU, 8 GB RAM).</p>
             
-            <p class="lang-id"><strong>Asuransi Terintegrasi:</strong> Penyediaan asuransi keselamatan terintegrasi untuk pengemudi dan penumpang di setiap perjalanan.</p>
-            <p class="lang-en hidden"><strong>Integrated Safety:</strong> Providing integrated safety insurance for both drivers and passengers.</p>
+            <p class="lang-id"><strong>Runtime Berperforma Tinggi:</strong> Kecepatan runtime setara C/C++ memastikan respon alur pemetaan instan tanpa infrastruktur komputasi awan berbiaya raksasa.</p>
+            <p class="lang-en hidden"><strong>High-Performance Runtime:</strong> C/C++ level execution speed ensures instant routing responses without requiring high-cost cloud computing architectures.</p>
         </section>
 
         <section class="mb-12">
-            <h2 class="lang-id">3. KEUNGGULAN INTI</h2>
-            <h2 class="lang-en hidden">3. CORE ADVANTAGES</h2>
-            <p class="lang-id"><strong>Penjemputan Cepat:</strong> Pemberian order otomatis kepada armada terdekat menggunakan smart location system.</p>
-            <p class="lang-en hidden"><strong>Rapid Pickup:</strong> Automatic order matching to the closest fleet using a smart location system.</p>
+            <h2 class="lang-id">3. ARSITEKTUR OFFLINE-FIRST & JARINGAN MINIM</h2>
+            <h2 class="lang-en hidden">3. OFFLINE-FIRST ARCHITECTURE & LOW-BANDWIDTH</h2>
+            <p class="lang-id"><strong>Optimasi 2G/EDGE:</strong> Aplikasi dirancang untuk tetap berfungsi secara tangguh pada jaringan komunikasi 2G/EDGE di pedesaan atau daerah terpencil.</p>
+            <p class="lang-en hidden"><strong>2G/EDGE Optimization:</strong> The application is specifically designed to remain functional over slow 2G/EDGE networks in rural or remote areas.</p>
             
-            <p class="lang-id"><strong>Keselamatan:</strong> Verifikasi identitas ketat bagi penumpang dan pengemudi demi keamanan perjalanan.</p>
-            <p class="lang-en hidden"><strong>Safety First:</strong> Strict identity verification for both passengers and drivers to ensure safe travels.</p>
-            
-            <p class="lang-id"><strong>Kearifan Lokal:</strong> Adaptasi sistem operasional sesuai kebutuhan dan kebiasaan mobilitas masyarakat lokal.</p>
-            <p class="lang-en hidden"><strong>Local Adaptations:</strong> Operational adaptation tailored to the custom and mobility habits of local citizens.</p>
+            <p class="lang-id"><strong>Kompresi Payload Data:</strong> Menggunakan kompresi payload tingkat tinggi sehingga pertukaran informasi rute dan koordinat pesanan hanya memakan ukuran data beberapa byte saja.</p>
+            <p class="lang-en hidden"><strong>Payload Data Compression:</strong> High-ratio payload compression guarantees that routing and order coordinate transfers consume only a few bytes of network data.</p>
         </section>
 
         <section class="mb-12">
-            <h2 class="lang-id">4. TEKNOLOGI PENENTUAN LOKASI & REGULASI</h2>
-            <h2 class="lang-en hidden">4. LOCATION TECHNOLOGY & COMPLIANCE</h2>
+            <h2 class="lang-id">4. SISTEM OTONOM & KEAMANAN INTERNAL</h2>
+            <h2 class="lang-en hidden">4. AUTONOMOUS SYSTEM & INTERNAL SECURITY</h2>
             <p class="lang-id">
-                Aplikasi kami didukung oleh sistem penentuan koordinat presisi tinggi. Dengan algoritma pemetaan klaster dinamis, Ojek-Asia dapat menyalurkan perjalanan dalam hitungan detik, meminimalkan waktu tunggu penumpang dan mengoptimalkan ritase harian pengemudi secara berkelanjutan. Kami mematuhi seluruh perizinan dinas perhubungan dan kepolisian setempat di wilayah operasional kami.
+                Distribusi pesanan dari pelanggan langsung disalurkan ke driver terdekat melalui webhook dan integrasi API otomatis. Proses pemrosesan rute dan jarak berjalan real-time di server internal. Hal ini menjamin keamanan data pengguna secara otonom di server mandiri tanpa campur tangan dari pihak ketiga.
             </p>
             <p class="lang-en hidden">
-                Our application is powered by a high-precision coordinate dispatch system. With a dynamic cluster mapping algorithm, Ojek-Asia pairs rides in seconds, minimizing passenger wait times and optimizing daily trips for drivers. We strictly comply with transportation licensing and regional police permits across our operational territories.
+                Order dispatch from customers is pushed directly to the nearest drivers via automated webhooks and API integrations. Routing and distance processing run in real-time on internal servers, ensuring autonomous user data security without third-party intervention.
             </p>
         </section>
 
@@ -479,7 +476,6 @@
             
             <!-- Left Sidebar Navigation (Nav Kiri) -->
             <div class="w-full lg:w-[230px] shrink-0 lg:self-start sticky top-24 z-40 bg-[#fdfbf7]/90 dark:bg-[#181614]/90 backdrop-blur-md py-3 lg:py-0 border-b border-gray-200/50 lg:border-b-0 transition-colors duration-300">
-                <!-- Wrapper for horizontal scrolling on mobile, vertical scrolling on desktop -->
                 <div class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-y-auto pb-2 lg:pb-6 gap-2.5 max-h-[calc(100vh-200px)] pr-2 scrollbar-none whitespace-nowrap lg:whitespace-normal">
                     <div class="hidden lg:block font-sans text-[10px] font-extrabold uppercase tracking-widest text-[#5e5954] mb-3 px-1">
                         <span class="lang-id">Daftar Isi Proposal</span>
@@ -493,33 +489,33 @@
                     </button>
                     <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-2')">
                         <span class="w-5 text-center text-[10px] text-gray-400">02</span> 
-                        <span class="lang-id">Visi Utama</span>
-                        <span class="lang-en hidden">Primary Vision</span>
+                        <span class="lang-id">Masalah & Solusi</span>
+                        <span class="lang-en hidden">Problem & Solution</span>
                     </button>
                     <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-3')">
                         <span class="w-5 text-center text-[10px] text-gray-400">03</span> 
-                        <span class="lang-id">Misi Strategis</span>
-                        <span class="lang-en hidden">Strategic Mission</span>
+                        <span class="lang-id">Keunggulan Utama</span>
+                        <span class="lang-en hidden">Core Advantages</span>
                     </button>
                     <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-4')">
                         <span class="w-5 text-center text-[10px] text-gray-400">04</span> 
-                        <span class="lang-id">Keunggulan Inti</span>
-                        <span class="lang-en hidden">Core Advantages</span>
+                        <span class="lang-id">Infrastruktur Teknis</span>
+                        <span class="lang-en hidden">Technical Infra</span>
                     </button>
                     <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-5')">
                         <span class="w-5 text-center text-[10px] text-gray-400">05</span> 
-                        <span class="lang-id">Teknologi Lokasi</span>
-                        <span class="lang-en hidden">Location Technology</span>
+                        <span class="lang-id">Model Operasional</span>
+                        <span class="lang-en hidden">Operations Model</span>
                     </button>
                     <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-6')">
                         <span class="w-5 text-center text-[10px] text-gray-400">06</span> 
-                        <span class="lang-id">Kepatuhan Regulasi</span>
-                        <span class="lang-en hidden">Regulatory Compliance</span>
+                        <span class="lang-id">Strategi Pemasaran</span>
+                        <span class="lang-en hidden">Marketing Strategy</span>
                     </button>
                     <button class="nav-card shrink-0 w-auto lg:w-full" onclick="scrollToSection('sec-7')">
                         <span class="w-5 text-center text-[10px] text-gray-400">07</span> 
-                        <span class="lang-id">Hubungi Kami</span>
-                        <span class="lang-en hidden">Contact Us</span>
+                        <span class="lang-id">Roadmap & Keuangan</span>
+                        <span class="lang-en hidden">Roadmap & Finance</span>
                     </button>
                 </div>
             </div>
@@ -529,8 +525,8 @@
                 
                 <!-- Main Header Title -->
                 <div class="mb-12">
-                    <h1 class="serif-title lang-id">PROPOSAL MOBILITAS ON-DEMAND & PENGIRIMAN REGIONAL (PROYEK: OJEK-ASIA)</h1>
-                    <h1 class="serif-title lang-en hidden">ON-DEMAND MOBILITY & REGIONAL DELIVERY PROPOSAL (PROJECT: OJEK-ASIA)</h1>
+                    <h1 class="serif-title lang-id">PROPOSAL LAYANAN OJEK ONLINE HYPER-LOKAL (PROYEK: EASY DRIVER)</h1>
+                    <h1 class="serif-title lang-en hidden">HYPER-LOCAL ON-DEMAND MOBILITY PROPOSAL (PROJECT: EASY DRIVER)</h1>
                     
                     <div class="text-[12px] font-sans uppercase tracking-[0.2em] text-[#5e5954] mt-4 font-bold flex items-center justify-between">
                         <span class="lang-id">Hak Cipta Terpelihara © 2026</span>
@@ -547,81 +543,85 @@
                     <h2 class="lang-en hidden">1. EXECUTIVE SUMMARY</h2>
                     
                     <p class="drop-cap lang-id">
-                        Ojek-Asia adalah platform mobilitas dan pengiriman on-demand regional yang mengutamakan kesejahteraan mitra dan kenyamanan pengguna. Platform ini bertujuan menghadirkan solusi mobilitas terdepan di wilayah Asia Tenggara dengan menjembatani kemudahan berkendara harian bersama skema kompensasi yang adil dan berkelanjutan bagi para mitra pengemudi lokal.
+                        <strong>Easy Driver</strong> adalah inisiatif layanan transportasi dan pengiriman hiper-lokal mandiri yang dirancang untuk memberdayakan komunitas daerah tanpa membebani mitra pengemudi dengan modal awal. Dipimpin oleh pendiri <strong>Ilham Pradani S.H.</strong>, bisnis ini berfokus pada kemandirian infrastruktur teknologi untuk menghadirkan keadilan tarif.
                     </p>
                     <p class="drop-cap lang-en hidden">
-                        Ojek-Asia is a regional on-demand mobility and delivery platform prioritizing partner welfare and user convenience. The platform aims to deliver leading mobility solutions in Southeast Asia by bridging daily transit ease with a fair and sustainable compensation scheme for local driver partners.
+                        <strong>Easy Driver</strong> is an independent hyper-local ride-hailing and delivery service designed to empower regional communities without placing initial capital burdens on driver partners. Led by founder <strong>Ilham Pradani S.H.</strong>, the business prioritizes technology infrastructure self-reliance to bring tariff fairness.
                     </p>
+                    
+                    <div class="mt-4 p-4 border border-gray-200/60 dark:border-white/10 rounded-xl space-y-2 text-xs font-sans">
+                        <div><strong>Founder:</strong> Ilham Pradani S.H</div>
+                        <div><strong>Websites:</strong> www.ilhampradani.me | mijdigital.my</div>
+                        <div><strong>Visi:</strong> Menjadi layanan transportasi & pengiriman hiper-lokal mandiri yang memberdayakan komunitas daerah tanpa membebani mitra driver dengan modal awal.</div>
+                        <div><strong>Misi:</strong> Menyediakan platform pemetaan mandiri (MapsMandiri), membuka peluang kemitraan cabang di seluruh wilayah, dan menciptakan ekosistem ekonomi digital yang adil bagi pengemudi lokal.</div>
+                    </div>
                 </section>
 
                 <hr class="book-divider">
 
-                <!-- 2. Visi Utama -->
+                <!-- 2. Masalah & Solusi -->
                 <section id="sec-2" class="book-section mb-12">
-                    <h2 class="lang-id">2. VISI UTAMA</h2>
-                    <h2 class="lang-en hidden">2. PRIMARY VISION</h2>
+                    <h2 class="lang-id">2. LATAR BELAKANG MASALAH & SOLUSI</h2>
+                    <h2 class="lang-en hidden">2. PROBLEM BACKGROUND & SOLUTIONS</h2>
                     
-                    <p class="lang-id">
-                        Menghadirkan solusi mobilitas on-demand terdepan di Asia Tenggara yang menjembatani kenyamanan berkendara dengan kemakmuran ekonomi pengemudi lokal secara berkelanjutan, menciptakan jaringan transportasi regional terpadu yang memberdayakan masyarakat.
-                    </p>
-                    <p class="lang-en hidden">
-                        To deliver leading on-demand mobility solutions in Southeast Asia that bridge comfortable transit with the economic prosperity of local drivers, establishing an integrated regional transportation network that empowers communities.
-                    </p>
+                    <h3 class="lang-id">Tantangan Industri Saat Ini</h3>
+                    <h3 class="lang-en hidden">Current Industry Challenges</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-xs font-sans mt-2">
+                        <li class="lang-id"><strong>Potongan Komisi Tinggi:</strong> Potongan biaya aplikasi arus utama yang memberatkan pendapatan harian mitra pengemudi.</li>
+                        <li class="lang-en hidden"><strong>High Commission Cuts:</strong> Mainstream ride-hailing applications levy excessive service cuts, burdening drivers' daily income.</li>
+                        <li class="lang-id"><strong>Ketergantungan API Peta Pihak Ketiga:</strong> Penggunaan API komersial pihak ketiga (seperti Google Maps API) yang sangat mahal memicu tingginya biaya operasional platform.</li>
+                        <li class="lang-en hidden"><strong>Third-Party Maps API Dependency:</strong> Relying on expensive proprietary mapping APIs increases operational overhead significantly.</li>
+                        <li class="lang-id"><strong>Hambatan Ekspansi Daerah Terpencil:</strong> Syarat pendaftaran yang rumit dan kewajiban modal awal (pembelian jaket, helm, deposit saldo) menyulitkan ekspansi ke pelosok.</li>
+                        <li class="lang-en hidden"><strong>Rural Expansion Barriers:</strong> Cumbersome sign-up terms and mandatory upfront capital (purchasing jackets, helmets, balance deposits) block expansion to remote locations.</li>
+                    </ul>
+
+                    <h3 class="lang-id mt-6">Solusi Unggul Easy Driver</h3>
+                    <h3 class="lang-en hidden mt-6">Easy Driver's superior Solutions</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-xs font-sans mt-2">
+                        <li class="lang-id"><strong>Infrastruktur Peta Mandiri:</strong> Menghadirkan layanan transportasi dengan biaya operasional sangat rendah melalui pemetaan internal.</li>
+                        <li class="lang-en hidden"><strong>Self-Hosted Map Infrastructure:</strong> Providing transport services with incredibly low overhead using custom-built mapping assets.</li>
+                        <li class="lang-id"><strong>Kemitraan Daerah Fleksibel:</strong> Skema pembagian otoritas cabang regional yang disesuaikan dengan daya beli lokal.</li>
+                        <li class="lang-en hidden"><strong>Flexible Regional Franchise:</strong> Sharing regional authority and local pricing power adapted to local purchasing capacity.</li>
+                        <li class="lang-id"><strong>Pendaftaran Driver 100% Gratis:</strong> Menghilangkan hambatan modal awal bagi pengemudi baru.</li>
+                        <li class="lang-en hidden"><strong>100% Free Driver Registration:</strong> Removing upfront capital barriers entirely for newly joined drivers.</li>
+                    </ul>
                 </section>
 
                 <hr class="book-divider">
 
-                <!-- 3. Misi Strategis -->
+                <!-- 3. Keunggulan Utama -->
                 <section id="sec-3" class="book-section mb-12">
-                    <h2 class="lang-id">3. MISI STRATEGIS</h2>
-                    <h2 class="lang-en hidden">3. STRATEGIC MISSION</h2>
+                    <h2 class="lang-id">3. KEUNGGULAN UTAMA (USP)</h2>
+                    <h2 class="lang-en hidden">3. UNIQUE SELLING PROPOSITIONS (USP)</h2>
                     
-                    <p class="lang-id">Dalam mewujudkan visi besar kami, Ojek-Asia menjalankan tiga misi utama:</p>
-                    <p class="lang-en hidden">To achieve our grand vision, Ojek-Asia pursues three core missions:</p>
+                    <p class="lang-id"><strong>Teknologi MapsMandiri:</strong> Kami tidak bergantung pada layanan peta berbayar pihak ketiga yang mahal. Sistem kami menggunakan data open-source (seperti OpenStreetMap) yang di-host secara mandiri pada cloud server atau VPS yang ringan dan efisien (konfigurasi minimal 2 vCPU, RAM 8GB untuk node lokal). Hal ini menekan biaya overhead operasional secara drastis.</p>
+                    <p class="lang-en hidden"><strong>MapsMandiri Technology:</strong> We do not rely on expensive third-party paid map services. The system uses open-source map data (OpenStreetMap) hosted independently on light and efficient cloud VPS instances (minimum 2 vCPU, 8GB RAM per local node), minimizing overhead expenses drastically.</p>
                     
-                    <p class="lang-id"><strong>Layanan Terjangkau:</strong> Menyediakan layanan ojek dan pengiriman paket yang terjangkau, cepat, serta handal bagi seluruh lapisan masyarakat.</p>
-                    <p class="lang-en hidden"><strong>Affordable Services:</strong> Providing affordable, prompt, and reliable ride-hailing and parcel delivery services for all social classes.</p>
+                    <p class="lang-id"><strong>Ekspansi "Setiap Daerah Bisa":</strong> Skema kemitraan di mana tokoh masyarakat, pemuda lokal, atau komunitas daerah dapat membuka "Kantor Cabang Virtual" sebagai koordinator pengemudi, lengkap dengan kebebasan penyesuaian tarif sesuai daya beli setempat.</p>
+                    <p class="lang-en hidden"><strong>"Any Region Can" Expansion:</strong> Partnership programs allowing community leaders, local youth, or regional cooperatives to run a "Virtual Branch Office" as driver coordinators, with direct flexibility in local tariff adjustment.</p>
                     
-                    <p class="lang-id"><strong>Pemberdayaan Mitra:</strong> Memberdayakan kesejahteraan mitra pengemudi melalui skema pembagian pendapatan yang adil, transparan, dan menguntungkan.</p>
-                    <p class="lang-en hidden"><strong>Partner Empowerment:</strong> Empowering driver partner welfare through a fair, transparent, and profitable revenue-sharing scheme.</p>
-                    
-                    <p class="lang-id"><strong>Asuransi Terintegrasi:</strong> Menyediakan perlindungan dan asuransi keselamatan terpadu bagi pengemudi maupun penumpang di setiap perjalanan.</p>
-                    <p class="lang-en hidden"><strong>Integrated Insurance:</strong> Offering integrated safety insurance protection for both drivers and passengers on every single journey.</p>
+                    <p class="lang-id"><strong>Zero-Capital untuk Driver:</strong> Mitra pengemudi dapat langsung beroperasi setelah proses verifikasi identitas fisik selesai. Tidak ada kewajiban membeli atribut awal (jaket/helm) atau menyetorkan deposit saldo jaminan.</p>
+                    <p class="lang-en hidden"><strong>Zero-Capital for Drivers:</strong> Driver partners can begin operations immediately following simple identity verification. There are no requirements to purchase branding materials (jackets/helmets) or deposit security balances.</p>
                 </section>
 
                 <hr class="book-divider">
 
-                <!-- 4. Keunggulan Inti -->
+                <!-- 4. Infrastruktur & Teknologi -->
                 <section id="sec-4" class="book-section mb-12">
-                    <h2 class="lang-id">4. KEUNGGULAN INTI</h2>
-                    <h2 class="lang-en hidden">4. CORE ADVANTAGES</h2>
+                    <h2 class="lang-id">4. INFRASTRUKTUR & TEKNOLOGI</h2>
+                    <h2 class="lang-en hidden">4. INFRASTRUCTURE & TECHNOLOGY</h2>
                     
-                    <p class="lang-id">Platform kami menawarkan keunggulan bersaing utama melalui tiga aspek dasar:</p>
-                    <p class="lang-en hidden">Our platform offers key competitive advantages based on three fundamental pillars:</p>
+                    <p class="lang-id"><strong>Arsitektur Pemetaan Lokal:</strong> MapsMandiri memproses perhitungan rute, estimasi waktu tempuh, dan jarak secara real-time langsung di server internal kami tanpa API call keluar.</p>
+                    <p class="lang-en hidden"><strong>Local Mapping Architecture:</strong> MapsMandiri processes route calculations, ETA, and distance calculations in real-time directly on our internal servers without external API requests.</p>
                     
-                    <p class="lang-id"><strong>Penjemputan Cepat:</strong> Algoritma alokasi rute kami secara otomatis mencocokkan pesanan kepada armada kurir terdekat menggunakan sistem pemetaan pintar.</p>
-                    <p class="lang-en hidden"><strong>Rapid Pickup:</strong> Our route allocation algorithm automatically matches orders to the nearest fleet courier using smart mapping systems.</p>
-                    
-                    <p class="lang-id"><strong>Keselamatan Terjamin:</strong> Verifikasi identitas yang ketat dan pemeriksaan latar belakang berkala dilakukan bagi penumpang maupun pengemudi demi menjamin ketenangan berkendara.</p>
-                    <p class="lang-en hidden"><strong>Assured Safety:</strong> Strict identity verification and periodic background checks are enforced for both passengers and drivers to ensure peace of mind.</p>
-                    
-                    <p class="lang-id"><strong>Kearifan Lokal:</strong> Penyesuaian sistem operasional dan metode pembayaran sesuai dengan tradisi, hukum, dan kebiasaan mobilitas masyarakat regional.</p>
-                    <p class="lang-en hidden"><strong>Local Adaptations:</strong> Customizing operational structures and payment methods to match regional laws, culture, and transit habits.</p>
-                </section>
+                    <p class="lang-id"><strong>Sistem Otonom & Otomatisasi:</strong> Penggunaan alur pesanan terotomatisasi via webhook dari platform pelanggan langsung ke mitra pengemudi terdekat, menghilangkan perantara manual admin daerah.</p>
+                    <p class="lang-en hidden"><strong>Autonomous & Automated System:</strong> Order dispatches are handled autonomously via webhooks directly to the closest active driver, cutting manual coordination overhead.</p>
 
-                <hr class="book-divider">
+                    <p class="lang-id"><strong>Efisiensi Server Rust & Alpine Linux:</strong> Kode backend dibangun menggunakan bahasa Rust yang berkinerja tinggi tanpa Garbage Collector, memungkinkan efisiensi RAM luar biasa. Seluruh sistem backend dapat dioperasikan secara stabil menggunakan VPS minimalis.</p>
+                    <p class="lang-en hidden"><strong>Rust & Alpine Linux Efficiency:</strong> Built on Rust without a Garbage Collector for high performance and minimal memory footprint. The entire system runs stably on cost-effective VPS infrastructure.</p>
 
-                <!-- 5. Teknologi Penentuan Lokasi -->
-                <section id="sec-5" class="book-section mb-12">
-                    <h2 class="lang-id">5. TEKNOLOGI PENENTUAN LOKASI</h2>
-                    <h2 class="lang-en hidden">5. LOCATION TECHNOLOGY</h2>
-                    
-                    <p class="lang-id">
-                        Aplikasi kami didukung oleh sistem penentuan koordinat presisi tinggi. Dengan <strong>algoritma pemetaan klaster dinamis</strong>, Ojek-Asia dapat menyalurkan perjalanan dalam hitungan detik, meminimalkan waktu tunggu penumpang dan mengoptimalkan ritase harian pengemudi secara maksimal.
-                    </p>
-                    <p class="lang-en hidden">
-                        Our application is powered by a high-precision coordinate dispatch system. Using a <strong>dynamic cluster mapping algorithm</strong>, Ojek-Asia pairs rides in seconds, minimizing passenger wait times and maximizing daily trips for drivers.
-                    </p>
+                    <p class="lang-id"><strong>Offline-First & Low-Bandwidth:</strong> Sistem pengiriman data dikompres secara ketat sehingga aplikasi tetap dapat memproses rute dan order pada kualitas jaringan internet pedesaan 2G/EDGE.</p>
+                    <p class="lang-en hidden"><strong>Offline-First & Low-Bandwidth:</strong> Highly compressed data exchange payload guarantees functional dispatching even on weak rural 2G/EDGE connections.</p>
                 </section>
 
                 <!-- Ad Slot 1 -->
@@ -631,47 +631,61 @@
 
                 <hr class="book-divider">
 
-                <!-- 6. Kepatuhan Regulasi -->
-                <section id="sec-6" class="book-section mb-12">
-                    <h2 class="lang-id">6. KEPATUHAN REGULASI</h2>
-                    <h2 class="lang-en hidden">6. REGULATORY COMPLIANCE</h2>
+                <!-- 5. Model Operasional & Kemitraan -->
+                <section id="sec-5" class="book-section mb-12">
+                    <h2 class="lang-id">5. MODEL OPERASIONAL & KEMITRAAN</h2>
+                    <h2 class="lang-en hidden">5. OPERATIONAL & PARTNERSHIP MODEL</h2>
                     
-                    <p class="lang-id">
-                        Kami mematuhi seluruh perizinan dinas perhubungan dan kepolisian setempat di wilayah operasional kami. Kerangka kerja yang selaras dengan undang-undang ketenagakerjaan daerah memastikan kemitraan pengemudi tetap berjalan harmonis, legal, dan aman dari risiko sengketa perburuhan.
-                    </p>
-                    <p class="lang-en hidden">
-                        We strictly comply with transportation licensing and regional police permits across our operational territories. Aligning with regional labor guidelines ensures driver partnerships remain harmonious, legal, and risk-free.
-                    </p>
+                    <p class="lang-id"><strong>Syarat Pembukaan Kantor Daerah (Kacab):</strong> Tokoh masyarakat atau komunitas lokal dapat mendaftar sebagai Koordinator Cabang (Kacab). Kacab bertanggung jawab melakukan verifikasi fisik kelayakan dokumen driver (KTP/SIM) dan menjadi pusat penanganan sengketa di wilayah tersebut.</p>
+                    <p class="lang-en hidden"><strong>Virtual Branch Office (Kacab) Terms:</strong> Local community members or cooperatives can register as Branch Coordinators (Kacab). The Kacab verifies driver credentials (ID/license) and acts as the local operational support node.</p>
+                    
+                    <p class="lang-id"><strong>Alur Pendaftaran Driver:</strong> Calon pengemudi mendaftar secara online, diikuti verifikasi cepat dokumen oleh Kacab setempat secara tatap muka, dan langsung dapat mengambil order hari itu juga.</p>
+                    <p class="lang-en hidden"><strong>Driver Registration Flow:</strong> Drivers register online, complete quick document verification with the local Kacab, and begin accepting jobs instantly.</p>
+
+                    <p class="lang-id"><strong>Sistem Bagi Hasil yang Adil:</strong> Karena overhead teknologi sangat rendah (berkat MapsMandiri), kami menerapkan komisi layanan flat sangat rendah (hanya kisaran 5-10%), memberikan keuntungan harian yang jauh lebih tinggi bagi pengemudi.</p>
+                    <p class="lang-en hidden"><strong>Fair Profit Sharing:</strong> Driven by ultra-low overhead costs of MapsMandiri, we apply minimal service fees of only 5-10%, leaving larger daily profits with the local driver.</p>
                 </section>
 
                 <hr class="book-divider">
 
-                <!-- 7. Hubungi Kami -->
+                <!-- 6. Strategi Pemasaran & Akuisisi -->
+                <section id="sec-6" class="book-section mb-12">
+                    <h2 class="lang-id">6. STRATEGI PEMASARAN & AKUISISI</h2>
+                    <h2 class="lang-en hidden">6. MARKETING & ACQUISITION STRATEGY</h2>
+                    
+                    <p class="lang-id"><strong>Guerilla Marketing Daerah:</strong> Akuisisi pengguna dilakukan dengan mendekati komunitas pangkalan ojek konvensional, pemilik warung makan, warung kopi, dan UMKM desa guna mendorong digitalisasi pengantaran lokal.</p>
+                    <p class="lang-en hidden"><strong>Hyper-local Guerrilla Marketing:</strong> User acquisition relies on organic outreach to traditional local drivers (ojek pangkalan), local food stalls (warung), and rural MSMEs to transition deliveries online.</p>
+                    
+                    <p class="lang-id"><strong>Program Edukasi Driver:</strong> Pendekatan kolaboratif tatap muka langsung oleh Kacab setempat untuk mengedukasi para pengemudi konvensional tentang kemudahan penggunaan aplikasi tanpa khawatir akan potongan komisi yang mencekik.</p>
+                    <p class="lang-en hidden"><strong>Driver Educational Engagement:</strong> Direct local coordinator outreach programs to teach traditional transport workers application operations without the fear of predatory platform cuts.</p>
+                </section>
+
+                <hr class="book-divider">
+
+                <!-- 7. Proyeksi Keuangan & Roadmap -->
                 <section id="sec-7" class="book-section mb-12">
-                    <h2 class="lang-id">7. HUBUNGI KAMI</h2>
-                    <h2 class="lang-en hidden">7. CONTACT US</h2>
+                    <h2 class="lang-id">7. PROYEKSI KEUANGAN & ROADMAP</h2>
+                    <h2 class="lang-en hidden">7. FINANCIAL PROJECTIONS & ROADMAP</h2>
                     
-                    <p class="lang-id">
-                        Dapatkan rincian proposal pengembangan lengkap untuk investasi Ojek-Asia. Tim analis kami siap menyajikan proyeksi bisnis secara terperinci. Silakan hubungi kami untuk informasi kemitraan lebih lanjut.
-                    </p>
-                    <p class="lang-en hidden">
-                        Access the full development proposal for Ojek-Asia investment. Our analyst team is ready to present detailed business projections. Please contact us for further partnership details.
-                    </p>
+                    <p class="lang-id"><strong>Kebutuhan Biaya Awal:</strong> Alokasi modal awal difokuskan pada penyewaan server/VPS untuk MapsMandiri, finalisasi build aplikasi backend/frontend otomatis, serta pendaftaran legalitas badan usaha daerah.</p>
+                    <p class="lang-en hidden"><strong>Initial Capital Allocation:</strong> Setup capital is heavily optimized towards server/VPS hosting setup for MapsMandiri, automated software build finalization, and basic local corporate compliance registry.</p>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                        <a href="https://wa.me/6288971071138" target="_blank" class="px-6 py-3 bg-[#0066cc] text-white font-bold rounded-lg hover:bg-blue-700 transition-colors text-sm text-center inline-flex items-center justify-center gap-2 font-sans">
-                            <i data-lucide="message-square" class="w-4 h-4"></i> Hubungi WhatsApp
-                        </a>
-                        <a href="mailto:algojodua2@gmail.com" class="px-6 py-3 bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-white/10 font-bold rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 transition-colors text-sm text-center inline-flex items-center justify-center gap-2 font-sans">
-                            <i data-lucide="mail" class="w-4 h-4"></i> Kirim Email
-                        </a>
-                    </div>
+                    <p class="lang-id"><strong>Sumber Pendapatan Platform:</strong> Mengandalkan biaya platform flat yang sangat murah per transaksi (bukan persentase besar) atau biaya berlangganan lisensi sistem bulanan oleh koordinator daerah (Kacab).</p>
+                    <p class="lang-en hidden"><strong>Revenue Streams:</strong> Relies on minor flat transaction platform fees or modest monthly SaaS licensing fees paid by regional branch operators (Kacab).</p>
+
+                    <h3 class="lang-id mt-4">Roadmap Pengembangan Bisnis:</h3>
+                    <h3 class="lang-en hidden mt-4">Business Development Roadmap:</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-xs font-sans mt-2">
+                        <li class="lang-id"><strong>Bulan 1-3:</strong> Setup klaster server, finalisasi algoritma MapsMandiri, dan pengujian alpha tertutup di satu area kecamatan percontohan.</li>
+                        <li class="lang-en hidden"><strong>Months 1-3:</strong> Infrastructure deployment, MapsMandiri routing algorithm optimization, and private alpha tests in a single pilot sub-district.</li>
+                        <li class="lang-id"><strong>Bulan 4-6:</strong> Pembukaan rekrutmen kemitraan koordinator di 5 wilayah kabupaten/kota berbeda dan peluncuran produk secara publik.</li>
+                        <li class="lang-en hidden"><strong>Months 4-6:</strong> Rolling out coordinator partnership recruitment in 5 municipal areas and public launch event.</li>
+                    </ul>
                 </section>
 
             </div>
         </div>
     </div>
-
     <!-- TAB 3: CONTACT & ACCESS VIEW (Classic Book Layout) -->
     <div id="content-contact" class="hidden w-full max-w-[850px] book-content">
         <h1 class="serif-title lang-id">INFORMASI KONTAK & AKSES PROTOTIPE</h1>
