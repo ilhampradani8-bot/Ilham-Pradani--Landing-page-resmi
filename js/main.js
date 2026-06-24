@@ -207,45 +207,49 @@ if (typeof Lenis !== 'undefined') {
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+}
 
-    // Sync Lenis scroll with hash links
-    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            try {
-                const url = new URL(href, window.location.href);
-                const currentPath = window.location.pathname;
-                const targetPath = url.pathname;
-                
-                // If it's a hash link pointing to the current page
-                if (url.hash && (
-                    targetPath === currentPath || 
-                    targetPath === '/' || 
-                    (currentPath.endsWith('/') && targetPath.endsWith('index.html')) ||
-                    (currentPath.endsWith('index.html') && targetPath.endsWith('/'))
-                )) {
-                    const targetEl = document.getElementById(url.hash.substring(1));
-                    if (targetEl) {
-                        e.preventDefault();
-                        lenis.scrollTo(targetEl, {
-                            offset: -80,
-                            duration: 1.2,
-                        });
-                    }
-                }
-            } catch (err) {
-                // Fallback for simple relative hashes
-                if (href.startsWith('#')) {
-                    const targetEl = document.getElementById(href.substring(1));
-                    if (targetEl) {
-                        e.preventDefault();
-                        lenis.scrollTo(targetEl, {
-                            offset: -80,
-                            duration: 1.2,
-                        });
-                    }
+// Global Event Delegation for Anchor Hash Navigation
+document.addEventListener('click', function (e) {
+    const anchor = e.target.closest('a[href*="#"]');
+    if (!anchor) return;
+
+    const href = anchor.getAttribute('href');
+    if (!href) return;
+    
+    const hashIndex = href.indexOf('#');
+    if (hashIndex === -1) return;
+    const hash = href.substring(hashIndex);
+    
+    const path = window.location.pathname;
+    const isIndexPage = path === '/' || 
+                        path.endsWith('/index.html') || 
+                        path === '' ||
+                        (!path.endsWith('.html') && 
+                         !path.includes('/view.html') && 
+                         !path.includes('/baca.html') && 
+                         !path.includes('/certified.html') && 
+                         !path.includes('/easymarket.html') && 
+                         !path.includes('/tradingsafe.html') && 
+                         !path.includes('/ojekasia.html'));
+    
+    if (!isIndexPage) {
+        e.preventDefault();
+        window.location.href = 'index.html' + hash;
+    } else {
+        if (hash) {
+            const targetEl = document.getElementById(hash.substring(1));
+            if (targetEl) {
+                e.preventDefault();
+                if (window.lenis) {
+                    window.lenis.scrollTo(targetEl, {
+                        offset: -80,
+                        duration: 1.2,
+                    });
+                } else {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
                 }
             }
-        });
-    });
-}
+        }
+    }
+});

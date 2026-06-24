@@ -348,8 +348,8 @@
                         <span class="lang-id">Prototipe Produksi</span>
                         <span class="lang-en hidden">Production Prototype</span>
                     </div>
-                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-id">Akses langsung ke server produksi platform TradingSafe untuk melihat demo fungsional:</p>
-                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-en hidden">Direct access to the TradingSafe production server to view the functional demo:</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-id">Akses langsung ke server produksi platform Easy Driver untuk melihat demo fungsional:</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 lang-en hidden">Direct access to the Easy Driver production server to view the functional demo:</p>
                     <a href="https://tradingsafe.mijdigital.my" target="_blank" class="flex items-center justify-between w-full px-4 py-2.5 bg-[#0066cc] text-white font-bold rounded-lg hover:bg-blue-700 transition-colors text-xs text-center">
                         <span>tradingsafe.mijdigital.my</span>
                         <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
@@ -604,9 +604,7 @@
                     <p class="lang-en hidden"><strong>Zero-Capital for Drivers:</strong> Driver partners can begin operations immediately following simple identity verification. There are no requirements to purchase branding materials (jackets/helmets) or deposit security balances.</p>
                 </section>
 
-                <hr class="book-divider">
-
-                <!-- 4. Infrastruktur & Teknologi -->
+                <hr class="book-divider">                <!-- 4. Infrastruktur & Teknologi -->
                 <section id="sec-4" class="book-section mb-12">
                     <h2 class="lang-id">4. INFRASTRUKTUR & TEKNOLOGI</h2>
                     <h2 class="lang-en hidden">4. INFRASTRUCTURE & TECHNOLOGY</h2>
@@ -614,15 +612,21 @@
                     <p class="lang-id"><strong>Arsitektur Pemetaan Lokal:</strong> MapsMandiri memproses perhitungan rute, estimasi waktu tempuh, dan jarak secara real-time langsung di server internal kami tanpa API call keluar.</p>
                     <p class="lang-en hidden"><strong>Local Mapping Architecture:</strong> MapsMandiri processes route calculations, ETA, and distance calculations in real-time directly on our internal servers without external API requests.</p>
                     
-                    <p class="lang-id"><strong>Sistem Otonom & Otomatisasi:</strong> Penggunaan alur pesanan terotomatisasi via webhook dari platform pelanggan langsung ke mitra pengemudi terdekat, menghilangkan perantara manual admin daerah.</p>
-                    <p class="lang-en hidden"><strong>Autonomous & Automated System:</strong> Order dispatches are handled autonomously via webhooks directly to the closest active driver, cutting manual coordination overhead.</p>
+                    <p class="lang-id"><strong>Sistem Otonom & Otomatisasi:</strong> Penggunaan otomatisasi (seperti webhook dan integrasi API) untuk alur pesanan dari pelanggan ke driver secara langsung dan cepat, mengurangi beban kerja manual admin di daerah.</p>
+                    <p class="lang-en hidden"><strong>Autonomous & Automated System:</strong> Automated workflows (such as webhooks and API integrations) handle order dispatching directly from customers to drivers, reducing manual admin workloads in regions.</p>
 
-                    <p class="lang-id"><strong>Efisiensi Server Rust & Alpine Linux:</strong> Kode backend dibangun menggunakan bahasa Rust yang berkinerja tinggi tanpa Garbage Collector, memungkinkan efisiensi RAM luar biasa. Seluruh sistem backend dapat dioperasikan secara stabil menggunakan VPS minimalis.</p>
-                    <p class="lang-en hidden"><strong>Rust & Alpine Linux Efficiency:</strong> Built on Rust without a Garbage Collector for high performance and minimal memory footprint. The entire system runs stably on cost-effective VPS infrastructure.</p>
+                    <p class="lang-id"><strong>Keamanan Data:</strong> Jaminan keamanan data pengguna lokal yang tersimpan di server mandiri tanpa campur tangan pihak ketiga.</p>
+                    <p class="lang-en hidden"><strong>Data Security:</strong> Guaranteed security of local user data stored autonomously on self-hosted servers without third-party intervention.</p>
 
-                    <p class="lang-id"><strong>Offline-First & Low-Bandwidth:</strong> Sistem pengiriman data dikompres secara ketat sehingga aplikasi tetap dapat memproses rute dan order pada kualitas jaringan internet pedesaan 2G/EDGE.</p>
-                    <p class="lang-en hidden"><strong>Offline-First & Low-Bandwidth:</strong> Highly compressed data exchange payload guarantees functional dispatching even on weak rural 2G/EDGE connections.</p>
-                </section>
+                    <p class="lang-id"><strong>Biaya Overhead Server Rendah:</strong> Karena kecepatan eksekusi logika (runtime) Rust setara dengan C/C++, performa tinggi bisa didapat tanpa harus menyewa infrastruktur cloud computing skala besar yang mahal. Ini sejalan dengan visi bisnis untuk beroperasi secara mandiri dan menekan biaya operasional.</p>
+                    <p class="lang-en hidden"><strong>Low Server Overhead Costs:</strong> Thanks to Rust's execution runtime speed parity with C/C++, high performance is achieved without leasing massive, expensive cloud computing infrastructure, keeping operations self-reliant.</p>
+
+                    <p class="lang-id"><strong>Arsitektur Offline-First & Low-Bandwidth:</strong> Aplikasi dirancang untuk tetap berfungsi pada jaringan 2G/EDGE. Sistem menggunakan kompresi payload data tingkat tinggi, sehingga pertukaran informasi rute dan pesanan hanya memakan ukuran byte yang sangat kecil.</p>
+                    <p class="lang-en hidden"><strong>Offline-First & Low-Bandwidth:</strong> The application is designed to operate on 2G/EDGE networks. Highly compressed data payloads ensure route and order details exchange consumes minimal bytes.</p>
+
+                    <p class="lang-id"><strong>Manajemen Memori Ekstrem (Hemat RAM):</strong> Menggunakan bahasa pemrograman Rust yang tidak memiliki Garbage Collector, sistem backend ini menjamin efisiensi memori yang sangat ketat. Sangat ringan sehingga sistem inti maupun node pemetaan bisa berjalan stabil dan maksimal, baik saat dikembangkan di local environment dengan sistem operasi minimalis seperti Alpine Linux, maupun ketika beroperasi menggunakan VPS standar dengan kapasitas 2 vCPU dan RAM 8 GB.</p>
+                    <p class="lang-en hidden"><strong>Extreme Memory Management (Low RAM Usage):</strong> Developed using Rust without a Garbage Collector to guarantee strict memory efficiency. Highly lightweight, allowing core systems and mapping nodes to run stably in local environments (like Alpine Linux OS) or standard VPS setups (2 vCPU, 8 GB RAM).</p>
+                </section>n>
 
                 <!-- Ad Slot 1 -->
                 <div id="adsterra-banner-unit">
@@ -819,166 +823,8 @@
                 document.body.style.overflow = '';
             }
         };
-
-        document.addEventListener('DOMContentLoaded', async () => {
-            if (window.setLoadingProgress) window.setLoadingProgress(5);
-            
-            // Load components using main.js logic
-            if (window.loadComponent) {
-                await loadComponent('header-placeholder', 'include/header.html');
-                if (window.setLoadingProgress) window.setLoadingProgress(40);
-                await loadComponent('footer-placeholder', 'include/footer.html');
-                if (window.setLoadingProgress) window.setLoadingProgress(70);
-            }
-            
-            if (window.lucide) lucide.createIcons();
-
-            // Dark mode state management
-            const body = document.body;
-            const darkToggle = document.getElementById('dark-mode-toggle');
-            const savedTheme = localStorage.getItem('proposal_theme');
-
-            // Apply saved theme
-            if (savedTheme === 'dark') {
-                body.classList.add('dark-mode');
-                updateDarkToggleIcon(true);
-            }
-
-            darkToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                const isDark = body.classList.toggle('dark-mode');
-                localStorage.setItem('proposal_theme', isDark ? 'dark' : 'light');
-                updateDarkToggleIcon(isDark);
-            });
-
-            function updateDarkToggleIcon(isDark) {
-                darkToggle.innerHTML = isDark 
-                    ? `<i data-lucide="sun" class="w-4 h-4 text-yellow-400"></i>`
-                    : `<i data-lucide="moon" class="w-4 h-4"></i>`;
-                if (window.lucide) lucide.createIcons();
-            }
-
-            // Language state management
-            const langToggle = document.getElementById('lang-toggle');
-            let currentLang = localStorage.getItem('preferred_lang') || 'id';
-
-            function updateLanguageUI(lang) {
-                currentLang = lang;
-                localStorage.setItem('preferred_lang', lang);
-                
-                // Show/hide elements based on language toggle
-                document.querySelectorAll('.lang-id').forEach(el => {
-                    if (lang === 'id') el.classList.remove('hidden');
-                    else el.classList.add('hidden');
-                });
-                document.querySelectorAll('.lang-en').forEach(el => {
-                    if (lang === 'en') el.classList.remove('hidden');
-                    else el.classList.add('hidden');
-                });
-
-                // Update toggle button text
-                if (langToggle) {
-                    langToggle.innerHTML = `
-                        <i data-lucide="languages" class="w-3.5 h-3.5 text-[#0066cc]"></i>
-                        <span>${lang === 'id' ? 'English' : 'Bahasa'}</span>
-                    `;
-                    if (window.lucide) lucide.createIcons();
-                }
-            }
-
-            // Click handler for language toggle
-            if (langToggle) {
-                langToggle.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const newLang = currentLang === 'id' ? 'en' : 'id';
-                    updateLanguageUI(newLang);
-                });
-            }
-
-            // Init language on load
-            updateLanguageUI(currentLang);
-
-            // Scroll Spy logic to highlight active section on the left navigation
-            const sections = document.querySelectorAll('.book-section');
-            const navLinks = document.querySelectorAll('.nav-card');
-            
-            window.handleScrollSpy = () => {
-                if (document.getElementById('content-proposal').classList.contains('hidden')) return;
-
-                const scrollTop = window.scrollY;
-                const viewportCenter = scrollTop + 250; // Offset calculation for scrollspy
-                
-                let currentIndex = 0;
-                let minDiff = Infinity;
-                
-                sections.forEach((sec, idx) => {
-                    const rect = sec.getBoundingClientRect();
-                    const top = rect.top + scrollTop;
-                    const diff = Math.abs(top - viewportCenter);
-                    if (diff < minDiff) {
-                        minDiff = diff;
-                        currentIndex = idx;
-                    }
-                });
-                
-                navLinks.forEach((link, idx) => {
-                    if (idx === currentIndex) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-            };
-            
-            window.addEventListener('scroll', window.handleScrollSpy, { passive: true });
-            window.addEventListener('resize', window.handleScrollSpy);
-            window.handleScrollSpy();
-
-            // Inject Adsterra
-            const adContainer = document.getElementById('adsterra-banner-unit');
-            if (adContainer) {
-                const scriptOptions = document.createElement('script');
-                scriptOptions.type = 'text/javascript';
-                scriptOptions.text = `
-                    atOptions = {
-                        'key' : '70d4032d0634bd1a04e49f946a536c02',
-                        'format' : 'iframe',
-                        'height' : 90,
-                        'width' : 728,
-                        'params' : {}
-                    };
-                `;
-                adContainer.appendChild(scriptOptions);
-                const scriptInvoke = document.createElement('script');
-                scriptInvoke.type = 'text/javascript';
-                scriptInvoke.src = '//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js';
-                adContainer.appendChild(scriptInvoke);
-            }
-
-            // Inject Adsterra into overview tab
-            const overviewAdContainer = document.getElementById('overview-ad-unit');
-            if (overviewAdContainer) {
-                const scriptOptions = document.createElement('script');
-                scriptOptions.type = 'text/javascript';
-                scriptOptions.text = `
-                    atOptions = {
-                        'key' : '70d4032d0634bd1a04e49f946a536c02',
-                        'format' : 'iframe',
-                        'height' : 90,
-                        'width' : 728,
-                        'params' : {}
-                    };
-                `;
-                overviewAdContainer.appendChild(scriptOptions);
-                const scriptInvoke = document.createElement('script');
-                scriptInvoke.type = 'text/javascript';
-                scriptInvoke.src = '//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js';
-                overviewAdContainer.appendChild(scriptInvoke);
-            }
-
-            if (window.setLoadingProgress) window.setLoadingProgress(100);
-        });
     </script>
+    <script src="js/ojekasia.js?v=1.0.1"></script>
 </body>
 
 </html>

@@ -697,6 +697,29 @@
             transform: translate3d(0,0,0);
             backface-visibility: hidden;
         }
+
+        /* Logo Marquee Animation styles */
+        .logo-marquee-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        .logo-marquee {
+            display: flex;
+            width: max-content;
+            animation: logo-marquee-scroll 12s linear infinite;
+        }
+        .logo-marquee:hover {
+            animation-play-state: paused;
+        }
+        @keyframes logo-marquee-scroll {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
     </style>
     <style>
         /* 3D Stack Carousel Style */
@@ -854,6 +877,54 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Partner -->
+        <section id="cooperation" class="scroll-section">
+            <div class="section-inner px-6 py-4 md:py-6">
+                <div class="max-w-7xl mx-auto w-full flex flex-col justify-center min-h-0">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 reveal-el">
+                        <div>
+                            <h2 class="text-xl sm:text-2xl md:text-4xl font-extrabold text-gray-900 tracking-tight mb-1"
+                                data-t="cooperation_title">Partner</h2>
+                            <p class="text-gray-655 text-[10px] sm:text-xs md:text-sm font-medium" data-t="cooperation_desc">Bekerja sama dengan berbagai instansi dan mitra tepercaya secara nasional maupun global.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Static 3D Cards Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 md:gap-8 py-4">
+                        <!-- Adsterra -->
+                        <div class="bg-[#ecf0f3] shadow-[8px_8px_16px_#b8bec9,-8px_-8px_16px_#ffffff] rounded-3xl p-5 md:p-6 flex items-center justify-center aspect-[4/3] hover:shadow-[inset_3px_3px_6px_#b8bec9,inset_-3px_-3px_6px_#ffffff] hover:scale-[1.03] transition-all duration-300 group">
+                            <img src="documents/Logo/adstera.webp" alt="Adsterra" class="max-h-12 md:max-h-16 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        
+                        <!-- Koala Store -->
+                        <div class="bg-[#ecf0f3] shadow-[8px_8px_16px_#b8bec9,-8px_-8px_16px_#ffffff] rounded-3xl p-5 md:p-6 flex items-center justify-center aspect-[4/3] hover:shadow-[inset_3px_3px_6px_#b8bec9,inset_-3px_-3px_6px_#ffffff] hover:scale-[1.03] transition-all duration-300 group">
+                            <img src="documents/Logo/koalastore.webp" alt="Koala Store" class="max-h-12 md:max-h-16 max-w-full object-contain rounded-xl filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        
+                        <!-- OSS Pemerintah -->
+                        <div class="bg-[#ecf0f3] shadow-[8px_8px_16px_#b8bec9,-8px_-8px_16px_#ffffff] rounded-3xl p-5 md:p-6 flex items-center justify-center aspect-[4/3] hover:shadow-[inset_3px_3px_6px_#b8bec9,inset_-3px_-3px_6px_#ffffff] hover:scale-[1.03] transition-all duration-300 group">
+                            <img src="documents/Logo/logo-oss-pemerintah.webp" alt="OSS Pemerintah" class="max-h-12 md:max-h-16 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        
+                        <!-- Komdigi -->
+                        <div class="bg-[#ecf0f3] shadow-[8px_8px_16px_#b8bec9,-8px_-8px_16px_#ffffff] rounded-3xl p-5 md:p-6 flex items-center justify-center aspect-[4/3] hover:shadow-[inset_3px_3px_6px_#b8bec9,inset_-3px_-3px_6px_#ffffff] hover:scale-[1.03] transition-all duration-300 group">
+                            <img src="documents/Logo/komdigi.webp" alt="Komdigi" class="max-h-12 md:max-h-16 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        
+                        <!-- Easy Fast -->
+                        <div class="bg-[#ecf0f3] shadow-[8px_8px_16px_#b8bec9,-8px_-8px_16px_#ffffff] rounded-3xl p-5 md:p-6 flex items-center justify-center aspect-[4/3] hover:shadow-[inset_3px_3px_6px_#b8bec9,inset_-3px_-3px_6px_#ffffff] hover:scale-[1.03] transition-all duration-300 group">
+                            <img src="documents/Logo/easyfastlogotransaparan.webp" alt="Easy Fast" class="max-h-12 md:max-h-16 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        
+                        <!-- MIJ -->
+                        <div class="bg-[#ecf0f3] shadow-[8px_8px_16px_#b8bec9,-8px_-8px_16px_#ffffff] rounded-3xl p-5 md:p-6 flex items-center justify-center aspect-[4/3] hover:shadow-[inset_3px_3px_6px_#b8bec9,inset_-3px_-3px_6px_#ffffff] hover:scale-[1.03] transition-all duration-300 group">
+                            <img src="documents/Logo/mij-logo.webp" alt="MIJ" class="max-h-12 md:max-h-16 max-w-full object-contain rounded-xl filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1528,6 +1599,9 @@
                     <!-- Subtitle description -->
                     <p class="text-gray-655 max-w-2xl text-[10px] sm:text-xs md:text-sm leading-relaxed" data-t="award_subtitle">
                         Sertifikasi resmi dan standar keamanan siber internasional yang saya kuasai.</p>
+                    <a href="certified.html" class="mt-4 inline-flex items-center gap-2 px-5 py-2 bg-[#ecf0f3] text-blue-600 shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-xl text-xs font-black uppercase transition-all duration-300 hover:scale-105" data-t="award_view_all">
+                        Lihat Selengkapnya <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
                 </div>
             </div>
 
@@ -1638,42 +1712,42 @@
                         <!-- Award 7: Komdigi - Akun -->
                         <div class="blog-slider__item swiper-slide">
                             <div class="blog-slider__img">
-                                <img src="documents/Logo/komdigi.png" alt="Komdigi Account Security">
+                                <img src="documents/Logo/komdigi.webp" alt="Komdigi Account Security">
                             </div>
                             <div class="blog-slider__content">
                                 <span class="blog-slider__code" data-t="award_cat_komdigi">Kementerian Komdigi RI</span>
                                 <div class="blog-slider__title" data-t="award_7_t">Sertifikasi Komdigi - Keamanan Akun</div>
                                 <div class="blog-slider__text" data-t="award_7_d">Sertifikasi resmi dari Kementerian Komunikasi dan Digital RI yang memvalidasi kompetensi dalam pencegahan dan mitigasi ancaman pembobolan akun pribadi serta perlindungan data kredensial.</div>
                                 <a href="documents/certification_komdigi/Sertifikat_ILHAM PRADANI_Ancaman Pembobolan Akun Pribadi dan Pencegahannya.pdf"
-                                    target="_blank" download class="blog-slider__button">DOWNLOAD CERTIFICATE</a>
+                                    target="_blank" class="blog-slider__button">VIEW CERTIFICATE</a>
                             </div>
                         </div>
 
                         <!-- Award 8: Komdigi - ADS -->
                         <div class="blog-slider__item swiper-slide">
                             <div class="blog-slider__img">
-                                <img src="documents/Logo/komdigi.png" alt="Komdigi Associate Data Scientist">
+                                <img src="documents/Logo/komdigi.webp" alt="Komdigi Associate Data Scientist">
                             </div>
                             <div class="blog-slider__content">
                                 <span class="blog-slider__code" data-t="award_cat_ds">Data Science & Python</span>
                                 <div class="blog-slider__title" data-t="award_8_t">Associate Data Scientist (Python) - Nasional</div>
                                 <div class="blog-slider__text" data-t="award_8_d">Sertifikasi kompetensi nasional dalam bidang sains data (Data Science) menggunakan pemrograman Python, meliputi analisis data kuantitatif, pemodelan prediktif, dan pengolahan dataset.</div>
                                 <a href="documents/certification_komdigi/Sertifikat_ILHAM PRADANI_Associate Data Scientist + Python - Nasional.pdf"
-                                    target="_blank" download class="blog-slider__button">DOWNLOAD CERTIFICATE</a>
+                                    target="_blank" class="blog-slider__button">VIEW CERTIFICATE</a>
                             </div>
                         </div>
 
                         <!-- Award 9: Komdigi - Intro DS -->
                         <div class="blog-slider__item swiper-slide">
                             <div class="blog-slider__img">
-                                <img src="documents/Logo/komdigi.png" alt="Komdigi Intro Data Science">
+                                <img src="documents/Logo/komdigi.webp" alt="Komdigi Intro Data Science">
                             </div>
                             <div class="blog-slider__content">
                                 <span class="blog-slider__code" data-t="award_cat_komdigi">Kementerian Komdigi RI</span>
                                 <div class="blog-slider__title" data-t="award_9_t">Sertifikasi Komdigi - Pengenalan Data Science</div>
                                 <div class="blog-slider__text" data-t="award_9_d">Sertifikasi resmi dari Kementerian Komunikasi dan Digital RI mengenai konsep dasar sains data dan penerapan pemanfaatan data analitik di berbagai sektor industri.</div>
                                 <a href="documents/certification_komdigi/Sertifikat_ILHAM PRADANI_Pengenalan Data Science dan Pemanfaatannya di Berbagai Sektor.pdf"
-                                    target="_blank" download class="blog-slider__button">DOWNLOAD CERTIFICATE</a>
+                                    target="_blank" class="blog-slider__button">VIEW CERTIFICATE</a>
                             </div>
                         </div>
 
@@ -1781,7 +1855,7 @@
                                     class="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-all shrink-0"></i>
                             </a>
 
-                            <a href="mailto:algojodua2@gmail.com"
+                            <a href="mailto:hello@ilhampradani.me"
                                 class="neu-card group flex items-center justify-between p-5 sm:p-8 bg-[#ecf0f3] transition-all min-w-0">
                                 <div class="flex items-center gap-6 min-w-0">
                                     <div
@@ -1791,7 +1865,7 @@
                                     <div class="min-w-0">
                                         <h4 class="text-gray-900 font-bold uppercase text-xs tracking-widest mb-1 truncate"
                                             data-t="contact_mail">Email Profesional</h4>
-                                        <p class="text-gray-650 text-sm truncate font-medium">algojodua2@gmail.com</p>
+                                        <p class="text-gray-650 text-sm truncate font-medium">hello@ilhampradani.me</p>
                                     </div>
                                 </div>
                                 <i data-lucide="arrow-up-right"

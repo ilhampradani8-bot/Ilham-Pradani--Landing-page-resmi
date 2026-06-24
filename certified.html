@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Certified | Dr. Ilham Pradani C.L.</title>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="apple-touch-icon" href="image/favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sertifikasi Resmi - Dr. Ilham Pradani C.L.">
+    <meta property="og:image" content="image/hero.jpg">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #ecf0f3;
+            color: #1f2937;
+        }
+
+        .neu-card {
+            background: #ecf0f3;
+            box-shadow: 6px 6px 12px #c8d0e7, -6px -6px 12px #ffffff;
+            border-radius: 20px;
+            border: 1px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .neu-card:hover {
+            box-shadow: 10px 10px 20px #b8c4df, -10px -10px 20px #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .neu-inset {
+            background: #ecf0f3;
+            box-shadow: inset 4px 4px 8px #c8d0e7, inset -4px -4px 8px #ffffff !important;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Custom Scrollbar for list container */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body class="bg-[#ecf0f3] overflow-x-hidden text-gray-800">
+
+    <div id="header-placeholder"></div>
+
+    <main class="pt-28 pb-10 min-h-screen">
+        <!-- Full Width Container with side paddings -->
+        <div class="w-full px-4 sm:px-8 lg:px-12 mx-auto">
+            
+            <!-- Page Header (clean, borderless) -->
+            <div class="text-left mb-8 reveal-el">
+                <div class="inline-flex items-center gap-3 mb-2">
+                    <i data-lucide="award" class="w-7 h-7 text-blue-600"></i>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight" data-t="certified_title">Prestasi & Sertifikasi</h1>
+                </div>
+                <p class="text-gray-500 text-xs sm:text-sm max-w-3xl" data-t="certified_desc">
+                    Kumpulan kredensial profesional, sertifikasi keamanan siber tingkat dunia, dan kompetensi nasional.
+                </p>
+            </div>
+
+            <!-- Two-Column Interactive Layout (Sidebar is sticky/frozen) -->
+            <div class="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 items-start">
+                
+                <!-- Left Column: Certificate Sidebar List (Freezes/Sticky) -->
+                <div class="lg:sticky lg:top-24 flex flex-row lg:flex-col gap-3.5 overflow-x-auto lg:overflow-x-visible lg:overflow-y-auto pb-4 lg:pb-0 lg:max-h-[calc(100vh-160px)] pr-0 lg:pr-2 custom-scrollbar w-full" id="cert-list">
+                    
+                    <!-- 1. Komdigi - Akun -->
+                    <div class="cert-item neu-card p-4 flex items-center gap-4 cursor-pointer transition-all duration-300 shrink-0 w-[280px] lg:w-auto" 
+                         data-cert-id="1" 
+                         data-link="documents/certification_komdigi/Sertifikat_ILHAM PRADANI_Ancaman Pembobolan Akun Pribadi dan Pencegahannya.pdf" 
+                         data-logo="documents/Logo/komdigi.webp" 
+                         data-cat-key="award_cat_komdigi" 
+                         data-title-key="award_7_t" 
+                         data-desc-key="award_7_d" 
+                         data-embed="true">
+                        <div class="w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
+                            <img src="documents/Logo/komdigi.webp" class="object-contain max-h-full max-w-full" alt="Komdigi Logo">
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-0.5" data-t="award_cat_komdigi">Kementerian Komdigi RI</span>
+                            <h3 class="text-xs font-bold text-gray-800 truncate" data-t="award_7_t">Sertifikasi Komdigi - Keamanan Akun</h3>
+                        </div>
+                    </div>
+
+                    <!-- 2. Komdigi - Intro DS -->
+                    <div class="cert-item neu-card p-4 flex items-center gap-4 cursor-pointer transition-all duration-300 shrink-0 w-[280px] lg:w-auto" 
+                         data-cert-id="2" 
+                         data-link="documents/certification_komdigi/Sertifikat_ILHAM PRADANI_Pengenalan Data Science dan Pemanfaatannya di Berbagai Sektor.pdf" 
+                         data-logo="documents/Logo/komdigi.webp" 
+                         data-cat-key="award_cat_komdigi" 
+                         data-title-key="award_9_t" 
+                         data-desc-key="award_9_d" 
+                         data-embed="true">
+                        <div class="w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
+                            <img src="documents/Logo/komdigi.webp" class="object-contain max-h-full max-w-full" alt="Komdigi Logo">
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-0.5" data-t="award_cat_komdigi">Kementerian Komdigi RI</span>
+                            <h3 class="text-xs font-bold text-gray-800 truncate" data-t="award_9_t">Sertifikasi Komdigi - Pengenalan Data Science</h3>
+                        </div>
+                    </div>
+
+                    <!-- 3. Komdigi - ADS -->
+                    <div class="cert-item neu-card p-4 flex items-center gap-4 cursor-pointer transition-all duration-300 shrink-0 w-[280px] lg:w-auto" 
+                         data-cert-id="3" 
+                         data-link="documents/certification_komdigi/Sertifikat_ILHAM PRADANI_Associate Data Scientist + Python - Nasional.pdf" 
+                         data-logo="documents/Logo/komdigi.webp" 
+                         data-cat-key="award_cat_ds" 
+                         data-title-key="award_8_t" 
+                         data-desc-key="award_8_d" 
+                         data-embed="true">
+                        <div class="w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
+                            <img src="documents/Logo/komdigi.webp" class="object-contain max-h-full max-w-full" alt="Komdigi Logo">
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-0.5" data-t="award_cat_ds">Data Science & Python</span>
+                            <h3 class="text-xs font-bold text-gray-800 truncate" data-t="award_8_t">Associate Data Scientist (Python) - Nasional</h3>
+                        </div>
+                    </div>
+
+                    <!-- 4. EF SET -->
+                    <div class="cert-item neu-card p-4 flex items-center gap-4 cursor-pointer transition-all duration-300 shrink-0 w-[280px] lg:w-auto" 
+                         data-cert-id="4" 
+                         data-link="https://cert.efset.org/id/nxnhzQ" 
+                         data-logo="documents/Logo/efsetLOGO.webp" 
+                         data-cat-key="award_cat_lang" 
+                         data-title-key="award_10_t" 
+                         data-desc-key="award_10_d" 
+                         data-preview="documents/certification_komdigi/sertifEFSET.webp"
+                         data-embed="true">
+                        <div class="w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
+                            <img src="documents/Logo/efsetLOGO.webp" class="object-contain max-h-full max-w-full" alt="EF SET Logo">
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-0.5" data-t="award_cat_lang">Standar Kemampuan Bahasa</span>
+                            <h3 class="text-xs font-bold text-gray-800 truncate" data-t="award_10_t">EF SET English Certificate</h3>
+                        </div>
+                    </div>
+
+                    <!-- 5. CompTIA -->
+                    <div class="cert-item neu-card p-4 flex items-center gap-4 cursor-pointer transition-all duration-300 shrink-0 w-[280px] lg:w-auto" 
+                         data-cert-id="5" 
+                         data-link="https://www.comptia.org/certifications/security" 
+                         data-logo="image/comptia_sec_plus.png" 
+                         data-cat-key="award_cat_global" 
+                         data-title-key="award_1_t" 
+                         data-desc-key="award_1_d" 
+                         data-embed="false">
+                        <div class="w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/comptia_sec_plus.png" class="object-contain max-h-full max-w-full" alt="CompTIA Logo">
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-0.5" data-t="award_cat_global">Global Security Standard</span>
+                            <h3 class="text-xs font-bold text-gray-800 truncate" data-t="award_1_t">CompTIA Security+</h3>
+                        </div>
+                    </div>
+
+                    <!-- 6. ISC2 CC -->
+                    <div class="cert-item neu-card p-4 flex items-center gap-4 cursor-pointer transition-all duration-300 shrink-0 w-[280px] lg:w-auto" 
+                         data-cert-id="6" 
+                         data-link="https://www.isc2.org/Certifications/CC" 
+                         data-logo="image/isc2_cc.png" 
+                         data-cat-key="award_cat_cyber" 
+                         data-title-key="award_2_t" 
+                         data-desc-key="award_2_d" 
+                         data-embed="false">
+                        <div class="w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/isc2_cc.png" class="object-contain max-h-full max-w-full" alt="ISC2 Logo">
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-0.5" data-t="award_cat_cyber">Certified in Cybersecurity</span>
+                            <h3 class="text-xs font-bold text-gray-800 truncate" data-t="award_2_t">ISC2 CC</h3>
+                        </div>
+                    </div>
+
+                    <!-- 7. HackerOne -->
+                    <div class="cert-item neu-card p-4 flex items-center gap-4 cursor-pointer transition-all duration-300 shrink-0 w-[280px] lg:w-auto" 
+                         data-cert-id="7" 
+                         data-link="https://hackerone.com/ilhampradani" 
+                         data-logo="image/hackerone.png" 
+                         data-cat-key="award_cat_vuln" 
+                         data-title-key="award_3_t" 
+                         data-desc-key="award_3_d" 
+                         data-embed="false">
+                        <div class="w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/hackerone.png" class="object-contain max-h-full max-w-full" alt="HackerOne Logo">
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-0.5" data-t="award_cat_vuln">Vulnerability Research</span>
+                            <h3 class="text-xs font-bold text-gray-800 truncate" data-t="award_3_t">HackerOne</h3>
+                        </div>
+                    </div>
+
+                    <!-- 8. OSCP -->
+                    <div class="cert-item neu-card p-4 flex items-center gap-4 cursor-pointer transition-all duration-300 shrink-0 w-[280px] lg:w-auto" 
+                         data-cert-id="8" 
+                         data-link="https://www.offsec.com/courses/pen-200/" 
+                         data-logo="image/offsec_oscp.png" 
+                         data-cat-key="award_cat_offense" 
+                         data-title-key="award_4_t" 
+                         data-desc-key="award_4_d" 
+                         data-embed="false">
+                        <div class="w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/offsec_oscp.png" class="object-contain max-h-full max-w-full" alt="OSCP Logo">
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-0.5" data-t="award_cat_offense">Offensive Security Certified</span>
+                            <h3 class="text-xs font-bold text-gray-800 truncate" data-t="award_4_t">OffSec OSCP</h3>
+                        </div>
+                    </div>
+
+                    <!-- 9. CEH Master -->
+                    <div class="cert-item neu-card p-4 flex items-center gap-4 cursor-pointer transition-all duration-300 shrink-0 w-[280px] lg:w-auto" 
+                         data-cert-id="9" 
+                         data-link="https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/" 
+                         data-logo="image/ceh_master.png" 
+                         data-cat-key="award_cat_ethical" 
+                         data-title-key="award_5_t" 
+                         data-desc-key="award_5_d" 
+                         data-embed="false">
+                        <div class="w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/ceh_master.png" class="object-contain max-h-full max-w-full" alt="CEH Logo">
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-0.5" data-t="award_cat_ethical">Ethical Hacking Master</span>
+                            <h3 class="text-xs font-bold text-gray-800 truncate" data-t="award_5_t">CEH Master</h3>
+                        </div>
+                    </div>
+
+                    <!-- 10. GIAC -->
+                    <div class="cert-item neu-card p-4 flex items-center gap-4 cursor-pointer transition-all duration-300 shrink-0 w-[280px] lg:w-auto" 
+                         data-cert-id="10" 
+                         data-link="https://www.giac.org/" 
+                         data-logo="image/giac_gisf.png" 
+                         data-cat-key="award_cat_method" 
+                         data-title-key="award_6_t" 
+                         data-desc-key="award_6_d" 
+                         data-embed="false">
+                        <div class="w-12 h-12 rounded-xl bg-white/70 flex items-center justify-center p-2 shrink-0 overflow-hidden shadow-inner">
+                            <img src="image/giac_gisf.png" class="object-contain max-h-full max-w-full" alt="GIAC Logo">
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-widest block mb-0.5" data-t="award_cat_method">Offensive Methodology</span>
+                            <h3 class="text-xs font-bold text-gray-800 truncate" data-t="award_6_t">GIAC GISF / GPEN</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Document Viewer (Borderless, Full-Width/Spans to the right edge - Sticky on Desktop) -->
+                <div class="w-full flex flex-col justify-between h-[calc(100vh-320px)] lg:h-[calc(100vh-160px)] min-h-[500px] lg:min-h-[640px] mt-4 lg:mt-0 lg:sticky lg:top-24">
+                    
+                    <!-- Metadata Header -->
+                    <div class="pb-3.5 mb-3.5 border-b border-gray-300/60">
+                        <span id="viewer-cat" class="text-[10px] font-black text-blue-600 uppercase tracking-widest block mb-1"></span>
+                        <h2 id="viewer-title" class="text-xl font-extrabold text-gray-900 mb-1"></h2>
+                        <p id="viewer-desc" class="text-gray-500 text-xs leading-relaxed max-w-4xl"></p>
+                    </div>
+
+                    <!-- Main Viewer Pane (Spans completely, clear container) -->
+                    <div class="flex-1 flex flex-col relative bg-white/40 rounded-2xl overflow-hidden border border-gray-300/40 shadow-inner">
+                        <!-- Loading Spinner Overlay -->
+                        <div id="viewer-loading" class="absolute inset-0 bg-[#ecf0f3] flex flex-col items-center justify-center gap-3 z-10 transition-opacity duration-300">
+                            <div class="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                            <span class="text-[10px] font-black text-gray-400 uppercase tracking-wider">Memuat Kredensial...</span>
+                        </div>
+                        
+                        <!-- Embedding Frame -->
+                        <iframe id="viewer-frame" class="w-full h-full border-0 hidden" src="" onload="document.getElementById('viewer-loading').classList.add('opacity-0'); setTimeout(() => document.getElementById('viewer-loading').classList.add('hidden'), 300)"></iframe>
+                        
+                        <!-- Image Preview (EFSET or static screenshots) -->
+                        <div id="viewer-img-container" class="w-full h-full hidden overflow-y-auto flex items-center justify-center p-4 bg-gray-900/5">
+                            <img id="viewer-img-preview" src="" class="max-w-full max-h-full object-contain rounded-lg shadow-md border border-gray-200" alt="Sertifikat Preview">
+                        </div>
+
+                        <!-- Fallback Verification Screen (External Links) -->
+                        <div id="viewer-fallback" class="w-full h-full flex flex-col items-center justify-center p-8 text-center hidden bg-[#ecf0f3]">
+                            <div class="w-20 h-20 bg-white/80 rounded-2xl flex items-center justify-center p-3 shadow-md mb-4 animate-pulse">
+                                <img id="viewer-fallback-logo" src="" class="max-h-full max-w-full object-contain" alt="External Issuer Logo">
+                            </div>
+                            <div class="max-w-md">
+                                <i data-lucide="shield-check" class="w-7 h-7 text-blue-600 mx-auto mb-2.5"></i>
+                                <h4 class="text-xs font-black text-gray-800 uppercase tracking-wider mb-1.5">Sertifikasi Internasional Resmi</h4>
+                                <p class="text-gray-500 text-[11px] leading-relaxed mb-5">Untuk keamanan dan integritas kredensial, sertifikasi ini diverifikasi secara langsung melalui situs verifikasi resmi eksternal.</p>
+                                <a id="viewer-fallback-btn" href="" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-700 shadow-md transition-all">
+                                    Verifikasi di Tab Baru <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Action Bar (only buttons are cards) -->
+                    <div class="mt-4 pt-3.5 border-t border-gray-300/60 flex justify-between items-center">
+                        <div class="flex items-center gap-1.5 text-green-600 font-bold text-xs">
+                            <i data-lucide="verified" class="w-4 h-4"></i> Terverifikasi Resmi
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <!-- Prev/Next PC/Desktop Navigation Arrows -->
+                            <div class="hidden md:flex items-center gap-2">
+                                <button id="prev-cert" class="w-8 h-8 rounded-xl bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] active:scale-95 flex items-center justify-center text-gray-600 transition-all" aria-label="Previous Certificate">
+                                    <i data-lucide="chevron-left" class="w-4.5 h-4.5"></i>
+                                </button>
+                                <button id="next-cert" class="w-8 h-8 rounded-xl bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] active:scale-95 flex items-center justify-center text-gray-600 transition-all" aria-label="Next Certificate">
+                                    <i data-lucide="chevron-right" class="w-4.5 h-4.5"></i>
+                                </button>
+                            </div>
+                            <a id="viewer-link" href="" target="_blank" class="px-5 py-2.5 bg-[#ecf0f3] text-blue-600 shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-xl text-xs font-black uppercase transition-all duration-300 flex items-center gap-2">
+                                Verifikasi Sekarang <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            if (window.setLoadingProgress) window.setLoadingProgress(5);
+            await loadComponent('header-placeholder', 'include/header.html');
+            if (window.setLoadingProgress) window.setLoadingProgress(40);
+            await loadComponent('footer-placeholder', 'include/footer.html');
+            if (window.setLoadingProgress) window.setLoadingProgress(70);
+            applyTranslations();
+            updateLangUI();
+            if (typeof lucide !== "undefined") {
+                lucide.createIcons();
+            }
+            
+            // Set up interactive certificate viewer
+            initCertViewer();
+            
+            if (window.setLoadingProgress) window.setLoadingProgress(100);
+        });
+
+        function initCertViewer() {
+            const certItems = document.querySelectorAll('.cert-item');
+            const viewerCat = document.getElementById('viewer-cat');
+            const viewerTitle = document.getElementById('viewer-title');
+            const viewerDesc = document.getElementById('viewer-desc');
+            const viewerFrame = document.getElementById('viewer-frame');
+            const viewerFallback = document.getElementById('viewer-fallback');
+            const viewerFallbackLogo = document.getElementById('viewer-fallback-logo');
+            const viewerFallbackBtn = document.getElementById('viewer-fallback-btn');
+            const viewerLink = document.getElementById('viewer-link');
+            const viewerLoading = document.getElementById('viewer-loading');
+
+            if (!certItems.length) return;
+
+            let currentCertIndex = 0;
+
+            function selectCert(index) {
+                if (index < 0) index = certItems.length - 1;
+                if (index >= certItems.length) index = 0;
+                currentCertIndex = index;
+                
+                const item = certItems[index];
+                if (!item) return;
+
+                // 1. Reset all active card classes
+                certItems.forEach(el => {
+                    el.classList.remove('neu-inset');
+                    el.classList.add('neu-card');
+                });
+                
+                // 2. Select current card
+                item.classList.add('neu-inset');
+                item.classList.remove('neu-card');
+
+                // Scroll the selected item into view inside the list
+                item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+                // 3. Retrieve attributes
+                const link = item.getAttribute('data-link');
+                const logo = item.getAttribute('data-logo');
+                const catKey = item.getAttribute('data-cat-key');
+                const titleKey = item.getAttribute('data-title-key');
+                const descKey = item.getAttribute('data-desc-key');
+                const embed = item.getAttribute('data-embed') === 'true';
+                const preview = item.getAttribute('data-preview');
+
+                // 4. Update texts & translations
+                viewerCat.setAttribute('data-t', catKey);
+                viewerTitle.setAttribute('data-t', titleKey);
+                viewerDesc.setAttribute('data-t', descKey);
+                applyTranslations();
+
+                // 5. Update URLs
+                viewerLink.setAttribute('href', link);
+                viewerFallbackBtn.setAttribute('href', link);
+
+                // 6. Handle loading/embedding behavior
+                viewerLoading.classList.remove('hidden', 'opacity-0');
+                viewerLoading.classList.add('opacity-100');
+
+                // Clear previous view
+                viewerFrame.classList.add('hidden');
+                viewerImgContainer.classList.add('hidden');
+                viewerFallback.classList.add('hidden');
+
+                if (preview) {
+                    // Show local image preview (like EF SET image)
+                    viewerImgPreview.src = preview;
+                    viewerImgContainer.classList.remove('hidden');
+                    
+                    viewerLoading.classList.add('opacity-0');
+                    setTimeout(() => viewerLoading.classList.add('hidden'), 300);
+                } else if (embed) {
+                    // Embed PDF or link in iframe
+                    viewerFrame.src = link;
+                    viewerFrame.classList.remove('hidden');
+                } else {
+                    // Show fallback
+                    viewerFallbackLogo.src = logo;
+                    viewerFallback.classList.remove('hidden');
+                    
+                    viewerLoading.classList.add('opacity-0');
+                    setTimeout(() => viewerLoading.classList.add('hidden'), 300);
+                }
+            }
+
+            // Bind click handlers
+            certItems.forEach((item, index) => {
+                item.addEventListener('click', () => selectCert(index));
+            });
+
+            // Bind desktop arrow controls
+            const prevBtn = document.getElementById('prev-cert');
+            const nextBtn = document.getElementById('next-cert');
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => selectCert(currentCertIndex - 1));
+                nextBtn.addEventListener('click', () => selectCert(currentCertIndex + 1));
+            }
+
+            // Auto-select the first certificate
+            selectCert(0);
+        }
+    </script>
+</body>
+</html>

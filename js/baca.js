@@ -204,25 +204,38 @@ async function renderFullContent() {
                 </div>
             `;
 
-            // Inject Adsterra Banner
+            // Inject Adsterra Banner safely in a sandboxed iframe to prevent top-level page hijacking/redirects during scroll
             const adContainer = document.getElementById('adsterra-banner-unit');
             if (adContainer) {
-                const scriptOptions = document.createElement('script');
-                scriptOptions.type = 'text/javascript';
-                scriptOptions.text = `
-                    atOptions = {
-                        'key' : '70d4032d0634bd1a04e49f946a536c02',
-                        'format' : 'iframe',
-                        'height' : 90,
-                        'width' : 728,
-                        'params' : {}
-                    };
+                const iframe = document.createElement('iframe');
+                iframe.width = 728;
+                iframe.height = 90;
+                iframe.frameBorder = 0;
+                iframe.scrolling = 'no';
+                // Sandbox attributes to prevent top-level redirects
+                // allow-scripts: needed to run the ad script
+                // allow-same-origin: needed because some ad scripts need it to fetch resources
+                // allow-popups: allows ads to open in a new window/tab when clicked
+                // Omit 'allow-top-navigation' so it cannot redirect the parent page!
+                iframe.sandbox = 'allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox';
+                
+                const html = `
+                    <body style="margin:0;padding:0;background:transparent;display:flex;justify-content:center;align-items:center;">
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '70d4032d0634bd1a04e49f946a536c02',
+                                'format' : 'iframe',
+                                'height' : 90,
+                                'width' : 728,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js"></script>
+                    </body>
                 `;
-                adContainer.appendChild(scriptOptions);
-                const scriptInvoke = document.createElement('script');
-                scriptInvoke.type = 'text/javascript';
-                scriptInvoke.src = '//www.highperformanceformat.com/70d4032d0634bd1a04e49f946a536c02/invoke.js';
-                adContainer.appendChild(scriptInvoke);
+                iframe.srcdoc = html;
+                adContainer.innerHTML = '';
+                adContainer.appendChild(iframe);
             }
 
             if (window.lucide) lucide.createIcons();
@@ -518,11 +531,13 @@ function initScrollAnimations() {
 }
 
 // EXECUTION
-document.addEventListener('DOMContentLoaded', () => {
-    loadComponent('header-placeholder', 'include/header.html').then(() => {
-        applyTranslations();
-        updateLangUI();
-    });
-    loadComponent('footer-placeholder', 'include/footer.html');
-    renderFullContent();
+document.addEventListener('DOMContentLoaded', async () => {
+    if (window.setLoadingProgress) window.setLoadingProgress(5);
+    await loadComponent('header-placeholder', 'include/header.html');
+    if (window.setLoadingProgress) window.setLoadingProgress(35);
+    await loadComponent('footer-placeholder', 'include/footer.html');
+    if (window.setLoadingProgress) window.setLoadingProgress(55);
+    applyTranslations();
+    updateLangUI();
+    await renderFullContent();
 });

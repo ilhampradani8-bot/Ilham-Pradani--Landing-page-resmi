@@ -231,7 +231,7 @@
                     <!-- Visual Section & Logo Display -->
                     <div class="flex flex-col md:flex-row items-center gap-8 py-6">
                         <div class="shrink-0 w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
-                            <img src="documents/Logo/easyfastlogotransaparan.png" alt="EasyMarket Logo" class="w-full h-full object-contain">
+                            <img src="documents/Logo/easyfastlogotransaparan.webp" alt="EasyMarket Logo" class="w-full h-full object-contain">
                         </div>
                         <div class="space-y-3">
                             <h3 class="text-lg font-bold lang-id">Keunggulan Utama:</h3>
@@ -831,7 +831,7 @@
 
                     <!-- OSS Logo Display & Short Text -->
                     <div class="flex flex-col sm:flex-row items-center gap-8 py-6 border-t border-gray-200/60 dark:border-white/10">
-                        <img src="documents/Logo/logo-oss-pemerintah.png" alt="OSS Logo" class="w-28 h-28 object-contain">
+                        <img src="documents/Logo/logo-oss-pemerintah.webp" alt="OSS Logo" class="w-28 h-28 object-contain">
                         
                         <!-- ID -->
                         <div class="space-y-2 lang-id">
@@ -891,7 +891,7 @@
 
                         <!-- OSS -->
                         <div class="flex items-center gap-4 py-4">
-                            <img src="documents/Logo/logo-oss-pemerintah.png" alt="OSS Logo" class="w-20 h-20 object-contain shrink-0">
+                            <img src="documents/Logo/logo-oss-pemerintah.webp" alt="OSS Logo" class="w-20 h-20 object-contain shrink-0">
                             <div>
                                 <h4 class="font-bold text-sm lang-id">Legalitas Terdaftar (OSS)</h4>
                                 <h4 class="font-bold text-sm lang-en hidden">Registered Legality (OSS)</h4>
@@ -1076,7 +1076,7 @@
 
             return `
                 <div class="w-8 h-8 rounded-lg ${bgColor} flex items-center justify-center shrink-0 select-none p-1.5 shadow-sm">
-                    <img src="documents/Logo/easyfastlogotransaparan.png" alt="Logo" class="w-full h-full object-contain brightness-0 invert">
+                    <img src="documents/Logo/easyfastlogotransaparan.webp" alt="Logo" class="w-full h-full object-contain brightness-0 invert">
                 </div>
             `;
         }
@@ -1216,7 +1216,7 @@
 
 
         // Initial setup on load
-        document.addEventListener('DOMContentLoaded', async () => {
+        const initPage = async () => {
             if (window.setLoadingProgress) window.setLoadingProgress(5);
             
             if (window.loadComponent) {
@@ -1252,18 +1252,22 @@
                 updateDarkToggleIcon(true);
             }
 
-            darkToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                const isDark = body.classList.toggle('dark-mode');
-                localStorage.setItem('proposal_theme', isDark ? 'dark' : 'light');
-                updateDarkToggleIcon(isDark);
-            });
-
             function updateDarkToggleIcon(isDark) {
-                darkToggle.innerHTML = isDark 
-                    ? `<i data-lucide="sun" class="w-4 h-4 text-yellow-400"></i>`
-                    : `<i data-lucide="moon" class="w-4 h-4"></i>`;
-                if (window.lucide) lucide.createIcons();
+                if (darkToggle) {
+                    darkToggle.innerHTML = isDark 
+                        ? `<i data-lucide="sun" class="w-4 h-4 text-yellow-400"></i>`
+                        : `<i data-lucide="moon" class="w-4 h-4"></i>`;
+                    if (window.lucide) lucide.createIcons();
+                }
+            }
+
+            if (darkToggle) {
+                darkToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const isDark = body.classList.toggle('dark-mode');
+                    localStorage.setItem('proposal_theme', isDark ? 'dark' : 'light');
+                    updateDarkToggleIcon(isDark);
+                });
             }
 
             // Language state management
@@ -1314,7 +1318,13 @@
             updateLanguageUI(currentLang);
 
             if (window.setLoadingProgress) window.setLoadingProgress(100);
-        });
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
     </script>
 </body>
 

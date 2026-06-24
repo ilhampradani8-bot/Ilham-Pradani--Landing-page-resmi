@@ -47,7 +47,7 @@ async function loadArtikel() {
                             <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-gray-500 font-semibold mb-2">
                                 <div class="flex items-center gap-1.5 hover:text-blue-600 transition-colors">
                                     <i data-lucide="user" class="w-3 h-3"></i>
-                                    <span>Dr. Ilham Pradani</span>
+                                    <span>Dr. Ilham Pradani C.L.</span>
                                 </div>
                                 <div class="flex items-center gap-1.5">
                                     <i data-lucide="calendar" class="w-3 h-3"></i>
@@ -348,9 +348,9 @@ function initParallaxScroll() {
         navLinks.forEach(link => {
             const secId = link.getAttribute('data-section');
             if (secId === activeId) {
-                link.className = "nav-link hover:text-blue-600 transition-all duration-300 px-2.5 py-1.5 rounded-full text-blue-600 font-extrabold shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff]";
+                link.className = "nav-link hover:text-blue-600 transition-all duration-300 px-2.5 py-1.5 rounded-full text-blue-600 font-extrabold shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] flex items-center gap-2 text-xs";
             } else {
-                link.className = "nav-link hover:text-blue-600 transition-all duration-300 px-2.5 py-1.5 rounded-full text-gray-600 font-bold";
+                link.className = "nav-link hover:text-blue-600 transition-all duration-300 px-2.5 py-1.5 rounded-full text-gray-700 font-bold flex items-center gap-2 text-xs";
             }
         });
 
@@ -358,9 +358,9 @@ function initParallaxScroll() {
         mNavLinks.forEach(link => {
             const secId = link.getAttribute('data-section');
             if (secId === activeId) {
-                link.className = "m-nav-link text-blue-600 hover:text-blue-600 font-black transition-colors";
+                link.className = "m-nav-link text-blue-600 hover:text-blue-600 font-black transition-colors flex items-center gap-2 text-[11px]";
             } else {
-                link.className = "m-nav-link text-gray-800 hover:text-blue-600 font-medium transition-colors";
+                link.className = "m-nav-link text-gray-700 hover:text-blue-600 font-bold transition-colors flex items-center gap-2 text-[11px]";
             }
         });
 
