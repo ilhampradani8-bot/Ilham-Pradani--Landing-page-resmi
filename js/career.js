@@ -12,6 +12,7 @@ async function loadComponent(id, file) {
 
 document.addEventListener('DOMContentLoaded', async () => {
     await loadComponent('header-placeholder', 'include/header.html');
+    await loadComponent('footer-placeholder', 'include/footer.html');
     if (window.lucide) lucide.createIcons();
 });
 

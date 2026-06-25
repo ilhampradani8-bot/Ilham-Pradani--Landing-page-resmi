@@ -18,7 +18,7 @@
         .neu-pressed { box-shadow: inset 4px 4px 8px #c8d0e7, inset -4px -4px 8px #ffffff; }
     </style>
 </head>
-<body class="bg-[#ecf0f3] overflow-hidden text-gray-800">
+<body class="bg-[#ecf0f3] text-gray-800 relative">
     <div id="header-placeholder" class="fixed w-full top-0 z-50"></div>
 
     <button onclick="toggleSidebar(true)" class="lg:hidden fixed left-0 top-1/2 -translate-y-1/2 z-[60] bg-[#ecf0f3] text-blue-600 p-3 rounded-r-2xl shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] border-y border-r border-white/50 transition-all">
@@ -53,78 +53,78 @@
         </div>
     </aside>
 
-    <main class="pt-20 lg:pl-80 h-screen flex flex-col transition-all duration-300 overflow-y-auto custom-scrollbar">
-        <div class="w-full max-w-4xl mx-auto p-6 md:p-12 mb-20">
-            <div class="neu-card p-8 md:p-12 bg-[#ecf0f3]">
-                <div class="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 border-b border-gray-300 pb-6">
-                    <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full neu-pressed border border-white/20 mb-4">
-                            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-                            <span class="text-[10px] font-bold text-gray-700 uppercase tracking-widest">Lowongan Tersedia</span>
-                        </div>
-                        <h1 class="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-tight mb-2">Mitra Reseller Digital</h1>
-                        <p class="text-gray-500 font-semibold text-sm">PT Perorangan Easy Software Engineer</p>
+    <main class="pt-20 lg:pl-80 flex flex-col transition-all duration-300 min-h-screen">
+        <div class="w-full px-6 md:px-12 py-10 pb-20">
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 border-b border-gray-300 pb-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full neu-pressed border border-white/20 mb-4">
+                        <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                        <span class="text-[10px] font-bold text-gray-700 uppercase tracking-widest">Lowongan Tersedia</span>
                     </div>
-                    <div class="shrink-0">
-                        <a href="https://wa.me/6288971071138?text=Halo%20saya%20tertarik%20bergabung%20menjadi%20Mitra%20Reseller%20EasyMarket" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl text-sm font-black uppercase tracking-widest shadow-[4px_4px_10px_rgba(59,130,246,0.3),-4px_-4px_10px_#ffffff] hover:bg-blue-700 transition-all hover:scale-105">
-                            Daftar Sekarang <i data-lucide="send" class="w-4 h-4"></i>
-                        </a>
-                    </div>
+                    <h1 class="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-tight mb-2">Mitra Reseller Digital</h1>
+                    <p class="text-gray-500 font-semibold text-sm">PT Perorangan Easy Software Engineer</p>
                 </div>
+                <div class="shrink-0">
+                    <a href="https://wa.me/6288971071138?text=Halo%20saya%20tertarik%20bergabung%20menjadi%20Mitra%20Reseller%20EasyMarket" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl text-sm font-black uppercase tracking-widest shadow-[4px_4px_10px_rgba(59,130,246,0.3),-4px_-4px_10px_#ffffff] hover:bg-blue-700 transition-all hover:scale-105">
+                        Daftar Sekarang <i data-lucide="send" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
 
-                <div class="space-y-8 text-gray-700">
-                    <section>
-                        <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                            <i data-lucide="file-text" class="w-5 h-5 text-blue-600"></i> Tentang Peran Ini
-                        </h3>
-                        <p class="text-sm leading-relaxed">
-                            Kami membuka kesempatan kemitraan bisnis digital bagi Anda yang ingin menjadi <strong>Mitra Reseller Independen</strong> untuk ekosistem distribusi produk digital EasyMarket. Kemitraan ini sah secara hukum dan berada di bawah payung legalitas PT Perorangan Easy Software Engineer (NIB: 2506260085972).
-                        </p>
-                    </section>
+            <div class="space-y-12 text-gray-700 max-w-5xl">
+                <section>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5 text-blue-600"></i> Tentang Peran Ini
+                    </h3>
+                    <p class="text-sm leading-relaxed">
+                        Kami membuka kesempatan kemitraan bisnis digital bagi Anda yang ingin menjadi <strong>Mitra Reseller Independen</strong> untuk ekosistem distribusi produk digital EasyMarket. Kemitraan ini sah secara hukum dan berada di bawah payung legalitas PT Perorangan Easy Software Engineer (NIB: 2506260085972).
+                    </p>
+                </section>
 
-                    <section>
-                        <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                            <i data-lucide="layers" class="w-5 h-5 text-purple-600"></i> Pilihan Skema Kerja Sama
-                        </h3>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="p-4 rounded-xl neu-pressed bg-[#ecf0f3]">
-                                <h4 class="font-bold text-gray-900 mb-1">Skema White Label</h4>
-                                <p class="text-xs text-gray-600">Distribusi menggunakan identitas/merek Anda sendiri melalui integrasi Bot Mandiri.</p>
-                            </div>
-                            <div class="p-4 rounded-xl neu-pressed bg-[#ecf0f3]">
-                                <h4 class="font-bold text-gray-900 mb-1">Skema Non-White Label</h4>
-                                <p class="text-xs text-gray-600">Mendistribusikan produk kami menggunakan sistem komisi yang transparan.</p>
-                            </div>
+                <section>
+                    <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        <i data-lucide="layers" class="w-5 h-5 text-purple-600"></i> Pilihan Skema Kerja Sama
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="p-5 rounded-2xl neu-pressed bg-[#ecf0f3]">
+                            <h4 class="font-bold text-gray-900 mb-2">Skema White Label</h4>
+                            <p class="text-sm text-gray-600">Distribusi menggunakan identitas/merek Anda sendiri melalui integrasi Bot Mandiri.</p>
                         </div>
-                    </section>
+                        <div class="p-5 rounded-2xl neu-pressed bg-[#ecf0f3]">
+                            <h4 class="font-bold text-gray-900 mb-2">Skema Non-White Label</h4>
+                            <p class="text-sm text-gray-600">Mendistribusikan produk kami menggunakan sistem komisi yang transparan.</p>
+                        </div>
+                    </div>
+                </section>
 
-                    <section>
-                        <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                            <i data-lucide="shield-alert" class="w-5 h-5 text-amber-600"></i> Syarat & Ketentuan Kemitraan
-                        </h3>
-                        <ul class="space-y-2 text-sm">
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 mt-1 shrink-0"></i>
-                                <span><strong>Integritas Sistem:</strong> Mitra wajib menjaga keamanan operasional. Dilarang keras melakukan manipulasi data, injeksi skrip, eksploitasi celah keamanan (bug), atau aktivitas spamming pada server VPS kami.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 mt-1 shrink-0"></i>
-                                <span><strong>Kepatuhan Hukum:</strong> Dilarang menggunakan sistem EasyMarket untuk memfasilitasi penipuan, pencucian uang, perjudian, atau pelanggaran pidana lainnya di wilayah NKRI.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 mt-1 shrink-0"></i>
-                                <span><strong>Tanggung Jawab Penuh:</strong> Segala kerugian materiil akibat kelalaian atau pelanggaran hukum yang dilakukan oleh Mitra menjadi tanggung jawab hukum Mitra secara pribadi.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 mt-1 shrink-0"></i>
-                                <span><strong>Sanksi Pelanggaran:</strong> Kami berhak melakukan pemblokiran hak akses secara sepihak dan membekukan saldo deposit jika terjadi pelanggaran berat terhadap infrastruktur.</span>
-                            </li>
-                        </ul>
-                    </section>
-                </div>
+                <section>
+                    <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-amber-600"></i> Syarat & Ketentuan Kemitraan
+                    </h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 shrink-0"></i>
+                            <span class="leading-relaxed"><strong>Integritas Sistem:</strong> Mitra wajib menjaga keamanan operasional. Dilarang keras melakukan manipulasi data, injeksi skrip, eksploitasi celah keamanan (bug), atau aktivitas spamming pada server VPS kami.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 shrink-0"></i>
+                            <span class="leading-relaxed"><strong>Kepatuhan Hukum:</strong> Dilarang menggunakan sistem EasyMarket untuk memfasilitasi penipuan, pencucian uang, perjudian, atau pelanggaran pidana lainnya di wilayah NKRI.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 shrink-0"></i>
+                            <span class="leading-relaxed"><strong>Tanggung Jawab Penuh:</strong> Segala kerugian materiil akibat kelalaian atau pelanggaran hukum yang dilakukan oleh Mitra menjadi tanggung jawab hukum Mitra secara pribadi.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600 shrink-0"></i>
+                            <span class="leading-relaxed"><strong>Sanksi Pelanggaran:</strong> Kami berhak melakukan pemblokiran hak akses secara sepihak dan membekukan saldo deposit jika terjadi pelanggaran berat terhadap infrastruktur.</span>
+                        </li>
+                    </ul>
+                </section>
             </div>
         </div>
     </main>
+
+    <div id="footer-placeholder" class="lg:pl-80 relative z-10 bg-[#ecf0f3]"></div>
 
     <script src="js/career.js"></script>
 </body>
