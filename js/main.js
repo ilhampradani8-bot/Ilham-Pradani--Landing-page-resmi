@@ -130,8 +130,21 @@ async function applyTranslations() {
         const t = await response.json();
         document.querySelectorAll('[data-t]').forEach(el => {
             const key = el.getAttribute('data-t');
-            if (t[key]) el.innerHTML = t[key];
+            if (t[key]) {
+                const icon = el.querySelector('i[data-lucide], svg.lucide');
+                if (icon) {
+                    const iconHTML = icon.outerHTML;
+                    if (el.innerHTML.trim().startsWith('<i') || el.innerHTML.trim().startsWith('<svg')) {
+                        el.innerHTML = iconHTML + ' ' + t[key];
+                    } else {
+                        el.innerHTML = t[key] + ' ' + iconHTML;
+                    }
+                } else {
+                    el.innerHTML = t[key];
+                }
+            }
         });
+        if (window.lucide) lucide.createIcons();
     } catch (e) { console.error("Translation Error:", e); }
 }
 
@@ -165,7 +178,7 @@ async function loadComponent(id, file) {
             el.innerHTML = await res.text();
             if (window.lucide) lucide.createIcons();
             updateLangUI();
-            applyTranslations();
+            await applyTranslations();
             if (id === 'header-placeholder') {
                 window.setLoadingProgress(15);
             }
