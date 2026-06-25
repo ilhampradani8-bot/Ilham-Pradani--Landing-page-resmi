@@ -1,0 +1,106 @@
+﻿SURAT PERJANJIAN INDUK KEMITRAAN BISNIS DIGITAL
+EASYMARKET DIGITAL PRODUCT
+Nomor NIB: 2506260085972
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Perjanjian Induk Kemitraan Bisnis Digital ini (selanjutnya disebut sebagai "Perjanjian Induk") dibuat, disepakati, dan ditandatangani secara sadar oleh para pihak di bawah ini guna menyusun landasan hukum, hak, serta kewajiban yang bersifat umum dalam ekosistem distribusi produk digital EasyMarket.
+
+
+
+
+Komponen Data
+	PIHAK PERTAMA (Penyedia Utama)
+	PIHAK KEDUA (Mitra Reseller)
+ 
+	Nama Lengkap
+	ILHAM PRADANI
+	[Nama Lengkap Reseller]
+	Identitas / NIB
+	NIB: 2506260085972
+	[No. KTP / Identitas Resmi]
+	Alamat Usaha / Domisili
+	SERAI, Desa/Kelurahan Serai, Kec. Pesisir Tengah, Kab. Pesisir Barat, Provinsi Lampung
+	[Alamat Lengkap Reseller]
+	No. Kontak Aktif
+	(+62) 88971071138
+	[Nomor WhatsApp Pihak 2]
+	
+
+
+
+Masing-masing pihak bertindak dalam kapasitas hukum yang sah dan secara kolektif disebut sebagai "Para Pihak". Para Pihak terlebih dahulu menerangkan klausul umum sebagai berikut:
+
+
+PASAL 1: LEGALITAS DAN RUANG LINGKUP OPERASIONAL
+1.  PIHAK PERTAMA merupakan pemilik operasional, pengembang, sekaligus pemegang hak legalitas atas merek dan sistem otomasi digital EasyMarket yang berjalan sah di bawah payung hukum Perizinan Berusaha Berbasis Risiko dengan Nomor Induk Berusaha (NIB) 2506260085972.
+
+
+2.  Legalitas usaha PIHAK PERTAMA mencakup Klasifikasi Baku Lapangan Usaha Indonesia (KBLI) resmi pemerintah, yaitu: KBLI 62900 (Aktivitas Jasa Teknologi Informasi dan Komputer Lainnya), KBLI 62199 (Aktivitas Pemrograman Komputer Lainnya), dan KBLI 58290 (Penerbitan Perangkat Lunak/Software Lainnya).
+
+
+3.  PIHAK KEDUA merupakan mitra independen (reseller) yang mendaftarkan diri secara sah untuk mendistribusikan produk digital milik PIHAK PERTAMA kepada konsumen akhir baik secara langsung maupun melalui sub-sistem.
+
+
+PASAL 2: KEAMANAN SISTEM DAN INFRASTRUKTUR VPS
+1. PIHAK KEDUA berkewajiban menjaga integritas operasional ekosistem EasyMarket dan dilarang keras melakukan tindakan manipulasi data, injeksi skrip berbahaya, eksploitasi celah keamanan (bug), atau aktivitas pemboman pesan (spamming) yang berpotensi merusak server Virtual Private Server (VPS) yang dikelola PIHAK PERTAMA.
+
+
+2. Apabila terjadi gangguan sistem massal akibat tindakan langsung atau tidak langsung dari kelalaian PIHAK KEDUA, PIHAK PERTAMA berhak melakukan pemblokiran hak akses secara sepihak dan membekukan saldo deposit berjalan sebagai bentuk jaminan pemulihan sistem.
+
+
+PASAL 3: INTEGRITAS DAN ASPEK PIDANA
+1. PIHAK KEDUA dilarang keras menggunakan produk, sistem, ataupun media informasi EasyMarket untuk memfasilitasi tindakan penipuan, pencucian uang, perjudian, atau pelanggaran hukum pidana positif lainnya yang berlaku di wilayah Negara Kesatuan Republik Indonesia.
+
+
+2. Segala bentuk kerugian materiil maupun immateriil yang diderita oleh konsumen akhir akibat tindakan penipuan atau kelalaian murni yang dilakukan oleh PIHAK KEDUA menjadi tanggung jawab hukum penuh PIHAK KEDUA secara pribadi, dan membebaskan PIHAK PERTAMA dari segala tuntutan hukum di kemudian hari.
+
+
+PASAL 4: PILIHAN LAMPIRAN SKEMA KERJA SAMA
+Kerja sama operasional secara mendalam diatur melalui Perjanjian Khusus yang bersifat aditif dan mengikat, di mana PIHAK KEDUA dapat memilih skema yang sesuai melalui:
+* Addendum A: Ketentuan Spesifik Skema Kemitraan White Label (Bot Mandiri)
+* Addendum B: Ketentuan Spesifik Skema Kemitraan Non-White Label (Sistem Komisi)
+
+
+PASAL 5: PENYELESAIAN PERSELISIHAN
+Segala bentuk perselisihan penafsiran isi Perjanjian Induk ini akan diselesaikan secara musyawarah mufakat demi asas kekeluargaan dan keberlanjutan bisnis. Apabila titik temu tidak tercapai, Para Pihak sepakat untuk menetapkan domisili hukum penyelesaian di kepaniteraan Pengadilan Negeri terdekat dari domisili hukum PIHAK PERTAMA.
+
+
+Demikian Perjanjian Induk ini dibuat dalam rangkap yang mempunyai kekuatan hukum yang sama, ditandatangani di atas kertas digital bermeterai atau sah demi hukum oleh Para Pihak.
+
+
+PIHAK PERTAMA
+Penyedia Utama EasyMarket
+
+
+
+
+
+
+
+
+( ILHAM PRADANI )
+	PIHAK KEDUA
+Mitra Reseller Terdaftar
+
+
+
+
+
+
+
+
+( ___________________________ )
