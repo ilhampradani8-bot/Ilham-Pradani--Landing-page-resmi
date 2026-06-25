@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ilham Pradani C.L. | Izin Usaha & Sertifikasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ecf0f3; color: #1f2937; scroll-behavior: smooth; }
+        .sidebar-transition { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .active-doc { background-color: #e0e5e9; color: #2563eb; font-weight: 800; border-right: 3px solid #2563eb; }
+    </style>
+</head>
+<body class="bg-[#ecf0f3] overflow-hidden text-gray-800">
+    <div id="header-placeholder" class="fixed w-full top-0 z-50"></div>
+
+    <button onclick="toggleSidebar(true)" class="lg:hidden fixed left-0 top-1/2 -translate-y-1/2 z-[60] bg-[#ecf0f3] text-blue-600 p-3 rounded-r-2xl shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] border-y border-r border-white/50 transition-all">
+        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+    </button>
+
+    <div id="sidebar-overlay" onclick="toggleSidebar(false)" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-30 hidden opacity-0 transition-opacity duration-300 lg:hidden"></div>
+
+    <aside id="sidebar-nav" class="fixed top-20 left-0 h-[calc(100vh-5rem)] w-72 sm:w-80 bg-[#ecf0f3] shadow-[8px_0_24px_#b8bec9] z-40 sidebar-transition -translate-x-full lg:translate-x-0 p-6 sm:p-8 overflow-y-auto border-r border-white/40 custom-scrollbar">
+        <div class="flex items-center justify-between mb-8">
+            <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest">Kategori Izin Usaha</h3>
+            <button onclick="toggleSidebar(false)" class="lg:hidden text-gray-500 hover:text-blue-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+
+        <div class="space-y-4">
+            <!-- NIB -->
+            <div class="border-b border-gray-200/60 pb-2">
+                <button onclick="toggleSub('sub-nib', 'arrow-nib')" class="w-full flex items-center justify-between text-sm font-extrabold text-gray-800 py-2 focus:outline-none">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="file-check-2" class="w-4 h-4 text-blue-600"></i>
+                        <span>Standar NIB</span>
+                    </div>
+                    <i data-lucide="chevron-down" id="arrow-nib" class="w-4 h-4 transition-transform duration-300"></i>
+                </button>
+                <div id="sub-nib" class="hidden flex-col pl-6 mt-2 space-y-1">
+                    <button onclick="openPdf('documents/legalitas-perizinan/NIB-Penerbtan-perangkat-lunak+2Nib-lainnya.pdf', this)" class="doc-btn w-full text-left py-2 px-3 text-[10px] sm:text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-200/50 rounded-lg transition-colors">Penerbitan Perangkat Lunak</button>
+                    <button onclick="openPdf('documents/legalitas-perizinan/NIB-Aktivitas Pemrograman Komputer Lainnya YTDL.pdf', this)" class="doc-btn w-full text-left py-2 px-3 text-[10px] sm:text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-200/50 rounded-lg transition-colors">Aktivitas Pemrograman Komputer YTDL</button>
+                    <button onclick="openPdf('documents/legalitas-perizinan/NIB-Aktivitas Jasa Teknologi Informasi dan Komputer Lainnya & Aktivitas Pemrograman Komputer Lainnya YTDL .pdf', this)" class="doc-btn w-full text-left py-2 px-3 text-[10px] sm:text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-200/50 rounded-lg transition-colors">Jasa TI & Pemrograman Komputer</button>
+                </div>
+            </div>
+
+            <!-- AMDAL -->
+            <div class="border-b border-gray-200/60 pb-2">
+                <button onclick="toggleSub('sub-amdal', 'arrow-amdal')" class="w-full flex items-center justify-between text-sm font-extrabold text-gray-800 py-2 focus:outline-none">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="leaf" class="w-4 h-4 text-green-600"></i>
+                        <span>Dokumen AMDAL</span>
+                    </div>
+                    <i data-lucide="chevron-down" id="arrow-amdal" class="w-4 h-4 transition-transform duration-300"></i>
+                </button>
+                <div id="sub-amdal" class="hidden flex-col pl-6 mt-2 space-y-1">
+                    <button onclick="openPdf('documents/legalitas-perizinan/AMDAL/AMDAL- Aktivitas pemrograman komputer lainnya.pdf', this)" class="doc-btn w-full text-left py-2 px-3 text-[10px] sm:text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-200/50 rounded-lg transition-colors">Aktivitas Pemrograman Komputer Lainnya</button>
+                    <button onclick="openPdf('documents/legalitas-perizinan/AMDAL/AMDAL-penerbitan-perangkat-lunak(sofware)lainnya.pdf', this)" class="doc-btn w-full text-left py-2 px-3 text-[10px] sm:text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-200/50 rounded-lg transition-colors">Penerbitan Perangkat Lunak</button>
+                    <button onclick="openPdf('documents/legalitas-perizinan/AMDAL/AMDAL-Aktivitas Pemrograman Komputer Lainnya YTDL.pdf', this)" class="doc-btn w-full text-left py-2 px-3 text-[10px] sm:text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-200/50 rounded-lg transition-colors">Aktivitas Pemrograman YTDL</button>
+                    <button onclick="openPdf('documents/legalitas-perizinan/AMDAL/AMDAL-aktivitas-jasa-teknologi-informasi-dan-komputer-lainnya.pdf', this)" class="doc-btn w-full text-left py-2 px-3 text-[10px] sm:text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-200/50 rounded-lg transition-colors">Jasa Teknologi Informasi</button>
+                    <button onclick="openPdf('documents/legalitas-perizinan/AMDAL/AMDAL - PERNYATAAN MANDIRI Menjaga Keselamatan, Keamanan, Kesehatan dan pelestarian fungsi Lingkungan (K3L) .pdf', this)" class="doc-btn w-full text-left py-2 px-3 text-[10px] sm:text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-200/50 rounded-lg transition-colors">Pernyataan Mandiri K3L</button>
+                </div>
+            </div>
+
+            <!-- Mikro -->
+            <div class="border-b border-gray-200/60 pb-2">
+                <button onclick="toggleSub('sub-mikro', 'arrow-mikro')" class="w-full flex items-center justify-between text-sm font-extrabold text-gray-800 py-2 focus:outline-none">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="store" class="w-4 h-4 text-orange-500"></i>
+                        <span>Usaha Mikro</span>
+                    </div>
+                    <i data-lucide="chevron-down" id="arrow-mikro" class="w-4 h-4 transition-transform duration-300"></i>
+                </button>
+                <div id="sub-mikro" class="hidden flex-col pl-6 mt-2 space-y-1">
+                    <button onclick="openPdf('documents/legalitas-perizinan/MIKRO – Aktivitas Jasa Teknologi Informasi dan Komputer Lainnya.pdf', this)" class="doc-btn w-full text-left py-2 px-3 text-[10px] sm:text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-200/50 rounded-lg transition-colors">Jasa Teknologi Informasi</button>
+                    <button onclick="openPdf('documents/legalitas-perizinan/MIKRO-Penerbitan-perangkat-lunak-pernyataan-mikro.pdf', this)" class="doc-btn w-full text-left py-2 px-3 text-[10px] sm:text-xs text-gray-600 hover:text-blue-600 hover:bg-gray-200/50 rounded-lg transition-colors">Penerbitan Perangkat Lunak</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="pt-20 lg:pl-80 h-screen flex flex-col transition-all duration-300 min-h-0">
+        <div class="flex-1 w-full relative bg-gray-50/50 min-h-0">
+            <iframe id="pdf-viewer" src="" class="absolute inset-0 w-full h-full border-none hidden z-10" style="min-height: 100%;"></iframe>
+            
+            <div id="empty-state" class="absolute inset-0 flex flex-col items-center justify-center text-center p-8 bg-[#ecf0f3] z-0">
+                <div class="w-20 h-20 bg-[#ecf0f3] text-blue-600 rounded-full flex items-center justify-center mb-6 shadow-[8px_8px_16px_#b8bec9,-8px_-8px_16px_#ffffff]">
+                    <i data-lucide="file-text" class="w-10 h-10"></i>
+                </div>
+                <h2 class="text-2xl font-black text-gray-800 mb-3 tracking-tight">Pilih Dokumen Legalitas</h2>
+                <p class="text-sm font-medium text-gray-500 max-w-md leading-relaxed">Pilih kategori dan dokumen legalitas usaha dari menu di samping (sidebar) untuk menampilkannya dengan mode layar penuh.</p>
+            </div>
+
+            <a id="open-full-btn" href="#" target="_blank" class="hidden absolute bottom-6 right-6 inline-flex items-center gap-2 px-5 py-3 bg-[#ecf0f3] text-blue-600 shadow-[4px_4px_8px_#b8bec9,-4px_-4px_8px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] rounded-2xl text-xs font-black uppercase transition-all z-20">
+                <i data-lucide="external-link" class="w-4 h-4"></i> Buka File Asli
+            </a>
+        </div>
+    </main>
+
+    <script>
+        async function loadComponent(id, file) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            try {
+                const res = await fetch(file);
+                if (res.ok) {
+                    el.innerHTML = await res.text();
+                    if (window.lucide) lucide.createIcons();
+                }
+            } catch (e) { console.error("Component Error:", e); }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadComponent('header-placeholder', 'include/header.html');
+            if (window.lucide) lucide.createIcons();
+        });
+        
+        window.switchLang = function (lang) {
+            localStorage.setItem('preferred_lang', lang);
+            location.reload();
+        };
+
+        window.toggleMobileMenu = function (open) {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                if (open) {
+                    menu.classList.remove('hidden');
+                    menu.classList.add('flex');
+                } else {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                }
+            }
+        };
+
+        window.toggleAccordion = function(id) {
+            const el = document.getElementById(id);
+            const arrow = document.getElementById('arrow-' + id);
+            if (el && arrow) {
+                if (el.classList.contains('hidden')) {
+                    el.classList.remove('hidden');
+                    el.classList.add('flex');
+                    if (arrow) arrow.style.transform = 'rotate(180deg)';
+                } else {
+                    el.classList.add('hidden');
+                    el.classList.remove('flex');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                }
+            }
+        };
+
+        function toggleSidebar(show) {
+            const sidebar = document.getElementById('sidebar-nav');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (show) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function toggleSub(id, arrowId) {
+            const el = document.getElementById(id);
+            const arrow = document.getElementById(arrowId);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                el.classList.add('flex');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                el.classList.add('hidden');
+                el.classList.remove('flex');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function openPdf(url, btnElement) {
+            // Update UI
+            document.querySelectorAll('.doc-btn').forEach(btn => {
+                btn.classList.remove('active-doc');
+            });
+            btnElement.classList.add('active-doc');
+
+            // Show PDF viewer
+            const viewer = document.getElementById('pdf-viewer');
+            const emptyState = document.getElementById('empty-state');
+            const fullBtn = document.getElementById('open-full-btn');
+            
+            // fix double encoding issues by splitting and encoding parts
+            const segments = url.split('/');
+            const encodedUrl = segments.map(seg => encodeURIComponent(seg)).join('/');
+
+            viewer.src = encodedUrl;
+            viewer.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+            
+            fullBtn.href = encodedUrl;
+            fullBtn.classList.remove('hidden');
+            
+            // Close sidebar on mobile
+            if (window.innerWidth < 1024) {
+                toggleSidebar(false);
+            }
+        }
+    </script>
+</body>
+</html>
