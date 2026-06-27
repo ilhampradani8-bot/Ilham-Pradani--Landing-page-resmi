@@ -159,40 +159,59 @@
             backface-visibility: hidden;
         }
 
-        /* --- Funky Pure CSS Accordion --- */
+        /* --- Minimalist Neomorphic Pure CSS Accordion (Full Width) --- */
         .accordion-app {
             border-radius: 24px;
             width: 100%;
-            max-width: 580px;
+            max-width: 100%;
             margin: 0 auto;
-            box-shadow: 12px 12px 24px #b8c4df, -12px -12px 24px #ffffff;
-            overflow: hidden;
+            background: transparent;
+            overflow: visible;
             position: relative;
-            background: #ecf0f3;
         }
         .accordion-app_inner {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
         .accordion-app_inner input[type="radio"] {
             display: none;
         }
 
-        /* Checked Tab: Height is expanded */
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab {
-            height: 195px;
+        /* Accordion Tab Base - Raised Neomorphic Strip */
+        .accordion-tab {
+            width: 100%;
+            height: 80px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            background: #ecf0f3;
+            border-radius: 20px;
+            box-shadow: 6px 6px 12px #b8bec9, -6px -6px 12px #ffffff;
+            border-left: 6px solid #cbd5e1;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        /* Active Content: Slides up */
+        .accordion-tab:hover {
+            background: #e9eef2;
+            box-shadow: 3px 3px 6px #b8bec9, -3px -3px 6px #ffffff;
+        }
+
+        /* Checked Tab: Height is expanded & Inset Shadow */
+        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab {
+            height: 200px;
+            border-left: 6px solid #2563eb;
+            background: #ecf0f3;
+            box-shadow: inset 3px 3px 8px #b8bec9, inset -3px -3px 8px #ffffff;
+        }
+
+        /* Active Content: Slides up & Fades in */
         .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_right {
-            top: 25px;
+            top: 22px;
             opacity: 1;
             transition: all .45s .15s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        /* Inactive Tab: Height is collapsed */
-        .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab {
-            height: 80px;
-            border-left: 12px solid rgba(0, 0, 0, 0.12);
-        }
-        /* Inactive Content: Slides down */
+        /* Inactive Content: Slides down & Fades out */
         .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_right {
             top: 200px;
             opacity: 0;
@@ -203,23 +222,34 @@
         .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_left .tab_left__image {
             animation: acc_move_in 0.55s 0.05s cubic-bezier(0.25, 1, 0.5, 1) forwards;
             transition: all 0.3s 0.36s cubic-bezier(0.25, 1, 0.5, 1);
+            background: #2563eb;
+            box-shadow: 2px 2px 5px rgba(37, 99, 235, 0.3);
         }
+        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_left .tab_left__image i {
+            color: #ffffff;
+        }
+
         /* Inactive Icon Container animation */
         .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_left .tab_left__image {
             animation: acc_move_out 0.75s 0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
             transition: all 0.3s 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            background: #ecf0f3;
+            box-shadow: 3px 3px 6px #b8bec9, -3px -3px 6px #ffffff;
+        }
+        .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_left .tab_left__image i {
+            color: #64748b;
         }
 
         /* Active Large BG Icon slides left */
         .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_left .big {
-            right: -25px;
-            opacity: 0.12;
+            right: 20px;
+            opacity: 0.04;
             transform: scale(1.1);
         }
         /* Inactive Large BG Icon slides right */
         .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_left .big {
             right: -150px;
-            opacity: 0.02;
+            opacity: 0.01;
             transform: scale(1.0);
         }
 
@@ -229,7 +259,7 @@
             transform: scale(0.5);
         }
         .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab h2 i {
-            opacity: 0.4;
+            opacity: 0.3;
             transform: scale(1.0);
         }
 
@@ -240,104 +270,36 @@
             margin-bottom: 0;
         }
 
-        /* Dynamic Tab Colors (Matches Codepen styling + custom extensions) */
-        .accordion-app_inner label:nth-of-type(1) .accordion-tab {
-            background: #99b998;
-        }
-        .accordion-app_inner label:nth-of-type(1) .accordion-tab:hover {
-            background: #8cae8b;
-        }
-        .accordion-app_inner label:nth-of-type(1) .accordion-tab .tab_left__image {
-            background: #ea495f;
-        }
-
-        .accordion-app_inner label:nth-of-type(2) .accordion-tab {
-            background: #e4b794;
-        }
-        .accordion-app_inner label:nth-of-type(2) .accordion-tab:hover {
-            background: #dbab84;
-        }
-        .accordion-app_inner label:nth-of-type(2) .accordion-tab .tab_left__image {
-            background: #99b998;
-        }
-
-        .accordion-app_inner label:nth-of-type(3) .accordion-tab {
-            background: #f4837d;
-        }
-        .accordion-app_inner label:nth-of-type(3) .accordion-tab:hover {
-            background: #f26f68;
-        }
-        .accordion-app_inner label:nth-of-type(3) .accordion-tab .tab_left__image {
-            background: #e4b794;
-        }
-
-        .accordion-app_inner label:nth-of-type(4) .accordion-tab {
-            background: #ea495f;
-        }
-        .accordion-app_inner label:nth-of-type(4) .accordion-tab:hover {
-            background: #e5324a;
-        }
-        .accordion-app_inner label:nth-of-type(4) .accordion-tab .tab_left__image {
-            background: #f4837d;
-        }
-
-        .accordion-app_inner label:nth-of-type(5) .accordion-tab {
-            background: #83af9b;
-        }
-        .accordion-app_inner label:nth-of-type(5) .accordion-tab:hover {
-            background: #75a48f;
-        }
-        .accordion-app_inner label:nth-of-type(5) .accordion-tab .tab_left__image {
-            background: #ea495f;
-        }
-
-        .accordion-app_inner label:nth-of-type(6) .accordion-tab {
-            background: #c8c8a9;
-        }
-        .accordion-app_inner label:nth-of-type(6) .accordion-tab:hover {
-            background: #bebe9b;
-        }
-        .accordion-app_inner label:nth-of-type(6) .accordion-tab .tab_left__image {
-            background: #83af9b;
-        }
-
-        /* Accordion Tab Base */
-        .accordion-tab {
-            width: 100%;
-            height: 80px;
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
-            transition: all 0.65s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
         .accordion-tab h2 {
             position: absolute;
-            right: 20px;
-            top: 20px;
-            color: #1a1c1d;
+            right: 24px;
+            top: 24px;
+            color: #4b5563;
             font-size: 11px;
             font-weight: 800;
             margin: 0;
             display: flex;
             align-items: center;
             gap: 6px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
         .accordion-tab h2 i {
-            opacity: 0.3;
+            opacity: 0.4;
             transition: all 0.3s;
-            width: 12px;
-            height: 12px;
+            width: 13px;
+            height: 13px;
         }
 
         .accordion-tab .tab_right {
-            width: 65%;
+            width: 75%;
             float: right;
             position: relative;
             top: 200px;
             text-align: right;
-            padding: 10px 20px 10px 0;
+            padding: 10px 24px 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
         .accordion-tab .tab_right h3,
         .accordion-tab .tab_right h4,
@@ -345,31 +307,33 @@
             margin: 0;
         }
         .accordion-tab .tab_right h3 {
-            font-size: 14px;
-            font-weight: 800;
-            color: rgba(0, 0, 0, 0.85);
+            font-size: 15px;
+            font-weight: 850;
+            color: #111827;
             line-height: 1.2;
         }
         .accordion-tab .tab_right h4 {
             font-size: 10px;
             font-weight: 700;
             margin: 2px 0 6px 0;
-            color: rgba(0, 0, 0, 0.4);
+            color: #2563eb;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .accordion-tab .tab_right p {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.95);
-            line-height: 1.35;
-            font-weight: 500;
+            font-size: 11px;
+            color: #4b5563;
+            line-height: 1.5;
+            font-weight: 550;
+            max-width: 700px;
+            text-align: right;
         }
         .accordion-tab .tab_right button {
             margin-top: 8px;
-            border: 2px solid white;
-            background: none;
+            border: 1.5px solid #2563eb;
+            background: #2563eb;
             border-radius: 20px;
-            padding: 3px 12px;
+            padding: 4px 16px;
             cursor: pointer;
             outline: none;
             font-size: 9px;
@@ -378,14 +342,16 @@
             transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            box-shadow: 2px 2px 5px rgba(37, 99, 235, 0.2);
         }
         .accordion-tab .tab_right button:hover {
-            background: white;
-            color: black;
+            background: #1d4ed8;
+            border-color: #1d4ed8;
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.15);
         }
 
         .accordion-tab .tab_left {
-            width: 30%;
+            width: 20%;
             float: left;
             position: relative;
             height: 100%;
@@ -396,35 +362,82 @@
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             width: 140px;
             height: 140px;
-            color: white;
+            color: #64748b;
         }
         .accordion-tab .tab_left__image {
             position: relative;
             top: -100px;
-            background: white;
-            left: 20px;
+            left: 24px;
             border-radius: 16px;
-            width: 60px;
-            height: 60px;
+            width: 54px;
+            height: 54px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
         }
         .accordion-tab .tab_left__image i {
-            color: white;
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
         }
 
         /* Animations */
         @keyframes acc_move_out {
-            0% { top: 10px; }
+            0% { top: 13px; }
             100% { top: 200px; }
         }
         @keyframes acc_move_in {
             0% { top: -200px; }
-            100% { top: 10px; }
+            100% { top: 13px; }
+        }
+
+        /* Responsive Breakpoints */
+        @media screen and (max-width: 768px) {
+            .accordion-tab .tab_right {
+                width: 70%;
+                padding: 10px 16px 10px 0;
+            }
+            .accordion-tab .tab_right p {
+                font-size: 10px;
+                line-height: 1.4;
+                max-width: 420px;
+            }
+            .accordion-app_inner input[type="radio"]:checked + label .accordion-tab {
+                height: 230px;
+            }
+            .accordion-tab .tab_left__image {
+                left: 16px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .accordion-tab .tab_right h3 {
+                font-size: 13px;
+            }
+            .accordion-tab .tab_right p {
+                font-size: 9px;
+                max-width: 250px;
+            }
+            .accordion-app_inner input[type="radio"]:checked + label .accordion-tab {
+                height: 260px;
+            }
+            .accordion-tab .tab_left__image {
+                left: 12px;
+                width: 46px;
+                height: 46px;
+            }
+            .accordion-tab .tab_left__image i {
+                width: 20px;
+                height: 20px;
+            }
+            @keyframes acc_move_in {
+                0% { top: -200px; }
+                100% { top: 17px; }
+            }
+            @keyframes acc_move_out {
+                0% { top: 17px; }
+                100% { top: 200px; }
+            }
         }
     </style>
     <style>
@@ -1199,168 +1212,157 @@
 
         <section id="services" class="scroll-section">
             <div class="section-inner px-6">
-                <div class="max-w-7xl mx-auto w-full flex flex-col justify-center min-h-0 py-4">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-0">
-                        <!-- Left Side: Title & Description -->
-                        <div class="lg:col-span-5 space-y-4 text-left reveal-el">
-                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] border border-white/20 mb-2">
-                                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                                <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Our Expertise</span>
-                            </div>
-                            <h2 class="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter leading-tight" data-t="service_title">Layanan Eksklusif.</h2>
-                            <p class="text-gray-650 text-sm md:text-base font-semibold leading-relaxed" style="font-family: 'Times New Roman', Times, serif;" data-t="service_desc">Solusi teknologi tingkat tinggi yang dirancang dengan presisi arsitektural dan kepatuhan hukum.</p>
-                            <div class="pt-4 flex flex-wrap gap-4">
-                                <a href="#contact" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-widest text-xs rounded-xl shadow-[3px_3px_6px_rgba(59,130,246,0.3)] transition-all">
-                                    Mulai Konsultasi
-                                </a>
-                                <a href="#partnership" class="px-6 py-3 bg-[#ecf0f3] hover:bg-gray-100 text-gray-700 font-black uppercase tracking-widest text-xs rounded-xl shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] transition-all">
-                                    Pelajari Kemitraan
-                                </a>
-                            </div>
+                <div class="max-w-6xl mx-auto w-full flex flex-col justify-center min-h-0 py-6">
+                    <!-- Minimal Title Header -->
+                    <div class="text-left mb-8 reveal-el">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ecf0f3] shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] border border-white/20 mb-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+                            <span class="text-[9px] font-bold text-blue-600 uppercase tracking-widest">Our Expertise</span>
                         </div>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 tracking-tighter leading-tight" data-t="service_title">Layanan Eksklusif.</h2>
+                    </div>
 
-                        <!-- Right Side: Accordion App -->
-                        <div class="lg:col-span-7 flex justify-center w-full reveal-el">
-                            <div class="accordion-app">
-                                <div class="accordion-app_inner">
-                                    <!-- Tab 1 -->
-                                    <input type="radio" id="service-tab-1" name="buttons" checked>
-                                    <label for="service-tab-1">
-                                        <div class="accordion-tab">
-                                            <h2>
-                                                <i data-lucide="info"></i>
-                                                <span>01 / 06</span>
-                                            </h2>
-                                            <div class="tab_left">
-                                                <i data-lucide="layout" class="icon big"></i>
-                                                <div class="tab_left__image">
-                                                    <i data-lucide="layout" class="icon small"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tab_right">
-                                                <h3 data-t="s_1_t">Fullstack System Architect</h3>
-                                                <h4>Systems Architecture</h4>
-                                                <p data-t="s_1_d">Rancang bangun dan rancangan arsitektur ekosistem web end-to-end berkinerja tinggi dari dasar. Kami mengintegrasikan skalabilitas sistem cloud multi-region, pemodelan database relasional dan non-relasional tingkat lanjut, efisiensi caching berlapis dengan Redis, penyeimbangan beban kerja (load balancing) yang optimal, serta keamanan enkripsi tangguh untuk aplikasi berskala enterprise secara global guna menjamin waktu aktif (uptime) maksimal.</p>
-                                                <button onclick="window.location.href='#contact'">Start Project</button>
+                    <!-- Full Width Accordion -->
+                    <div class="w-full reveal-el">
+                        <div class="accordion-app">
+                            <div class="accordion-app_inner">
+                                <!-- Tab 1 -->
+                                <input type="radio" id="service-tab-1" name="buttons" checked>
+                                <label for="service-tab-1">
+                                    <div class="accordion-tab">
+                                        <h2>
+                                            <i data-lucide="info"></i>
+                                            <span>01 / 06</span>
+                                        </h2>
+                                        <div class="tab_left">
+                                            <i data-lucide="layout" class="icon big"></i>
+                                            <div class="tab_left__image">
+                                                <i data-lucide="layout" class="icon small"></i>
                                             </div>
                                         </div>
-                                    </label>
+                                        <div class="tab_right">
+                                            <h3 data-t="s_1_t">Fullstack System Architect</h3>
+                                            <h4>Systems Architecture</h4>
+                                            <p data-t="s_1_d">Rancang bangun dan rancangan arsitektur ekosistem web end-to-end berkinerja tinggi dari dasar. Kami mengintegrasikan skalabilitas sistem cloud multi-region, pemodelan database relasional dan non-relasional tingkat lanjut, efisiensi caching berlapis dengan Redis, penyeimbangan beban kerja (load balancing) yang optimal, serta keamanan enkripsi tangguh untuk aplikasi berskala enterprise secara global guna menjamin waktu aktif (uptime) maksimal.</p>
+                                            <button onclick="window.location.href='#contact'">Start Project</button>
+                                        </div>
+                                    </div>
+                                </label>
 
-                                    <!-- Tab 2 -->
-                                    <input type="radio" id="service-tab-2" name="buttons">
-                                    <label for="service-tab-2">
-                                        <div class="accordion-tab">
-                                            <h2>
-                                                <i data-lucide="info"></i>
-                                                <span>02 / 06</span>
-                                            </h2>
-                                            <div class="tab_left">
-                                                <i data-lucide="cpu" class="icon big"></i>
-                                                <div class="tab_left__image">
-                                                    <i data-lucide="cpu" class="icon small"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tab_right">
-                                                <h3 data-t="s_2_t">AI & LLM Orchestration</h3>
-                                                <h4>Artificial Intelligence</h4>
-                                                <p data-t="s_2_d">Implementasi kecerdasan buatan (AI) tingkat lanjut dan integrasi Large Language Models (LLM) tercanggih seperti Claude, GPT-4, dan model lokal. Kami mengotomatisasi seluruh alur proses bisnis yang kompleks melalui pengembangan jaringan orkestrasi agen otonom, rekayasa prompt sistematis (prompt engineering), retrieval-augmented generation (RAG) untuk basis pengetahuan internal, dan integrasi API kustom yang aman.</p>
-                                                <button onclick="window.location.href='#contact'">Start Project</button>
+                                <!-- Tab 2 -->
+                                <input type="radio" id="service-tab-2" name="buttons">
+                                <label for="service-tab-2">
+                                    <div class="accordion-tab">
+                                        <h2>
+                                            <i data-lucide="info"></i>
+                                            <span>02 / 06</span>
+                                        </h2>
+                                        <div class="tab_left">
+                                            <i data-lucide="cpu" class="icon big"></i>
+                                            <div class="tab_left__image">
+                                                <i data-lucide="cpu" class="icon small"></i>
                                             </div>
                                         </div>
-                                    </label>
+                                        <div class="tab_right">
+                                            <h3 data-t="s_2_t">AI & LLM Orchestration</h3>
+                                            <h4>Artificial Intelligence</h4>
+                                            <p data-t="s_2_d">Implementasi kecerdasan buatan (AI) tingkat lanjut dan integrasi Large Language Models (LLM) tercanggih seperti Claude, GPT-4, dan model lokal. Kami mengotomatisasi seluruh alur proses bisnis yang kompleks melalui pengembangan jaringan orkestrasi agen otonom, rekayasa prompt sistematis (prompt engineering), retrieval-augmented generation (RAG) untuk basis pengetahuan internal, dan integrasi API kustom yang aman.</p>
+                                            <button onclick="window.location.href='#contact'">Start Project</button>
+                                        </div>
+                                    </div>
+                                </label>
 
-                                    <!-- Tab 3 -->
-                                    <input type="radio" id="service-tab-3" name="buttons">
-                                    <label for="service-tab-3">
-                                        <div class="accordion-tab">
-                                            <h2>
-                                                <i data-lucide="info"></i>
-                                                <span>03 / 06</span>
-                                            </h2>
-                                            <div class="tab_left">
-                                                <i data-lucide="shield-check" class="icon big"></i>
-                                                <div class="tab_left__image">
-                                                    <i data-lucide="shield-check" class="icon small"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tab_right">
-                                                <h3 data-t="s_3_t">Legal-Tech Compliance</h3>
-                                                <h4>Legal Technology</h4>
-                                                <p data-t="s_3_d">Audit kepatuhan hukum teknologi digital terpadu secara menyeluruh untuk memastikan infrastruktur siber dan tata kelola data perusahaan Anda sepenuhnya memenuhi regulasi internasional dan nasional seperti GDPR, UU Pelindungan Data Pribadi (UU PDP), regulasi OJK, serta standar industri ISO 27001. Kami merancang kebijakan privasi, tata kelola keamanan siber, dan mitigasi risiko hukum teknologi untuk melindungi bisnis Anda dari sanksi perdata maupun pidana.</p>
-                                                <button onclick="window.location.href='#contact'">Start Project</button>
+                                <!-- Tab 3 -->
+                                <input type="radio" id="service-tab-3" name="buttons">
+                                <label for="service-tab-3">
+                                    <div class="accordion-tab">
+                                        <h2>
+                                            <i data-lucide="info"></i>
+                                            <span>03 / 06</span>
+                                        </h2>
+                                        <div class="tab_left">
+                                            <i data-lucide="shield-check" class="icon big"></i>
+                                            <div class="tab_left__image">
+                                                <i data-lucide="shield-check" class="icon small"></i>
                                             </div>
                                         </div>
-                                    </label>
+                                        <div class="tab_right">
+                                            <h3 data-t="s_3_t">Legal-Tech Compliance</h3>
+                                            <h4>Legal Technology</h4>
+                                            <p data-t="s_3_d">Audit kepatuhan hukum teknologi digital terpadu secara menyeluruh untuk memastikan infrastruktur siber dan tata kelola data perusahaan Anda sepenuhnya memenuhi regulasi internasional dan nasional seperti GDPR, UU Pelindungan Data Pribadi (UU PDP), regulasi OJK, serta standar industri ISO 27001. Kami merancang kebijakan privasi, tata kelola keamanan siber, dan mitigasi risiko hukum teknologi untuk melindungi bisnis Anda dari sanksi perdata maupun pidana.</p>
+                                            <button onclick="window.location.href='#contact'">Start Project</button>
+                                        </div>
+                                    </div>
+                                </label>
 
-                                    <!-- Tab 4 -->
-                                    <input type="radio" id="service-tab-4" name="buttons">
-                                    <label for="service-tab-4">
-                                        <div class="accordion-tab">
-                                            <h2>
-                                                <i data-lucide="info"></i>
-                                                <span>04 / 06</span>
-                                            </h2>
-                                            <div class="tab_left">
-                                                <i data-lucide="smartphone" class="icon big"></i>
-                                                <div class="tab_left__image">
-                                                    <i data-lucide="smartphone" class="icon small"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tab_right">
-                                                <h3 data-t="s_4_t">Android APK Development</h3>
-                                                <h4>Mobile Development</h4>
-                                                <p data-t="s_4_d">Pengembangan aplikasi mobile native Android kelas dunia dengan performa tinggi menggunakan bahasa Kotlin, Jetpack Compose, dan pola arsitektur MVVM/Clean Architecture modern. Kami menjamin proses optimasi memori secara ketat, integrasi API real-time, enkripsi penyimpanan data lokal (SQLite/Room), pengamanan kode terhadap reverse engineering (ProGuard/R8), hingga pemenuhan standar kebijakan Google Play Store.</p>
-                                                <button onclick="window.location.href='#contact'">Start Project</button>
+                                <!-- Tab 4 -->
+                                <input type="radio" id="service-tab-4" name="buttons">
+                                <label for="service-tab-4">
+                                    <div class="accordion-tab">
+                                        <h2>
+                                            <i data-lucide="info"></i>
+                                            <span>04 / 06</span>
+                                        </h2>
+                                        <div class="tab_left">
+                                            <i data-lucide="smartphone" class="icon big"></i>
+                                            <div class="tab_left__image">
+                                                <i data-lucide="smartphone" class="icon small"></i>
                                             </div>
                                         </div>
-                                    </label>
+                                        <div class="tab_right">
+                                            <h3 data-t="s_4_t">Android APK Development</h3>
+                                            <h4>Mobile Development</h4>
+                                            <p data-t="s_4_d">Pengembangan aplikasi mobile native Android kelas dunia dengan performa tinggi menggunakan bahasa Kotlin, Jetpack Compose, dan pola arsitektur MVVM/Clean Architecture modern. Kami menjamin proses optimasi memori secara ketat, integrasi API real-time, enkripsi penyimpanan data lokal (SQLite/Room), pengamanan kode terhadap reverse engineering (ProGuard/R8), hingga pemenuhan standar kebijakan Google Play Store.</p>
+                                            <button onclick="window.location.href='#contact'">Start Project</button>
+                                        </div>
+                                    </div>
+                                </label>
 
-                                    <!-- Tab 5 -->
-                                    <input type="radio" id="service-tab-5" name="buttons">
-                                    <label for="service-tab-5">
-                                        <div class="accordion-tab">
-                                            <h2>
-                                                <i data-lucide="info"></i>
-                                                <span>05 / 06</span>
-                                            </h2>
-                                            <div class="tab_left">
-                                                <i data-lucide="trending-up" class="icon big"></i>
-                                                <div class="tab_left__image">
-                                                    <i data-lucide="trending-up" class="icon small"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tab_right">
-                                                <h3 data-t="s_5_t">AI for Algorithmic Trading</h3>
-                                                <h4>Quantitative Trading</h4>
-                                                <p data-t="s_5_d">Rancang bangun sistem perdagangan algoritma kuantitatif otomatis bertenaga kecerdasan buatan. Menggunakan model pembelajaran mesin (machine learning) untuk menganalisis arus data pasar (market data feed) secara real-time, mendeteksi pola arbitrase, mengoptimalkan alokasi portofolio secara dinamis, mengelola risiko penarikan modal (drawdown), serta mengeksekusi order dengan latensi mikrodetik melalui konektivitas API broker langsung.</p>
-                                                <button onclick="window.location.href='#contact'">Start Project</button>
+                                <!-- Tab 5 -->
+                                <input type="radio" id="service-tab-5" name="buttons">
+                                <label for="service-tab-5">
+                                    <div class="accordion-tab">
+                                        <h2>
+                                            <i data-lucide="info"></i>
+                                            <span>05 / 06</span>
+                                        </h2>
+                                        <div class="tab_left">
+                                            <i data-lucide="trending-up" class="icon big"></i>
+                                            <div class="tab_left__image">
+                                                <i data-lucide="trending-up" class="icon small"></i>
                                             </div>
                                         </div>
-                                    </label>
+                                        <div class="tab_right">
+                                            <h3 data-t="s_5_t">AI for Algorithmic Trading</h3>
+                                            <h4>Quantitative Trading</h4>
+                                            <p data-t="s_5_d">Rancang bangun sistem perdagangan algoritma kuantitatif otomatis bertenaga kecerdasan buatan. Menggunakan model pembelajaran mesin (machine learning) untuk menganalisis arus data pasar (market data feed) secara real-time, mendeteksi pola arbitrase, mengoptimalkan alokasi portofolio secara dinamis, mengelola risiko penarikan modal (drawdown), serta mengeksekusi order dengan latensi mikrodetik melalui konektivitas API broker langsung.</p>
+                                            <button onclick="window.location.href='#contact'">Start Project</button>
+                                        </div>
+                                    </div>
+                                </label>
 
-                                    <!-- Tab 6 -->
-                                    <input type="radio" id="service-tab-6" name="buttons">
-                                    <label for="service-tab-6">
-                                        <div class="accordion-tab">
-                                            <h2>
-                                                <i data-lucide="info"></i>
-                                                <span>06 / 06</span>
-                                            </h2>
-                                            <div class="tab_left">
-                                                <i data-lucide="terminal" class="icon big"></i>
-                                                <div class="tab_left__image">
-                                                    <i data-lucide="terminal" class="icon small"></i>
-                                                </div>
-                                            </div>
-                                            <div class="tab_right">
-                                                <h3 data-t="s_6_t">Professional Pentesting</h3>
-                                                <h4>Offensive Security</h4>
-                                                <p data-t="s_6_d">Simulasi serangan siber ofensif tingkat lanjut (Offensive Security) secara legal dan komprehensif pada seluruh aset digital Anda. Kami melakukan pengujian penetrasi (pentest) pada jaringan internal/eksternal, aplikasi berbasis web, API, dan infrastruktur cloud untuk mengidentifikasi celah keamanan (vulnerabilities), mengeksploitasi potensi risiko secara aman, serta memberikan rekomendasi remediasi teknis yang mendalam sebelum dieksploitasi oleh pihak yang tidak bertanggung jawab.</p>
-                                                <button onclick="window.location.href='#contact'">Start Project</button>
+                                <!-- Tab 6 -->
+                                <input type="radio" id="service-tab-6" name="buttons">
+                                <label for="service-tab-6">
+                                    <div class="accordion-tab">
+                                        <h2>
+                                            <i data-lucide="info"></i>
+                                            <span>06 / 06</span>
+                                        </h2>
+                                        <div class="tab_left">
+                                            <i data-lucide="terminal" class="icon big"></i>
+                                            <div class="tab_left__image">
+                                                <i data-lucide="terminal" class="icon small"></i>
                                             </div>
                                         </div>
-                                    </label>
-                                </div>
+                                        <div class="tab_right">
+                                            <h3 data-t="s_6_t">Professional Pentesting</h3>
+                                            <h4>Offensive Security</h4>
+                                            <p data-t="s_6_d">Simulasi serangan siber ofensif tingkat lanjut (Offensive Security) secara legal dan komprehensif pada seluruh aset digital Anda. Kami melakukan pengujian penetrasi (pentest) pada jaringan internal/eksternal, aplikasi berbasis web, API, dan infrastruktur cloud untuk mengidentifikasi celah keamanan (vulnerabilities), mengeksploitasi potensi risiko secara aman, serta memberikan rekomendasi remediasi teknis yang mendalam sebelum dieksploitasi oleh pihak yang tidak bertanggung jawab.</p>
+                                            <button onclick="window.location.href='#contact'">Start Project</button>
+                                        </div>
+                                    </div>
+                                </label>
                             </div>
                         </div>
                     </div>
