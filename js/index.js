@@ -228,7 +228,7 @@ function initServicesTabs() {
 
     const serviceBgImages = [
         "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=1200&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop",
@@ -259,10 +259,19 @@ function initServicesTabs() {
         `;
         
         btn.addEventListener('click', () => {
-            cards.forEach(c => c.classList.add('hidden'));
+            cards.forEach(c => {
+                c.classList.add('hidden');
+                c.style.backgroundImage = 'none';
+            });
             card.classList.remove('hidden');
-            card.className = "neu-card w-full h-full p-4 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
+            card.className = "neu-card w-full h-full p-4 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300 relative overflow-hidden";
  
+            if (serviceBgImages[index]) {
+                card.style.backgroundImage = `linear-gradient(rgba(236, 240, 243, 0.92), rgba(236, 240, 243, 0.92)), url('${serviceBgImages[index]}')`;
+                card.style.backgroundSize = 'cover';
+                card.style.backgroundPosition = 'center';
+            }
+
             if (bgOverlay && serviceBgImages[index]) {
                 bgOverlay.style.backgroundImage = `url('${serviceBgImages[index]}')`;
             }
@@ -284,7 +293,12 @@ function initServicesTabs() {
         if (index > 0) {
             card.classList.add('hidden');
         } else {
-            card.className = "neu-card w-full h-full p-4 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
+            card.className = "neu-card w-full h-full p-4 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300 relative overflow-hidden";
+            if (serviceBgImages[0]) {
+                card.style.backgroundImage = `linear-gradient(rgba(236, 240, 243, 0.92), rgba(236, 240, 243, 0.92)), url('${serviceBgImages[0]}')`;
+                card.style.backgroundSize = 'cover';
+                card.style.backgroundPosition = 'center';
+            }
         }
     });
 
