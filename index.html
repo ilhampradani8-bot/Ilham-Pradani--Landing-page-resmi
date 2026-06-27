@@ -932,22 +932,23 @@
         </section>
 
         <section id="services" class="scroll-section">
-            <div class="section-inner px-6">
+            <div id="services-bg-overlay" class="absolute inset-0 z-0 pointer-events-none transition-all duration-700 bg-cover bg-center opacity-[0.06] filter grayscale"></div>
+            <div class="section-inner px-6 relative z-10">
                 <div class="max-w-7xl mx-auto w-full flex flex-col justify-center min-h-0 py-2">
                     <div class="flex flex-row items-center justify-between gap-4 mb-2 reveal-el">
                         <h2 class="text-sm sm:text-base md:text-2xl font-extrabold text-gray-900 tracking-tight whitespace-nowrap mb-0"
                             data-t="service_title">Layanan Eksklusif.</h2>
-                        <p class="text-gray-650 max-w-sm sm:max-w-md md:max-w-xl text-[9px] sm:text-[10px] md:text-xs font-medium text-right leading-tight" style="font-family: 'Times New Roman', Times, serif;" data-t="service_desc">Solusi teknologi tingkat tinggi yang dirancang dengan presisi arsitektural dan kepatuhan hukum.</p>
+                        <p class="text-gray-655 max-w-sm sm:max-w-md md:max-w-xl text-[9px] sm:text-[10px] md:text-xs font-medium text-right leading-tight" style="font-family: 'Times New Roman', Times, serif;" data-t="service_desc">Solusi teknologi tingkat tinggi yang dirancang dengan presisi arsitektural dan kepatuhan hukum.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch min-h-0">
                         <!-- Tabs List -->
-                        <div class="md:col-span-4 grid grid-cols-2 md:flex md:flex-col gap-1.5 md:gap-2 px-1 py-1 md:px-0 md:py-0 md:pr-1 md:pb-0 min-h-0" id="services-tabs-list">
+                        <div class="md:col-span-5 grid grid-cols-2 gap-1.5 md:gap-2 px-1 py-1 min-h-0 animate-reveal" id="services-tabs-list">
                             <!-- Tab buttons will be created dynamically by JS -->
                         </div>
                         
                         <!-- Tab Details Content Panel -->
-                        <div class="md:col-span-8 flex flex-col justify-center min-h-0">
+                        <div class="md:col-span-7 flex flex-col justify-center min-h-0">
                             <div id="services-content-panel" class="flex items-center justify-center min-h-0">
                                 <div class="neu-card group p-5 sm:p-8 bg-[#ecf0f3] w-full">
                                     <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 text-blue-600">

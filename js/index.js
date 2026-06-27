@@ -226,6 +226,20 @@ function initServicesTabs() {
     const cards = Array.from(contentPanel.children);
     tabsList.innerHTML = '';
 
+    const serviceBgImages = [
+        "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop"
+    ];
+
+    const bgOverlay = document.getElementById('services-bg-overlay');
+    if (bgOverlay && serviceBgImages[0]) {
+        bgOverlay.style.backgroundImage = `url('${serviceBgImages[0]}')`;
+    }
+
     cards.forEach((card, index) => {
         const titleEl = card.querySelector('[data-t^="s_"][data-t$="_t"]');
         const iconEl = card.querySelector('[data-lucide]');
@@ -235,13 +249,13 @@ function initServicesTabs() {
 
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = `service-tab-btn flex items-center gap-1.5 md:gap-3 p-1.5 md:p-3 text-left rounded-lg md:rounded-2xl transition-all w-full min-w-0
-            ${index === 0 ? 'bg-[#ecf0f3] shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'bg-[#ecf0f3] shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
+        btn.className = `service-tab-btn flex items-center gap-1.5 md:gap-2 p-1.5 md:p-2 text-left rounded-lg md:rounded-xl transition-all w-full min-w-0 bg-[#ecf0f3]
+            ${index === 0 ? 'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
         btn.innerHTML = `
-            <div class="w-5 h-5 md:w-8 md:h-8 rounded-md md:rounded-xl flex items-center justify-center shrink-0 ${index === 0 ? 'bg-blue-600 text-white shadow-sm' : 'bg-[#ecf0f3] shadow-[inset_1px_1px_2px_#b8bec9,inset_-1px_-1px_2px_#ffffff] text-gray-500'}">
-                <i data-lucide="${iconName}" class="w-3 h-3 md:w-4 md:h-4"></i>
+            <div class="w-5 h-5 md:w-6 md:h-6 rounded-md md:rounded-lg flex items-center justify-center shrink-0 ${index === 0 ? 'bg-blue-600 text-white shadow-sm' : 'bg-[#ecf0f3] shadow-[inset_1px_1px_2px_#b8bec9,inset_-1px_-1px_2px_#ffffff] text-gray-500'}">
+                <i data-lucide="${iconName}" class="w-3 h-3 md:w-3.5 md:h-3.5"></i>
             </div>
-            <span class="text-[8px] md:text-xs uppercase tracking-wider font-extrabold truncate min-w-0" ${dataT ? `data-t="${dataT.replace('_t', '_tab')}"` : ''}>${titleText}</span>
+            <span class="text-[7.5px] md:text-[9.5px] uppercase tracking-wider font-extrabold truncate min-w-0" ${dataT ? `data-t="${dataT.replace('_t', '_tab')}"` : ''}>${titleText}</span>
         `;
         
         btn.addEventListener('click', () => {
@@ -249,13 +263,17 @@ function initServicesTabs() {
             card.classList.remove('hidden');
             card.className = "neu-card w-full h-full p-4 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
  
+            if (bgOverlay && serviceBgImages[index]) {
+                bgOverlay.style.backgroundImage = `url('${serviceBgImages[index]}')`;
+            }
+
             document.querySelectorAll('.service-tab-btn').forEach((b, idx) => {
-                b.className = `service-tab-btn flex items-center gap-1.5 md:gap-3 p-1.5 md:p-3 text-left rounded-lg md:rounded-2xl transition-all w-full min-w-0 bg-[#ecf0f3]
+                b.className = `service-tab-btn flex items-center gap-1.5 md:gap-2 p-1.5 md:p-2 text-left rounded-lg md:rounded-xl transition-all w-full min-w-0 bg-[#ecf0f3]
                     ${idx === index ? 'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
                 
                 const iconContainer = b.querySelector('div');
                 if (iconContainer) {
-                    iconContainer.className = `w-5 h-5 md:w-8 md:h-8 rounded-md md:rounded-xl flex items-center justify-center shrink-0
+                    iconContainer.className = `w-5 h-5 md:w-6 md:h-6 rounded-md md:rounded-lg flex items-center justify-center shrink-0
                         ${idx === index ? 'bg-blue-600 text-white shadow-sm' : 'bg-[#ecf0f3] shadow-[inset_1px_1px_2px_#b8bec9,inset_-1px_-1px_2px_#ffffff] text-gray-500'}`;
                 }
             });
@@ -269,6 +287,27 @@ function initServicesTabs() {
             card.className = "neu-card w-full h-full p-4 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300";
         }
     });
+
+    // Touch Swipe navigation support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    contentPanel.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    contentPanel.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) < 50) return;
+        
+        let activeIndex = cards.findIndex(c => !c.classList.contains('hidden'));
+        if (activeIndex === -1) return;
+        
+        let newIndex = diff > 0 ? (activeIndex + 1) % cards.length : (activeIndex - 1 + cards.length) % cards.length;
+        const buttons = Array.from(tabsList.children);
+        if (buttons[newIndex]) {
+            buttons[newIndex].click();
+        }
+    }, { passive: true });
 
     if (window.lucide) lucide.createIcons();
 }
