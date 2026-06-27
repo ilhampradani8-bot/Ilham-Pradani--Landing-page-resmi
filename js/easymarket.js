@@ -209,7 +209,7 @@
 
         // Tab Switching Logic
         window.switchTab = function(tabId) {
-            const tabs = ['pengenalan', 'produk', 'order', 'sk', 'oss', 'investor'];
+            const tabs = ['pengenalan', 'produk', 'order', 'testimoni', 'sk', 'oss', 'investor'];
             
             tabs.forEach(tab => {
                 const content = document.getElementById(`content-${tab}`);
@@ -224,6 +224,47 @@
             if (activeBtn) activeBtn.classList.add('active');
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // Lightbox Functions for Testimonials
+        window.openLightbox = function(src, cardEl) {
+            const lightbox = document.getElementById('testi-lightbox');
+            const img = document.getElementById('lightbox-img');
+            const cap = document.getElementById('lightbox-caption');
+            if (!lightbox || !img || !cap) return;
+            
+            img.src = src;
+            
+            let captionText = 'Testimonial';
+            if (cardEl) {
+                const headingEl = cardEl.querySelector('h4');
+                if (headingEl) {
+                    const visibleSpan = Array.from(headingEl.querySelectorAll('span')).find(span => !span.classList.contains('hidden'));
+                    if (visibleSpan) {
+                        captionText = visibleSpan.innerText;
+                    } else {
+                        captionText = headingEl.innerText;
+                    }
+                }
+            }
+            cap.innerText = captionText;
+
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+            }, 10);
+        };
+
+        window.closeLightbox = function() {
+            const lightbox = document.getElementById('testi-lightbox');
+            if (!lightbox) return;
+            
+            lightbox.classList.add('opacity-0');
+            setTimeout(() => {
+                lightbox.classList.remove('flex');
+                lightbox.classList.add('hidden');
+            }, 300);
         };
 
         window.switchSKSubTab = function(subTabId) {

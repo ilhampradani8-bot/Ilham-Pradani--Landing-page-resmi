@@ -146,6 +146,27 @@
             background: rgba(56, 189, 248, 0.02);
         }
 
+        /* 3D Testimoni Cards & Lightbox */
+        .testi-card-container {
+            perspective: 1000px;
+        }
+        .testi-card {
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .testi-card:hover {
+            transform: translateY(-8px) rotateX(4deg) rotateY(-2deg);
+            box-shadow: 0 25px 40px -15px rgba(0, 102, 204, 0.12);
+            border-color: rgba(0, 102, 204, 0.3);
+        }
+        body.dark-mode .testi-card:hover {
+            box-shadow: 0 25px 40px -15px rgba(56, 189, 248, 0.12);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+        .testi-card-inner {
+            transform: translateZ(25px);
+        }
+
         /* Custom Scroll Padding */
         html {
             scroll-padding-top: 140px;
@@ -184,6 +205,13 @@
                         <span class="lang-id">Cara Order</span>
                         <span class="lang-en hidden">How to Order</span>
                         <span class="lang-zh hidden">如何订购</span>
+                    </button>
+
+                    <button onclick="switchTab('testimoni')" id="tab-testimoni" class="tab-btn px-4 py-3.5 text-xs font-bold flex items-center gap-3 w-auto lg:w-full justify-start shrink-0">
+                        <i data-lucide="star" class="w-4 h-4 shrink-0"></i>
+                        <span class="lang-id">Testimoni</span>
+                        <span class="lang-en hidden">Testimonials</span>
+                        <span class="lang-zh hidden">客户评价</span>
                     </button>
 
                     <button onclick="switchTab('sk')" id="tab-sk" class="tab-btn px-4 py-3.5 text-xs font-bold flex items-center gap-3 w-auto lg:w-full justify-start shrink-0">
@@ -450,6 +478,289 @@
                                 <span class="lang-id">Di akhir langkah, untuk login masuk ke akun digital Anda, silakan hubungi admin resmi kami untuk mendapatkan kode OTP login.</span>
                                 <span class="lang-en hidden">Finally, to access your digital account, please contact our official admin to obtain the verification login OTP.</span>
                                 <span class="lang-zh hidden">最后，如需访问您的数字账号，请联系我们的官方管理员以获取登录验证码（OTP）。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3.5: TESTIMONI -->
+                <div id="content-testimoni" class="hidden space-y-6">
+                    <div class="space-y-2">
+                        <h2 class="text-2xl font-bold tracking-tight">
+                            <span class="lang-id">Testimoni & Bukti Transaksi</span>
+                            <span class="lang-en hidden">Testimonials & Transaction Proofs</span>
+                            <span class="lang-zh hidden">客户评价与交易凭证</span>
+                        </h2>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                            <span class="lang-id">Bukti nyata respon cepat, kemudahan pembayaran, dan kepuasan pelanggan setia EasyMarket.</span>
+                            <span class="lang-en hidden">Real proof of fast responses, easy payments, and satisfaction from loyal EasyMarket customers.</span>
+                            <span class="lang-zh hidden">EasyMarket 忠实客户的快速响应、便捷支付和满意度的真实证明。</span>
+                        </p>
+                    </div>
+
+                    <!-- 3D Card Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 border-t border-gray-200/60 dark:border-white/10">
+                        <!-- Card 1: Bot Response -->
+                        <div class="testi-card-container col-span-1">
+                            <div onclick="openLightbox('documents/easycompany-productdigital/tertimoni/klik1-bot-jawab-kurangdari-1menit.webp', this)" class="testi-card h-full bg-white dark:bg-slate-900/60 border border-gray-200/80 dark:border-white/5 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between p-4 group">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center h-48 border border-gray-100 dark:border-white/5 p-2">
+                                    <img src="documents/easycompany-productdigital/tertimoni/klik1-bot-jawab-kurangdari-1menit.webp" alt="Respon Bot" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                                        <span class="px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 text-xs font-bold rounded-lg shadow flex items-center gap-1.5 text-gray-800 dark:text-gray-200">
+                                            <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#0066cc] dark:text-[#38bdf8]"></i>
+                                            <span class="lang-id">Perbesar</span>
+                                            <span class="lang-en hidden">Zoom</span>
+                                            <span class="lang-zh hidden">放大</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 testi-card-inner space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded-md">Bot Response</span>
+                                        <span class="text-[10px] text-gray-400 font-medium">100% Otomatis</span>
+                                    </div>
+                                    <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-[#38bdf8] transition-colors">
+                                        <span class="lang-id">Bot Menjawab &lt; 1 Menit</span>
+                                        <span class="lang-en hidden">Bot Responds &lt; 1 Min</span>
+                                        <span class="lang-zh hidden">机器人响应时间 &lt; 1分钟</span>
+                                    </h4>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                        <span class="lang-id">Sistem bot otomatis kami membalas pesan dan memproses pesanan Anda dalam waktu kurang dari satu menit untuk kenyamanan maksimal.</span>
+                                        <span class="lang-en hidden">Our automated bot system responds and processes your orders in less than a minute for maximum convenience.</span>
+                                        <span class="lang-zh hidden">我们的自动化机器人系统在不到一分钟的时间内响应并处理您的订单，为您提供最大程度的便利。</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: QRIS Instant -->
+                        <div class="testi-card-container col-span-1">
+                            <div onclick="openLightbox('documents/easycompany-productdigital/tertimoni/LangsungbayardenganQRIS.webp', this)" class="testi-card h-full bg-white dark:bg-slate-900/60 border border-gray-200/80 dark:border-white/5 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between p-4 group">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center h-48 border border-gray-100 dark:border-white/5 p-2">
+                                    <img src="documents/easycompany-productdigital/tertimoni/LangsungbayardenganQRIS.webp" alt="QRIS Bayar" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                                        <span class="px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 text-xs font-bold rounded-lg shadow flex items-center gap-1.5 text-gray-800 dark:text-gray-200">
+                                            <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#0066cc] dark:text-[#38bdf8]"></i>
+                                            <span class="lang-id">Perbesar</span>
+                                            <span class="lang-en hidden">Zoom</span>
+                                            <span class="lang-zh hidden">放大</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 testi-card-inner space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2 py-0.5 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-md">QRIS Payment</span>
+                                        <span class="text-[10px] text-gray-400 font-medium">Instan & Praktis</span>
+                                    </div>
+                                    <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-[#38bdf8] transition-colors">
+                                        <span class="lang-id">Langsung Bayar via QRIS</span>
+                                        <span class="lang-en hidden">Direct Payment via QRIS</span>
+                                        <span class="lang-zh hidden">通过 QRIS 扫码直接支付</span>
+                                    </h4>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                        <span class="lang-id">Sistem menyediakan kode pembayaran QRIS secara instan tanpa perlu konfirmasi manual yang berbelit-belit.</span>
+                                        <span class="lang-en hidden">The system provides an instant QRIS payment code without requiring complicated manual confirmation.</span>
+                                        <span class="lang-zh hidden">系统即时生成 QRIS 支付二维码，无需繁琐的人工确认。</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: QRIS Details -->
+                        <div class="testi-card-container col-span-1">
+                            <div onclick="openLightbox('documents/easycompany-productdigital/tertimoni/qris-adarincian-totaldanpetunjukpembayaran.webp', this)" class="testi-card h-full bg-white dark:bg-slate-900/60 border border-gray-200/80 dark:border-white/5 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between p-4 group">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center h-48 border border-gray-100 dark:border-white/5 p-2">
+                                    <img src="documents/easycompany-productdigital/tertimoni/qris-adarincian-totaldanpetunjukpembayaran.webp" alt="Rincian QRIS" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                                        <span class="px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 text-xs font-bold rounded-lg shadow flex items-center gap-1.5 text-gray-800 dark:text-gray-200">
+                                            <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#0066cc] dark:text-[#38bdf8]"></i>
+                                            <span class="lang-id">Perbesar</span>
+                                            <span class="lang-en hidden">Zoom</span>
+                                            <span class="lang-zh hidden">放大</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 testi-card-inner space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[10px] font-bold rounded-md">Bill Detail</span>
+                                        <span class="text-[10px] text-gray-400 font-medium">Transparan</span>
+                                    </div>
+                                    <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-[#38bdf8] transition-colors">
+                                        <span class="lang-id">Petunjuk Pembayaran Jelas</span>
+                                        <span class="lang-en hidden">Clear Payment Instructions</span>
+                                        <span class="lang-zh hidden">清晰且完整的付款指南</span>
+                                    </h4>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                        <span class="lang-id">Setiap transaksi disertai dengan rincian total nominal yang presisi serta instruksi pembayaran langkah demi langkah.</span>
+                                        <span class="lang-en hidden">Each transaction is accompanied by precise pricing details and step-by-step payment instructions.</span>
+                                        <span class="lang-zh hidden">每笔交易均附有精准的金额明细及循序渐进的付款指南。</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Netflix Success -->
+                        <div class="testi-card-container col-span-1">
+                            <div onclick="openLightbox('documents/easycompany-productdigital/tertimoni/NETFLIX-PEMABYARAN-DITERIMA-VIEW.png', this)" class="testi-card h-full bg-white dark:bg-slate-900/60 border border-gray-200/80 dark:border-white/5 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between p-4 group">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center h-48 border border-gray-100 dark:border-white/5 p-2">
+                                    <img src="documents/easycompany-productdigital/tertimoni/NETFLIX-PEMABYARAN-DITERIMA-VIEW.png" alt="Netflix Sukses" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                                        <span class="px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 text-xs font-bold rounded-lg shadow flex items-center gap-1.5 text-gray-800 dark:text-gray-200">
+                                            <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#0066cc] dark:text-[#38bdf8]"></i>
+                                            <span class="lang-id">Perbesar</span>
+                                            <span class="lang-en hidden">Zoom</span>
+                                            <span class="lang-zh hidden">放大</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 testi-card-inner space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2 py-0.5 bg-red-500/10 text-red-600 dark:text-red-400 text-[10px] font-bold rounded-md">Netflix Premium</span>
+                                        <span class="text-[10px] text-gray-400 font-medium">Instan Aktif</span>
+                                    </div>
+                                    <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-[#38bdf8] transition-colors">
+                                        <span class="lang-id">Akses Netflix Diterima</span>
+                                        <span class="lang-en hidden">Netflix Access Activated</span>
+                                        <span class="lang-zh hidden">Netflix高级账号已开通</span>
+                                    </h4>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                        <span class="lang-id">Pembelian akun premium streaming seperti Netflix langsung diproses dan aktif sesaat setelah pembayaran divalidasi.</span>
+                                        <span class="lang-en hidden">Netflix or streaming premium purchases are processed instantly and activated right after verification.</span>
+                                        <span class="lang-zh hidden">Netflix等流媒体高级会员购买在付款校验后即可瞬间处理并激活。</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Trx Check -->
+                        <div class="testi-card-container col-span-1">
+                            <div onclick="openLightbox('documents/easycompany-productdigital/tertimoni/cek-transaksi-dari-nomor-trx.png', this)" class="testi-card h-full bg-white dark:bg-slate-900/60 border border-gray-200/80 dark:border-white/5 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between p-4 group">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center h-48 border border-gray-100 dark:border-white/5 p-2">
+                                    <img src="documents/easycompany-productdigital/tertimoni/cek-transaksi-dari-nomor-trx.png" alt="Cek Trx" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                                        <span class="px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 text-xs font-bold rounded-lg shadow flex items-center gap-1.5 text-gray-800 dark:text-gray-200">
+                                            <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#0066cc] dark:text-[#38bdf8]"></i>
+                                            <span class="lang-id">Perbesar</span>
+                                            <span class="lang-en hidden">Zoom</span>
+                                            <span class="lang-zh hidden">放大</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 testi-card-inner space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2 py-0.5 bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 text-[10px] font-bold rounded-md">Transaction Track</span>
+                                        <span class="text-[10px] text-gray-400 font-medium">Transparan</span>
+                                    </div>
+                                    <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-[#38bdf8] transition-colors">
+                                        <span class="lang-id">Pelacakan Transaksi Real-time</span>
+                                        <span class="lang-en hidden">Real-time Order Tracking</span>
+                                        <span class="lang-zh hidden">实时交易流水查询</span>
+                                    </h4>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                        <span class="lang-id">Gunakan nomor transaksi unik Anda untuk memeriksa detail, status pembayaran, dan riwayat pesanan kapan saja.</span>
+                                        <span class="lang-en hidden">Use your unique transaction number to check details, payment status, and order history at any time.</span>
+                                        <span class="lang-zh hidden">使用您专属的交易流水号，随时查询详情、支付状态及订单历史。</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: Login Assist -->
+                        <div class="testi-card-container col-span-1">
+                            <div onclick="openLightbox('documents/easycompany-productdigital/tertimoni/dibantucaralogin-danproses-login.png', this)" class="testi-card h-full bg-white dark:bg-slate-900/60 border border-gray-200/80 dark:border-white/5 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between p-4 group">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center h-48 border border-gray-100 dark:border-white/5 p-2">
+                                    <img src="documents/easycompany-productdigital/tertimoni/dibantucaralogin-danproses-login.png" alt="CS Bantu Login" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                                        <span class="px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 text-xs font-bold rounded-lg shadow flex items-center gap-1.5 text-gray-800 dark:text-gray-200">
+                                            <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#0066cc] dark:text-[#38bdf8]"></i>
+                                            <span class="lang-id">Perbesar</span>
+                                            <span class="lang-en hidden">Zoom</span>
+                                            <span class="lang-zh hidden">放大</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 testi-card-inner space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2 py-0.5 bg-purple-500/10 text-purple-600 dark:text-purple-400 text-[10px] font-bold rounded-md">CS Support</span>
+                                        <span class="text-[10px] text-gray-400 font-medium">Bantuan Penuh</span>
+                                    </div>
+                                    <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-[#38bdf8] transition-colors">
+                                        <span class="lang-id">Pendampingan Proses Login</span>
+                                        <span class="lang-en hidden">Guided Account Login</span>
+                                        <span class="lang-zh hidden">登录协助与技术支持</span>
+                                    </h4>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                        <span class="lang-id">Bagi pelanggan yang membutuhkan bantuan, CS kami akan memandu cara login ke akun premium secara detail dan ramah.</span>
+                                        <span class="lang-en hidden">For customers needing assistance, our CS team will guide you through the premium login steps in detail.</span>
+                                        <span class="lang-zh hidden">对于需要协助的客户，我们的客服团队将细致耐心地指导您完成高级会员登录。</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 7: OTP Rapid -->
+                        <div class="testi-card-container col-span-1">
+                            <div onclick="openLightbox('documents/easycompany-productdigital/tertimoni/proses-login-cepat-siapterimaOTP.png', this)" class="testi-card h-full bg-white dark:bg-slate-900/60 border border-gray-200/80 dark:border-white/5 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between p-4 group">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center h-48 border border-gray-100 dark:border-white/5 p-2">
+                                    <img src="documents/easycompany-productdigital/tertimoni/proses-login-cepat-siapterimaOTP.png" alt="Proses OTP" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                                        <span class="px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 text-xs font-bold rounded-lg shadow flex items-center gap-1.5 text-gray-800 dark:text-gray-200">
+                                            <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#0066cc] dark:text-[#38bdf8]"></i>
+                                            <span class="lang-id">Perbesar</span>
+                                            <span class="lang-en hidden">Zoom</span>
+                                            <span class="lang-zh hidden">放大</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 testi-card-inner space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2 py-0.5 bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-bold rounded-md">OTP Delivery</span>
+                                        <span class="text-[10px] text-gray-400 font-medium">Sangat Cepat</span>
+                                    </div>
+                                    <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-[#38bdf8] transition-colors">
+                                        <span class="lang-id">Penerimaan Kode OTP Instan</span>
+                                        <span class="lang-en hidden">Instant OTP Verification</span>
+                                        <span class="lang-zh hidden">快捷验证码（OTP）对接</span>
+                                    </h4>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                        <span class="lang-id">Proses serah terima kode verifikasi OTP dilakukan dengan cepat untuk memastikan akun Anda langsung dapat digunakan.</span>
+                                        <span class="lang-en hidden">Fast delivery of verification codes (OTP) ensures you can use your account immediately without waiting.</span>
+                                        <span class="lang-zh hidden">验证码（OTP）秒速对接发送，确保您无需等待即可立即使用您的账号。</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 8: DANA Success -->
+                        <div class="testi-card-container col-span-1">
+                            <div onclick="openLightbox('documents/easycompany-productdigital/tertimoni/testimoni-membayar-dari-dana-qris.png', this)" class="testi-card h-full bg-white dark:bg-slate-900/60 border border-gray-200/80 dark:border-white/5 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between p-4 group">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center h-48 border border-gray-100 dark:border-white/5 p-2">
+                                    <img src="documents/easycompany-productdigital/tertimoni/testimoni-membayar-dari-dana-qris.png" alt="DANA QRIS" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 duration-300">
+                                        <span class="px-3 py-1.5 bg-white/90 dark:bg-slate-900/90 text-xs font-bold rounded-lg shadow flex items-center gap-1.5 text-gray-800 dark:text-gray-200">
+                                            <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-[#0066cc] dark:text-[#38bdf8]"></i>
+                                            <span class="lang-id">Perbesar</span>
+                                            <span class="lang-en hidden">Zoom</span>
+                                            <span class="lang-zh hidden">放大</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 testi-card-inner space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2 py-0.5 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-[10px] font-bold rounded-md">DANA E-Wallet</span>
+                                        <span class="text-[10px] text-gray-400 font-medium">Terverifikasi</span>
+                                    </div>
+                                    <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-[#38bdf8] transition-colors">
+                                        <span class="lang-id">Pembayaran DANA Berhasil</span>
+                                        <span class="lang-en hidden">Successful DANA Payment</span>
+                                        <span class="lang-zh hidden">DANA电子钱包付款成功</span>
+                                    </h4>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                        <span class="lang-id">Bukti otentik transaksi pembayaran sukses menggunakan saldo dompet digital DANA via pemindaian QRIS.</span>
+                                        <span class="lang-en hidden">Authentic proof of successful e-wallet payment using DANA balance via automated QRIS scan.</span>
+                                        <span class="lang-zh hidden">使用 DANA 电子钱包通过自动 QRIS 扫码成功完成支付的真实交易凭证。</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -954,6 +1265,22 @@
         </div>
 
     </div> <!-- End layout -->
+
+    <!-- Lightbox Modal for Testimonial Images -->
+    <div id="testi-lightbox" onclick="if(event.target === this) closeLightbox();" class="fixed inset-0 z-[10000] hidden items-center justify-center bg-black/85 backdrop-blur-sm p-4 transition-all duration-300 opacity-0">
+        <div class="relative max-w-4xl w-full max-h-[85vh] flex flex-col items-center">
+            <!-- Close Button -->
+            <button onclick="closeLightbox()" class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center transition focus:outline-none" aria-label="Close Lightbox">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <!-- Image Container -->
+            <div class="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-slate-950">
+                <img id="lightbox-img" src="" alt="Testimonial View" class="max-h-[75vh] max-w-full object-contain">
+            </div>
+            <!-- Caption -->
+            <div class="mt-4 text-center text-white/90 text-sm font-bold tracking-wide" id="lightbox-caption"></div>
+        </div>
+    </div>
 
     <!-- Floating Capsule Toolbar -->
     <div class="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-4 py-2 floating-capsule">
