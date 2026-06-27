@@ -159,7 +159,7 @@
             backface-visibility: hidden;
         }
 
-        /* --- Minimalist Neomorphic Pure CSS Accordion (Full Width, Split 2 Columns) --- */
+        /* --- Minimalist Neomorphic Pure CSS Accordion (Original Shape & Animations) --- */
         .accordion-app {
             border-radius: 24px;
             width: 100%;
@@ -179,52 +179,32 @@
             display: none;
         }
 
-        /* Accordion Tab Base - Raised Neomorphic Strip */
-        .accordion-tab {
-            width: 100%;
+        /* Checked Tab: Height is expanded */
+        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab {
+            height: 195px;
+            box-shadow: inset 3px 3px 8px #b8bec9, inset -3px -3px 8px #ffffff;
+            border-left: 12px solid #2563eb;
+        }
+        /* Active Content: Slides up */
+        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_right {
+            top: 25px;
+            opacity: 1;
+            transition: all .45s .15s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        /* Inactive Tab: Height is collapsed */
+        .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab {
             height: 80px;
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
-            background: #ecf0f3;
-            border-radius: 20px;
             box-shadow: 6px 6px 12px #b8bec9, -6px -6px 12px #ffffff;
-            border-left: 6px solid #cbd5e1;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            border-left: 12px solid #cbd5e1;
         }
         .accordion-tab:hover {
             background: #e9eef2;
-            box-shadow: 3px 3px 6px #b8bec9, -3px -3px 6px #ffffff;
         }
-
-        /* Checked Tab: Height is expanded & Inset Shadow */
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab {
-            height: 200px;
-            border-left: 6px solid #2563eb;
-            background: #ecf0f3;
-            box-shadow: inset 3px 3px 8px #b8bec9, inset -3px -3px 8px #ffffff;
-        }
-
-        /* Active Content: Alternating staggered animations to prevent lag */
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_right h3 {
-            transform: translateY(0);
-            color: #111827;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_right h4 {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.4s 0.08s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s 0.08s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_right p {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.4s 0.16s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s 0.16s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_right button {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.4s 0.24s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s 0.24s cubic-bezier(0.25, 1, 0.5, 1);
+        /* Inactive Content: Slides down */
+        .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_right {
+            top: 200px;
+            opacity: 0;
+            transition: all .35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         /* Active Icon Container animation */
@@ -242,7 +222,7 @@
         .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_left .tab_left__image {
             animation: acc_move_out 0.75s 0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
             transition: all 0.3s 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            background: #ecf0f3;
+            background: #ffffff;
             box-shadow: 3px 3px 6px #b8bec9, -3px -3px 6px #ffffff;
         }
         .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_left .tab_left__image i {
@@ -251,8 +231,8 @@
 
         /* Active Large BG Icon slides left */
         .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_left .big {
-            right: 20px;
-            opacity: 0.04;
+            right: -25px;
+            opacity: 0.08;
             transform: scale(1.1);
         }
         /* Inactive Large BG Icon slides right */
@@ -268,7 +248,7 @@
             transform: scale(0.5);
         }
         .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab h2 i {
-            opacity: 0.3;
+            opacity: 0.4;
             transform: scale(1.0);
         }
 
@@ -279,10 +259,22 @@
             margin-bottom: 0;
         }
 
+        /* Accordion Tab Base */
+        .accordion-tab {
+            width: 100%;
+            height: 80px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            background: #ecf0f3;
+            border-radius: 20px;
+            transition: all 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
         .accordion-tab h2 {
             position: absolute;
-            right: 24px;
-            top: 24px;
+            right: 20px;
+            top: 20px;
             color: #4b5563;
             font-size: 11px;
             font-weight: 800;
@@ -290,30 +282,23 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
         .accordion-tab h2 i {
-            opacity: 0.4;
+            opacity: 0.3;
             transition: all 0.3s;
-            width: 13px;
-            height: 13px;
+            width: 12px;
+            height: 12px;
         }
 
-        /* Tab Content Area (Left aligned to match normal text flow and prevent overlapping) */
         .accordion-tab .tab_right {
-            position: absolute;
-            left: 96px;
-            right: 80px;
-            top: 24px;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            pointer-events: none;
-            gap: 4px;
-        }
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_right {
-            pointer-events: auto;
+            width: 65%;
+            float: right;
+            position: relative;
+            top: 200px;
+            text-align: right;
+            padding: 10px 20px 10px 0;
+            opacity: 0;
         }
         .accordion-tab .tab_right h3,
         .accordion-tab .tab_right h4,
@@ -325,60 +310,46 @@
             font-weight: 850;
             color: #111827;
             line-height: 1.2;
-            transform: translateY(0);
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .accordion-tab .tab_right h4 {
             font-size: 9px;
             font-weight: 700;
-            margin: 0;
+            margin: 2px 0 6px 0;
             color: #2563eb;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .accordion-tab .tab_right p {
             font-size: 11px;
             color: #4b5563;
-            line-height: 1.5;
-            font-weight: 500;
-            max-width: 100%;
-            text-align: left;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            line-height: 1.45;
+            font-weight: 550;
+            text-align: right;
         }
         .accordion-tab .tab_right button {
             margin-top: 8px;
             border: 1.5px solid #2563eb;
-            background: #2563eb;
+            background: none;
             border-radius: 20px;
-            padding: 3px 14px;
+            padding: 3px 12px;
             cursor: pointer;
             outline: none;
             font-size: 9px;
             font-weight: 800;
-            color: white;
+            color: #2563eb;
             transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 2px 2px 5px rgba(37, 99, 235, 0.2);
-            opacity: 0;
-            transform: translateY(10px);
         }
         .accordion-tab .tab_right button:hover {
-            background: #1d4ed8;
-            border-color: #1d4ed8;
-            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.15);
+            background: #2563eb;
+            color: #ffffff;
         }
 
         .accordion-tab .tab_left {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 80px;
+            width: 30%;
+            float: left;
+            position: relative;
             height: 100%;
         }
         .accordion-tab .tab_left .big {
@@ -387,19 +358,20 @@
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             width: 140px;
             height: 140px;
-            color: #64748b;
+            color: #cbd5e1;
         }
         .accordion-tab .tab_left__image {
             position: relative;
             top: -100px;
-            left: 24px;
+            background: white;
+            left: 20px;
             border-radius: 16px;
-            width: 54px;
-            height: 54px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .accordion-tab .tab_left__image i {
             width: 24px;
@@ -408,58 +380,12 @@
 
         /* Animations */
         @keyframes acc_move_out {
-            0% { top: 13px; }
+            0% { top: 10px; }
             100% { top: 200px; }
         }
         @keyframes acc_move_in {
             0% { top: -200px; }
-            100% { top: 13px; }
-        }
-
-        /* Responsive Breakpoints */
-        @media screen and (max-width: 768px) {
-            .accordion-tab .tab_right {
-                right: 64px;
-            }
-            .accordion-app_inner input[type="radio"]:checked + label .accordion-tab {
-                height: 220px;
-            }
-            .accordion-tab .tab_left__image {
-                left: 16px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .accordion-tab .tab_right {
-                left: 80px;
-                right: 48px;
-            }
-            .accordion-tab .tab_right h3 {
-                font-size: 13px;
-            }
-            .accordion-tab .tab_right p {
-                font-size: 9px;
-            }
-            .accordion-app_inner input[type="radio"]:checked + label .accordion-tab {
-                height: 240px;
-            }
-            .accordion-tab .tab_left__image {
-                left: 12px;
-                width: 46px;
-                height: 46px;
-            }
-            .accordion-tab .tab_left__image i {
-                width: 20px;
-                height: 20px;
-            }
-            @keyframes acc_move_in {
-                0% { top: -200px; }
-                100% { top: 17px; }
-            }
-            @keyframes acc_move_out {
-                0% { top: 17px; }
-                100% { top: 200px; }
-            }
+            100% { top: 10px; }
         }
     </style>
     <style>
