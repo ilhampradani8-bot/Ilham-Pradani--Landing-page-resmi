@@ -159,234 +159,7 @@
             backface-visibility: hidden;
         }
 
-        /* --- Minimalist Neomorphic Pure CSS Accordion (Original Shape & Animations) --- */
-        .accordion-app {
-            border-radius: 24px;
-            width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-            background: transparent;
-            overflow: visible;
-            position: relative;
-        }
-        .accordion-app_inner {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .accordion-app_inner input[type="radio"] {
-            display: none;
-        }
 
-        /* Checked Tab: Height is expanded */
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab {
-            height: 195px;
-            box-shadow: inset 3px 3px 8px #b8bec9, inset -3px -3px 8px #ffffff;
-            border-left: 12px solid #2563eb;
-        }
-        /* Active Content: Slides up */
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_right {
-            top: 25px;
-            opacity: 1;
-            transition: all .45s .15s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        /* Inactive Tab: Height is collapsed */
-        .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab {
-            height: 80px;
-            box-shadow: 6px 6px 12px #b8bec9, -6px -6px 12px #ffffff;
-            border-left: 12px solid #cbd5e1;
-        }
-        .accordion-tab:hover {
-            background: #e9eef2;
-        }
-        /* Inactive Content: Slides down */
-        .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_right {
-            top: 200px;
-            opacity: 0;
-            transition: all .35s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        /* Active Icon Container animation */
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_left .tab_left__image {
-            animation: acc_move_in 0.55s 0.05s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-            transition: all 0.3s 0.36s cubic-bezier(0.25, 1, 0.5, 1);
-            background: #2563eb;
-            box-shadow: 2px 2px 5px rgba(37, 99, 235, 0.3);
-        }
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_left .tab_left__image i {
-            color: #ffffff;
-        }
-
-        /* Inactive Icon Container animation */
-        .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_left .tab_left__image {
-            animation: acc_move_out 0.75s 0s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-            transition: all 0.3s 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            background: #ffffff;
-            box-shadow: 3px 3px 6px #b8bec9, -3px -3px 6px #ffffff;
-        }
-        .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_left .tab_left__image i {
-            color: #64748b;
-        }
-
-        /* Active Large BG Icon slides left */
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab .tab_left .big {
-            right: -25px;
-            opacity: 0.08;
-            transform: scale(1.1);
-        }
-        /* Inactive Large BG Icon slides right */
-        .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab .tab_left .big {
-            right: -150px;
-            opacity: 0.01;
-            transform: scale(1.0);
-        }
-
-        /* Alarm/clock/info icon on collapsed tab */
-        .accordion-app_inner input[type="radio"]:checked + label .accordion-tab h2 i {
-            opacity: 0;
-            transform: scale(0.5);
-        }
-        .accordion-app_inner input[type="radio"]:not(:checked) + label .accordion-tab h2 i {
-            opacity: 0.4;
-            transform: scale(1.0);
-        }
-
-        /* Label styling */
-        .accordion-app_inner label {
-            display: block;
-            width: 100%;
-            margin-bottom: 0;
-        }
-
-        /* Accordion Tab Base */
-        .accordion-tab {
-            width: 100%;
-            height: 80px;
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
-            background: #ecf0f3;
-            border-radius: 20px;
-            transition: all 0.65s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .accordion-tab h2 {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            color: #4b5563;
-            font-size: 11px;
-            font-weight: 800;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            letter-spacing: 1px;
-        }
-        .accordion-tab h2 i {
-            opacity: 0.3;
-            transition: all 0.3s;
-            width: 12px;
-            height: 12px;
-        }
-
-        .accordion-tab .tab_right {
-            width: 65%;
-            float: right;
-            position: relative;
-            top: 200px;
-            text-align: right;
-            padding: 10px 20px 10px 0;
-            opacity: 0;
-        }
-        .accordion-tab .tab_right h3,
-        .accordion-tab .tab_right h4,
-        .accordion-tab .tab_right p {
-            margin: 0;
-        }
-        .accordion-tab .tab_right h3 {
-            font-size: 14px;
-            font-weight: 850;
-            color: #111827;
-            line-height: 1.2;
-        }
-        .accordion-tab .tab_right h4 {
-            font-size: 9px;
-            font-weight: 700;
-            margin: 2px 0 6px 0;
-            color: #2563eb;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .accordion-tab .tab_right p {
-            font-size: 11px;
-            color: #4b5563;
-            line-height: 1.45;
-            font-weight: 550;
-            text-align: right;
-        }
-        .accordion-tab .tab_right button {
-            margin-top: 8px;
-            border: 1.5px solid #2563eb;
-            background: none;
-            border-radius: 20px;
-            padding: 3px 12px;
-            cursor: pointer;
-            outline: none;
-            font-size: 9px;
-            font-weight: 800;
-            color: #2563eb;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .accordion-tab .tab_right button:hover {
-            background: #2563eb;
-            color: #ffffff;
-        }
-
-        .accordion-tab .tab_left {
-            width: 30%;
-            float: left;
-            position: relative;
-            height: 100%;
-        }
-        .accordion-tab .tab_left .big {
-            position: absolute;
-            top: -15px;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            width: 140px;
-            height: 140px;
-            color: #cbd5e1;
-        }
-        .accordion-tab .tab_left__image {
-            position: relative;
-            top: -100px;
-            background: white;
-            left: 20px;
-            border-radius: 16px;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .accordion-tab .tab_left__image i {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Animations */
-        @keyframes acc_move_out {
-            0% { top: 10px; }
-            100% { top: 200px; }
-        }
-        @keyframes acc_move_in {
-            0% { top: -200px; }
-            100% { top: 10px; }
-        }
     </style>
     <style>
         /* Swiper Blog Slider Styles */
@@ -1160,163 +933,69 @@
 
         <section id="services" class="scroll-section">
             <div class="section-inner px-6">
-                <div class="max-w-6xl mx-auto w-full flex flex-col justify-center min-h-0 py-6">
-                    <!-- Minimal Title Header -->
-                    <div class="text-left mb-8 reveal-el">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ecf0f3] shadow-[inset_1.5px_1.5px_3px_#b8bec9,inset_-1.5px_-1.5px_3px_#ffffff] border border-white/20 mb-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
-                            <span class="text-[9px] font-bold text-blue-600 uppercase tracking-widest">Our Expertise</span>
-                        </div>
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 tracking-tighter leading-tight" data-t="service_title">Layanan Eksklusif.</h2>
+                <div class="max-w-7xl mx-auto w-full flex flex-col justify-center min-h-0 py-2">
+                    <div class="flex flex-row items-center justify-between gap-4 mb-2 reveal-el">
+                        <h2 class="text-sm sm:text-base md:text-2xl font-extrabold text-gray-900 tracking-tight whitespace-nowrap mb-0"
+                            data-t="service_title">Layanan Eksklusif.</h2>
+                        <p class="text-gray-650 max-w-sm sm:max-w-md md:max-w-xl text-[9px] sm:text-[10px] md:text-xs font-medium text-right leading-tight" style="font-family: 'Times New Roman', Times, serif;" data-t="service_desc">Solusi teknologi tingkat tinggi yang dirancang dengan presisi arsitektural dan kepatuhan hukum.</p>
                     </div>
 
-                    <!-- Two Column Accordion Grid -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full reveal-el">
-                        <!-- Left Column (Services 1-3) -->
-                        <div class="accordion-app">
-                            <div class="accordion-app_inner">
-                                <!-- Tab 1 -->
-                                <input type="radio" id="service-tab-1" name="buttons" checked>
-                                <label for="service-tab-1">
-                                    <div class="accordion-tab">
-                                        <h2>
-                                            <i data-lucide="info"></i>
-                                            <span>01 / 06</span>
-                                        </h2>
-                                        <div class="tab_left">
-                                            <i data-lucide="layout" class="icon big"></i>
-                                            <div class="tab_left__image">
-                                                <i data-lucide="layout" class="icon small"></i>
-                                            </div>
-                                        </div>
-                                        <div class="tab_right">
-                                            <h3 data-t="s_1_t">Fullstack System Architect</h3>
-                                            <h4>Systems Architecture</h4>
-                                            <p data-t="s_1_d">Rancang bangun arsitektur web end-to-end berkinerja tinggi. Kami mengintegrasikan skalabilitas cloud, database, caching Redis, dan enkripsi keamanan tingkat tinggi.</p>
-                                            <button onclick="window.location.href='#contact'">Start Project</button>
-                                        </div>
-                                    </div>
-                                </label>
-
-                                <!-- Tab 2 -->
-                                <input type="radio" id="service-tab-2" name="buttons">
-                                <label for="service-tab-2">
-                                    <div class="accordion-tab">
-                                        <h2>
-                                            <i data-lucide="info"></i>
-                                            <span>02 / 06</span>
-                                        </h2>
-                                        <div class="tab_left">
-                                            <i data-lucide="cpu" class="icon big"></i>
-                                            <div class="tab_left__image">
-                                                <i data-lucide="cpu" class="icon small"></i>
-                                            </div>
-                                        </div>
-                                        <div class="tab_right">
-                                            <h3 data-t="s_2_t">AI & LLM Orchestration</h3>
-                                            <h4>Artificial Intelligence</h4>
-                                            <p data-t="s_2_d">Integrasi AI dan Large Language Models (Claude, GPT-4, model lokal). Otomatisasi bisnis melalui agen otonom, prompt engineering, RAG, dan integrasi API kustom.</p>
-                                            <button onclick="window.location.href='#contact'">Start Project</button>
-                                        </div>
-                                    </div>
-                                </label>
-
-                                <!-- Tab 3 -->
-                                <input type="radio" id="service-tab-3" name="buttons">
-                                <label for="service-tab-3">
-                                    <div class="accordion-tab">
-                                        <h2>
-                                            <i data-lucide="info"></i>
-                                            <span>03 / 06</span>
-                                        </h2>
-                                        <div class="tab_left">
-                                            <i data-lucide="shield-check" class="icon big"></i>
-                                            <div class="tab_left__image">
-                                                <i data-lucide="shield-check" class="icon small"></i>
-                                            </div>
-                                        </div>
-                                        <div class="tab_right">
-                                            <h3 data-t="s_3_t">Legal-Tech Compliance</h3>
-                                            <h4>Legal Technology</h4>
-                                            <p data-t="s_3_d">Audit kepatuhan hukum digital terpadu (GDPR, UU PDP, OJK, ISO 27001). Kami merancang kebijakan privasi, tata kelola keamanan, dan mitigasi risiko regulasi.</p>
-                                            <button onclick="window.location.href='#contact'">Start Project</button>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch min-h-0">
+                        <!-- Tabs List -->
+                        <div class="md:col-span-4 grid grid-cols-2 md:flex md:flex-col gap-1.5 md:gap-2 px-1 py-1 md:px-0 md:py-0 md:pr-1 md:pb-0 min-h-0" id="services-tabs-list">
+                            <!-- Tab buttons will be created dynamically by JS -->
                         </div>
-
-                        <!-- Right Column (Services 4-6) -->
-                        <div class="accordion-app">
-                            <div class="accordion-app_inner">
-                                <!-- Tab 4 -->
-                                <input type="radio" id="service-tab-4" name="buttons">
-                                <label for="service-tab-4">
-                                    <div class="accordion-tab">
-                                        <h2>
-                                            <i data-lucide="info"></i>
-                                            <span>04 / 06</span>
-                                        </h2>
-                                        <div class="tab_left">
-                                            <i data-lucide="smartphone" class="icon big"></i>
-                                            <div class="tab_left__image">
-                                                <i data-lucide="smartphone" class="icon small"></i>
-                                            </div>
-                                        </div>
-                                        <div class="tab_right">
-                                            <h3 data-t="s_4_t">Android APK Development</h3>
-                                            <h4>Mobile Development</h4>
-                                            <p data-t="s_4_d">Pengembangan aplikasi Android native performa tinggi dengan Kotlin & Jetpack Compose. Optimasi memori, enkripsi lokal, dan keamanan kode standar Google Play Store.</p>
-                                            <button onclick="window.location.href='#contact'">Start Project</button>
-                                        </div>
+                        
+                        <!-- Tab Details Content Panel -->
+                        <div class="md:col-span-8 flex flex-col justify-center min-h-0">
+                            <div id="services-content-panel" class="flex items-center justify-center min-h-0">
+                                <div class="neu-card group p-5 sm:p-8 bg-[#ecf0f3] w-full">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 text-blue-600">
+                                        <i data-lucide="layout" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                                     </div>
-                                </label>
+                                    <h3 class="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-2" data-t="s_1_t">Fullstack System Architect</h3>
+                                    <p class="text-gray-600 text-[10px] sm:text-xs md:text-sm leading-relaxed" data-t="s_1_d">Rancang bangun arsitektur web end-to-end berkinerja tinggi. Kami mengintegrasikan skalabilitas cloud, database, caching Redis, dan enkripsi keamanan tingkat tinggi.</p>
+                                </div>
 
-                                <!-- Tab 5 -->
-                                <input type="radio" id="service-tab-5" name="buttons">
-                                <label for="service-tab-5">
-                                    <div class="accordion-tab">
-                                        <h2>
-                                            <i data-lucide="info"></i>
-                                            <span>05 / 06</span>
-                                        </h2>
-                                        <div class="tab_left">
-                                            <i data-lucide="trending-up" class="icon big"></i>
-                                            <div class="tab_left__image">
-                                                <i data-lucide="trending-up" class="icon small"></i>
-                                            </div>
-                                        </div>
-                                        <div class="tab_right">
-                                            <h3 data-t="s_5_t">AI for Algorithmic Trading</h3>
-                                            <h4>Quantitative Trading</h4>
-                                            <p data-t="s_5_d">Sistem trading algoritma otomatis berbasis machine learning. Analisis data pasar real-time, optimasi portofolio, dan eksekusi order latensi rendah via API.</p>
-                                            <button onclick="window.location.href='#contact'">Start Project</button>
-                                        </div>
+                                <div class="neu-card group p-5 sm:p-8 bg-[#ecf0f3] w-full hidden">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 text-purple-600">
+                                        <i data-lucide="cpu" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                                     </div>
-                                </label>
+                                    <h3 class="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-2" data-t="s_2_t">AI & LLM Orchestration</h3>
+                                    <p class="text-gray-600 text-[10px] sm:text-xs md:text-sm leading-relaxed" data-t="s_2_d">Integrasi AI dan Large Language Models (Claude, GPT-4, model lokal). Otomatisasi bisnis melalui agen otonom, prompt engineering, RAG, dan integrasi API kustom.</p>
+                                </div>
 
-                                <!-- Tab 6 -->
-                                <input type="radio" id="service-tab-6" name="buttons">
-                                <label for="service-tab-6">
-                                    <div class="accordion-tab">
-                                        <h2>
-                                            <i data-lucide="info"></i>
-                                            <span>06 / 06</span>
-                                        </h2>
-                                        <div class="tab_left">
-                                            <i data-lucide="terminal" class="icon big"></i>
-                                            <div class="tab_left__image">
-                                                <i data-lucide="terminal" class="icon small"></i>
-                                            </div>
-                                        </div>
-                                        <div class="tab_right">
-                                            <h3 data-t="s_6_t">Professional Pentesting</h3>
-                                            <h4>Offensive Security</h4>
-                                            <p data-t="s_6_d">Simulasi serangan siber ofensif (Offensive Security) secara legal. Uji penetrasi jaringan, aplikasi web, API, dan cloud untuk menemukan dan menutup kerentanan.</p>
-                                            <button onclick="window.location.href='#contact'">Start Project</button>
-                                        </div>
+                                <div class="neu-card group p-5 sm:p-8 bg-[#ecf0f3] w-full hidden">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 text-amber-600">
+                                        <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                                     </div>
-                                </label>
+                                    <h3 class="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-2" data-t="s_3_t">Legal-Tech Compliance</h3>
+                                    <p class="text-gray-600 text-[10px] sm:text-xs md:text-sm leading-relaxed" data-t="s_3_d">Audit kepatuhan hukum digital terpadu (GDPR, UU PDP, OJK, ISO 27001). Kami merancang kebijakan privasi, tata kelola keamanan, dan mitigasi risiko regulasi.</p>
+                                </div>
+
+                                <div class="neu-card group p-5 sm:p-8 bg-[#ecf0f3] w-full hidden">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 text-green-600">
+                                        <i data-lucide="smartphone" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                                    </div>
+                                    <h3 class="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-2" data-t="s_4_t">Android APK Development</h3>
+                                    <p class="text-gray-600 text-[10px] sm:text-xs md:text-sm leading-relaxed" data-t="s_4_d">Pengembangan aplikasi Android native performa tinggi dengan Kotlin & Jetpack Compose. Optimasi memori, enkripsi lokal, dan keamanan kode standar Google Play Store.</p>
+                                </div>
+
+                                <div class="neu-card group p-5 sm:p-8 bg-[#ecf0f3] w-full hidden">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 text-red-600">
+                                        <i data-lucide="trending-up" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                                    </div>
+                                    <h3 class="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-2" data-t="s_5_t">AI for Algorithmic Trading</h3>
+                                    <p class="text-gray-600 text-[10px] sm:text-xs md:text-sm leading-relaxed" data-t="s_5_d">Sistem trading algoritma otomatis berbasis machine learning. Analisis data pasar real-time, optimasi portofolio, dan eksekusi order latensi rendah via API.</p>
+                                </div>
+
+                                <div class="neu-card group p-5 sm:p-8 bg-[#ecf0f3] w-full hidden">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#ecf0f3] shadow-[inset_2px_2px_5px_#b8bec9,inset_-2px_-2px_5px_#ffffff] rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 text-indigo-600">
+                                        <i data-lucide="terminal" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                                    </div>
+                                    <h3 class="text-sm sm:text-base md:text-lg font-bold text-gray-900 mb-2" data-t="s_6_t">Professional Pentesting</h3>
+                                    <p class="text-gray-600 text-[10px] sm:text-xs md:text-sm leading-relaxed" data-t="s_6_d">Simulasi serangan siber ofensif (Offensive Security) secara legal. Uji penetrasi jaringan, aplikasi web, API, dan cloud untuk menemukan dan menutup kerentanan.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
