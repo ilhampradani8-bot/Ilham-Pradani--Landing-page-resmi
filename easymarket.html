@@ -741,6 +741,40 @@
 
                     <!-- 3D Card Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 border-t border-gray-200/60 dark:border-white/10">
+                        <!-- Card 0: Video Testimonial -->
+                        <div class="testi-card-container col-span-1">
+                            <div onclick="openLightbox('documents/easycompany-productdigital/tertimoni/WhatsApp Video 2026-06-29 at 13.39.51.mp4', this)" class="testi-card h-full bg-white dark:bg-slate-900/60 border border-gray-200/80 dark:border-white/5 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between p-4 group">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-50 dark:bg-slate-950 flex items-center justify-center h-48 border border-gray-100 dark:border-white/5 p-2">
+                                    <video src="documents/easycompany-productdigital/tertimoni/WhatsApp Video 2026-06-29 at 13.39.51.mp4" class="max-h-full max-w-full object-contain rounded-lg" preload="metadata" muted></video>
+                                    <div class="absolute inset-0 bg-black/20 flex items-center justify-center transition-colors group-hover:bg-black/35 duration-300">
+                                        <div class="w-12 h-12 rounded-full bg-white/90 dark:bg-slate-900/90 shadow flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="play" class="w-5 h-5 text-[#0066cc] dark:text-[#38bdf8] fill-current"></i>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-2 right-2 bg-black/60 text-white text-[9px] font-bold px-1.5 py-0.5 rounded flex items-center gap-1">
+                                        <i data-lucide="video" class="w-2.5 h-2.5"></i>
+                                        <span>VIDEO</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 testi-card-inner space-y-1.5">
+                                    <div class="flex items-center justify-between">
+                                        <span class="px-2 py-0.5 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded-md">Video Review</span>
+                                        <span class="text-[10px] text-gray-400 font-medium">Beli Produk Digital</span>
+                                    </div>
+                                    <h4 class="font-extrabold text-sm text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-[#38bdf8] transition-colors">
+                                        <span class="lang-id">Proses Beli Produk Digital Cepat</span>
+                                        <span class="lang-en hidden">Fast Digital Product Purchase</span>
+                                        <span class="lang-zh hidden">数字产品快捷购买流程</span>
+                                    </h4>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                                        <span class="lang-id">Proses dari awal sampai akhir beli product digital, cepatttt.</span>
+                                        <span class="lang-en hidden">The full process of buying digital products from start to finish is super fast.</span>
+                                        <span class="lang-zh hidden">从开始到结束购买数字产品的完整流程，非常快捷。</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Card 1: Bot Response -->
                         <div class="testi-card-container col-span-1">
                             <div onclick="openLightbox('documents/easycompany-productdigital/tertimoni/klik1-bot-jawab-kurangdari-1menit.webp', this)" class="testi-card h-full bg-white dark:bg-slate-900/60 border border-gray-200/80 dark:border-white/5 rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between p-4 group">
@@ -1663,6 +1697,7 @@
             <!-- Image Container -->
             <div class="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-slate-950">
                 <img id="lightbox-img" src="" alt="Testimonial View" class="max-h-[75vh] max-w-full object-contain">
+                <video id="lightbox-video" src="" controls class="hidden max-h-[75vh] max-w-full object-contain"></video>
             </div>
             <!-- Caption -->
             <div class="mt-4 text-center text-white/90 text-sm font-bold tracking-wide" id="lightbox-caption"></div>

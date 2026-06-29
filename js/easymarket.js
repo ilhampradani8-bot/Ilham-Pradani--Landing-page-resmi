@@ -430,10 +430,25 @@
         window.openLightbox = function(src, cardEl) {
             const lightbox = document.getElementById('testi-lightbox');
             const img = document.getElementById('lightbox-img');
+            const video = document.getElementById('lightbox-video');
             const cap = document.getElementById('lightbox-caption');
-            if (!lightbox || !img || !cap) return;
+            if (!lightbox || !img || !video || !cap) return;
             
-            img.src = src;
+            const isVideo = src.toLowerCase().endsWith('.mp4');
+            
+            if (isVideo) {
+                img.classList.add('hidden');
+                img.src = '';
+                video.classList.remove('hidden');
+                video.src = src;
+                video.play().catch(() => {});
+            } else {
+                video.classList.add('hidden');
+                video.pause();
+                video.src = '';
+                img.classList.remove('hidden');
+                img.src = src;
+            }
             
             let captionText = 'Testimonial';
             if (cardEl) {
@@ -458,7 +473,13 @@
 
         window.closeLightbox = function() {
             const lightbox = document.getElementById('testi-lightbox');
+            const video = document.getElementById('lightbox-video');
             if (!lightbox) return;
+            
+            if (video) {
+                video.pause();
+                video.src = '';
+            }
             
             lightbox.classList.add('opacity-0');
             setTimeout(() => {
