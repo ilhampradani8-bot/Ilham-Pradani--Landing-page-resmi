@@ -34,7 +34,7 @@ async function loadArtikel() {
             const label = isToday ? `<span class="absolute top-4 right-4 px-2 py-1 bg-red-600 text-white text-[9px] font-black rounded-sm animate-pulse z-10">${labelText}</span>` : '';
 
             gridHtml += `
-                <a href="baca.html?id=${item.id}" class="swiper-slide neu-card group relative bg-[#ecf0f3] overflow-hidden hover:scale-[1.01] transition-all duration-500 reveal-el flex flex-col sm:flex-row h-auto sm:h-52 w-full">
+                <a href="baca.html?id=${item.id}" class="swiper-slide neu-card group relative bg-[#ecf0f3] overflow-hidden hover:scale-[1.01] transition-all duration-500 reveal-el flex flex-col sm:flex-row h-auto sm:h-56 w-full">
                     ${label}
                     <div class="w-full sm:w-2/5 h-36 sm:h-full overflow-hidden bg-gray-200 relative shrink-0">
                         <img src="${getVal(item, 'gambar')}" 
@@ -61,7 +61,7 @@ async function loadArtikel() {
                             <h3 class="text-base sm:text-md font-extrabold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
                                 ${getVal(item, 'judul')}
                             </h3>
-                            <p class="text-gray-650 text-xs line-clamp-2 sm:line-clamp-3 leading-relaxed mb-4 font-medium">
+                            <p class="text-gray-600 text-xs line-clamp-2 leading-relaxed mb-4 font-medium">
                                 ${getVal(item, 'kutipan')}
                             </p>
                         </div>
@@ -218,38 +218,30 @@ function initScrollAnimations() {
     });
 }
 
-function initServicesTabs() {
-    const tabsList = document.getElementById('services-tabs-list');
-    const contentPanel = document.getElementById('services-content-panel');
+function initCategoryDetailsTabs(tabsListId, contentPanelId, bgImages) {
+    const tabsList = document.getElementById(tabsListId);
+    const contentPanel = document.getElementById(contentPanelId);
     if (!tabsList || !contentPanel) return;
 
     const cards = Array.from(contentPanel.children);
     tabsList.innerHTML = '';
 
-    const serviceBgImages = [
-        "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop"
-    ];
-
     const bgOverlay = document.getElementById('services-bg-overlay');
-    if (bgOverlay && serviceBgImages[0]) {
-        bgOverlay.style.backgroundImage = `url('${serviceBgImages[0]}')`;
+    if (bgOverlay && bgImages[0] && tabsListId === 'services-tabs-list') {
+        bgOverlay.style.backgroundImage = `url('${bgImages[0]}')`;
     }
 
     cards.forEach((card, index) => {
-        const titleEl = card.querySelector('[data-t^="s_"][data-t$="_t"]');
+        const titleEl = card.querySelector('[data-t^="s_"][data-t$="_t"], [data-t^="p_"][data-t$="_t"], [data-t^="pr_"][data-t$="_t"]');
         const iconEl = card.querySelector('[data-lucide]');
         const iconName = iconEl ? iconEl.getAttribute('data-lucide') : 'layout';
-        const titleText = titleEl ? titleEl.textContent : `Service ${index + 1}`;
+        const titleText = titleEl ? titleEl.textContent : `Item ${index + 1}`;
         const dataT = titleEl ? titleEl.getAttribute('data-t') : '';
 
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = `service-tab-btn flex items-center gap-1.5 md:gap-2 p-1.5 md:p-2 text-left rounded-lg md:rounded-xl transition-all w-full min-w-0 bg-[#ecf0f3]
+        const tabBtnClass = `${tabsListId}-btn`;
+        btn.className = `${tabBtnClass} flex items-center gap-1.5 md:gap-2 p-1.5 md:p-2 text-left rounded-lg md:rounded-xl transition-all w-full min-w-0 bg-[#ecf0f3]
             ${index === 0 ? 'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
         btn.innerHTML = `
             <div class="w-5 h-5 md:w-6 md:h-6 rounded-md md:rounded-lg flex items-center justify-center shrink-0 ${index === 0 ? 'bg-blue-600 text-white shadow-sm' : 'bg-[#ecf0f3] shadow-[inset_1px_1px_2px_#b8bec9,inset_-1px_-1px_2px_#ffffff] text-gray-500'}">
@@ -266,18 +258,18 @@ function initServicesTabs() {
             card.classList.remove('hidden');
             card.className = "neu-card w-full h-full p-4 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300 relative overflow-hidden";
  
-            if (serviceBgImages[index]) {
-                card.style.backgroundImage = `linear-gradient(rgba(236, 240, 243, 0.92), rgba(236, 240, 243, 0.92)), url('${serviceBgImages[index]}')`;
+            if (bgImages[index]) {
+                card.style.backgroundImage = `linear-gradient(rgba(236, 240, 243, 0.92), rgba(236, 240, 243, 0.92)), url('${bgImages[index]}')`;
                 card.style.backgroundSize = 'cover';
                 card.style.backgroundPosition = 'center';
             }
 
-            if (bgOverlay && serviceBgImages[index]) {
-                bgOverlay.style.backgroundImage = `url('${serviceBgImages[index]}')`;
+            if (bgOverlay && bgImages[index]) {
+                bgOverlay.style.backgroundImage = `url('${bgImages[index]}')`;
             }
 
-            document.querySelectorAll('.service-tab-btn').forEach((b, idx) => {
-                b.className = `service-tab-btn flex items-center gap-1.5 md:gap-2 p-1.5 md:p-2 text-left rounded-lg md:rounded-xl transition-all w-full min-w-0 bg-[#ecf0f3]
+            document.querySelectorAll(`.${tabBtnClass}`).forEach((b, idx) => {
+                b.className = `${tabBtnClass} flex items-center gap-1.5 md:gap-2 p-1.5 md:p-2 text-left rounded-lg md:rounded-xl transition-all w-full min-w-0 bg-[#ecf0f3]
                     ${idx === index ? 'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-blue-600 font-bold' : 'shadow-[3px_3px_6px_#b8bec9,-3px_-3px_6px_#ffffff] hover:shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff] text-gray-700'}`;
                 
                 const iconContainer = b.querySelector('div');
@@ -294,15 +286,15 @@ function initServicesTabs() {
             card.classList.add('hidden');
         } else {
             card.className = "neu-card w-full h-full p-4 sm:p-8 bg-[#ecf0f3] flex flex-col justify-center reveal-el transition-all duration-300 relative overflow-hidden";
-            if (serviceBgImages[0]) {
-                card.style.backgroundImage = `linear-gradient(rgba(236, 240, 243, 0.92), rgba(236, 240, 243, 0.92)), url('${serviceBgImages[0]}')`;
+            if (bgImages[0]) {
+                card.style.backgroundImage = `linear-gradient(rgba(236, 240, 243, 0.92), rgba(236, 240, 243, 0.92)), url('${bgImages[0]}')`;
                 card.style.backgroundSize = 'cover';
                 card.style.backgroundPosition = 'center';
             }
         }
     });
 
-    // Touch Swipe navigation support for mobile
+    // Touch Swipe support for mobile
     let touchStartX = 0;
     let touchEndX = 0;
     contentPanel.addEventListener('touchstart', e => {
@@ -322,8 +314,90 @@ function initServicesTabs() {
             buttons[newIndex].click();
         }
     }, { passive: true });
+}
 
+function initServicesTabs() {
+    const serviceBgImages = [
+        "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop"
+    ];
+    const productBgImages = [
+        "https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1563013544-824ae1d704d3?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1547658719-da2b81169d7a?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=1200&auto=format&fit=crop"
+    ];
+
+    initCategoryDetailsTabs('services-tabs-list', 'services-content-panel', serviceBgImages);
+    initCategoryDetailsTabs('products-tabs-list', 'products-content-panel', productBgImages);
     if (window.lucide) lucide.createIcons();
+}
+
+window.switchCategoryTab = function(category) {
+    const tabBtns = document.querySelectorAll('.category-tab-btn');
+    tabBtns.forEach(btn => {
+        btn.classList.remove(
+            'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff]', 
+            'text-blue-600', 
+            'font-extrabold'
+        );
+        btn.classList.add(
+            'shadow-[2px_2px_5px_#b8bec9,-2px_-2px_5px_#ffffff]', 
+            'text-gray-600'
+        );
+    });
+    const activeBtn = document.getElementById(`category-tab-${category}`);
+    if (activeBtn) {
+        activeBtn.classList.remove(
+            'shadow-[2px_2px_5px_#b8bec9,-2px_-2px_5px_#ffffff]', 
+            'text-gray-600'
+        );
+        activeBtn.classList.add(
+            'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff]', 
+            'text-blue-600', 
+            'font-extrabold'
+        );
+    }
+
+    if (category === 'services') {
+        document.getElementById('services-tabs-list').classList.remove('hidden');
+        document.getElementById('services-content-panel').classList.remove('hidden');
+        document.getElementById('products-tabs-list').classList.add('hidden');
+        document.getElementById('products-content-panel').classList.add('hidden');
+        
+        const activeCard = document.querySelector('#services-content-panel > div:not(.hidden)');
+        if (activeCard && activeCard.style.backgroundImage) {
+            const bgUrl = activeCard.style.backgroundImage.split('url("')[1]?.split('")')[0];
+            const bgOverlay = document.getElementById('services-bg-overlay');
+            if (bgOverlay && bgUrl) {
+                bgOverlay.style.backgroundImage = `url('${bgUrl}')`;
+            }
+        }
+    } else {
+        document.getElementById('services-tabs-list').classList.add('hidden');
+        document.getElementById('services-content-panel').classList.add('hidden');
+        document.getElementById('products-tabs-list').classList.remove('hidden');
+        document.getElementById('products-content-panel').classList.remove('hidden');
+        
+        const activeCard = document.querySelector('#products-content-panel > div:not(.hidden)');
+        if (activeCard && activeCard.style.backgroundImage) {
+            const bgUrl = activeCard.style.backgroundImage.split('url("')[1]?.split('")')[0];
+            const bgOverlay = document.getElementById('services-bg-overlay');
+            if (bgOverlay && bgUrl) {
+                bgOverlay.style.backgroundImage = `url('${bgUrl}')`;
+            }
+        }
+    }
 }
 
 function initParallaxScroll() {
@@ -900,8 +974,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Google Reviews Slider
         new Swiper('.reviews-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 16,
+            slidesPerView: 'auto',
+            spaceBetween: 12,
             loop: true,
             autoplay: {
                 delay: 3500,
@@ -918,12 +992,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             },
             breakpoints: {
                 768: {
-                    slidesPerView: 2,
-                    spaceBetween: 24,
+                    spaceBetween: 16,
                 },
                 1150: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
+                    spaceBetween: 20,
                 }
             }
         });
@@ -954,3 +1026,42 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
     }
 });
+
+window.switchPartnerTab = function(tabName) {
+    // Hide all grids
+    document.querySelectorAll('.partner-grid').forEach(grid => {
+        grid.classList.add('hidden');
+    });
+    // Show selected grid
+    const targetGrid = document.getElementById(`partner-grid-${tabName}`);
+    if (targetGrid) {
+        targetGrid.classList.remove('hidden');
+    }
+    
+    // Update button styles
+    const tabBtns = document.querySelectorAll('.partner-tab-btn');
+    tabBtns.forEach(btn => {
+        btn.classList.remove(
+            'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff]', 
+            'text-blue-600', 
+            'font-black'
+        );
+        btn.classList.add(
+            'shadow-[2px_2px_5px_#b8bec9,-2px_-2px_5px_#ffffff]', 
+            'text-gray-600'
+        );
+    });
+    
+    const activeBtn = document.getElementById(`partner-tab-${tabName}`);
+    if (activeBtn) {
+        activeBtn.classList.remove(
+            'shadow-[2px_2px_5px_#b8bec9,-2px_-2px_5px_#ffffff]', 
+            'text-gray-600'
+        );
+        activeBtn.classList.add(
+            'shadow-[inset_2px_2px_4px_#b8bec9,inset_-2px_-2px_4px_#ffffff]', 
+            'text-blue-600', 
+            'font-black'
+        );
+    }
+};
