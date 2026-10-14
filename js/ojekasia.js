@@ -185,7 +185,7 @@ const initPage = async () => {
         slide2.style.zIndex = '0';
 
         const link = document.createElement('a');
-        link.href = 'https://www.mijdigital.my';
+        link.href = 'easymarket.html';
         link.target = '_blank';
         link.style.display = 'block';
         link.style.width = '728px';
